@@ -15,7 +15,6 @@ Static marketing site. No build step, no dependencies, no framework.
 | `thank-you.html` | Post-form-submission page (fires the `generate_lead` GA event) |
 | `404.html` | Not-found page (GitHub Pages serves this automatically) |
 | `.github/workflows/deploy.yml` | Publishes the site on every push |
-| `CNAME` | Custom domain for GitHub Pages — **do not delete** |
 | `.nojekyll` | Stops GitHub Pages running the files through Jekyll |
 | `favicon.svg` | Browser tab icon |
 | `images/logo-mark.svg` | Standalone logo mark |
@@ -59,11 +58,24 @@ per month.
 Until the key is set, the form shows a visible warning and logs an error in the browser console —
 so a misconfigured form is impossible to miss.
 
+Note the form's `redirect` field points at `https://steadygrowthmarketing.com/thank-you.html`. If
+you test a submission before the domain has moved, you'll land on the old Netlify site. The
+submission still arrives in your inbox — only the landing page is wrong, and it corrects itself
+once DNS moves.
+
 Spam protection is the hidden `botcheck` field. Web3Forms rejects any submission that fills it in.
 
 ### 3. Point the domain at GitHub Pages
 
-`CNAME` already claims `steadygrowthmarketing.com`. Update DNS at your registrar:
+Do this **last**, after you've previewed the site at
+`https://yosef-a11y.github.io/steady-web/` and are happy with it.
+
+There is deliberately no `CNAME` file in the repo yet. Adding one makes Pages claim the domain
+immediately, which would redirect the preview URL to a domain still served by Netlify — leaving you
+no way to check the site first. GitHub creates the `CNAME` file for you when you set the custom
+domain in the UI.
+
+Update DNS at your registrar:
 
 | Type | Name | Value |
 | --- | --- | --- |
@@ -120,9 +132,10 @@ this same repo.
 
 ## Before going live
 
-- [ ] Enable Pages (Settings → Pages → Source: GitHub Actions)
+- [ ] Enable Pages (Settings → Pages → Source: GitHub Actions), then re-run the failed workflow
+- [ ] Preview at `https://yosef-a11y.github.io/steady-web/`
 - [ ] Set the Web3Forms access key and send a test submission
-- [ ] Move DNS, then enable Enforce HTTPS
+- [ ] Move DNS and set the custom domain, then enable Enforce HTTPS
 - [ ] Add a real social share image at `images/og-image.png` (1200×630) — the meta tags already point at it
 - [ ] Replace placeholder testimonials with attributed real ones
 - [ ] Mark `generate_lead` as a key event in GA4
