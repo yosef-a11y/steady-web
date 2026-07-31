@@ -1245,6 +1245,23 @@ p { text-wrap: pretty; }
   text-align: center;
 }
 
+/* Shown only when the form's access key hasn't been configured */
+.form-notice {
+  margin-bottom: 1.25rem;
+  padding: .8rem 1rem;
+  font-size: .87rem;
+  color: #92400E;
+  background: #FEF3C7;
+  border: 1px solid #FDE68A;
+  border-radius: var(--radius-sm);
+}
+
+.btn:disabled, .btn.is-sending {
+  opacity: .72;
+  cursor: not-allowed;
+  transform: none;
+}
+
 /* --------------------------------------------------------------------------
    17. Footer
    -------------------------------------------------------------------------- */

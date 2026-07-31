@@ -1,6 +1,9 @@
 # Steady Growth Marketing — website
 
-Static marketing site. No build step, no dependencies, no framework. Deploys to Netlify as-is.
+Static marketing site. No build step, no dependencies, no framework.
+
+**Hosted on GitHub Pages.** Every push to the default branch publishes automatically via
+`.github/workflows/deploy.yml` — there is no dashboard to visit and no deploy button to press.
 
 ## Files
 
@@ -8,17 +11,20 @@ Static marketing site. No build step, no dependencies, no framework. Deploys to 
 | --- | --- |
 | `index.html` | The entire homepage |
 | `styles.css` | Design system + all styling |
-| `main.js` | Nav, scroll reveal, counters, FAQ, analytics events |
+| `main.js` | Nav, scroll reveal, counters, FAQ, form guard, analytics events |
 | `thank-you.html` | Post-form-submission page (fires the `generate_lead` GA event) |
-| `404.html` | Not-found page (Netlify serves this automatically) |
-| `netlify.toml` | Publish dir, redirects, security + caching headers |
+| `404.html` | Not-found page (GitHub Pages serves this automatically) |
+| `.github/workflows/deploy.yml` | Publishes the site on every push |
+| `CNAME` | Custom domain for GitHub Pages — **do not delete** |
+| `.nojekyll` | Stops GitHub Pages running the files through Jekyll |
 | `favicon.svg` | Browser tab icon |
 | `images/logo-mark.svg` | Standalone logo mark |
 | `robots.txt`, `sitemap.xml` | SEO |
 
 The logo is inlined as SVG inside the HTML so it stays crisp at any size and costs zero extra
 requests. To swap in a raster version instead, drop it at `images/steady-logo.png` and replace the
-`<svg class="logo-mark">` blocks in `index.html` with `<img src="images/steady-logo.png" class="logo-mark" alt="Steady Growth Marketing">`.
+`<svg class="logo-mark">` blocks in `index.html` with
+`<img src="images/steady-logo.png" class="logo-mark" alt="Steady Growth Marketing">`.
 
 ## Local preview
 
@@ -29,27 +35,52 @@ python3 -m http.server 8000
 # then open http://localhost:8000
 ```
 
-## Deploying to Netlify
+## Publishing changes
 
-Connect this repo to Netlify. Settings:
+Commit and push to the default branch. The Actions workflow builds and deploys in about a minute;
+watch it under the repo's **Actions** tab. That's the whole process.
 
-- **Build command:** _(leave empty)_
-- **Publish directory:** `.`
+## One-time setup
 
-`netlify.toml` already sets the publish directory, so a fresh site should pick it up automatically.
+### 1. Enable GitHub Pages
 
-## Contact form
+Repo **Settings → Pages → Build and deployment → Source: GitHub Actions**. Do this once; after that
+the workflow handles everything.
 
-Uses [Netlify Forms](https://docs.netlify.com/forms/setup/). The `data-netlify="true"` attribute on
-the form means Netlify detects it at deploy time — no backend needed. Submissions show up under
-**Forms** in the Netlify dashboard.
+### 2. Connect the contact form
 
-To get email notifications: Netlify dashboard → Forms → Form notifications → add an email
-notification pointed at yosef@steadygrowthmarketing.com.
+The form posts to [Web3Forms](https://web3forms.com) — free, no account required, 250 submissions
+per month.
 
-Spam protection is handled by the `bot-field` honeypot. If spam gets through, enable reCAPTCHA by
-adding `data-netlify-recaptcha="true"` to the form and a `<div data-netlify-recaptcha="true"></div>`
-above the submit button.
+1. Go to web3forms.com, enter `yosef@steadygrowthmarketing.com`, and they email you an access key.
+2. In `index.html`, find `YOUR_WEB3FORMS_ACCESS_KEY` and replace it with that key.
+3. Push. Submit a test message and confirm it arrives.
+
+Until the key is set, the form shows a visible warning and logs an error in the browser console —
+so a misconfigured form is impossible to miss.
+
+Spam protection is the hidden `botcheck` field. Web3Forms rejects any submission that fills it in.
+
+### 3. Point the domain at GitHub Pages
+
+`CNAME` already claims `steadygrowthmarketing.com`. Update DNS at your registrar:
+
+| Type | Name | Value |
+| --- | --- | --- |
+| A | `@` | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
+| CNAME | `www` | `yosef-a11y.github.io` |
+
+Verify those IPs against the current list in
+[GitHub's docs](https://docs.github.com/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)
+before you change anything — GitHub has changed them before.
+
+Then repo **Settings → Pages → Custom domain** → enter the domain → tick **Enforce HTTPS** once the
+certificate finishes provisioning (usually minutes, occasionally up to 24 hours).
+
+Delete the old Netlify site only after the domain resolves to GitHub Pages, so there's no gap.
 
 ## Analytics
 
@@ -78,10 +109,22 @@ Common edits:
 - **FAQ** — questions live in `#faq`. If you add or change one, mirror it in the `FAQPage` JSON-LD
   block in `<head>` so the structured data stays accurate.
 
+## Known limitation of GitHub Pages
+
+GitHub Pages doesn't support custom response headers, so the security and cache-control headers that
+`netlify.toml` used to set are gone. `Referrer-Policy` is preserved via a `<meta>` tag; the rest
+(`X-Frame-Options`, `Content-Security-Policy`, `Strict-Transport-Security`, immutable asset caching)
+can't be replicated. For a brochure site with no login and no user data this is low-risk, but if you
+ever need those headers back, Cloudflare Pages supports them via a `_headers` file and deploys from
+this same repo.
+
 ## Before going live
 
+- [ ] Enable Pages (Settings → Pages → Source: GitHub Actions)
+- [ ] Set the Web3Forms access key and send a test submission
+- [ ] Move DNS, then enable Enforce HTTPS
 - [ ] Add a real social share image at `images/og-image.png` (1200×630) — the meta tags already point at it
 - [ ] Replace placeholder testimonials with attributed real ones
-- [ ] Set up the Netlify form email notification
 - [ ] Mark `generate_lead` as a key event in GA4
 - [ ] Submit `sitemap.xml` in Google Search Console
+- [ ] Delete the Netlify site once the domain has fully moved

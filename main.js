@@ -213,10 +213,39 @@
     }
   }
 
-  var contactForm = document.querySelector('.contact-form');
+  /* ---------------------------------------------------------------------
+     Contact form — config guard, submit state, analytics
+     --------------------------------------------------------------------- */
+  var contactForm = document.getElementById('contactForm');
+
   if (contactForm) {
+    var keyField = contactForm.querySelector('input[name="access_key"]');
+    var configured = keyField && keyField.value && keyField.value.indexOf('YOUR_') !== 0;
+
+    // Loud, unmissable warning if the Web3Forms key was never filled in —
+    // without it, every submission silently fails.
+    if (!configured) {
+      console.error(
+        '[Steady Growth] Contact form is not configured: replace ' +
+        'YOUR_WEB3FORMS_ACCESS_KEY in index.html with your key from https://web3forms.com'
+      );
+      var notice = document.createElement('p');
+      notice.className = 'form-notice';
+      notice.textContent =
+        'Heads up: this form is not connected yet. Email yosef@steadygrowthmarketing.com in the meantime.';
+      contactForm.insertBefore(notice, contactForm.firstElementChild.nextSibling);
+    }
+
     contactForm.addEventListener('submit', function () {
       track('form_submit', 'Contact Form');
+
+      // Disable the button so a slow network doesn't produce duplicate leads
+      var submit = contactForm.querySelector('button[type="submit"]');
+      if (submit) {
+        submit.disabled = true;
+        submit.classList.add('is-sending');
+        submit.textContent = 'Sending…';
+      }
     });
   }
 

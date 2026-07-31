@@ -8,6 +8,7 @@
 <meta name="description" content="Steady Growth Marketing builds profitable Google Ads, e-commerce, and lead generation programs backed by clean analytics. Get a free marketing audit — no contracts, no guesswork.">
 <link rel="canonical" href="https://steadygrowthmarketing.com/">
 <meta name="theme-color" content="#0A1638">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 
 <!-- Open Graph / social -->
 <meta property="og:type" content="website">
@@ -680,10 +681,15 @@
         </ul>
       </div>
 
-      <form class="contact-form animate-in" name="contact" method="POST"
-            data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
-        <input type="hidden" name="form-name" value="contact">
-        <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
+      <form class="contact-form animate-in" id="contactForm" method="POST"
+            action="https://api.web3forms.com/submit">
+        <!-- Web3Forms: replace with your access key from https://web3forms.com (free, no account) -->
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+        <input type="hidden" name="subject" value="New enquiry from steadygrowthmarketing.com">
+        <input type="hidden" name="from_name" value="Steady Growth Marketing website">
+        <input type="hidden" name="redirect" value="https://steadygrowthmarketing.com/thank-you.html">
+        <!-- Honeypot: hidden from people, tempting to bots -->
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
 
         <div class="form-row">
           <div class="form-group">
