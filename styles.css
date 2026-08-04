@@ -1064,6 +1064,21 @@ p { text-wrap: pretty; }
   gap: clamp(1.1rem, 2vw, 1.6rem);
 }
 
+/* Masonry wall — reviews vary a lot in length, and columns absorb that
+   far better than a grid, which would leave ragged gaps under short ones. */
+.reviews-grid {
+  column-count: 3;
+  column-gap: clamp(1.1rem, 2vw, 1.6rem);
+}
+.reviews-grid .testimonial-card {
+  display: block;
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  margin-bottom: clamp(1.1rem, 2vw, 1.6rem);
+}
+.reviews-grid .testimonial-text + .testimonial-text { margin-top: .85rem; }
+.reviews-grid .testimonial-text:last-of-type { margin-bottom: 1.5rem; }
+
 .testimonial-card {
   display: flex;
   flex-direction: column;
@@ -1561,6 +1576,7 @@ p { text-wrap: pretty; }
   .industries-grid { grid-template-columns: repeat(2, 1fr); }
   .results-grid { grid-template-columns: repeat(2, 1fr); }
   .testimonials-grid { grid-template-columns: 1fr; }
+  .reviews-grid { column-count: 2; }
   .reviews-summary { border-radius: var(--radius-lg); flex-direction: column; text-align: center; }
   .process-grid { grid-template-columns: repeat(2, 1fr); row-gap: 2.5rem; }
   .process-grid::before { display: none; }
@@ -1621,6 +1637,7 @@ p { text-wrap: pretty; }
 
   .services-grid { grid-template-columns: 1fr; }
   .industries-grid { grid-template-columns: 1fr; }
+  .reviews-grid { column-count: 1; }
   .results-grid { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; gap: 0; }

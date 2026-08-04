@@ -115,9 +115,9 @@ Common edits:
 
 - **Stats band** — the `data-count`, `data-prefix`, `data-suffix`, and `data-decimals` attributes
   drive the count-up animation. The visible text is the fallback for no-JS, so update both.
-- **Results / testimonials** — swap the copy in the `#results` and `#testimonials` sections. The
-  testimonials currently use initials-only attribution; add real names and companies as you get
-  permission.
+- **Reviews** — the `#reviews` section holds real Google reviews, newest first. To add one, copy a
+  `.testimonial-card` block and fill in the quote, initials, name, and month. The layout is a CSS
+  masonry wall, so any number of reviews of any length arranges itself.
 - **FAQ** — questions live in `#faq`. If you add or change one, mirror it in the `FAQPage` JSON-LD
   block in `<head>` so the structured data stays accurate.
 
@@ -137,7 +137,6 @@ this same repo.
 - [ ] Set the Web3Forms access key and send a test submission
 - [ ] Move DNS and set the custom domain, then enable Enforce HTTPS
 - [ ] Add a real social share image at `images/og-image.png` (1200×630) — the meta tags already point at it
-- [ ] Replace placeholder testimonials with attributed real ones
 - [ ] Mark `generate_lead` as a key event in GA4
 - [ ] Submit `sitemap.xml` in Google Search Console
 - [ ] Delete the Netlify site once the domain has fully moved
