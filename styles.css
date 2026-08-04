@@ -472,8 +472,8 @@ p { text-wrap: pretty; }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.06fr .94fr;
-  gap: clamp(40px, 5vw, 72px);
+  grid-template-columns: 1.12fr .88fr;
+  gap: clamp(40px, 4.5vw, 64px);
   align-items: center;
 }
 
@@ -503,8 +503,8 @@ p { text-wrap: pretty; }
 .hero-badge .pip svg { width: 12px; height: 12px; }
 
 .hero h1 {
-  font-size: clamp(2.35rem, 4.6vw, 3.55rem);
-  line-height: 1.07;
+  font-size: clamp(2.15rem, 3.7vw, 2.85rem);
+  line-height: 1.1;
   margin-bottom: 1.4rem;
 }
 
@@ -531,6 +531,73 @@ p { text-wrap: pretty; }
   flex-wrap: wrap;
   gap: .85rem;
   margin-bottom: 2.4rem;
+}
+
+/* Single CTA + an equally reachable phone number */
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.6rem;
+  margin-bottom: .95rem;
+}
+
+.hero-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .5rem .35rem;
+  border-radius: var(--radius);
+  transition: transform .28s var(--ease);
+}
+.hero-phone:hover { transform: translateY(-2px); }
+
+.hero-phone-ic {
+  display: grid;
+  place-items: center;
+  width: 42px; height: 42px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  color: var(--blue-300);
+  background: rgba(255, 255, 255, .09);
+  border: 1px solid rgba(255, 255, 255, .2);
+  transition: background .28s var(--ease), color .28s var(--ease), border-color .28s var(--ease);
+}
+.hero-phone:hover .hero-phone-ic {
+  background: var(--white);
+  border-color: var(--white);
+  color: var(--navy-900);
+}
+
+.hero-phone-text { display: flex; flex-direction: column; line-height: 1.25; }
+.hero-phone-label { font-size: .78rem; color: rgba(226, 236, 250, .66); }
+.hero-phone-num {
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-weight: 800;
+  letter-spacing: -.01em;
+  color: var(--white);
+}
+
+.hero-microcopy {
+  font-size: .85rem;
+  color: rgba(226, 236, 250, .58);
+  margin-bottom: 2.1rem;
+}
+
+/* Phone link in the header */
+.nav-phone {
+  display: inline-flex !important;
+  align-items: center;
+  gap: .4rem;
+  font-weight: 700 !important;
+  color: var(--blue-600) !important;
+  white-space: nowrap;
+}
+.nav-phone:hover { color: var(--navy-900) !important; background: var(--blue-50) !important; }
+@media (min-width: 901px) {
+  .header:not(.scrolled) .nav-phone { color: var(--white) !important; }
+  .header:not(.scrolled) .nav-phone:hover { background: rgba(255, 255, 255, .14) !important; }
 }
 
 .hero-trust {
@@ -796,6 +863,75 @@ p { text-wrap: pretty; }
 }
 
 /* --------------------------------------------------------------------------
+   9b. Industries
+   -------------------------------------------------------------------------- */
+.industries-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.1rem, 2vw, 1.5rem);
+}
+
+.industry-card {
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.5rem, 2.2vw, 1.85rem);
+  overflow: hidden;
+  transition: transform .4s var(--ease), box-shadow .4s var(--ease), border-color .3s ease;
+}
+.industry-card::before {
+  content: '';
+  position: absolute;
+  inset: auto auto 0 0;
+  width: 100%; height: 3px;
+  background: var(--grad-bright);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform .45s var(--ease);
+}
+.industry-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--blue-100);
+}
+.industry-card:hover::before { transform: scaleX(1); }
+
+.industry-icon {
+  display: grid;
+  place-items: center;
+  width: 48px; height: 48px;
+  border-radius: 13px;
+  background: var(--blue-50);
+  color: var(--blue-600);
+  margin-bottom: 1.1rem;
+  transition: background .35s var(--ease), color .35s var(--ease), transform .35s var(--ease);
+}
+.industry-card:hover .industry-icon {
+  background: var(--grad-brand);
+  color: var(--white);
+  transform: scale(1.07);
+}
+
+.industry-card h3 { font-size: 1.18rem; margin-bottom: .5rem; }
+.industry-card p { font-size: .93rem; color: var(--text-muted); }
+.industry-card em { color: var(--navy-900); font-style: normal; font-weight: 700; }
+
+.industries-note {
+  margin-top: 2.25rem;
+  text-align: center;
+  font-size: .97rem;
+  color: var(--text-muted);
+}
+.industries-note a {
+  color: var(--blue-600);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.industries-note a:hover { color: var(--navy-900); }
+
+/* --------------------------------------------------------------------------
    10. Process
    -------------------------------------------------------------------------- */
 .process-grid {
@@ -898,6 +1034,30 @@ p { text-wrap: pretty; }
 /* --------------------------------------------------------------------------
    12. Testimonials
    -------------------------------------------------------------------------- */
+/* Google reviews summary bar */
+.reviews-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem 1.5rem;
+  max-width: 780px;
+  margin: 0 auto clamp(2rem, 3.5vw, 2.75rem);
+  padding: 1.25rem 1.6rem;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+}
+.reviews-stars { display: flex; gap: 3px; flex-shrink: 0; }
+.reviews-summary-text {
+  font-size: .96rem;
+  font-weight: 600;
+  color: var(--slate-700);
+  text-align: center;
+}
+.reviews-summary .btn { flex-shrink: 0; }
+
 .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1398,8 +1558,10 @@ p { text-wrap: pretty; }
   .hero-grid { grid-template-columns: 1fr; gap: 56px; }
   .hero-visual { max-width: 540px; margin-inline: auto; }
   .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .industries-grid { grid-template-columns: repeat(2, 1fr); }
   .results-grid { grid-template-columns: repeat(2, 1fr); }
   .testimonials-grid { grid-template-columns: 1fr; }
+  .reviews-summary { border-radius: var(--radius-lg); flex-direction: column; text-align: center; }
   .process-grid { grid-template-columns: repeat(2, 1fr); row-gap: 2.5rem; }
   .process-grid::before { display: none; }
   .about-grid { grid-template-columns: 1fr; }
@@ -1439,8 +1601,18 @@ p { text-wrap: pretty; }
   .logo-text span { font-size: .56rem; letter-spacing: .22em; }
   .logo-mark { width: 33px; }
 
-  .hero-actions .btn, .cta-actions .btn { width: 100%; }
+  .hero-actions .btn, .cta-actions .btn, .hero-cta > .btn { width: 100%; }
   .hero-trust { gap: .8rem 1.25rem; }
+
+  /* Keep the phone as a full-width tap target on mobile */
+  .hero-cta { gap: .35rem; }
+  .hero-phone {
+    width: 100%;
+    justify-content: center;
+    padding: .85rem;
+    background: rgba(255, 255, 255, .07);
+    border: 1px solid rgba(255, 255, 255, .18);
+  }
 
   .dash-kpis { grid-template-columns: 1fr; }
   .dash-float-1 { top: -16px; left: -8px; }
@@ -1448,6 +1620,7 @@ p { text-wrap: pretty; }
   .dash-float .s { display: none; }
 
   .services-grid { grid-template-columns: 1fr; }
+  .industries-grid { grid-template-columns: 1fr; }
   .results-grid { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; gap: 0; }
