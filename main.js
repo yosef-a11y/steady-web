@@ -236,6 +236,14 @@
       contactForm.insertBefore(notice, contactForm.firstElementChild.nextSibling);
     }
 
+    // Point the post-submit redirect at whichever host is serving the page, so
+    // testing on the github.io preview URL doesn't bounce to the live domain.
+    // Without JS the hardcoded absolute URL still applies, which is correct in production.
+    var redirectField = contactForm.querySelector('input[name="redirect"]');
+    if (redirectField) {
+      redirectField.value = new URL('thank-you.html', window.location.href).href;
+    }
+
     contactForm.addEventListener('submit', function () {
       track('form_submit', 'Contact Form');
 
