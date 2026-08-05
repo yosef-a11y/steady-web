@@ -20,6 +20,7 @@ doesn't end up with both.
 | Blinkless | `blinkless.svg` |
 | Remote Central | `remote-central.svg` |
 | Attain ABA | `attain-aba.svg` |
+| Rosewood Recovery | `rosewood-recovery.svg` |
 | Evian Care | `evian-care.svg` |
 
 ## Requirements
