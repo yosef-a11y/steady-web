@@ -96,52 +96,6 @@
   }
 
   /* ---------------------------------------------------------------------
-     Animated counters
-     --------------------------------------------------------------------- */
-  function formatValue(el, value) {
-    var decimals = parseInt(el.dataset.decimals || '0', 10);
-    var prefix = el.dataset.prefix || '';
-    var suffix = el.dataset.suffix || '';
-    return prefix + value.toFixed(decimals) + suffix;
-  }
-
-  function runCounter(el) {
-    var target = parseFloat(el.dataset.count);
-    if (isNaN(target)) return;
-
-    var duration = 1600;
-    var start = null;
-
-    function step(timestamp) {
-      if (start === null) start = timestamp;
-      var elapsed = timestamp - start;
-      var t = Math.min(elapsed / duration, 1);
-      // easeOutExpo
-      var eased = t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
-      el.textContent = formatValue(el, target * eased);
-      if (t < 1) window.requestAnimationFrame(step);
-      else el.textContent = formatValue(el, target);
-    }
-    window.requestAnimationFrame(step);
-  }
-
-  var counters = document.querySelectorAll('[data-count]');
-
-  if ('IntersectionObserver' in window && !reduceMotion) {
-    var counterObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        runCounter(entry.target);
-        counterObserver.unobserve(entry.target);
-      });
-    }, { threshold: 0.5 });
-
-    Array.prototype.forEach.call(counters, function (el) {
-      counterObserver.observe(el);
-    });
-  }
-
-  /* ---------------------------------------------------------------------
      FAQ accordion
      --------------------------------------------------------------------- */
   var faqList = document.getElementById('faqList');
