@@ -850,6 +850,8 @@
         <input type="hidden" name="subject" value="New enquiry from steadygrowthmarketing.com">
         <input type="hidden" name="from_name" value="Steady Growth Marketing website">
         <input type="hidden" name="redirect" value="https://steadygrowthmarketing.com/thank-you.html">
+        <!-- Populated by main.js for Google Ads offline conversion import -->
+        <input type="hidden" name="gclid" id="gclid" value="">
         <!-- Honeypot: hidden from people, tempting to bots -->
         <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
 
@@ -870,9 +872,18 @@
             <input type="text" id="company" name="company" placeholder="Your company" autocomplete="organization">
           </div>
           <div class="form-group">
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" autocomplete="tel">
+            <label for="phone">Phone <span class="req" aria-hidden="true">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567"
+                   autocomplete="tel" inputmode="tel" required>
           </div>
+        </div>
+
+        <div class="form-group">
+          <label for="website">Website <span class="opt">(optional)</span></label>
+          <!-- Deliberately type="text": type="url" rejects "example.com" and would
+               block the submit before main.js can add the scheme. -->
+          <input type="text" id="website" name="website" placeholder="yourcompany.com"
+                 autocomplete="url" inputmode="url">
         </div>
 
         <div class="form-group">

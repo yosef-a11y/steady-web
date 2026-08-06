@@ -65,6 +65,20 @@ once DNS moves.
 
 Spam protection is the hidden `botcheck` field. Web3Forms rejects any submission that fills it in.
 
+**Required fields:** name, email, phone, message. Company, website, service, and budget are optional.
+
+**Google Ads click ID.** Every submission includes a `gclid` field. `main.js` reads `?gclid=` on
+arrival and stores it in `localStorage` for 90 days (the default Google Ads conversion window),
+because visitors usually land from an ad, browse, and submit later from a URL with no gclid left on
+it. Reading it only at submit time would miss nearly all of them.
+
+Use it to import offline conversions into Google Ads (Tools → Conversions → Imports), so closed
+deals get attributed back to the clicks that produced them. Submissions with an empty `gclid` came
+from somewhere other than a Google ad — or from a visitor whose first click was over 90 days ago.
+
+To also capture `wbraid`/`gbraid` (which replace `gclid` on some iOS traffic) or UTM parameters,
+the same block in `main.js` extends to them.
+
 ### 3. Point the domain at GitHub Pages
 
 Do this **last**, after you've previewed the site at

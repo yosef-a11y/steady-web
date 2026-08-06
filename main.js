@@ -236,6 +236,49 @@
       contactForm.insertBefore(notice, contactForm.firstElementChild.nextSibling);
     }
 
+    /* Google Ads click ID.
+       Stored on arrival rather than read at submit time: a visitor usually lands
+       from an ad, browses, and only then fills the form — by which point the
+       gclid is long gone from the URL. Kept for 90 days to match the default
+       Google Ads conversion window. */
+    (function captureGclid() {
+      var field = document.getElementById('gclid');
+      if (!field) return;
+
+      var KEY = 'sgm_gclid';
+      var MAX_AGE = 90 * 24 * 60 * 60 * 1000;
+      var fromUrl = new URLSearchParams(window.location.search).get('gclid');
+
+      if (fromUrl) {
+        try {
+          localStorage.setItem(KEY, JSON.stringify({ v: fromUrl, t: Date.now() }));
+        } catch (e) { /* private browsing — fall through, the field is still set below */ }
+        field.value = fromUrl;
+        return;
+      }
+
+      try {
+        var saved = JSON.parse(localStorage.getItem(KEY) || 'null');
+        if (saved && saved.v && Date.now() - saved.t < MAX_AGE) {
+          field.value = saved.v;
+        } else if (saved) {
+          localStorage.removeItem(KEY);
+        }
+      } catch (e) { /* unreadable or malformed — leave the field empty */ }
+    })();
+
+    /* People type "example.com", which fails type="url" validation and reads as
+       the form being broken. Add the scheme for them instead. */
+    var website = document.getElementById('website');
+    if (website) {
+      var normalizeUrl = function () {
+        var v = website.value.trim();
+        if (v && !/^[a-z][a-z0-9+.-]*:\/\//i.test(v)) website.value = 'https://' + v;
+      };
+      website.addEventListener('blur', normalizeUrl);
+      contactForm.addEventListener('submit', normalizeUrl);
+    }
+
     // Point the post-submit redirect at whichever host is serving the page, so
     // testing on the github.io preview URL doesn't bounce to the live domain.
     // Without JS the hardcoded absolute URL still applies, which is correct in production.

@@ -1366,6 +1366,7 @@ p { text-wrap: pretty; }
   margin-bottom: .45rem;
 }
 .form-group label .req { color: var(--blue-600); }
+.form-group label .opt { font-weight: 500; color: var(--slate-400); }
 
 .form-group input,
 .form-group select,
