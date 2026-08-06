@@ -190,15 +190,6 @@
   }
 
   /* ---------------------------------------------------------------------
-     Seamless marquee — duplicate items so the loop has no gap
-     --------------------------------------------------------------------- */
-  var strip = document.getElementById('stripInner');
-  if (strip && !reduceMotion) {
-    strip.innerHTML += strip.innerHTML;
-    strip.setAttribute('aria-hidden', 'false');
-  }
-
-  /* ---------------------------------------------------------------------
      Footer year
      --------------------------------------------------------------------- */
   var year = document.getElementById('year');
