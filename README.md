@@ -14,6 +14,7 @@ Static marketing site. No build step, no dependencies, no framework.
 | `main.js` | Nav, scroll reveal, counters, FAQ, form guard, analytics events |
 | `thank-you.html` | Post-form-submission page (fires the `generate_lead` GA event) |
 | `404.html` | Not-found page (GitHub Pages serves this automatically) |
+| `lp/public-safety-bda/` | Standalone Google Ads landing page (public safety BDA / ERRCS) — see its own README |
 | `.github/workflows/deploy.yml` | Publishes the site on every push |
 | `.nojekyll` | Stops GitHub Pages running the files through Jekyll |
 | `favicon.svg` | Browser tab icon |
