@@ -1114,6 +1114,7 @@ p { text-wrap: pretty; }
 }
 .about-text h2 { font-size: clamp(1.9rem, 3.6vw, 2.75rem); margin-bottom: 1.25rem; }
 .about-text p { color: var(--text-muted); margin-bottom: 1rem; font-size: 1.02rem; }
+.about-text .about-lead { color: var(--navy-900); font-size: 1.08rem; font-weight: 500; }
 .about-text .btn { margin-top: .85rem; }
 
 .about-values { display: grid; gap: 1rem; }
@@ -1602,7 +1603,17 @@ p { text-wrap: pretty; }
   .logo-mark { width: 33px; }
 
   .hero-actions .btn, .cta-actions .btn, .hero-cta > .btn { width: 100%; }
-  .hero-trust { gap: .8rem 1.25rem; }
+
+  /* Above the fold on a 667px-tall phone: headline, promise, button, three benefits. */
+  .hero { padding-top: calc(var(--header-h) + 26px); padding-bottom: 44px; }
+  .hero-grid { gap: 36px; }
+  .hero-badge { margin-bottom: .95rem; font-size: .74rem; padding: .38rem .8rem .38rem .45rem; }
+  .hero h1 { font-size: 1.92rem; line-height: 1.1; margin-bottom: .85rem; }
+  .hero-sub { font-size: 1rem; line-height: 1.5; margin-bottom: 1.25rem; }
+  .hero-cta { margin-bottom: .55rem; }
+  .hero-microcopy { font-size: .8rem; margin-bottom: 1rem; }
+  .hero-trust { flex-direction: column; align-items: flex-start; gap: .5rem; padding-top: .95rem; }
+  .hero-trust-item { font-size: .86rem; }
 
   .dash-kpis { grid-template-columns: 1fr; }
   .dash-float-1 { top: -16px; left: -8px; }

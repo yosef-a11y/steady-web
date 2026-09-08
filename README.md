@@ -135,6 +135,28 @@ Common edits:
 - **FAQ** — questions live in `#faq`. If you add or change one, mirror it in the `FAQPage` JSON-LD
   block in `<head>` so the structured data stays accurate.
 
+## SEO and AI discoverability
+
+What's in place, and what each piece is for:
+
+| Piece | Purpose |
+| --- | --- |
+| `<title>` / meta description | Primary keywords up front: Google Ads, Meta Ads, e-commerce, lead gen |
+| `meta name="robots"` with `max-snippet:-1` | Lets Google and AI Overviews quote the page at length |
+| JSON-LD `@graph` in `<head>` | Organization + ProfessionalService with services, `knowsAbout`, phone, email; plus WebSite and WebPage |
+| JSON-LD `FAQPage` | The six FAQ answers, eligible for FAQ rich results and directly quotable by AI |
+| `.about-lead` paragraph | A single self-contained sentence describing the business, written for AI engines to lift verbatim |
+| `llms.txt` | Plain-text summary of the business for AI crawlers, mirroring the page |
+| `robots.txt` | Explicitly allows GPTBot, ClaudeBot, PerplexityBot, Google-Extended and others |
+| `images/og-image.png` | 1200×630 share image for social and AI previews; regenerate from `images/og-source.html` if the tagline changes |
+| `sitemap.xml` | Includes the image entry and a current `lastmod` |
+
+Two things only you can add: your city (the structured data currently says New Jersey only) and the
+Google Business Profile URL (goes in `sameAs`). Both strengthen local and AI results.
+
+Not done on purpose: `Review` and `AggregateRating` markup. Google doesn't award rich results for
+reviews a business publishes about itself, and marking them up risks a manual action.
+
 ## Known limitation of GitHub Pages
 
 GitHub Pages doesn't support custom response headers, so the security and cache-control headers that
@@ -150,7 +172,6 @@ this same repo.
 - [ ] Preview at `https://yosef-a11y.github.io/steady-web/`
 - [ ] Set the Web3Forms access key and send a test submission
 - [ ] Move DNS and set the custom domain, then enable Enforce HTTPS
-- [ ] Add a real social share image at `images/og-image.png` (1200×630) — the meta tags already point at it
 - [ ] Mark `generate_lead` as a key event in GA4
 - [ ] Submit `sitemap.xml` in Google Search Console
 - [ ] Delete the Netlify site once the domain has fully moved
