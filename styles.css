@@ -377,6 +377,7 @@ p { text-wrap: pretty; }
 }
 .nav-list > li > a:not(.btn):hover { color: var(--navy-900); background: var(--slate-100); }
 .nav-list > li > a:not(.btn).active { color: var(--blue-600); }
+.nav-list > li > a[aria-current="page"] { color: var(--blue-600); }
 
 
 /* --- Header sitting over the dark hero (before it picks up its glass background) --- */
@@ -391,6 +392,7 @@ p { text-wrap: pretty; }
     background: rgba(255, 255, 255, .12);
   }
   .header:not(.scrolled) .nav-list > li > a:not(.btn).active { color: var(--blue-300); }
+  .header:not(.scrolled) .nav-list > li > a[aria-current="page"] { color: var(--blue-300); }
 }
 
 /* Mobile: the toggle also sits over the dark hero */
