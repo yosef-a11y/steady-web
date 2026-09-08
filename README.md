@@ -9,7 +9,8 @@ Static marketing site. No build step, no dependencies, no framework.
 
 | File | Purpose |
 | --- | --- |
-| `index.html` | The entire homepage |
+| `index.html` | The homepage, targeting "Google Ads agency" |
+| `growth-marketing-consultant/index.html` | Landing page targeting "growth marketing consultant" |
 | `styles.css` | Design system + all styling |
 | `main.js` | Nav, scroll reveal, counters, FAQ, form guard, analytics events |
 | `thank-you.html` | Post-form-submission page (fires the `generate_lead` GA event) |
@@ -113,6 +114,19 @@ Google Analytics (`G-7BZ01Y3KFS`) is loaded on every page. Custom events fired:
 | `click_to_email` | Any email address clicked |
 
 Mark `generate_lead` as a key event in GA4 (Admin → Events) so it shows up as a conversion.
+
+## Adding a landing page
+
+One page ranks for one search intent. To target a new phrase, add a folder with an `index.html`
+(so the URL is clean, e.g. `/local-search-marketing/`), and:
+
+1. Copy `growth-marketing-consultant/index.html` as the starting point. Its header, footer, and
+   contact form are the homepage's, with links made root-relative (`/#services`).
+2. Give it its own `<title>`, meta description, `canonical`, H1, and at least 700 words that
+   genuinely answer that searcher, plus a FAQ with matching `FAQPage` JSON-LD.
+3. Add it to `sitemap.xml` and to the Pages list in `llms.txt`, and link it from the footer in
+   every page so crawlers find it.
+4. Use `/styles.css`, `/main.js`, and `/favicon.svg` with leading slashes on subpages.
 
 ## Editing content
 
