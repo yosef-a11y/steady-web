@@ -151,8 +151,8 @@ What's in place, and what each piece is for:
 | `images/og-image.png` | 1200×630 share image for social and AI previews; regenerate from `images/og-source.html` if the tagline changes |
 | `sitemap.xml` | Includes the image entry and a current `lastmod` |
 
-Two things only you can add: your city (the structured data currently says New Jersey only) and the
-Google Business Profile URL (goes in `sameAs`). Both strengthen local and AI results.
+The Google Business Profile link is in `sameAs`. One thing only you can add: your city, since the
+structured data currently says New Jersey only. It strengthens local and AI results.
 
 Not done on purpose: `Review` and `AggregateRating` markup. Google doesn't award rich results for
 reviews a business publishes about itself, and marking them up risks a manual action.
