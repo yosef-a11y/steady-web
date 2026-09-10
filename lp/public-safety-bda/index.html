@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Public Safety BDA Systems | ERRC Testing, Design &amp; Installation | FirstComms</title>
-<meta name="description" content="Turnkey public safety BDA / ERRC systems — RF grid testing, stamped designs, installation, permitting and AHJ acceptance testing. IFC 510 and NFPA 1225 compliant. Speak with an RF engineer.">
+<title>Emergency Responder Radio Coverage | RF Testing &amp; Code-Compliant BDA Installation | FirstComms</title>
+<meta name="description" content="RF grid testing and code-compliant BDA / ERRC installation for emergency responder radio coverage inside buildings. IFC 510 and NFPA 1225. Public safety radio only — not cellular, not Wi-Fi.">
 <link rel="canonical" href="https://steadygrowthmarketing.com/lp/public-safety-bda/">
 <meta name="theme-color" content="#240D07">
 <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -13,11 +13,11 @@
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="FirstComms">
-<meta property="og:title" content="Public Safety BDA Systems | ERRC Testing, Design &amp; Installation">
-<meta property="og:description" content="Turnkey public safety BDA / ERRC systems — grid testing, stamped designs, installation and permitting. IFC 510 and NFPA 1225 compliant.">
+<meta property="og:title" content="Emergency Responder Radio Coverage | RF Testing &amp; Code-Compliant BDA Installation">
+<meta property="og:description" content="RF grid testing and code-compliant BDA / ERRC installation for emergency responder radio coverage. Public safety radio only — not cellular, not Wi-Fi.">
 <meta property="og:url" content="https://steadygrowthmarketing.com/lp/public-safety-bda/">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23240D07'/%3E%3Cpath d='M16 5 L26 5 L20 35 L10 35 Z' fill='%23F4491B'/%3E%3Cpath d='M21 5 L37 5 L35.5 12.5 L19.5 12.5 Z' fill='%23F4491B'/%3E%3Cpath d='M18 18 L32 18 L30.5 25.5 L16.5 25.5 Z' fill='%23F4491B'/%3E%3C/svg%3E" type="image/svg+xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20200%20200%27%3E%3Crect%20width%3D%27200%27%20height%3D%27200%27%20fill%3D%27%23240D07%27%2F%3E%3Cpath%20d%3D%27M68%2040%20L158%2040%20L158%2054%20L144%2068%20L68%2068%20L68%20144%20L54%20158%20L40%20158%20L40%2068%20Z%27%20fill%3D%27%23FA5019%27%2F%3E%3Cpath%20d%3D%27M100%2078%20L152%2078%20L152%2090%20L140%20102%20L100%20102%20L100%20140%20L88%20152%20L76%20152%20L76%20102%20Z%27%20fill%3D%27%23FA5019%27%2F%3E%3Cpath%20d%3D%27M130%20118%20L152%20118%20L152%20140%20L140%20152%20L118%20152%20L118%20130%20Z%27%20fill%3D%27%23FA5019%27%2F%3E%3C%2Fsvg%3E" type="image/svg+xml">
 
 <style>
 /* ==========================================================================
@@ -130,15 +130,28 @@ strong{font-weight:700;color:var(--brown-700)}
 .header-nav{display:none;gap:22px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
 .header-nav a{color:var(--brown-200);padding:5px 0;border-bottom:2px solid transparent}
 .header-nav a:hover,.header-nav a.active{color:var(--cream-100);border-color:var(--orange)}
-.header-cta{display:flex;align-items:center;gap:14px}
-.header-phone{display:none;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:.08em;
-  white-space:nowrap;color:var(--cream-100);padding:11px 6px}
-.header-phone:hover{color:var(--orange-lift)}
-.header-cta .btn{white-space:nowrap}
-.cta-short{display:inline}.cta-long{display:none}
-@media(min-width:480px){.cta-short{display:none}.cta-long{display:inline}}
-@media(min-width:620px){.header-phone{display:inline-flex}}
+.header-cta{display:flex;align-items:center;gap:12px}
+.header-cta .btn{white-space:nowrap;display:none}
+/* One ask per screen size. On a phone the number IS the call to action, so it
+   is the primary button and the form button is hidden; from 620px up the phone
+   steps back to a plain link at the top and the form button carries the ask. */
+.header-phone{display:inline-flex;align-items:center;gap:7px;font-size:.76rem;font-weight:700;
+  letter-spacing:.06em;white-space:nowrap;padding:11px 14px;background:var(--orange-btn);color:#fff;
+  clip-path:polygon(9px 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%,0 9px)}
+.header-phone svg{stroke:#fff}
+@media(min-width:620px){
+  .header-phone{background:none;color:var(--cream-100);padding:11px 6px;clip-path:none;font-size:.78rem}
+  .header-phone:hover{color:var(--orange-lift)}
+  .header-phone svg{stroke:var(--orange)}
+  .header-cta .btn{display:inline-flex}
+}
 @media(min-width:1000px){.header-nav{display:flex}}
+
+/* Body CTAs follow the same split: call below 620px, form at and above it,
+   so exactly one call to action is visible at any width. */
+.cta-call{display:inline-flex}
+.cta-form{display:none}
+@media(min-width:620px){.cta-call{display:none}.cta-form{display:inline-flex}}
 
 /* ---------- Hero ---------- */
 .hero{position:relative;overflow:hidden;background:var(--cream-200);
@@ -211,6 +224,8 @@ strong{font-weight:700;color:var(--brown-700)}
 .bg-dark .card p,.bg-dark .card li{color:var(--brown-200)}
 .bg-dark .card:hover{border-color:var(--orange)}
 
+.note{background:var(--cream-50);border:1px solid var(--cream-300);border-left:4px solid var(--orange);
+  padding:18px 22px;margin-bottom:28px;font-size:.9rem;line-height:1.8;color:var(--muted);max-width:88ch}
 .symptom{display:flex;gap:12px;padding:16px 18px;background:var(--cream-50);border:1px solid var(--cream-300);
   border-left:3px solid var(--orange)}
 .symptom strong{display:block;font-size:.85rem;letter-spacing:.03em;text-transform:uppercase;line-height:1.5}
@@ -255,6 +270,17 @@ td{color:var(--muted)}
 .pill{padding:8px 13px;background:var(--cream-50);border:1px solid var(--cream-400);
   font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--brown-600)}
 
+/* ---------- Reviews (enable once real quotes are in — see the block in <main>) ---------- */
+.review{background:var(--cream-50);border:1px solid var(--cream-300);padding:24px 22px;
+  border-top:3px solid var(--orange)}
+.stars{display:flex;gap:4px;margin-bottom:14px}
+.review blockquote{font-size:.89rem;line-height:1.85;color:var(--muted)}
+.review cite{display:block;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);
+  font-style:normal;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--brown-700)}
+.review cite span{display:block;margin-top:4px;font-weight:400;letter-spacing:.06em;
+  text-transform:none;color:var(--brown-400)}
+
 /* ---------- FAQ ---------- */
 .faq{max-width:900px;margin-inline:auto;border-top:1px solid var(--line)}
 .faq-item{border-bottom:1px solid var(--line)}
@@ -288,7 +314,7 @@ td{color:var(--muted)}
   color:var(--brown-200)}
 
 /* ---------- Mobile call bar ---------- */
-.callbar{position:fixed;left:0;right:0;bottom:0;z-index:110;display:grid;grid-template-columns:1fr 1fr;gap:10px;
+.callbar{position:fixed;left:0;right:0;bottom:0;z-index:110;display:grid;grid-template-columns:1fr;
   padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--brown-900);
   border-top:2px solid var(--orange)}
 @media(min-width:860px){.callbar{display:none}}
@@ -360,7 +386,7 @@ td{color:var(--muted)}
         {
           "@type": "Question",
           "name": "What signal level does the code actually require?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Typically a minimum inbound signal of -95 dBm delivering an audio quality of DAQ 3.0 or better, across 95 percent of general building areas and 99 percent of critical areas such as fire command centers, exit stairs, elevator lobbies, standpipe connections and fire pump rooms. Your AHJ sets the adopted edition and can designate additional critical areas." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Typically a minimum inbound signal of -95 dBm delivering an audio quality of DAQ 3.0 or better, across 95 percent of general building areas and 99 percent of critical areas such as fire command centers, exit stairs, elevator lobbies, standpipe connections and fire pump rooms. Your local fire official sets the adopted edition and can designate additional critical areas." }
         },
         {
           "@type": "Question",
@@ -370,12 +396,12 @@ td{color:var(--muted)}
         {
           "@type": "Question",
           "name": "What does a BDA system cost?",
-          "acceptedAnswer": { "@type": "Answer", "text": "It depends on square footage, how many floors and stairwells need antennas, the construction type, how strong the donor signal is, and what your AHJ requires. Permit fees and plan review times vary by jurisdiction as well. Anyone quoting a firm number before testing is guessing — we give you a real number once the grid test says what the building needs, and if it passes, the answer is nothing." }
+          "acceptedAnswer": { "@type": "Answer", "text": "It depends on square footage, how many floors and stairwells need antennas, the construction type, how strong the donor signal is, and what your local fire official requires. Permit fees and plan review times vary by jurisdiction as well. Anyone quoting a firm number before testing is guessing — we give you a real number once the grid test says what the building needs, and if it passes, the answer is nothing." }
         },
         {
           "@type": "Question",
           "name": "Which codes govern emergency responder radio coverage?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Most jurisdictions adopt International Fire Code Section 510 alongside NFPA 1225, whose Chapter 18 carries the ERCES provisions that previously lived in NFPA 1221. NFPA 1221 has not been withdrawn and many AHJs still cite it directly. Monitoring and supervision follow NFPA 72, and signal boosters operate under FCC Part 90.219." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Most jurisdictions adopt International Fire Code Section 510 alongside NFPA 1225, whose Chapter 18 carries the ERCES provisions that previously lived in NFPA 1221. NFPA 1221 has not been withdrawn and many jurisdictions still cite it directly. Monitoring and supervision follow NFPA 72, and signal boosters operate under FCC Part 90.219." }
         },
         {
           "@type": "Question",
@@ -415,11 +441,11 @@ td{color:var(--muted)}
 <header class="header" id="header">
   <div class="container header-inner">
     <a class="brand" href="#top" aria-label="FirstComms — top of page">
-      <svg width="26" height="26" viewBox="0 0 40 40" aria-hidden="true">
-        <path d="M16 5 L26 5 L20 35 L10 35 Z" fill="#F4491B"/>
-        <path d="M21 5 L37 5 L35.5 12.5 L19.5 12.5 Z" fill="#F4491B"/>
-        <path d="M18 18 L32 18 L30.5 25.5 L16.5 25.5 Z" fill="#F4491B"/>
-      </svg>
+      <svg width="26" height="26" viewBox="0 0 200 200" aria-hidden="true">
+          <path d="M68 40 L158 40 L158 54 L144 68 L68 68 L68 144 L54 158 L40 158 L40 68 Z" fill="#FA5019"/>
+          <path d="M100 78 L152 78 L152 90 L140 102 L100 102 L100 140 L88 152 L76 152 L76 102 Z" fill="#FA5019"/>
+          <path d="M130 118 L152 118 L152 140 L140 152 L118 152 L118 130 Z" fill="#FA5019"/>
+        </svg>
       <span>FIRSTCOMMS</span>
     </a>
 
@@ -433,14 +459,12 @@ td{color:var(--muted)}
 
     <div class="header-cta">
       <a class="header-phone phone-link" href="tel:+17323145162">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F4491B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.2a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/>
         </svg>
         732-314-5162
       </a>
-      <a class="btn btn-primary btn-sm" href="#lead-form">
-        <span class="cta-long">Speak With An Expert</span><span class="cta-short">Get In Touch</span>
-      </a>
+      <a class="btn btn-primary btn-sm" href="#lead-form">Speak With An Expert</a>
     </div>
   </div>
 </header>
@@ -463,27 +487,32 @@ td{color:var(--muted)}
     <div class="container hero-grid">
       <div>
         <span class="eyebrow">Emergency Responder Radio Communication Systems</span>
-        <h1 id="hero-headline">Public safety BDA systems, <span class="hl">done right</span> &mdash; guaranteed.</h1>
+        <h1 id="hero-headline">Emergency responder radio coverage, <span class="hl">tested and installed to code</span>.</h1>
 
         <p class="hero-sub">
-          Entrust your ERRC system to specialists. RF grid testing, stamped design, installation,
-          permitting and the AHJ-witnessed acceptance test &mdash; handled in house, by one team,
-          from first reading to final sign-off.
+          Two things, done properly: <strong>RF testing</strong> that tells you where your building
+          actually stands, and <strong>code-compliant installation</strong> of the system that fixes it.
+          Public safety radio only &mdash; this is the network first responders use inside your building,
+          not cellular and not Wi-Fi.
         </p>
 
         <div class="btn-row">
-          <a class="btn btn-primary" href="#lead-form">Speak With An Expert</a>
-          <a class="btn btn-outline phone-link" href="tel:+17323145162">732-314-5162</a>
+          <a class="btn btn-primary cta-form" href="#lead-form">Speak With An Expert</a>
+          <a class="btn btn-primary cta-call phone-link" href="tel:+17323145162">Call 732-314-5162</a>
         </div>
 
         <ul class="hero-points">
           <li>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>One vendor, end to end.</strong> Testing, engineering, permits and install &mdash; no gaps between three contractors.</span>
+            <span><strong>RF testing is our trade.</strong> Grid testing on the real public safety frequencies, measured floor by floor, documented for your permit file.</span>
           </li>
           <li>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>Drawings stamped in house</strong> by our own architect, built to what your AHJ actually enforces.</span>
+            <span><strong>Installed to code, first time.</strong> UL 2524-listed equipment, IFC 510 and NFPA 1225 coverage, built by our own technicians.</span>
+          </li>
+          <li>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            <span><strong>Drawings stamped in house</strong> by our own architect, built to what your jurisdiction actually enforces.</span>
           </li>
           <li>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
@@ -504,7 +533,7 @@ td{color:var(--muted)}
       <div class="form-card" id="lead-form">
         <h2>Talk to an RF engineer</h2>
         <p class="form-sub">Tell us about the building. We&rsquo;ll tell you whether an ERRC system is likely
-          required, what your AHJ expects, and what it costs to know for certain.</p>
+          required, what your jurisdiction expects, and what it costs to know for certain.</p>
 
         <form id="bdaForm" method="POST" action="https://api.web3forms.com/submit" novalidate>
           <input type="hidden" name="access_key" value="6379ac4d-e514-46c2-bfc6-e340a66a0b7b">
@@ -580,9 +609,6 @@ td{color:var(--muted)}
           </p>
         </form>
 
-        <p class="form-alt">
-          Rather talk now? <a class="phone-link" href="tel:+17323145162">732-314-5162</a>
-        </p>
       </div>
     </div>
   </section>
@@ -677,17 +703,28 @@ td{color:var(--muted)}
         <text x="640" y="40" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="1.5"
               fill="#EBE1DA" font-family="ui-monospace, monospace">DONOR ANTENNA</text>
 
-        <path d="M640 100 V330" stroke="#F4491B" stroke-width="2.6" fill="none"/>
+        <path d="M640 100 V312" stroke="#F4491B" stroke-width="2.6" fill="none"/>
 
-        <!-- amplifier -->
-        <rect x="598" y="330" width="84" height="50" fill="#3A1710" stroke="#F4491B" stroke-width="2.6"/>
-        <text x="640" y="361" text-anchor="middle" font-size="15" font-weight="700" letter-spacing="1.5"
-              fill="#F4491B" font-family="ui-monospace, monospace">BDA</text>
-        <text x="662" y="394" text-anchor="middle" font-size="11" font-weight="700" letter-spacing="1.2"
-              fill="#C8B3A6" font-family="ui-monospace, monospace">+ BATTERY BACKUP</text>
+        <!-- equipment wall: amplifier over battery cabinet, fire panel alongside,
+             laid out the way it is actually mounted in a mechanical room -->
+        <rect x="592" y="312" width="70" height="42" fill="#FA5019"/>
+        <text x="627" y="339" text-anchor="middle" font-size="15" font-weight="700" letter-spacing="1.5"
+              fill="#240D07" font-family="ui-monospace, monospace">BDA</text>
+
+        <rect x="592" y="360" width="70" height="30" fill="#FA5019" opacity=".82"/>
+        <text x="627" y="380" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="1"
+              fill="#240D07" font-family="ui-monospace, monospace">BATTERY</text>
+
+        <!-- supervisory link to the fire alarm panel -->
+        <path d="M662 344 H690" stroke="#EBE1DA" stroke-width="2" fill="none" opacity=".7"/>
+        <rect x="690" y="322" width="46" height="66" fill="#3A1710" stroke="#EBE1DA" stroke-width="2.4"/>
+        <text x="713" y="350" text-anchor="middle" font-size="9" font-weight="700" letter-spacing=".8"
+              fill="#C8B3A6" font-family="ui-monospace, monospace">FIRE</text>
+        <text x="713" y="363" text-anchor="middle" font-size="9" font-weight="700" letter-spacing=".8"
+              fill="#C8B3A6" font-family="ui-monospace, monospace">PANEL</text>
 
         <!-- distribution -->
-        <path d="M682 355 H760 V140" stroke="#F4491B" stroke-width="2.2" fill="none"/>
+        <path d="M662 326 H760 V140" stroke="#F4491B" stroke-width="2.2" fill="none"/>
         <g stroke="#F4491B" stroke-width="2.2" fill="none">
           <path d="M760 140 H880 M760 240 H880 M760 340 H880"/>
         </g>
@@ -723,8 +760,8 @@ td{color:var(--muted)}
 
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
-      <span>Emergency Responder Radio Communication Systems <i></i> Radio Frequency Testing <i></i> BDA Design &amp; Installation <i></i> AHJ Permitting <i></i> Annual Inspections <i></i></span>
-      <span>Emergency Responder Radio Communication Systems <i></i> Radio Frequency Testing <i></i> BDA Design &amp; Installation <i></i> AHJ Permitting <i></i> Annual Inspections <i></i></span>
+      <span>Emergency Responder Radio Communication Systems <i></i> Radio Frequency Testing <i></i> BDA Design &amp; Installation <i></i> Permitting <i></i> Annual Inspections <i></i></span>
+      <span>Emergency Responder Radio Communication Systems <i></i> Radio Frequency Testing <i></i> BDA Design &amp; Installation <i></i> Permitting <i></i> Annual Inspections <i></i></span>
     </div>
   </div>
 
@@ -742,6 +779,13 @@ td{color:var(--muted)}
           out the same path to dispatch.
         </p>
       </div>
+
+      <p class="note reveal">
+        <strong>Public safety radio only.</strong> This is the two-way radio network fire and police
+        carry into your building &mdash; not a cellular booster, not Wi-Fi, not carrier DAS. If your
+        problem is dropped mobile calls in the elevator, we are not the right call. If a fire official
+        needs to reach dispatch from your basement, we are.
+      </p>
 
 
       <div class="grid grid-3">
@@ -784,7 +828,7 @@ td{color:var(--muted)}
       <div class="grid grid-2" style="margin-bottom:24px">
         <div class="card reveal">
           <h3>If the building passes</h3>
-          <p>You get documentation formatted for submission, and help closing it out with the AHJ. No system,
+          <p>You get documentation formatted for submission, and help closing it out with the fire official. No system,
             no equipment, no reason to sell you one. That happens more often than people expect &mdash; and it
             is the cheapest possible outcome.</p>
         </div>
@@ -814,7 +858,7 @@ td{color:var(--muted)}
         </div>
         <div class="symptom reveal">
           <div>
-            <strong>Your submittal was rejected by the AHJ</strong>
+            <strong>Your submittal came back rejected</strong>
             <p>Usually unstamped drawings, coverage math that does not hold, unlisted equipment, or no
               monitoring plan. All fixable &mdash; faster if caught now.</p>
           </div>
@@ -843,8 +887,8 @@ td{color:var(--muted)}
       </div>
 
       <div class="btn-row reveal" style="margin-top:26px">
-        <a class="btn btn-primary" href="#lead-form">Schedule A Grid Test</a>
-        <a class="btn btn-outline phone-link" href="tel:+17323145162">Call 732-314-5162</a>
+        <a class="btn btn-primary cta-form" href="#lead-form">Speak With An Expert</a>
+        <a class="btn btn-primary cta-call phone-link" href="tel:+17323145162">Call 732-314-5162</a>
       </div>
     </div>
   </section>
@@ -863,11 +907,11 @@ td{color:var(--muted)}
         <div class="card reveal">
           <h3>Radio frequency testing</h3>
           <p>Grid testing and donor site surveys on your jurisdiction&rsquo;s public safety frequencies,
-            documented for AHJ submission.</p>
+            documented for permit submission.</p>
           <ul>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Pre- and post-construction testing</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Floor-by-floor grid maps and RSSI readings</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Reports in your AHJ&rsquo;s format</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Reports in your jurisdiction&rsquo;s format</li>
           </ul>
         </div>
 
@@ -893,12 +937,12 @@ td{color:var(--muted)}
         </div>
 
         <div class="card reveal">
-          <h3>Permitting &amp; AHJ approval</h3>
+          <h3>Permitting &amp; approval</h3>
           <p>We prepare the applications, submit to the jurisdiction, answer review comments and run the
-            witnessed acceptance test.</p>
+            final acceptance test.</p>
           <ul>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Permit packages built to local requirements</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Acceptance testing with the fire official on site</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Final acceptance testing on site</li>
             <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Closeout documentation for your CO file</li>
           </ul>
         </div>
@@ -940,7 +984,7 @@ td{color:var(--muted)}
           <b>01</b>
           <h3>Test &amp; assess</h3>
           <p>We review plans, take a live donor-signal reading at the site and run the grid test to your
-            AHJ&rsquo;s guidelines. You get a documented pass or fail.</p>
+            jurisdiction&rsquo;s guidelines. You get a documented pass or fail.</p>
         </div>
         <div class="step reveal">
           <b>02</b>
@@ -957,7 +1001,7 @@ td{color:var(--muted)}
         <div class="step reveal">
           <b>04</b>
           <h3>Certify &amp; maintain</h3>
-          <p>Commissioning, the AHJ-witnessed acceptance test, closeout documents &mdash; then annual testing
+          <p>Commissioning, final acceptance testing, closeout documents &mdash; then annual testing
             so it stays compliant.</p>
         </div>
       </div>
@@ -989,7 +1033,8 @@ td{color:var(--muted)}
             acceptance test package.
           </p>
           <div class="btn-row" style="margin-top:24px">
-            <a class="btn btn-dark" href="#lead-form">Talk Through Your Project</a>
+            <a class="btn btn-dark cta-form" href="#lead-form">Speak With An Expert</a>
+            <a class="btn btn-dark cta-call phone-link" href="tel:+17323145162">Call 732-314-5162</a>
           </div>
         </div>
 
@@ -1000,7 +1045,7 @@ td{color:var(--muted)}
           <li><b>04</b><span><strong>Set uplink and downlink gain</strong>Tuned per band, within the amplifier&rsquo;s listed limits and the licensee&rsquo;s consent.</span></li>
           <li><b>05</b><span><strong>Confirm no interference</strong>Verify the system is not degrading the donor network or any adjacent band.</span></li>
           <li><b>06</b><span><strong>Connect and prove the alarms</strong>Antenna, amplifier, AC and battery faults annunciated where the fire alarm reports.</span></li>
-          <li><b>07</b><span><strong>Final grid test</strong>Full building re-test against the acceptance criteria, then the AHJ-witnessed test.</span></li>
+          <li><b>07</b><span><strong>Final grid test</strong>Full building re-test against the acceptance criteria, then final acceptance testing.</span></li>
         </ol>
       </div>
     </div>
@@ -1048,7 +1093,7 @@ td{color:var(--muted)}
         <h2>What the codes ask of an ERRC system &mdash; in plain terms</h2>
         <p class="lede">
           Requirements come from the fire code your jurisdiction adopted, the NFPA standard behind it, and FCC
-          rules on signal boosters. Editions and thresholds vary and your AHJ has the final word &mdash; but the
+          rules on signal boosters. Editions and thresholds vary and your local fire official has the final word &mdash; but the
           shape of it is consistent, and this is what we design to.
         </p>
       </div>
@@ -1064,7 +1109,7 @@ td{color:var(--muted)}
               <td><strong>Coverage</strong></td>
               <td><strong>95% of general building areas</strong> and <strong>99% of critical areas</strong> &mdash;
                 fire command centers, exit stairs and passageways, elevator lobbies, standpipe connections, fire
-                pump rooms, and anywhere else the AHJ designates.</td>
+                pump rooms, and anywhere else the fire official designates.</td>
             </tr>
             <tr>
               <td><strong>Signal strength</strong></td>
@@ -1117,7 +1162,7 @@ td{color:var(--muted)}
         Codes referenced: IFC Section 510 · NFPA 1225 Chapter 18, which carries the ERCES provisions previously
         in NFPA 1221 (still cited directly by many jurisdictions) · NFPA 72 for monitoring and supervision ·
         FCC Part 90.219. Adopted editions and local amendments differ &mdash; we confirm the exact requirements
-        with your AHJ before design, so what gets built is what gets approved.
+        with your jurisdiction before design, so what gets built is what gets approved.
       </p>
     </div>
   </section>
@@ -1201,12 +1246,58 @@ td{color:var(--muted)}
             <li class="pill">Pennsylvania</li>
           </ul>
           <div class="btn-row" style="margin-top:24px">
-            <a class="btn btn-dark" href="#lead-form">Check My Building</a>
+            <a class="btn btn-dark cta-form" href="#lead-form">Speak With An Expert</a>
+            <a class="btn btn-dark cta-call phone-link" href="tel:+17323145162">Call 732-314-5162</a>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- ================= REVIEWS =================
+       READY TO GO LIVE — it just needs real quotes.
+
+       This section is deliberately commented out rather than filled with
+       invented testimonials. Publishing made-up customer reviews on a live
+       commercial site is deceptive to the people reading them, and in the US
+       the FTC's rule on consumer reviews and testimonials makes fabricated
+       ones unlawful, with the advertiser carrying the liability. Not worth it
+       for a page whose whole job is to be trusted by a building owner.
+
+       TO ENABLE: paste three real reviews below — the customer's own words,
+       their name (or "Property manager, Toms River" if they prefer), and the
+       month — then delete this comment wrapper's opening and closing markers.
+       The Google Business Profile review text can be used verbatim.
+
+       Deliberately no Review or AggregateRating JSON-LD: Google does not grant
+       rich results for a business's own self-hosted reviews, and marking them
+       up invites a manual action.
+
+  <section class="section" id="reviews">
+    <div class="container">
+      <div class="section-head reveal" style="text-align:center;margin-inline:auto">
+        <span class="eyebrow">What clients say</span>
+        <h2>Rated five stars for getting it approved</h2>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="review reveal">
+          <div class="stars" role="img" aria-label="Five out of five stars">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#FA5019" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#FA5019" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#FA5019" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#FA5019" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#FA5019" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+          </div>
+          <blockquote>REAL REVIEW TEXT HERE</blockquote>
+          <cite>Name<span>Role, company &middot; Month Year</span></cite>
+        </div>
+
+        (two more .review blocks, same shape)
+      </div>
+    </div>
+  </section>
+  ================= END REVIEWS ================= -->
 
   <!-- ================= FAQ ================= -->
   <section class="section bg-card" id="faq">
@@ -1236,7 +1327,7 @@ td{color:var(--muted)}
           </button>
           <div class="faq-a"><p>Typically a minimum inbound signal of &minus;95 dBm delivering DAQ 3.0 audio
             quality or better, across 95% of general building areas and 99% of critical areas &mdash; fire command
-            centers, exit stairs, elevator lobbies, standpipe connections, fire pump rooms. Your AHJ sets the
+            centers, exit stairs, elevator lobbies, standpipe connections, fire pump rooms. Your local fire official sets the
             adopted edition and can designate additional critical areas.</p></div>
         </div>
 
@@ -1257,7 +1348,7 @@ td{color:var(--muted)}
             <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </button>
           <div class="faq-a"><p>It depends on square footage, how many floors and stairwells need antennas, the
-            construction type, how strong the donor signal is, and what your AHJ requires. Permit fees and plan
+            construction type, how strong the donor signal is, and what your local fire official requires. Permit fees and plan
             review times vary by jurisdiction as well. Anyone quoting a firm number before testing is guessing
             &mdash; we give you a real number once the grid test says what the building needs, and if it passes,
             the answer is nothing.</p></div>
@@ -1270,8 +1361,8 @@ td{color:var(--muted)}
           </button>
           <div class="faq-a"><p>Most jurisdictions adopt IFC Section 510 alongside NFPA 1225, whose Chapter 18
             carries the ERCES provisions that previously lived in NFPA 1221 &mdash; and NFPA 1221 has not been
-            withdrawn, so many AHJs still cite it directly. Monitoring and supervision follow NFPA 72, and signal
-            boosters operate under FCC Part 90.219. We confirm the adopted edition with your AHJ before designing
+            withdrawn, so many jurisdictions still cite it directly. Monitoring and supervision follow NFPA 72, and signal
+            boosters operate under FCC Part 90.219. We confirm the adopted edition with your jurisdiction before designing
             anything.</p></div>
         </div>
 
@@ -1340,8 +1431,8 @@ td{color:var(--muted)}
         <p>Send us the building and we will tell you what the jurisdiction requires, whether an ERRC system is
           likely needed, and what testing costs. If your building passes, we will say so.</p>
         <div class="btn-row">
-          <a class="btn btn-primary" href="#lead-form">Speak With An Expert</a>
-          <a class="btn btn-light phone-link" href="tel:+17323145162">732-314-5162</a>
+          <a class="btn btn-primary cta-form" href="#lead-form">Speak With An Expert</a>
+          <a class="btn btn-primary cta-call phone-link" href="tel:+17323145162">Call 732-314-5162</a>
         </div>
       </div>
     </div>
@@ -1353,11 +1444,11 @@ td{color:var(--muted)}
     <div class="footer-grid">
       <div>
         <div class="brand" style="margin-bottom:14px">
-          <svg width="24" height="24" viewBox="0 0 40 40" aria-hidden="true">
-            <path d="M16 5 L26 5 L20 35 L10 35 Z" fill="#F4491B"/>
-            <path d="M21 5 L37 5 L35.5 12.5 L19.5 12.5 Z" fill="#F4491B"/>
-            <path d="M18 18 L32 18 L30.5 25.5 L16.5 25.5 Z" fill="#F4491B"/>
-          </svg>
+          <svg width="24" height="24" viewBox="0 0 200 200" aria-hidden="true">
+          <path d="M68 40 L158 40 L158 54 L144 68 L68 68 L68 144 L54 158 L40 158 L40 68 Z" fill="#FA5019"/>
+          <path d="M100 78 L152 78 L152 90 L140 102 L100 102 L100 140 L88 152 L76 152 L76 102 Z" fill="#FA5019"/>
+          <path d="M130 118 L152 118 L152 140 L140 152 L118 152 L118 130 Z" fill="#FA5019"/>
+        </svg>
           <span>FIRSTCOMMS</span>
         </div>
         <p>Public safety BDA and ERRC testing, design, installation, permitting and annual inspection.
@@ -1388,14 +1479,13 @@ td{color:var(--muted)}
 
     <div class="footer-bottom">
       <span>&copy; <span id="year">2026</span> FirstComms. All rights reserved.</span>
-      <span>General guidance, not a code interpretation. Your AHJ has final authority.</span>
+      <span>General guidance, not a code interpretation. Your local fire official has final authority.</span>
     </div>
   </div>
 </footer>
 
 <div class="callbar">
-  <a class="btn btn-primary btn-sm phone-link" href="tel:+17323145162">Call Now</a>
-  <a class="btn btn-light btn-sm" href="#lead-form">Get In Touch</a>
+  <a class="btn btn-primary btn-sm phone-link" href="tel:+17323145162">Call 732-314-5162</a>
 </div>
 
 <script>
@@ -1410,7 +1500,7 @@ td{color:var(--muted)}
      ------------------------------------------------------------------ */
   var HEADLINES = {
     'bda-install': 'Public safety BDA installation, <span class="hl">tested, permitted and signed off</span>.',
-    'errcs': 'ERRC design and installation that <span class="hl">passes the AHJ acceptance test</span>.',
+    'errcs': 'ERRC design and installation that <span class="hl">passes final acceptance testing</span>.',
     'testing': 'Emergency responder <span class="hl">radio coverage testing</span>, documented for your fire official.',
     'failed-test': 'Failed your radio coverage test? <span class="hl">We fix it and get it approved.</span>',
     'annual': 'Annual BDA inspection and testing, <span class="hl">documented and kept current</span>.',
