@@ -187,14 +187,12 @@ strong{font-weight:700;color:var(--brown-700)}
 .form-alt a{display:inline-block;padding:6px 4px;font-weight:700;color:var(--brown-700);text-decoration:underline}
 
 /* ---------- Ticker ---------- */
-.ticker{background:var(--brown-900);color:var(--cream-200);overflow:hidden;padding:12px 0;
+.ticker{background:var(--brown-900);color:var(--cream-200);padding:15px 0;
   border-top:1px solid rgba(244,73,27,.35);border-bottom:1px solid rgba(244,73,27,.35)}
-.ticker-track{display:flex;width:max-content;animation:slide 42s linear infinite}
-.ticker-track span{display:inline-flex;align-items:center;gap:26px;padding-right:26px;
-  font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;white-space:nowrap}
-.ticker-track i{width:6px;height:6px;background:var(--orange);flex:none}
-@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@media (prefers-reduced-motion:reduce){.ticker-track{animation:none}}
+.ticker-list{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 20px;
+  font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;text-align:center;color:var(--brown-200)}
+.ticker-list li{display:flex;align-items:center;gap:20px}
+.ticker-list li:not(:last-child)::after{content:"";width:6px;height:6px;background:var(--orange);flex:none}
 
 /* ---------- Cards ---------- */
 .grid{display:grid;gap:18px}
@@ -606,11 +604,14 @@ td{color:var(--muted)}
   </figure>
   ================= END HERO PHOTO ================= -->
 
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker-track">
-      <span>Emergency Responder Radio Communication Systems <i></i> Radio Frequency Testing <i></i> BDA Design &amp; Installation <i></i> Permitting <i></i> Annual Inspections <i></i></span>
-      <span>Emergency Responder Radio Communication Systems <i></i> Radio Frequency Testing <i></i> BDA Design &amp; Installation <i></i> Permitting <i></i> Annual Inspections <i></i></span>
-    </div>
+  <div class="ticker">
+    <ul class="ticker-list container" aria-label="What we do">
+      <li>Radio Frequency Testing</li>
+      <li>BDA &amp; ERRC Design</li>
+      <li>Code-Compliant Installation</li>
+      <li>Permitting</li>
+      <li>Annual Inspections</li>
+    </ul>
   </div>
 
   <!-- ================= WHAT IT IS ================= -->
@@ -1085,6 +1086,60 @@ td{color:var(--muted)}
             <li class="pill">New York</li>
             <li class="pill">Pennsylvania</li>
           </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHY US ================= -->
+  <section class="section" id="why">
+    <div class="container">
+      <div class="section-head reveal" style="text-align:center;margin-inline:auto">
+        <span class="eyebrow">Why building owners call us</span>
+        <h2>Specialists, not a cabling company with a BDA sideline</h2>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card reveal">
+          <span class="card-num">01</span>
+          <h3>This is all we do</h3>
+          <p>Fourteen years on emergency responder radio coverage. Not structured cabling, not carrier
+            DAS, not security. The failure modes on these systems are specific, and we have seen them.</p>
+        </div>
+
+        <div class="card reveal">
+          <span class="card-num">02</span>
+          <h3>Everything in house</h3>
+          <p>RF testing, engineering, stamped drawings, installation and permitting are all ours. Nothing
+            waits on a subcontractor&rsquo;s calendar, and nobody hands your project across a gap.</p>
+        </div>
+
+        <div class="card reveal">
+          <span class="card-num">03</span>
+          <h3>We tell you when you pass</h3>
+          <p>If the grid test says the building already meets code, you get the report and the paperwork
+            and we are done. Selling a system that is not required is how a contractor loses the next job.</p>
+        </div>
+
+        <div class="card reveal">
+          <span class="card-num">04</span>
+          <h3>Stamped by our own architect</h3>
+          <p>Plan review does not stall while an outside engineer fits you in. The design leaves here
+            stamped, with the coverage math and cut sheets attached.</p>
+        </div>
+
+        <div class="card reveal">
+          <span class="card-num">05</span>
+          <h3>We take on the hard ones</h3>
+          <p>Failed acceptance tests, rejected submittals, oscillation, donor signal problems, systems
+            another contractor abandoned. We test what is there and give you a fixed scope to approval.</p>
+        </div>
+
+        <div class="card reveal">
+          <span class="card-num">06</span>
+          <h3>We stay after sign-off</h3>
+          <p>Annual inspection, battery replacement, re-verification, and records kept current for the
+            fire official &mdash; so compliance does not quietly lapse three years after handover.</p>
         </div>
       </div>
     </div>
