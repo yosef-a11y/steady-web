@@ -116,7 +116,7 @@ strong{font-weight:700;color:var(--brown-700)}
 .hero-lines{position:absolute;top:-40px;right:-160px;width:620px;opacity:.5;pointer-events:none}
 .hero-grid{position:relative;display:grid;gap:30px;align-items:start}
 @media(min-width:1000px){.hero-grid{grid-template-columns:1.02fr .98fr;gap:42px}}
-.hero h1{margin-top:16px}
+.hero h1{margin-top:16px;font-size:clamp(1.9rem,4.3vw,3.1rem)}
 .hero h1 .hl{color:var(--orange-btn)}
 .hero-sub{margin-top:18px;font-size:1.08rem;line-height:1.6;max-width:46ch}
 .hero-points{margin-top:24px;display:grid;gap:11px;border-top:1px solid var(--line);padding-top:20px}
@@ -160,8 +160,9 @@ strong{font-weight:700;color:var(--brown-700)}
 .specs{display:grid;gap:1px;background:var(--cream-400);border:1px solid var(--cream-400)}
 @media(min-width:560px){.specs{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:900px){.specs{grid-template-columns:repeat(3,1fr)}}
-.spec{background:var(--cream-50);padding:22px 20px}
-.spec b{display:block;font-family:var(--mono);font-size:1.5rem;font-weight:700;letter-spacing:.01em;
+.spec{background:var(--cream-50);padding:24px 20px;transition:background-color .18s ease}
+.spec:hover{background:#fff}
+.spec b{display:block;font-family:var(--mono);font-size:clamp(1.6rem,3vw,2.1rem);font-weight:700;letter-spacing:.01em;
   color:var(--orange-btn);line-height:1.1}
 .spec strong{display:block;margin-top:9px;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;
   text-transform:uppercase;color:var(--brown-700)}
@@ -174,9 +175,14 @@ strong{font-weight:700;color:var(--brown-700)}
 .grid-3{grid-template-columns:1fr}
 @media(min-width:640px){.grid-2{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:1fr 1fr}}
 @media(min-width:1000px){.grid-3{grid-template-columns:repeat(3,1fr)}}
-.card{background:var(--cream-50);border:1px solid var(--cream-300);padding:22px 20px;
-  transition:border-color .18s ease,transform .18s ease}
-.card:hover{border-color:var(--orange);transform:translateY(-2px)}
+.card{position:relative;background:var(--cream-50);border:1px solid var(--cream-300);padding:22px 20px;
+  clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);
+  transition:transform .18s ease,background-color .18s ease}
+.card::before{content:"";position:absolute;top:0;left:0;height:3px;width:0;background:var(--orange);
+  transition:width .28s ease}
+.card:hover{transform:translateY(-3px);background:#fff}
+.card:hover::before{width:100%}
+.bg-dark .card:hover{background:rgba(255,255,255,.09)}
 .card h3{margin-bottom:8px}
 .card p{font-size:.93rem;line-height:1.6;color:var(--brown-400)}
 .ico{width:38px;height:38px;display:grid;place-items:center;background:var(--orange-wash);
@@ -204,7 +210,7 @@ strong{font-weight:700;color:var(--brown-700)}
 .steps{display:grid;gap:14px}
 @media(min-width:760px){.steps{grid-template-columns:repeat(4,1fr)}}
 .step{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);padding:20px 18px}
-.step b{display:block;font-family:var(--mono);font-size:1.35rem;color:var(--orange-lift);margin-bottom:10px}
+.step b{display:block;font-family:var(--mono);font-size:1.7rem;color:var(--orange-lift);margin-bottom:10px}
 .step h3{margin-bottom:8px}
 .step p{font-size:.9rem;line-height:1.55;color:var(--brown-200)}
 
@@ -212,7 +218,7 @@ strong{font-weight:700;color:var(--brown-700)}
 @media(min-width:560px){.stats{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1000px){.stats{grid-template-columns:repeat(4,1fr)}}
 .stat{background:var(--brown-900);padding:20px 18px}
-.stat b{display:block;font-family:var(--mono);font-size:1.3rem;color:var(--cream-100);text-transform:uppercase}
+.stat b{display:block;font-family:var(--mono);font-size:clamp(1.3rem,2.4vw,1.7rem);color:var(--cream-100);text-transform:uppercase}
 .stat span{display:block;margin-top:6px;font-size:.83rem;line-height:1.5;color:var(--brown-200)}
 
 /* ---------- Commissioning chips ---------- */
@@ -252,6 +258,28 @@ strong{font-weight:700;color:var(--brown-700)}
 .hero-photo{background:var(--brown-900);margin:0}
 .hero-photo img{display:block;width:100%;height:auto;object-fit:cover;max-height:460px}
 
+
+/* ---------- Signal meter ---------- */
+.meter{margin:26px 0 0;padding:22px 18px;background:var(--cream-50);border:1px solid var(--cream-300);
+  clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px)}
+.meter svg{width:100%;max-width:900px;margin-inline:auto}
+
+/* ---------- Statement band ---------- */
+.statement{background:var(--brown-900);color:var(--cream-100);padding:clamp(38px,5vw,60px) 0;
+  border-top:3px solid var(--orange)}
+.statement p{font-family:var(--mono);font-weight:700;text-transform:uppercase;letter-spacing:.03em;
+  line-height:1.25;font-size:clamp(1.35rem,3.2vw,2.3rem);max-width:22ch}
+.statement em{font-style:normal;color:var(--orange-lift)}
+.statement span{display:block;margin-top:16px;font-size:.98rem;line-height:1.6;color:var(--brown-200);max-width:52ch}
+
+/* ---------- Project gallery (enable with the slot in <main>) ---------- */
+.shots{display:grid;gap:16px}
+@media(min-width:700px){.shots{grid-template-columns:repeat(3,1fr)}}
+.shots figure{margin:0;background:var(--cream-50);border:1px solid var(--cream-300)}
+.shots img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.shots figcaption{padding:12px 14px;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--brown-400)}
+
 /* ---------- Footer ---------- */
 .footer{background:var(--brown-900);color:var(--brown-200);padding:40px 0 100px;font-size:.9rem;line-height:1.65}
 @media(min-width:860px){.footer{padding-bottom:40px}}
@@ -270,10 +298,12 @@ strong{font-weight:700;color:var(--brown-700)}
 @media(min-width:860px){.callbar{display:none}}
 
 /* ---------- Reveal ---------- */
-.reveal{opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease}
-.reveal.visible{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+.js .reveal{opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease}
+.js .reveal.visible{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none}}
 </style>
+
+<script>document.documentElement.className += " js";</script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BZ01Y3KFS"></script>
 <script>
@@ -586,6 +616,40 @@ strong{font-weight:700;color:var(--brown-700)}
           <span>IFC 510.6.1. The duty sits with the building owner.</span></div>
       </div>
 
+
+      <figure class="meter reveal">
+        <svg viewBox="0 0 900 170" role="img" aria-labelledby="mTitle mDesc">
+          <title id="mTitle">Signal strength scale showing the code minimum</title>
+          <desc id="mDesc">A scale from minus 120 to minus 70 dBm. Anything weaker than minus 95 dBm
+            fails; minus 95 dBm and stronger passes.</desc>
+
+          <rect x="60" y="52" width="390" height="34" fill="#CDB9AC"/>
+          <rect x="450" y="52" width="390" height="34" fill="#FA5019"/>
+
+          <g font-family="ui-monospace, monospace" font-size="14" font-weight="700" letter-spacing="1.5">
+            <text x="255" y="75" text-anchor="middle" fill="#5A2415">FAILS</text>
+            <text x="645" y="75" text-anchor="middle" fill="#FFFFFF">PASSES</text>
+          </g>
+
+          <g stroke="#8A5540" stroke-width="2">
+            <path d="M60 86v10M216 86v7M372 86v7M528 86v7M684 86v7M840 86v10"/>
+          </g>
+          <g font-family="ui-monospace, monospace" font-size="12" fill="#8A5540" letter-spacing="1">
+            <text x="60" y="116" text-anchor="middle">-120</text>
+            <text x="216" y="116" text-anchor="middle">-110</text>
+            <text x="372" y="116" text-anchor="middle">-100</text>
+            <text x="528" y="116" text-anchor="middle">-90</text>
+            <text x="684" y="116" text-anchor="middle">-80</text>
+            <text x="840" y="116" text-anchor="middle">-70</text>
+          </g>
+
+          <path d="M450 32v62" stroke="#240D07" stroke-width="3"/>
+          <path d="M450 24 l10 10 -10 10 -10 -10 Z" fill="#240D07"/>
+          <text x="450" y="150" text-anchor="middle" font-family="ui-monospace, monospace" font-size="14"
+                font-weight="700" letter-spacing="1.5" fill="#240D07">-95 dBm CODE MINIMUM</text>
+        </svg>
+      </figure>
+
       <p class="fineprint reveal">
         Adopted editions and local amendments vary &mdash; IFC 510, NFPA 1225 (Chapter 18), NFPA 72 and
         FCC Part 90.219 are the usual set. We confirm the specifics with your jurisdiction before design.
@@ -626,6 +690,15 @@ strong{font-weight:700;color:var(--brown-700)}
         <li><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg>
           <span>Annual testing is overdue, or you are budgeting a build.</span></li>
       </ul>
+    </div>
+  </section>
+
+
+  <!-- ================= STATEMENT ================= -->
+  <section class="statement">
+    <div class="container">
+      <p class="reveal">A failed radio test can hold a finished building <em>empty</em>.</p>
+      <span class="reveal">Which is why we test before your final inspection is on the calendar &mdash; not after.</span>
     </div>
   </section>
 
@@ -742,7 +815,7 @@ strong{font-weight:700;color:var(--brown-700)}
 
         <div class="reveal">
           <span class="eyebrow">Service area</span>
-          <h2 style="margin-top:14px">Toms River, and out from there</h2>
+          <h2 style="margin-top:14px">Where we work</h2>
           <p style="margin-top:12px;font-size:.95rem">We deal with each jurisdiction&rsquo;s fire officials
             directly, because approval is always local.</p>
           <ul class="pill-list" style="margin-top:16px">
@@ -757,7 +830,7 @@ strong{font-weight:700;color:var(--brown-700)}
   </section>
 
   <!-- ================= WHY US ================= -->
-  <section class="section" id="why">
+  <section class="section bg-dark" id="why">
     <div class="container">
       <div class="section-head center reveal">
         <span class="eyebrow">Why building owners call us</span>
@@ -798,6 +871,37 @@ strong{font-weight:700;color:var(--brown-700)}
       </div>
     </div>
   </section>
+
+  <!-- ================= PROJECT GALLERY =================
+       SLOT READY — needs real photographs of your own installs.
+
+       Save three images as images/install-1.jpg, install-2.jpg, install-3.jpg
+       (about 800x600 each, under ~150KB), delete this comment wrapper, and write
+       a real caption for each. Styles are already in the stylesheet (.shots).
+
+  <section class="section" id="gallery">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Recent work</span>
+        <h2>Installed, commissioned, approved</h2>
+      </div>
+      <div class="shots">
+        <figure class="reveal">
+          <img src="images/install-1.jpg" width="800" height="600" loading="lazy" alt="DESCRIBE THE INSTALL">
+          <figcaption>Building type, town &middot; what was done</figcaption>
+        </figure>
+        <figure class="reveal">
+          <img src="images/install-2.jpg" width="800" height="600" loading="lazy" alt="DESCRIBE THE INSTALL">
+          <figcaption>Building type, town &middot; what was done</figcaption>
+        </figure>
+        <figure class="reveal">
+          <img src="images/install-3.jpg" width="800" height="600" loading="lazy" alt="DESCRIBE THE INSTALL">
+          <figcaption>Building type, town &middot; what was done</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+  ================= END GALLERY ================= -->
 
   <!-- ================= REVIEWS =================
        READY TO GO LIVE — it just needs real quotes.
