@@ -139,19 +139,10 @@ strong{font-weight:700;color:var(--brown-700)}
   letter-spacing:.06em;white-space:nowrap;padding:11px 14px;background:var(--orange-btn);color:#fff;
   clip-path:polygon(9px 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%,0 9px)}
 .header-phone svg{stroke:#fff}
-@media(min-width:620px){
-  .header-phone{background:none;color:var(--cream-100);padding:11px 6px;clip-path:none;font-size:.78rem}
-  .header-phone:hover{color:var(--orange-lift)}
-  .header-phone svg{stroke:var(--orange)}
-  .header-cta .btn{display:inline-flex}
-}
+.header-phone:hover{background:#B93209}
+@media(min-width:620px){.header-phone{font-size:.82rem;padding:12px 18px}}
 @media(min-width:1000px){.header-nav{display:flex}}
 
-/* Body CTAs follow the same split: call below 620px, form at and above it,
-   so exactly one call to action is visible at any width. */
-.cta-call{display:inline-flex}
-.cta-form{display:none}
-@media(min-width:620px){.cta-call{display:none}.cta-form{display:inline-flex}}
 
 /* ---------- Hero ---------- */
 .hero{position:relative;overflow:hidden;background:var(--cream-200);
@@ -319,17 +310,11 @@ td{color:var(--muted)}
   border-top:2px solid var(--orange)}
 @media(min-width:860px){.callbar{display:none}}
 
-/* ---------- System illustration ---------- */
-.hero-art{background:var(--brown-900);padding-bottom:16px}
-.hero-art-scroll{overflow-x:auto}
-/* Below ~1040px the labels would shrink past legibility, so the band scrolls
-   sideways at a readable size rather than scaling down to nothing. */
-.hero-art-scroll svg{display:block;width:100%;min-width:1040px;height:auto}
-.hero-art-cap{max-width:var(--container);margin:14px auto 0;padding:0 20px;text-align:center;
+/* ---------- Hero photograph (enable with the slot in <main>) ---------- */
+.hero-photo{background:var(--brown-900);margin:0;padding-bottom:14px}
+.hero-photo img{display:block;width:100%;height:auto;object-fit:cover;max-height:520px}
+.hero-photo figcaption{max-width:var(--container);margin:14px auto 0;padding:0 20px;text-align:center;
   font-size:.74rem;line-height:1.7;letter-spacing:.04em;color:var(--brown-200)}
-.hero-art-hint{display:none;margin:10px auto 0;padding:0 20px;text-align:center;font-size:.66rem;
-  letter-spacing:.16em;text-transform:uppercase;color:var(--orange-lift)}
-.hero-art-hint.on{display:block}
 
 /* ---------- Reveal ---------- */
 .reveal{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
@@ -464,7 +449,6 @@ td{color:var(--muted)}
         </svg>
         732-314-5162
       </a>
-      <a class="btn btn-primary btn-sm" href="#lead-form">Speak With An Expert</a>
     </div>
   </div>
 </header>
@@ -495,11 +479,6 @@ td{color:var(--muted)}
           Public safety radio only &mdash; this is the network first responders use inside your building,
           not cellular and not Wi-Fi.
         </p>
-
-        <div class="btn-row">
-          <a class="btn btn-primary cta-form" href="#lead-form">Speak With An Expert</a>
-          <a class="btn btn-primary cta-call phone-link" href="tel:+17323145162">Call 732-314-5162</a>
-        </div>
 
         <ul class="hero-points">
           <li>
@@ -613,150 +592,19 @@ td{color:var(--muted)}
     </div>
   </section>
 
-  <!-- ================= SYSTEM ILLUSTRATION ================= -->
-  <section class="hero-art" aria-label="How a public safety BDA system covers a building">
-    <div class="hero-art-scroll">
-      <svg viewBox="0 0 1440 440" role="img" aria-labelledby="artTitle artDesc">
-        <title id="artTitle">A public safety BDA system covering a three-storey building</title>
-        <desc id="artDesc">The public safety network transmits to a donor antenna on the roof. A riser
-          carries the signal to a bi-directional amplifier with battery backup on the ground floor, which
-          feeds antennas on every floor. Firefighters on each storey are shown transmitting on handheld
-          radios inside the covered area. The system is measured to 95% of general areas and 99% of
-          critical areas.</desc>
+  <!-- ================= HERO PHOTO =================
+       SLOT READY — drop a real photograph in and delete this comment wrapper.
 
-        <defs>
-          <!-- Responder pictogram. Every part is stroked in the background colour so
-               the silhouette still separates at the size this renders on a phone. -->
-          <g id="responder" stroke="#240D07" stroke-width="2" stroke-linejoin="round">
-            <rect x="-24" y="-62" width="11" height="28" rx="5" fill="#EBE1DA"/>
-            <rect x="-13" y="-30" width="9" height="25" fill="#EBE1DA"/>
-            <rect x="4" y="-30" width="9" height="25" fill="#EBE1DA"/>
-            <rect x="-13" y="-6" width="13" height="6" fill="#EBE1DA"/>
-            <rect x="4" y="-6" width="13" height="6" fill="#EBE1DA"/>
-            <path d="M-15 -28 L-15 -62 Q-15 -71 -6 -72 L6 -72 Q15 -71 15 -62 L15 -28 Z" fill="#EBE1DA"/>
-            <rect x="-15" y="-48" width="30" height="6" fill="#F4491B" stroke="none"/>
-            <rect x="-15" y="-38" width="30" height="3.5" fill="#F4491B" stroke="none"/>
-            <path d="M-7 -71 L-7 -82 Q-7 -86 0 -86 Q7 -86 7 -82 L7 -71 Z" fill="#EBE1DA"/>
-            <path d="M-13 -90 Q-13 -101 0 -101 Q13 -101 13 -90 Z" fill="#EBE1DA"/>
-            <path d="M-21 -90 Q-22 -85 -16 -85 L15 -85 Q19 -85 19 -89 Q19 -91 15 -91 L-17 -91 Q-21 -92 -21 -90 Z" fill="#EBE1DA"/>
-            <path d="M9 -64 L19 -64 L19 -58 L15 -58 L15 -76 L9 -76 Z" fill="#EBE1DA"/>
-            <rect x="8" y="-84" width="10" height="12" fill="#EBE1DA"/>
-            <path d="M13 -85 L13 -96" stroke="#F4491B" stroke-width="2.6" stroke-linecap="round"/>
-            <g stroke="#F4491B" stroke-width="2.4" fill="none" stroke-linecap="round">
-              <path d="M23 -98 a11 11 0 010 13"/>
-              <path d="M31 -103 a19 19 0 010 23"/>
-            </g>
-          </g>
-        </defs>
+       Save the image as lp/public-safety-bda/images/hero.jpg (about 1600x520,
+       under ~250KB). Anything wider than it needs costs load time, and this is
+       the LCP element on the page.
 
-        <rect width="1440" height="440" fill="#240D07"/>
-
-        <g stroke="#F4491B" stroke-width="2" fill="none" opacity=".18">
-          <path d="M1180 0 L1400 220 L1180 440"/>
-          <path d="M1250 0 L1470 220 L1250 440"/>
-          <path d="M1320 0 L1540 220 L1320 440"/>
-        </g>
-
-        <path d="M0 400 H1440" stroke="#EBE1DA" stroke-width="2" opacity=".35"/>
-
-        <!-- public safety tower -->
-        <g stroke="#EBE1DA" stroke-width="3" fill="none" stroke-linecap="round">
-          <path d="M128 398 L163 112"/>
-          <path d="M212 398 L177 112"/>
-          <path d="M139 306 h62 M147 240 h46 M153 188 h34 M158 148 h24"/>
-          <path d="M170 112 V80"/>
-        </g>
-        <g stroke="#F4491B" stroke-width="2.6" fill="none" stroke-linecap="round">
-          <path d="M186 68 a20 20 0 010 24"/>
-          <path d="M198 60 a32 32 0 010 40"/>
-        </g>
-        <text x="170" y="428" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="1.5"
-              fill="#C8B3A6" font-family="ui-monospace, monospace">PUBLIC SAFETY NETWORK</text>
-
-        <!-- off-air signal path -->
-        <path d="M214 74 C 320 34, 460 30, 596 50" stroke="#F4491B" stroke-width="2.6" fill="none"
-              stroke-dasharray="9 8" stroke-linecap="round"/>
-        <path d="M588 42 l12 8 -12 8" stroke="#F4491B" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M222 82 l-12 -8 12 -8" stroke="#F4491B" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-
-        <!-- acceptance criteria -->
-        <g>
-          <rect x="286" y="186" width="228" height="96" fill="#3A1710" stroke="#F4491B" stroke-width="2"/>
-          <text x="304" y="214" font-size="12" font-weight="700" letter-spacing="1.6"
-                fill="#C8B3A6" font-family="ui-monospace, monospace">MEASURED TO</text>
-          <text x="304" y="243" font-size="15" font-weight="700" letter-spacing="1.2"
-                fill="#EBE1DA" font-family="ui-monospace, monospace">95% GENERAL</text>
-          <text x="304" y="266" font-size="15" font-weight="700" letter-spacing="1.2"
-                fill="#EBE1DA" font-family="ui-monospace, monospace">99% CRITICAL</text>
-        </g>
-
-        <!-- building -->
-        <rect x="560" y="100" width="740" height="300" fill="none" stroke="#EBE1DA" stroke-width="3"/>
-        <g stroke="#EBE1DA" stroke-width="1.6" opacity=".45">
-          <path d="M560 200 H1300 M560 300 H1300"/>
-        </g>
-
-        <!-- donor antenna -->
-        <g stroke="#EBE1DA" stroke-width="3" fill="none" stroke-linecap="round">
-          <path d="M640 100 V58"/><path d="M622 58 h36"/><path d="M628 68 h24"/>
-        </g>
-        <text x="640" y="40" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="1.5"
-              fill="#EBE1DA" font-family="ui-monospace, monospace">DONOR ANTENNA</text>
-
-        <path d="M640 100 V312" stroke="#F4491B" stroke-width="2.6" fill="none"/>
-
-        <!-- equipment wall: amplifier over battery cabinet, fire panel alongside,
-             laid out the way it is actually mounted in a mechanical room -->
-        <rect x="592" y="312" width="70" height="42" fill="#FA5019"/>
-        <text x="627" y="339" text-anchor="middle" font-size="15" font-weight="700" letter-spacing="1.5"
-              fill="#240D07" font-family="ui-monospace, monospace">BDA</text>
-
-        <rect x="592" y="360" width="70" height="30" fill="#FA5019" opacity=".82"/>
-        <text x="627" y="380" text-anchor="middle" font-size="10" font-weight="700" letter-spacing="1"
-              fill="#240D07" font-family="ui-monospace, monospace">BATTERY</text>
-
-        <!-- supervisory link to the fire alarm panel -->
-        <path d="M662 344 H690" stroke="#EBE1DA" stroke-width="2" fill="none" opacity=".7"/>
-        <rect x="690" y="322" width="46" height="66" fill="#3A1710" stroke="#EBE1DA" stroke-width="2.4"/>
-        <text x="713" y="350" text-anchor="middle" font-size="9" font-weight="700" letter-spacing=".8"
-              fill="#C8B3A6" font-family="ui-monospace, monospace">FIRE</text>
-        <text x="713" y="363" text-anchor="middle" font-size="9" font-weight="700" letter-spacing=".8"
-              fill="#C8B3A6" font-family="ui-monospace, monospace">PANEL</text>
-
-        <!-- distribution -->
-        <path d="M662 326 H760 V140" stroke="#F4491B" stroke-width="2.2" fill="none"/>
-        <g stroke="#F4491B" stroke-width="2.2" fill="none">
-          <path d="M760 140 H880 M760 240 H880 M760 340 H880"/>
-        </g>
-
-        <g>
-          <circle cx="880" cy="140" r="7" fill="#EBE1DA"/>
-          <circle cx="880" cy="240" r="7" fill="#EBE1DA"/>
-          <circle cx="880" cy="340" r="7" fill="#EBE1DA"/>
-        </g>
-        <g stroke="#F4491B" stroke-width="2.2" fill="none" stroke-linecap="round" opacity=".85">
-          <path d="M896 128 a22 22 0 010 24 M910 119 a36 36 0 010 42"/>
-          <path d="M896 228 a22 22 0 010 24 M910 219 a36 36 0 010 42"/>
-          <path d="M896 328 a22 22 0 010 24 M910 319 a36 36 0 010 42"/>
-        </g>
-        <text x="880" y="122" text-anchor="middle" font-size="12" font-weight="700" letter-spacing="1.2"
-              fill="#C8B3A6" font-family="ui-monospace, monospace">DAS ANTENNAS</text>
-
-        <!-- responders -->
-        <use href="#responder" transform="translate(1010 197) scale(0.74)"/>
-        <use href="#responder" transform="translate(1150 297) scale(0.74)"/>
-        <use href="#responder" transform="translate(1010 397) scale(0.74)"/>
-
-        <text x="1130" y="428" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="1.5"
-              fill="#C8B3A6" font-family="ui-monospace, monospace">COVERAGE ON EVERY FLOOR</text>
-      </svg>
-    </div>
-    <p class="hero-art-cap">
-      Donor antenna &rarr; bi-directional amplifier &rarr; antennas on every floor, so a responder&rsquo;s
-      radio reaches dispatch from anywhere inside.
-    </p>
-    <p class="hero-art-hint" id="artHint">&larr; Swipe to see the whole system &rarr;</p>
-  </section>
+  <figure class="hero-photo">
+    <img src="images/hero.jpg" width="1600" height="520" fetchpriority="high"
+         alt="A FirstComms technician commissioning a public safety BDA and battery cabinet in a building's mechanical room.">
+    <figcaption>Amplifier, battery backup and fire panel — installed, commissioned and documented.</figcaption>
+  </figure>
+  ================= END HERO PHOTO ================= -->
 
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
@@ -886,10 +734,6 @@ td{color:var(--muted)}
         </div>
       </div>
 
-      <div class="btn-row reveal" style="margin-top:26px">
-        <a class="btn btn-primary cta-form" href="#lead-form">Speak With An Expert</a>
-        <a class="btn btn-primary cta-call phone-link" href="tel:+17323145162">Call 732-314-5162</a>
-      </div>
     </div>
   </section>
 
@@ -1032,10 +876,6 @@ td{color:var(--muted)}
             This is the sequence we run on every system, and the evidence behind it is what goes into the
             acceptance test package.
           </p>
-          <div class="btn-row" style="margin-top:24px">
-            <a class="btn btn-dark cta-form" href="#lead-form">Speak With An Expert</a>
-            <a class="btn btn-dark cta-call phone-link" href="tel:+17323145162">Call 732-314-5162</a>
-          </div>
         </div>
 
         <ol class="seq reveal">
@@ -1245,10 +1085,6 @@ td{color:var(--muted)}
             <li class="pill">New York</li>
             <li class="pill">Pennsylvania</li>
           </ul>
-          <div class="btn-row" style="margin-top:24px">
-            <a class="btn btn-dark cta-form" href="#lead-form">Speak With An Expert</a>
-            <a class="btn btn-dark cta-call phone-link" href="tel:+17323145162">Call 732-314-5162</a>
-          </div>
         </div>
       </div>
     </div>
@@ -1430,10 +1266,6 @@ td{color:var(--muted)}
         <h2>Find out where your building stands &mdash; before the fire official does</h2>
         <p>Send us the building and we will tell you what the jurisdiction requires, whether an ERRC system is
           likely needed, and what testing costs. If your building passes, we will say so.</p>
-        <div class="btn-row">
-          <a class="btn btn-primary cta-form" href="#lead-form">Speak With An Expert</a>
-          <a class="btn btn-primary cta-call phone-link" href="tel:+17323145162">Call 732-314-5162</a>
-        </div>
       </div>
     </div>
   </section>
@@ -1513,31 +1345,6 @@ td{color:var(--muted)}
     var h1 = document.getElementById('hero-headline');
     if (h1) h1.innerHTML = HEADLINES[kw];
   }
-
-  /* ------------------------------------------------------------------
-     System illustration.
-     The band is wider than a phone at a legible label size, so when it
-     overflows we start it on the building — the tower alone is a poor
-     first impression — and say that it swipes.
-     ------------------------------------------------------------------ */
-  (function positionArt() {
-    var scroller = document.querySelector('.hero-art-scroll');
-    var hint = document.getElementById('artHint');
-    if (!scroller) return;
-
-    function sync() {
-      var overflows = scroller.scrollWidth > scroller.clientWidth + 4;
-      if (hint) hint.classList.toggle('on', overflows);
-      if (overflows && !scroller.dataset.touched) {
-        // The building starts at x=520 of the 1440-wide artwork.
-        scroller.scrollLeft = (520 / 1440) * scroller.scrollWidth;
-      }
-    }
-
-    scroller.addEventListener('scroll', function () { scroller.dataset.touched = '1'; }, { passive: true });
-    window.addEventListener('resize', sync);
-    sync();
-  })();
 
   /* ------------------------------------------------------------------
      Scroll reveal
