@@ -9,7 +9,8 @@ Static marketing site. No build step, no dependencies, no framework.
 
 | File | Purpose |
 | --- | --- |
-| `index.html` | The entire homepage |
+| `index.html` | The homepage, targeting "Google Ads agency" |
+| `growth-marketing-consultant/index.html` | Landing page targeting "growth marketing consultant" |
 | `styles.css` | Design system + all styling |
 | `main.js` | Nav, scroll reveal, counters, FAQ, form guard, analytics events |
 | `thank-you.html` | Post-form-submission page (fires the `generate_lead` GA event) |
@@ -80,17 +81,10 @@ from somewhere other than a Google ad — or from a visitor whose first click wa
 To also capture `wbraid`/`gbraid` (which replace `gclid` on some iOS traffic) or UTM parameters,
 the same block in `main.js` extends to them.
 
-### 3. Point the domain at GitHub Pages
+### 3. Domain
 
-Do this **last**, after you've previewed the site at
-`https://yosef-a11y.github.io/steady-web/` and are happy with it.
-
-There is deliberately no `CNAME` file in the repo yet. Adding one makes Pages claim the domain
-immediately, which would redirect the preview URL to a domain still served by Netlify — leaving you
-no way to check the site first. GitHub creates the `CNAME` file for you when you set the custom
-domain in the UI.
-
-Update DNS at your registrar:
+Done. `steadygrowthmarketing.com` resolves to GitHub Pages via Squarespace DNS, with the Google
+Workspace mail records intact. The records, for reference:
 
 | Type | Name | Value |
 | --- | --- | --- |
@@ -122,6 +116,19 @@ Google Analytics (`G-7BZ01Y3KFS`) is loaded on every page. Custom events fired:
 
 Mark `generate_lead` as a key event in GA4 (Admin → Events) so it shows up as a conversion.
 
+## Adding a landing page
+
+One page ranks for one search intent. To target a new phrase, add a folder with an `index.html`
+(so the URL is clean, e.g. `/local-search-marketing/`), and:
+
+1. Copy `growth-marketing-consultant/index.html` as the starting point. Its header, footer, and
+   contact form are the homepage's, with links made root-relative (`/#services`).
+2. Give it its own `<title>`, meta description, `canonical`, H1, and at least 700 words that
+   genuinely answer that searcher, plus a FAQ with matching `FAQPage` JSON-LD.
+3. Add it to `sitemap.xml` and to the Pages list in `llms.txt`, and link it from the footer in
+   every page so crawlers find it.
+4. Use `/styles.css`, `/main.js`, and `/favicon.svg` with leading slashes on subpages.
+
 ## Editing content
 
 Everything is plain HTML — search for the text you want to change in `index.html` and edit it.
@@ -136,6 +143,28 @@ Common edits:
 - **FAQ** — questions live in `#faq`. If you add or change one, mirror it in the `FAQPage` JSON-LD
   block in `<head>` so the structured data stays accurate.
 
+## SEO and AI discoverability
+
+What's in place, and what each piece is for:
+
+| Piece | Purpose |
+| --- | --- |
+| `<title>` / meta description | Primary keywords up front: Google Ads, Meta Ads, e-commerce, lead gen |
+| `meta name="robots"` with `max-snippet:-1` | Lets Google and AI Overviews quote the page at length |
+| JSON-LD `@graph` in `<head>` | Organization + ProfessionalService with services, `knowsAbout`, phone, email; plus WebSite and WebPage |
+| JSON-LD `FAQPage` | The six FAQ answers, eligible for FAQ rich results and directly quotable by AI |
+| `.about-lead` paragraph | A single self-contained sentence describing the business, written for AI engines to lift verbatim |
+| `llms.txt` | Plain-text summary of the business for AI crawlers, mirroring the page |
+| `robots.txt` | Explicitly allows GPTBot, ClaudeBot, PerplexityBot, Google-Extended and others |
+| `images/og-image.png` | 1200×630 share image for social and AI previews; regenerate from `images/og-source.html` if the tagline changes |
+| `sitemap.xml` | Includes the image entry and a current `lastmod` |
+
+The Google Business Profile link is in `sameAs`, and the address is Lakewood, NJ. Both appear in the
+structured data, the About paragraph, and `llms.txt`.
+
+Not done on purpose: `Review` and `AggregateRating` markup. Google doesn't award rich results for
+reviews a business publishes about itself, and marking them up risks a manual action.
+
 ## Known limitation of GitHub Pages
 
 GitHub Pages doesn't support custom response headers, so the security and cache-control headers that
@@ -147,11 +176,11 @@ this same repo.
 
 ## Before going live
 
-- [ ] Enable Pages (Settings → Pages → Source: GitHub Actions), then re-run the failed workflow
-- [ ] Preview at `https://yosef-a11y.github.io/steady-web/`
-- [ ] Set the Web3Forms access key and send a test submission
-- [ ] Move DNS and set the custom domain, then enable Enforce HTTPS
-- [ ] Add a real social share image at `images/og-image.png` (1200×630) — the meta tags already point at it
+- [x] Enable Pages with the GitHub Actions source
+- [x] Set the Web3Forms access key
+- [x] Move DNS to Squarespace and point the domain at GitHub Pages
+- [ ] Tick Enforce HTTPS on the Pages settings page once the certificate has issued
+- [ ] Delete the Netlify site. Nameservers no longer point at Netlify, so the whole account can go
 - [ ] Mark `generate_lead` as a key event in GA4
-- [ ] Submit `sitemap.xml` in Google Search Console
-- [ ] Delete the Netlify site once the domain has fully moved
+- [ ] Add the site in Google Search Console and submit `sitemap.xml`
+- [ ] Send yourself a test through the live contact form

@@ -377,6 +377,7 @@ p { text-wrap: pretty; }
 }
 .nav-list > li > a:not(.btn):hover { color: var(--navy-900); background: var(--slate-100); }
 .nav-list > li > a:not(.btn).active { color: var(--blue-600); }
+.nav-list > li > a[aria-current="page"] { color: var(--blue-600); }
 
 
 /* --- Header sitting over the dark hero (before it picks up its glass background) --- */
@@ -391,6 +392,7 @@ p { text-wrap: pretty; }
     background: rgba(255, 255, 255, .12);
   }
   .header:not(.scrolled) .nav-list > li > a:not(.btn).active { color: var(--blue-300); }
+  .header:not(.scrolled) .nav-list > li > a[aria-current="page"] { color: var(--blue-300); }
 }
 
 /* Mobile: the toggle also sits over the dark hero */
@@ -672,6 +674,46 @@ p { text-wrap: pretty; }
 }
 .dash-float .t { font-size: .82rem; font-weight: 800; font-family: var(--font-display); line-height: 1.2; }
 .dash-float .s { font-size: .68rem; color: var(--slate-500); line-height: 1.2; }
+
+/* --------------------------------------------------------------------------
+   6b. Subpages
+   -------------------------------------------------------------------------- */
+.page-hero { padding-bottom: clamp(56px, 7vw, 84px); }
+.page-hero .hero-content { max-width: 800px; }
+.page-hero h1 { font-size: clamp(2rem, 3.4vw, 2.7rem); }
+
+.breadcrumb {
+  display: flex; align-items: center; gap: .6rem;
+  font-size: .82rem; color: rgba(226, 236, 250, .6);
+  margin-bottom: 1.6rem;
+}
+.breadcrumb a:hover { color: var(--white); }
+.breadcrumb span:last-child { color: rgba(226, 236, 250, .85); }
+
+.prose { max-width: 780px; margin-inline: auto; }
+.prose .section-label { margin-bottom: .9rem; }
+.prose h2 { font-size: clamp(1.55rem, 3vw, 2.1rem); margin: 2.6rem 0 .85rem; }
+.prose h2:first-of-type { margin-top: 0; }
+.prose p, .prose li { color: var(--text-muted); font-size: 1.04rem; }
+.prose p { margin-bottom: 1rem; }
+.prose strong { color: var(--navy-900); font-weight: 700; }
+.prose ul, .prose ol { display: grid; gap: .6rem; margin: .5rem 0 1.4rem; }
+.prose ul li { position: relative; padding-left: 1.5rem; }
+.prose ul li::before {
+  content: ''; position: absolute; left: 0; top: .58em;
+  width: 9px; height: 9px; border-radius: 50%; background: var(--blue-500);
+}
+.prose ol.steps { counter-reset: step; }
+.prose ol.steps li { position: relative; padding-left: 2.6rem; counter-increment: step; }
+.prose ol.steps li::before {
+  content: counter(step); position: absolute; left: 0; top: .1em;
+  width: 1.8rem; height: 1.8rem; border-radius: 50%;
+  display: grid; place-items: center;
+  font-family: var(--font-display); font-size: .85rem; font-weight: 800;
+  color: var(--blue-600); background: var(--blue-50); border: 1px solid var(--blue-100);
+}
+.reviews-grid--two { column-count: 2; max-width: 900px; margin-inline: auto; }
+@media (max-width: 640px) { .reviews-grid--two { column-count: 1; } }
 
 /* --------------------------------------------------------------------------
    7. Marquee / capability strip
@@ -1114,6 +1156,7 @@ p { text-wrap: pretty; }
 }
 .about-text h2 { font-size: clamp(1.9rem, 3.6vw, 2.75rem); margin-bottom: 1.25rem; }
 .about-text p { color: var(--text-muted); margin-bottom: 1rem; font-size: 1.02rem; }
+.about-text .about-lead { color: var(--navy-900); font-size: 1.08rem; font-weight: 500; }
 .about-text .btn { margin-top: .85rem; }
 
 .about-values { display: grid; gap: 1rem; }
@@ -1602,7 +1645,17 @@ p { text-wrap: pretty; }
   .logo-mark { width: 33px; }
 
   .hero-actions .btn, .cta-actions .btn, .hero-cta > .btn { width: 100%; }
-  .hero-trust { gap: .8rem 1.25rem; }
+
+  /* Above the fold on a 667px-tall phone: headline, promise, button, three benefits. */
+  .hero { padding-top: calc(var(--header-h) + 26px); padding-bottom: 44px; }
+  .hero-grid { gap: 36px; }
+  .hero-badge { margin-bottom: .95rem; font-size: .74rem; padding: .38rem .8rem .38rem .45rem; }
+  .hero h1 { font-size: 1.92rem; line-height: 1.1; margin-bottom: .85rem; }
+  .hero-sub { font-size: 1rem; line-height: 1.5; margin-bottom: 1.25rem; }
+  .hero-cta { margin-bottom: .55rem; }
+  .hero-microcopy { font-size: .8rem; margin-bottom: 1rem; }
+  .hero-trust { flex-direction: column; align-items: flex-start; gap: .5rem; padding-top: .95rem; }
+  .hero-trust-item { font-size: .86rem; }
 
   .dash-kpis { grid-template-columns: 1fr; }
   .dash-float-1 { top: -16px; left: -8px; }

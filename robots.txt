@@ -1,4 +1,54 @@
+# Search engines
 User-agent: *
+Allow: /
+Disallow: /thank-you.html
+
+# AI assistants and answer engines: explicitly welcome
+User-agent: GPTBot
+Allow: /
+Disallow: /thank-you.html
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /thank-you.html
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /thank-you.html
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /thank-you.html
+
+User-agent: Claude-User
+Allow: /
+Disallow: /thank-you.html
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /thank-you.html
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /thank-you.html
+
+User-agent: Perplexity-User
+Allow: /
+Disallow: /thank-you.html
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /thank-you.html
+
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /thank-you.html
+
+User-agent: Bingbot
+Allow: /
+Disallow: /thank-you.html
+
+User-agent: CCBot
 Allow: /
 Disallow: /thank-you.html
 
