@@ -22,305 +22,259 @@
 <style>
 /* ==========================================================================
    FirstComms — Public safety BDA / ERRC landing page
-   Palette, type and geometry sampled from firstcomms.net.
-   Single file on purpose: one request, no blocking fonts, no external CSS.
+   One file on purpose: a single request, no webfonts, no external CSS.
+   Mono carries the brand on headings and UI; body copy is system sans,
+   which is what makes long-form text on this page actually readable.
    ========================================================================== */
 :root{
-  /* Brand — sampled from the FirstComms site */
-  --cream-50:#FBF7F4;
-  --cream-100:#F7F1ED;
-  --cream-200:#EBE1DA;   /* page ground */
-  --cream-300:#E0D2C9;
-  --cream-400:#CDB9AC;   /* hairlines */
+  --cream-50:#FBF7F4; --cream-100:#F7F1ED; --cream-200:#EBE1DA;
+  --cream-300:#E0D2C9; --cream-400:#CDB9AC;
 
-  --brown-900:#240D07;   /* header, ticker, footer */
-  --brown-800:#3A1710;
-  --brown-700:#5A2415;   /* headings */
-  --brown-600:#74341E;   /* body copy */
-  --brown-400:#8A5540;   /* muted copy (4.7:1 on cream) */
-  --brown-200:#C8B3A6;   /* muted copy on dark */
+  --brown-900:#240D07; --brown-800:#3A1710; --brown-700:#5A2415;
+  --brown-600:#74341E; --brown-400:#8A5540; --brown-200:#C8B3A6;
 
-  --orange:#F4491B;      /* brand orange — fills, rules, dark-text-on-orange */
-  --orange-btn:#D93F12;  /* white text on this hits 4.5:1 */
-  --orange-lift:#FF6A3D; /* orange on dark surfaces */
-  --orange-wash:#FBE3DA;
+  --orange:#FA5019; --orange-btn:#D93F12; --orange-lift:#FF6A3D; --orange-wash:#FBE3DA;
 
-  --text:var(--brown-700);
-  --muted:var(--brown-600);
-  --line:var(--cream-300);
-  --bg:var(--cream-200);
+  --text:var(--brown-700); --muted:var(--brown-600);
+  --line:var(--cream-300); --bg:var(--cream-200);
 
-  --font:ui-monospace,"SF Mono","JetBrains Mono","Roboto Mono","DejaVu Sans Mono",Menlo,Consolas,monospace;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono","Roboto Mono","DejaVu Sans Mono",Menlo,Consolas,monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 
   --shadow-sm:0 1px 3px rgba(36,13,7,.08);
   --shadow-md:0 12px 30px rgba(36,13,7,.10);
   --shadow-lg:0 26px 60px rgba(36,13,7,.18);
-  --container:1180px; --header-h:64px;
-  --cut:12px;            /* corner bevel — the site's angular motif */
+  --container:1180px; --header-h:64px; --cut:12px;
 }
 
 *,*::before,*::after{box-sizing:border-box}
 *{margin:0}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 12px)}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
-body{font-family:var(--font);font-size:.95rem;line-height:1.75;color:var(--text);background:var(--bg);
+body{font-family:var(--sans);font-size:1.02rem;line-height:1.65;color:var(--muted);background:var(--bg);
   -webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:env(safe-area-inset-bottom)}
 img,svg{display:block;max-width:100%;height:auto}
 button,input,select,textarea{font:inherit;color:inherit}
 a{color:inherit;text-decoration:none}
 ul,ol{list-style:none;padding:0}
-h1,h2,h3,h4{font-weight:700;line-height:1.2;text-transform:uppercase;letter-spacing:.04em;color:var(--brown-700);text-wrap:balance}
-h1{font-size:clamp(1.75rem,3.9vw,2.85rem);letter-spacing:.05em;line-height:1.15}
-h2{font-size:clamp(1.35rem,2.6vw,1.95rem)}
-h3{font-size:1rem;letter-spacing:.06em}
+h1,h2,h3,h4{font-family:var(--mono);font-weight:700;line-height:1.2;text-transform:uppercase;
+  letter-spacing:.04em;color:var(--brown-700);text-wrap:balance}
+h1{font-size:clamp(1.8rem,4vw,2.9rem);letter-spacing:.05em;line-height:1.14}
+h2{font-size:clamp(1.3rem,2.5vw,1.85rem)}
+h3{font-size:.95rem;letter-spacing:.06em}
 p{text-wrap:pretty}
 strong{font-weight:700;color:var(--brown-700)}
 :focus-visible{outline:3px solid var(--brown-900);outline-offset:3px}
-/* A beveled button clips its own outline, so focus is shown by inverting the
-   fill instead — visible on every edge, no reliance on the clipped ring. */
-.btn:focus-visible{outline:none;background:var(--brown-900);color:var(--cream-100);border-color:var(--brown-900)}
-.btn-dark:focus-visible,.btn-light:focus-visible{background:var(--orange-btn);color:#fff}
 
 .container{width:100%;max-width:var(--container);margin-inline:auto;padding-inline:20px}
-.section{padding:clamp(48px,6.5vw,84px) 0}
-.section-tight{padding:clamp(36px,4.5vw,56px) 0}
+.section{padding:clamp(44px,5.5vw,72px) 0}
 .bg-card{background:var(--cream-100)}
-.bg-dark{background:var(--brown-900);color:var(--cream-200)}
+.bg-dark{background:var(--brown-900);color:var(--brown-200)}
 .bg-dark h2,.bg-dark h3{color:var(--cream-100)}
-.bg-dark p{color:var(--brown-200)}
-.eyebrow{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--orange-btn);border-bottom:2px solid var(--orange);padding-bottom:5px}
+.eyebrow{display:inline-block;font-family:var(--mono);font-size:.68rem;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--orange-btn);border-bottom:2px solid var(--orange);padding-bottom:5px}
 .bg-dark .eyebrow{color:var(--orange-lift)}
-.lede{font-size:1rem;color:var(--muted);max-width:66ch;line-height:1.8}
+.lede{font-size:1.05rem;max-width:60ch}
 .bg-dark .lede{color:var(--brown-200)}
-.section-head{max-width:72ch;margin-bottom:34px}
-.section-head h2{margin-top:16px}
-.section-head p{margin-top:14px}
-.skip{position:absolute;left:-9999px;top:0;background:var(--brown-900);color:var(--cream-100);padding:12px 18px;z-index:200}
+.section-head{max-width:62ch;margin-bottom:30px}
+.section-head h2{margin-top:14px}
+.section-head p{margin-top:12px}
+.center{text-align:center;margin-inline:auto}
+.skip{position:absolute;left:-9999px;background:var(--brown-900);color:var(--cream-100);padding:12px 18px;z-index:200}
 .skip:focus{left:12px;top:12px}
-.rule{height:2px;background:var(--orange);width:56px;margin-top:18px}
 
-/* ---------- Buttons: beveled corners, uppercase, tracked ---------- */
+/* ---------- Buttons ---------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 26px;
-  font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;border:0;
+  font-family:var(--mono);font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  cursor:pointer;border:0;text-align:center;background:var(--orange-btn);color:#fff;
   clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut));
-  transition:background-color .15s ease,color .15s ease;text-align:center}
-.btn-primary{background:var(--orange-btn);color:#fff}
-.btn-primary:hover{background:#B93209}
-.btn-dark{background:var(--brown-900);color:var(--cream-100)}
-.btn-dark:hover{background:var(--brown-800)}
-/* No bevel on the outline variant: a clipped border leaves the two diagonal
-   corners unstroked, which reads as a broken frame. Filled buttons carry the
-   angular motif; outlined ones stay square and closed. */
-.btn-outline{background:transparent;color:var(--brown-700);border:2px solid var(--brown-700);clip-path:none}
-.btn-outline:hover{background:var(--brown-900);color:var(--cream-100);border-color:var(--brown-900)}
-.btn-light{background:var(--cream-100);color:var(--brown-900)}
-.btn-light:hover{background:#fff}
+  transition:background-color .15s ease}
+.btn:hover{background:#B93209}
+.btn:focus-visible{outline:none;background:var(--brown-900)}
 .btn-sm{padding:11px 18px;font-size:.72rem;--cut:9px}
 .btn-block{width:100%}
-.btn-row{display:flex;flex-wrap:wrap;gap:12px}
 
 /* ---------- Header ---------- */
-.header{position:sticky;top:0;z-index:100;background:var(--brown-900);color:var(--cream-200);
-  border-bottom:2px solid var(--orange)}
-.header-inner{height:var(--header-h);display:flex;align-items:center;justify-content:space-between;gap:18px}
+.header{position:sticky;top:0;z-index:100;background:var(--brown-900);border-bottom:2px solid var(--orange)}
+.header-inner{height:var(--header-h);display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:10px}
-.brand svg{flex:none}
-.brand span{font-size:.98rem;font-weight:700;letter-spacing:.2em;color:var(--cream-100);white-space:nowrap}
-.header-nav{display:none;gap:22px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase}
+.brand span{font-family:var(--mono);font-size:.95rem;font-weight:700;letter-spacing:.2em;
+  color:var(--cream-100);white-space:nowrap}
+.header-nav{display:none;gap:22px;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase}
 .header-nav a{color:var(--brown-200);padding:5px 0;border-bottom:2px solid transparent}
 .header-nav a:hover,.header-nav a.active{color:var(--cream-100);border-color:var(--orange)}
-.header-cta{display:flex;align-items:center;gap:12px}
-.header-cta .btn{white-space:nowrap;display:none}
-/* One ask per screen size. On a phone the number IS the call to action, so it
-   is the primary button and the form button is hidden; from 620px up the phone
-   steps back to a plain link at the top and the form button carries the ask. */
-.header-phone{display:inline-flex;align-items:center;gap:7px;font-size:.76rem;font-weight:700;
-  letter-spacing:.06em;white-space:nowrap;padding:11px 14px;background:var(--orange-btn);color:#fff;
+.header-phone{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:.76rem;
+  font-weight:700;letter-spacing:.06em;white-space:nowrap;padding:11px 14px;background:var(--orange-btn);color:#fff;
   clip-path:polygon(9px 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%,0 9px)}
-.header-phone svg{stroke:#fff}
 .header-phone:hover{background:#B93209}
+.header-phone svg{stroke:#fff}
 @media(min-width:620px){.header-phone{font-size:.82rem;padding:12px 18px}}
-@media(min-width:1000px){.header-nav{display:flex}}
-
+@media(min-width:980px){.header-nav{display:flex}}
 
 /* ---------- Hero ---------- */
-.hero{position:relative;overflow:hidden;background:var(--cream-200);
-  padding:clamp(34px,5vw,58px) 0 clamp(40px,5.5vw,64px)}
-.hero-lines{position:absolute;top:-40px;right:-160px;width:640px;opacity:.55;pointer-events:none}
-.hero-grid{position:relative;display:grid;gap:32px;align-items:start}
-@media(min-width:1000px){.hero-grid{grid-template-columns:1.02fr .98fr;gap:44px}}
-.hero h1{margin-top:18px}
+.hero{position:relative;overflow:hidden;padding:clamp(30px,4.5vw,52px) 0 clamp(34px,5vw,58px)}
+.hero-lines{position:absolute;top:-40px;right:-160px;width:620px;opacity:.5;pointer-events:none}
+.hero-grid{position:relative;display:grid;gap:30px;align-items:start}
+@media(min-width:1000px){.hero-grid{grid-template-columns:1.02fr .98fr;gap:42px}}
+.hero h1{margin-top:16px}
 .hero h1 .hl{color:var(--orange-btn)}
-.hero-sub{margin-top:20px;font-size:1rem;line-height:1.8;color:var(--muted);max-width:52ch}
-.hero .btn-row{margin-top:26px}
-.hero-points{margin-top:28px;display:grid;gap:12px;border-top:1px solid var(--line);padding-top:22px}
-.hero-points li{display:flex;gap:12px;align-items:flex-start;font-size:.88rem;line-height:1.7;color:var(--muted)}
-.hero-points svg{flex:none;margin-top:5px}
-.badge-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
-.badge{font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:7px 11px;
-  color:var(--brown-600);border:1px solid var(--cream-400);background:var(--cream-100)}
+.hero-sub{margin-top:18px;font-size:1.08rem;line-height:1.6;max-width:46ch}
+.hero-points{margin-top:24px;display:grid;gap:11px;border-top:1px solid var(--line);padding-top:20px}
+.hero-points li{display:flex;gap:11px;align-items:flex-start;font-size:.97rem;line-height:1.5}
+.hero-points svg{flex:none;margin-top:3px;color:var(--orange-btn)}
+.badge-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:22px}
+.badge{font-family:var(--mono);font-size:.64rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:7px 11px;color:var(--brown-600);border:1px solid var(--cream-400);background:var(--cream-100)}
 
 /* ---------- Form ---------- */
 .form-card{background:var(--cream-50);border:1px solid var(--cream-300);border-top:4px solid var(--orange);
-  padding:26px 24px;box-shadow:var(--shadow-md)}
-.form-card h2{font-size:1.2rem}
-.form-card .form-sub{margin-top:10px;font-size:.84rem;line-height:1.7;color:var(--muted)}
-.field{margin-top:15px}
-.field label{display:block;font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
-  margin-bottom:7px;color:var(--brown-700)}
+  padding:24px 22px;box-shadow:var(--shadow-md)}
+.form-card h2{font-size:1.15rem}
+.form-sub{margin-top:9px;font-size:.92rem;line-height:1.55}
+.field{margin-top:14px}
+.field label{display:block;font-family:var(--mono);font-size:.66rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;margin-bottom:6px;color:var(--brown-700)}
 .field .opt{color:var(--brown-400);font-weight:400}
-.field input,.field select,.field textarea{width:100%;padding:12px 13px;font-size:.9rem;
+.field input,.field select,.field textarea{width:100%;padding:12px 13px;font-size:.95rem;font-family:var(--sans);
   border:1px solid var(--cream-400);background:#fff;color:var(--brown-700);border-radius:0;
   transition:border-color .15s ease,box-shadow .15s ease}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--orange-btn);
-  box-shadow:0 0 0 3px rgba(244,73,27,.18)}
-.field textarea{min-height:80px;resize:vertical}
-.field-row{display:grid;gap:15px}
+  box-shadow:0 0 0 3px rgba(250,80,25,.18)}
+.field textarea{min-height:74px;resize:vertical}
+.field-row{display:grid;gap:14px}
 @media(min-width:520px){.field-row{grid-template-columns:1fr 1fr}}
-.form-foot{margin-top:14px;font-size:.72rem;line-height:1.65;color:var(--brown-400);text-align:center}
+.form-foot{margin-top:13px;font-size:.78rem;line-height:1.5;color:var(--brown-400);text-align:center}
 .form-foot a{text-decoration:underline;color:var(--brown-600)}
 .form-notice{margin-top:12px;padding:10px 12px;background:var(--orange-wash);border-left:3px solid var(--orange);
-  font-size:.78rem;color:var(--brown-700)}
-.form-alt{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);text-align:center;font-size:.78rem;
-  letter-spacing:.06em;color:var(--brown-400)}
-.form-alt a{display:inline-block;padding:6px 4px;font-weight:700;color:var(--brown-700);text-decoration:underline}
+  font-size:.85rem;color:var(--brown-700)}
 
-/* ---------- Ticker ---------- */
-.ticker{background:var(--brown-900);color:var(--cream-200);padding:15px 0;
-  border-top:1px solid rgba(244,73,27,.35);border-bottom:1px solid rgba(244,73,27,.35)}
+/* ---------- Capability bar ---------- */
+.ticker{background:var(--brown-900);padding:15px 0;border-bottom:1px solid rgba(250,80,25,.35)}
 .ticker-list{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 20px;
-  font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;text-align:center;color:var(--brown-200)}
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;
+  text-align:center;color:var(--brown-200)}
 .ticker-list li{display:flex;align-items:center;gap:20px}
 .ticker-list li:not(:last-child)::after{content:"";width:6px;height:6px;background:var(--orange);flex:none}
 
+/* ---------- Spec strip: the numbers, not a table ---------- */
+.specs{display:grid;gap:1px;background:var(--cream-400);border:1px solid var(--cream-400)}
+@media(min-width:560px){.specs{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.specs{grid-template-columns:repeat(3,1fr)}}
+.spec{background:var(--cream-50);padding:22px 20px}
+.spec b{display:block;font-family:var(--mono);font-size:1.5rem;font-weight:700;letter-spacing:.01em;
+  color:var(--orange-btn);line-height:1.1}
+.spec strong{display:block;margin-top:9px;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--brown-700)}
+.spec span{display:block;margin-top:6px;font-size:.86rem;line-height:1.5;color:var(--brown-400)}
+.fineprint{margin-top:16px;font-size:.82rem;line-height:1.6;color:var(--brown-400);max-width:80ch}
+
 /* ---------- Cards ---------- */
-.grid{display:grid;gap:18px}
+.grid{display:grid;gap:16px}
 .grid-2{grid-template-columns:1fr}
 .grid-3{grid-template-columns:1fr}
-@media(min-width:700px){.grid-2{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:1fr 1fr}}
+@media(min-width:640px){.grid-2{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:1fr 1fr}}
 @media(min-width:1000px){.grid-3{grid-template-columns:repeat(3,1fr)}}
-.card{background:var(--cream-50);border:1px solid var(--cream-300);padding:24px 22px;
+.card{background:var(--cream-50);border:1px solid var(--cream-300);padding:22px 20px;
   transition:border-color .18s ease,transform .18s ease}
 .card:hover{border-color:var(--orange);transform:translateY(-2px)}
-.card h3{margin-bottom:10px}
-.card p{font-size:.87rem;line-height:1.75;color:var(--muted)}
-.card-num{font-size:.7rem;font-weight:700;letter-spacing:.18em;color:var(--orange-btn);display:block;margin-bottom:10px}
-.card ul{margin-top:14px;display:grid;gap:8px;border-top:1px solid var(--line);padding-top:14px}
-.card li{display:flex;gap:9px;font-size:.82rem;line-height:1.65;color:var(--muted)}
-.card li svg{flex:none;margin-top:5px}
-.bg-dark .card{background:rgba(255,255,255,.045);border-color:rgba(255,255,255,.16)}
-.bg-dark .card p,.bg-dark .card li{color:var(--brown-200)}
-.bg-dark .card:hover{border-color:var(--orange)}
+.card h3{margin-bottom:8px}
+.card p{font-size:.93rem;line-height:1.6;color:var(--brown-400)}
+.ico{width:38px;height:38px;display:grid;place-items:center;background:var(--orange-wash);
+  color:var(--orange-btn);margin-bottom:14px}
+.bg-dark .ico{background:rgba(250,80,25,.16);color:var(--orange-lift)}
+.card-num{display:block;font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.18em;
+  color:var(--orange-btn);margin-bottom:9px}
+.bg-dark .card{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.16)}
+.bg-dark .card p{color:var(--brown-200)}
 
-.note{background:var(--cream-50);border:1px solid var(--cream-300);border-left:4px solid var(--orange);
-  padding:18px 22px;margin-bottom:28px;font-size:.9rem;line-height:1.8;color:var(--muted);max-width:88ch}
-.symptom{display:flex;gap:12px;padding:16px 18px;background:var(--cream-50);border:1px solid var(--cream-300);
-  border-left:3px solid var(--orange)}
-.symptom strong{display:block;font-size:.85rem;letter-spacing:.03em;text-transform:uppercase;line-height:1.5}
-.symptom p{margin-top:6px;font-size:.84rem;line-height:1.7;color:var(--muted)}
+/* ---------- Split rows (pass / fail, symptoms) ---------- */
+.split{display:grid;gap:16px}
+@media(min-width:700px){.split{grid-template-columns:1fr 1fr}}
+.split-item{padding:20px;border:1px solid var(--cream-300);background:var(--cream-50)}
+.split-item.pass{border-left:4px solid #0E8F5A}
+.split-item.fail{border-left:4px solid var(--orange)}
+.split-item h3{margin-bottom:8px}
+.split-item p{font-size:.93rem;line-height:1.6;color:var(--brown-400)}
+
+.checks{display:grid;gap:11px;margin-top:6px}
+.checks li{display:flex;gap:11px;align-items:flex-start;font-size:.95rem;line-height:1.55}
+.checks svg{flex:none;margin-top:3px;color:var(--orange-btn)}
 
 /* ---------- Steps ---------- */
-.steps{display:grid;gap:16px}
-@media(min-width:860px){.steps{grid-template-columns:repeat(4,1fr)}}
-.step{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);padding:24px 20px;position:relative}
-.step b{display:block;font-size:1.5rem;letter-spacing:-.02em;color:var(--orange-lift);margin-bottom:12px}
-.step h3{margin-bottom:10px}
-.step p{font-size:.85rem;line-height:1.7}
+.steps{display:grid;gap:14px}
+@media(min-width:760px){.steps{grid-template-columns:repeat(4,1fr)}}
+.step{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);padding:20px 18px}
+.step b{display:block;font-family:var(--mono);font-size:1.35rem;color:var(--orange-lift);margin-bottom:10px}
+.step h3{margin-bottom:8px}
+.step p{font-size:.9rem;line-height:1.55;color:var(--brown-200)}
 
-/* ---------- Commissioning sequence ---------- */
-.seq{display:grid;gap:0;border:1px solid var(--cream-300);background:var(--cream-50)}
-.seq li{display:flex;gap:16px;padding:15px 20px;border-bottom:1px solid var(--line);font-size:.87rem;
-  line-height:1.7;color:var(--muted)}
-.seq li:last-child{border-bottom:0}
-.seq b{flex:none;width:26px;font-size:.75rem;letter-spacing:.1em;color:var(--orange-btn);padding-top:2px}
-.seq strong{display:block;text-transform:uppercase;font-size:.78rem;letter-spacing:.08em;margin-bottom:3px}
-
-/* ---------- Table ---------- */
-.table-wrap{overflow-x:auto;border:1px solid var(--cream-300);background:var(--cream-50)}
-table{border-collapse:collapse;width:100%;min-width:580px;font-size:.85rem}
-th,td{text-align:left;padding:14px 18px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.7}
-thead th{background:var(--brown-900);color:var(--cream-100);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase}
-tbody td:first-child{white-space:nowrap;color:var(--brown-700)}
-tbody td strong{color:var(--brown-700)}
-tbody tr:last-child td{border-bottom:0}
-td{color:var(--muted)}
-
-/* ---------- Stats ---------- */
-.stats{display:grid;gap:1px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.16);margin-top:32px}
-@media(min-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stats{display:grid;gap:1px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.16);margin-top:26px}
+@media(min-width:560px){.stats{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1000px){.stats{grid-template-columns:repeat(4,1fr)}}
-.stat{background:var(--brown-900);padding:22px 20px}
-.stat b{display:block;font-size:1.4rem;letter-spacing:.02em;color:var(--cream-100);text-transform:uppercase}
-.stat span{display:block;margin-top:7px;font-size:.76rem;line-height:1.6;color:var(--brown-200)}
+.stat{background:var(--brown-900);padding:20px 18px}
+.stat b{display:block;font-family:var(--mono);font-size:1.3rem;color:var(--cream-100);text-transform:uppercase}
+.stat span{display:block;margin-top:6px;font-size:.83rem;line-height:1.5;color:var(--brown-200)}
+
+/* ---------- Commissioning chips ---------- */
+.chips{display:grid;gap:10px}
+@media(min-width:640px){.chips{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.chips{grid-template-columns:repeat(4,1fr)}}
+.chip{display:flex;gap:11px;align-items:baseline;padding:14px 16px;background:var(--cream-50);
+  border:1px solid var(--cream-300);font-size:.9rem;line-height:1.45}
+.chip b{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;color:var(--orange-btn);flex:none}
 
 /* ---------- Pills ---------- */
-.pill-list{display:flex;flex-wrap:wrap;gap:8px}
-.pill{padding:8px 13px;background:var(--cream-50);border:1px solid var(--cream-400);
-  font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--brown-600)}
-
-/* ---------- Reviews (enable once real quotes are in — see the block in <main>) ---------- */
-.review{background:var(--cream-50);border:1px solid var(--cream-300);padding:24px 22px;
-  border-top:3px solid var(--orange)}
-.stars{display:flex;gap:4px;margin-bottom:14px}
-.review blockquote{font-size:.89rem;line-height:1.85;color:var(--muted)}
-.review cite{display:block;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);
-  font-style:normal;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--brown-700)}
-.review cite span{display:block;margin-top:4px;font-weight:400;letter-spacing:.06em;
-  text-transform:none;color:var(--brown-400)}
+.pill-list{display:flex;flex-wrap:wrap;gap:7px}
+.pill{padding:8px 13px;background:var(--cream-50);border:1px solid var(--cream-400);font-family:var(--mono);
+  font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--brown-600)}
 
 /* ---------- FAQ ---------- */
-.faq{max-width:900px;margin-inline:auto;border-top:1px solid var(--line)}
+.faq{max-width:860px;margin-inline:auto;border-top:1px solid var(--line)}
 .faq-item{border-bottom:1px solid var(--line)}
-.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 4px;
-  background:none;border:0;text-align:left;font-size:.88rem;font-weight:700;letter-spacing:.04em;
-  text-transform:uppercase;line-height:1.5;color:var(--brown-700);cursor:pointer}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:17px 4px;
+  background:none;border:0;text-align:left;font-family:var(--mono);font-size:.85rem;font-weight:700;
+  letter-spacing:.04em;text-transform:uppercase;line-height:1.45;color:var(--brown-700);cursor:pointer}
 .faq-q:hover{color:var(--orange-btn)}
-.faq-q .chev{flex:none;transition:transform .2s ease}
+.faq-q .chev{flex:none;transition:transform .2s ease;color:var(--orange-btn)}
 .faq-item.open .faq-q .chev{transform:rotate(45deg)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .28s ease}
-.faq-item.open .faq-a{max-height:560px}
-.faq-a p{padding:0 4px 20px;font-size:.87rem;line-height:1.8;color:var(--muted);max-width:80ch}
+.faq-item.open .faq-a{max-height:420px}
+.faq-a p{padding:0 4px 18px;font-size:.95rem;line-height:1.65;color:var(--brown-400);max-width:76ch}
 
-/* ---------- Final CTA ---------- */
-.cta-final{background:var(--brown-900);color:var(--cream-200);padding:clamp(32px,5vw,56px) clamp(22px,4vw,48px);
-  text-align:center;border-left:4px solid var(--orange)}
-.cta-final h2{color:var(--cream-100)}
-.cta-final p{margin:16px auto 0;max-width:60ch;color:var(--brown-200);font-size:.9rem;line-height:1.8}
-.cta-final .btn-row{justify-content:center;margin-top:28px}
+/* ---------- Reviews (styles ready; markup is commented out in <main>) ---------- */
+.review{background:var(--cream-50);border:1px solid var(--cream-300);padding:22px 20px;border-top:3px solid var(--orange)}
+.stars{display:flex;gap:4px;margin-bottom:13px;color:var(--orange)}
+.review blockquote{font-size:.93rem;line-height:1.7}
+.review cite{display:block;margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-style:normal;
+  font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brown-700)}
+
+/* ---------- Hero photograph (enable with the slot in <main>) ---------- */
+.hero-photo{background:var(--brown-900);margin:0}
+.hero-photo img{display:block;width:100%;height:auto;object-fit:cover;max-height:460px}
 
 /* ---------- Footer ---------- */
-.footer{background:var(--brown-900);color:var(--brown-200);padding:44px 0 104px;font-size:.82rem;line-height:1.8}
-@media(min-width:860px){.footer{padding-bottom:44px}}
-.footer-grid{display:grid;gap:28px}
+.footer{background:var(--brown-900);color:var(--brown-200);padding:40px 0 100px;font-size:.9rem;line-height:1.65}
+@media(min-width:860px){.footer{padding-bottom:40px}}
+.footer-grid{display:grid;gap:26px}
 @media(min-width:760px){.footer-grid{grid-template-columns:1.5fr 1fr 1fr}}
-.footer h4{color:var(--cream-100);font-size:.7rem;letter-spacing:.18em;margin-bottom:14px}
+.footer h4{color:var(--cream-100);font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;margin-bottom:12px}
 .footer a:hover{color:var(--orange-lift)}
-.footer ul{display:grid;gap:9px}
-.footer-bottom{margin-top:32px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);
-  display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;font-size:.72rem;line-height:1.7;
-  color:var(--brown-200)}
+.footer ul{display:grid;gap:8px}
+.footer-bottom{margin-top:28px;padding-top:18px;border-top:1px solid rgba(255,255,255,.14);
+  display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-between;font-size:.78rem;line-height:1.6}
 
 /* ---------- Mobile call bar ---------- */
-.callbar{position:fixed;left:0;right:0;bottom:0;z-index:110;display:grid;grid-template-columns:1fr;
+.callbar{position:fixed;left:0;right:0;bottom:0;z-index:110;display:grid;
   padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--brown-900);
   border-top:2px solid var(--orange)}
 @media(min-width:860px){.callbar{display:none}}
 
-/* ---------- Hero photograph (enable with the slot in <main>) ---------- */
-.hero-photo{background:var(--brown-900);margin:0;padding-bottom:14px}
-.hero-photo img{display:block;width:100%;height:auto;object-fit:cover;max-height:520px}
-.hero-photo figcaption{max-width:var(--container);margin:14px auto 0;padding:0 20px;text-align:center;
-  font-size:.74rem;line-height:1.7;letter-spacing:.04em;color:var(--brown-200)}
-
 /* ---------- Reveal ---------- */
-.reveal{opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease}
+.reveal{opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease}
 .reveal.visible{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
 </style>
 
-<!-- Analytics: async, non-blocking. -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BZ01Y3KFS"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -337,7 +291,7 @@ td{color:var(--muted)}
       "@type": "ProfessionalService",
       "@id": "https://www.firstcomms.net/#business",
       "name": "FirstComms",
-      "description": "Public safety BDA / ERRC radio coverage testing, system design, installation and permitting for code compliance.",
+      "description": "RF grid testing and code-compliant BDA / ERRC installation for emergency responder radio coverage in buildings.",
       "url": "https://www.firstcomms.net/",
       "telephone": "+1-732-314-5162",
       "address": {
@@ -363,53 +317,33 @@ td{color:var(--muted)}
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "What is a public safety BDA system?",
-          "acceptedAnswer": { "@type": "Answer", "text": "A bi-directional amplifier is the core of an Emergency Responder Radio Communication System. A donor antenna on the roof receives the public safety radio signal from the outside network, the BDA amplifies it, and coaxial or fiber runs distribute it to antennas throughout the building — carrying responder transmissions back out the same way. Together those parts are what most codes and fire officials call a public safety DAS." }
-        },
-        {
-          "@type": "Question",
-          "name": "What signal level does the code actually require?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Typically a minimum inbound signal of -95 dBm delivering an audio quality of DAQ 3.0 or better, across 95 percent of general building areas and 99 percent of critical areas such as fire command centers, exit stairs, elevator lobbies, standpipe connections and fire pump rooms. Your local fire official sets the adopted edition and can designate additional critical areas." }
-        },
-        {
-          "@type": "Question",
           "name": "How do I know whether my building needs a BDA?",
-          "acceptedAnswer": { "@type": "Answer", "text": "A radio coverage grid test answers it. The building is divided into a grid, and signal strength and audio quality are measured at each test point on the local public safety frequencies. Any point below the minimum is a fail for that point. Pass the grid and you submit the report and install nothing; fail it and the same measurements become the design basis for the system." }
+          "acceptedAnswer": { "@type": "Answer", "text": "A radio coverage grid test answers it. We divide the building into a grid and measure signal strength and audio quality at each point on the local public safety frequencies. Pass, and you submit the report and install nothing. Fail, and those same measurements become the design basis." }
+        },
+        {
+          "@type": "Question",
+          "name": "What signal level does the code require?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Typically a minimum inbound signal of -95 dBm delivering DAQ 3.0 audio quality or better, across 95 percent of general building areas and 99 percent of critical areas such as fire command centers, exit stairs, elevator lobbies and fire pump rooms." }
         },
         {
           "@type": "Question",
           "name": "What does a BDA system cost?",
-          "acceptedAnswer": { "@type": "Answer", "text": "It depends on square footage, how many floors and stairwells need antennas, the construction type, how strong the donor signal is, and what your local fire official requires. Permit fees and plan review times vary by jurisdiction as well. Anyone quoting a firm number before testing is guessing — we give you a real number once the grid test says what the building needs, and if it passes, the answer is nothing." }
+          "acceptedAnswer": { "@type": "Answer", "text": "It depends on square footage, floor count, construction type and how strong the donor signal is. Anyone quoting a firm number before testing is guessing. We price it once the grid test says what the building needs — and if it passes, the answer is nothing." }
         },
         {
           "@type": "Question",
-          "name": "Which codes govern emergency responder radio coverage?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Most jurisdictions adopt International Fire Code Section 510 alongside NFPA 1225, whose Chapter 18 carries the ERCES provisions that previously lived in NFPA 1221. NFPA 1221 has not been withdrawn and many jurisdictions still cite it directly. Monitoring and supervision follow NFPA 72, and signal boosters operate under FCC Part 90.219." }
+          "name": "Will this hold up my certificate of occupancy?",
+          "acceptedAnswer": { "@type": "Answer", "text": "In most jurisdictions, yes. Radio coverage is commonly a condition of final inspection, so a failed or missing test can stall a CO. It is one of the few compliance items that can hold a finished building empty, which is why it is worth testing early." }
         },
         {
           "@type": "Question",
-          "name": "How much battery backup does a BDA need?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Under the 2021 IFC, 12 hours of secondary power, housed in a NEMA 3R or higher rated enclosure and monitored for faults. Some editions and jurisdictions require 24 hours. Batteries are replaced on service life, not on failure, which is one of the things annual inspection is meant to catch." }
+          "name": "Is this the same as a cell phone signal booster?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. This is the two-way radio network fire and police carry into your building, on public safety frequencies, under fire code. It is not cellular, not Wi-Fi and not carrier DAS, and cellular-grade equipment will not pass an inspection." }
         },
         {
           "@type": "Question",
-          "name": "Will a failed radio coverage test hold up my certificate of occupancy?",
-          "acceptedAnswer": { "@type": "Answer", "text": "In most jurisdictions, yes. Emergency responder radio coverage is commonly a condition of final inspection, so a failed or missing test can stall a CO and expose the owner to fines. Testing early — before final inspections are scheduled — is what keeps it off the critical path." }
-        },
-        {
-          "@type": "Question",
-          "name": "Does a BDA system need annual testing?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. IFC 510.6.1 requires ERRCS to be inspected annually to confirm the system still performs. That means coverage re-verification plus checks of the amplifier, batteries, donor antenna and supervisory signals, with records kept for the fire official. The obligation sits with the building owner, not with whoever installed it." }
-        },
-        {
-          "@type": "Question",
-          "name": "Can FirstNet interfere with a BDA system?",
-          "acceptedAnswer": { "@type": "Answer", "text": "It can. Many BDAs pass 700 MHz Band 14 (FirstNet) along with 700 and 800 MHz public safety bands, and where a nearby FirstNet site is much stronger than the narrowband public safety signal, that strong carrier can desensitize the amplifier. The fix is filtering ahead of the BDA, which is why the donor survey matters as much as the interior design." }
-        },
-        {
-          "@type": "Question",
-          "name": "Can you take over a system another contractor installed?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Failed acceptance tests, rejected submittals, oscillation and donor isolation problems, and systems that no longer pass annual testing are regular work for us. We test what is there, document what does not comply, and give you a fixed scope to reach approval." }
+          "name": "Does the system need annual testing?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. IFC 510.6.1 requires annual inspection — coverage re-verification plus checks of the amplifier, batteries, donor antenna and supervisory signals, with records kept for the fire official. The obligation sits with the building owner." }
         }
       ]
     }
@@ -421,33 +355,68 @@ td{color:var(--muted)}
 <body>
 <a class="skip" href="#lead-form">Skip to the enquiry form</a>
 
+<!-- Icon sprite: defined once, referenced by <use> so the markup stays small -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="i-wave" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M12 20v-7"/><circle cx="12" cy="9" r="2.2"/>
+      <path d="M6.5 12.5a7 7 0 010-8M17.5 4.5a7 7 0 010 8"/><path d="M8 20h8"/>
+    </g>
+    <g id="i-draft" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 4h11l5 5v11H4z"/><path d="M15 4v5h5"/><path d="M8 13h8M8 17h5"/>
+    </g>
+    <g id="i-tools" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14.5 5.5a3.5 3.5 0 004.9 4.2L21 20H8l1.6-10.3a3.5 3.5 0 004.9-4.2z"/><path d="M4 20h16"/>
+    </g>
+    <g id="i-doc" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9.5 14l2 2 3.5-4"/>
+    </g>
+    <g id="i-cal" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="5" width="18" height="16"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M8.5 15l2 2 4-4"/>
+    </g>
+    <g id="i-wrench" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 6.5a5 5 0 01-6.6 6.6L6 20.5 3.5 18l7.4-7.4A5 5 0 0117.5 4z"/>
+    </g>
+    <g id="i-shield" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>
+    </g>
+    <g id="i-badge" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="9" r="5"/><path d="M8.5 13.5L7 21l5-2.5L17 21l-1.5-7.5"/>
+    </g>
+    <g id="i-hand" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 12l4-1 8 3 4-1.5"/><path d="M6 20h12"/><path d="M12 3v6"/>
+    </g>
+    <g id="i-check" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12"/>
+    </g>
+  </defs>
+</svg>
+
 <header class="header" id="header">
   <div class="container header-inner">
     <a class="brand" href="#top" aria-label="FirstComms — top of page">
       <svg width="26" height="26" viewBox="0 0 200 200" aria-hidden="true">
-          <path d="M68 40 L158 40 L158 54 L144 68 L68 68 L68 144 L54 158 L40 158 L40 68 Z" fill="#FA5019"/>
-          <path d="M100 78 L152 78 L152 90 L140 102 L100 102 L100 140 L88 152 L76 152 L76 102 Z" fill="#FA5019"/>
-          <path d="M130 118 L152 118 L152 140 L140 152 L118 152 L118 130 Z" fill="#FA5019"/>
-        </svg>
+        <path d="M68 40 L158 40 L158 54 L144 68 L68 68 L68 144 L54 158 L40 158 L40 68 Z" fill="#FA5019"/>
+        <path d="M100 78 L152 78 L152 90 L140 102 L100 102 L100 140 L88 152 L76 152 L76 102 Z" fill="#FA5019"/>
+        <path d="M130 118 L152 118 L152 140 L140 152 L118 152 L118 130 Z" fill="#FA5019"/>
+      </svg>
       <span>FIRSTCOMMS</span>
     </a>
 
-    <nav class="header-nav" id="headerNav" aria-label="Section navigation">
+    <nav class="header-nav" aria-label="Section navigation">
+      <a href="#code">Code</a>
       <a href="#rf-testing">RF Testing</a>
-      <a href="#services">ERRC Systems</a>
-      <a href="#process">Process</a>
-      <a href="#compliance">Code</a>
+      <a href="#services">Services</a>
+      <a href="#why">Why Us</a>
       <a href="#faq">FAQ</a>
     </nav>
 
-    <div class="header-cta">
-      <a class="header-phone phone-link" href="tel:+17323145162">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.2a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/>
-        </svg>
-        732-314-5162
-      </a>
-    </div>
+    <a class="header-phone phone-link" href="tel:+17323145162">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.2a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/>
+      </svg>
+      732-314-5162
+    </a>
   </div>
 </header>
 
@@ -455,62 +424,46 @@ td{color:var(--muted)}
 
   <!-- ================= HERO ================= -->
   <section class="hero">
-    <!-- Chevron line motif, matching the pattern on the FirstComms hero -->
     <svg class="hero-lines" viewBox="0 0 640 520" fill="none" aria-hidden="true">
       <g stroke="#D8C4B8" stroke-width="2">
-        <path d="M40 0 L300 240 L40 480"/>
-        <path d="M110 0 L370 240 L110 480"/>
-        <path d="M180 0 L440 240 L180 480"/>
-        <path d="M250 0 L510 240 L250 480"/>
+        <path d="M40 0 L300 240 L40 480"/><path d="M110 0 L370 240 L110 480"/>
+        <path d="M180 0 L440 240 L180 480"/><path d="M250 0 L510 240 L250 480"/>
         <path d="M320 0 L580 240 L320 480"/>
       </g>
     </svg>
 
     <div class="container hero-grid">
       <div>
-        <span class="eyebrow">Emergency Responder Radio Communication Systems</span>
+        <span class="eyebrow">Emergency Responder Radio Systems</span>
         <h1 id="hero-headline">Emergency responder radio coverage, <span class="hl">tested and installed to code</span>.</h1>
 
         <p class="hero-sub">
-          Two things, done properly: <strong>RF testing</strong> that tells you where your building
-          actually stands, and <strong>code-compliant installation</strong> of the system that fixes it.
-          Public safety radio only &mdash; this is the network first responders use inside your building,
-          not cellular and not Wi-Fi.
+          RF testing that shows where your building stands. Code-compliant installation of the
+          system that fixes it. Public safety radio only &mdash; not cellular, not Wi-Fi.
         </p>
 
         <ul class="hero-points">
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>RF testing is our trade.</strong> Grid testing on the real public safety frequencies, measured floor by floor, documented for your permit file.</span>
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>Installed to code, first time.</strong> UL 2524-listed equipment, IFC 510 and NFPA 1225 coverage, built by our own technicians.</span>
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>Drawings stamped in house</strong> by our own architect, built to what your jurisdiction actually enforces.</span>
-          </li>
-          <li>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-            <span><strong>14+ years on ERRC.</strong> New construction, retrofits, and projects other people walked away from.</span>
-          </li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg>
+            <span><strong>Grid testing</strong> on the real public safety frequencies, floor by floor.</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg>
+            <span><strong>UL 2524 equipment</strong>, installed by our own technicians.</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg>
+            <span><strong>14+ years</strong> on ERRC. Testing, design, install and permits in house.</span></li>
         </ul>
 
-        <div class="badge-row" aria-label="Codes and standards we build to">
+        <div class="badge-row" aria-label="Codes we build to">
           <span class="badge">IFC 510</span>
           <span class="badge">NFPA 1225</span>
           <span class="badge">NFPA 72</span>
           <span class="badge">UL 2524</span>
-          <span class="badge">FCC Part 90.219</span>
+          <span class="badge">FCC 90.219</span>
         </div>
       </div>
 
       <!-- ============ LEAD FORM ============ -->
       <div class="form-card" id="lead-form">
         <h2>Talk to an RF engineer</h2>
-        <p class="form-sub">Tell us about the building. We&rsquo;ll tell you whether an ERRC system is likely
-          required, what your jurisdiction expects, and what it costs to know for certain.</p>
+        <p class="form-sub">Tell us about the building. We&rsquo;ll tell you what&rsquo;s required and what testing costs.</p>
 
         <form id="bdaForm" method="POST" action="https://api.web3forms.com/submit" novalidate>
           <input type="hidden" name="access_key" value="6379ac4d-e514-46c2-bfc6-e340a66a0b7b">
@@ -575,38 +528,34 @@ td{color:var(--muted)}
 
           <div class="field">
             <label for="message">Anything else? <span class="opt">(optional)</span></label>
-            <textarea id="message" name="message" rows="3"></textarea>
+            <textarea id="message" name="message" rows="2"></textarea>
           </div>
 
-          <button class="btn btn-primary btn-block" type="submit" style="margin-top:20px">Speak With An Expert</button>
+          <button class="btn btn-block" type="submit" style="margin-top:18px">Speak With An Expert</button>
 
           <p class="form-foot">
-            No obligation. We use your details only to answer this request &mdash;
+            No obligation. Details used only to answer this request &mdash;
             see our <a href="privacy.html">privacy policy</a>.
           </p>
         </form>
-
       </div>
     </div>
   </section>
 
   <!-- ================= HERO PHOTO =================
        SLOT READY — drop a real photograph in and delete this comment wrapper.
-
-       Save the image as lp/public-safety-bda/images/hero.jpg (about 1600x520,
-       under ~250KB). Anything wider than it needs costs load time, and this is
-       the LCP element on the page.
+       Save it as lp/public-safety-bda/images/hero.jpg (about 1600x460, under ~250KB).
+       It will be the LCP element, so keep it lean.
 
   <figure class="hero-photo">
-    <img src="images/hero.jpg" width="1600" height="520" fetchpriority="high"
+    <img src="images/hero.jpg" width="1600" height="460" fetchpriority="high"
          alt="A FirstComms technician commissioning a public safety BDA and battery cabinet in a building's mechanical room.">
-    <figcaption>Amplifier, battery backup and fire panel — installed, commissioned and documented.</figcaption>
   </figure>
   ================= END HERO PHOTO ================= -->
 
   <div class="ticker">
     <ul class="ticker-list container" aria-label="What we do">
-      <li>Radio Frequency Testing</li>
+      <li>RF Testing</li>
       <li>BDA &amp; ERRC Design</li>
       <li>Code-Compliant Installation</li>
       <li>Permitting</li>
@@ -614,49 +563,34 @@ td{color:var(--muted)}
     </ul>
   </div>
 
-  <!-- ================= WHAT IT IS ================= -->
-  <section class="section" id="what">
+  <!-- ================= THE NUMBERS ================= -->
+  <section class="section" id="code">
     <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">What a BDA system does</span>
-        <h2>Concrete, steel and Low-E glass block radio. A BDA puts the signal back.</h2>
-        <p class="lede">
-          An ERRC system keeps firefighters and police on their radios everywhere inside your building
-          &mdash; stairwells, basements, elevator lobbies, the middle of a warehouse floor. A donor antenna
-          on the roof pulls in the public safety signal, the bi-directional amplifier boosts it, and a
-          distributed antenna network spreads it across every floor. Responder transmissions travel back
-          out the same path to dispatch.
-        </p>
+      <div class="section-head center reveal">
+        <span class="eyebrow">What code requires</span>
+        <h2>The numbers your building is measured against</h2>
       </div>
 
-      <p class="note reveal">
-        <strong>Public safety radio only.</strong> This is the two-way radio network fire and police
-        carry into your building &mdash; not a cellular booster, not Wi-Fi, not carrier DAS. If your
-        problem is dropped mobile calls in the elevator, we are not the right call. If a fire official
-        needs to reach dispatch from your basement, we are.
+      <div class="specs reveal">
+        <div class="spec"><b>&minus;95 dBm</b><strong>Signal strength</strong>
+          <span>Minimum inbound level across the covered area.</span></div>
+        <div class="spec"><b>95% / 99%</b><strong>Coverage</strong>
+          <span>General areas, and critical areas like stairs and fire command.</span></div>
+        <div class="spec"><b>DAQ 3.0</b><strong>Audio quality</strong>
+          <span>Speech has to be intelligible, not just present.</span></div>
+        <div class="spec"><b>12 hours</b><strong>Battery backup</strong>
+          <span>Secondary power in a NEMA-rated, monitored enclosure.</span></div>
+        <div class="spec"><b>UL 2524</b><strong>Listed equipment</strong>
+          <span>Cellular-grade boosters fail plan review.</span></div>
+        <div class="spec"><b>Annual</b><strong>Re-testing</strong>
+          <span>IFC 510.6.1. The duty sits with the building owner.</span></div>
+      </div>
+
+      <p class="fineprint reveal">
+        Adopted editions and local amendments vary &mdash; IFC 510, NFPA 1225 (Chapter 18), NFPA 72 and
+        FCC Part 90.219 are the usual set. We confirm the specifics with your jurisdiction before design.
+        Your local fire official has final authority.
       </p>
-
-
-      <div class="grid grid-3">
-        <div class="card reveal">
-          <span class="card-num">01 / Donor</span>
-          <h3>Donor antenna</h3>
-          <p>Roof-mounted and aimed at the public safety site serving the property. Aim and isolation decide
-            whether the rest of the system is stable or oscillating.</p>
-        </div>
-        <div class="card reveal">
-          <span class="card-num">02 / Amplifier</span>
-          <h3>BDA &amp; battery backup</h3>
-          <p>A UL 2524-listed amplifier in a NEMA-rated enclosure, with 12 hours of secondary power and
-            faults reported to the fire alarm system.</p>
-        </div>
-        <div class="card reveal">
-          <span class="card-num">03 / Coverage</span>
-          <h3>Distributed antennas</h3>
-          <p>Coax or fiber runs feed antennas laid out to hit 95% of general areas and 99% of the critical
-            areas responders depend on.</p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -665,151 +599,74 @@ td{color:var(--muted)}
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">Start here</span>
-        <h2>Every project starts with an RF grid test</h2>
-        <p class="lede">
-          You cannot know whether a building needs a BDA until it is measured. We divide the building into a
-          test grid and measure signal strength and delivered audio quality at every point, on the actual
-          public safety frequencies in your jurisdiction. Any point under the minimum is a fail for that point
-          &mdash; and the report we hand you is written for your fire official, not for us.
-        </p>
+        <h2>It starts with an RF grid test</h2>
+        <p class="lede">We split the building into a grid and measure every point on the public safety
+          frequencies. Any point under the minimum fails. You get a report written for your fire official.</p>
       </div>
 
-      <div class="grid grid-2" style="margin-bottom:24px">
-        <div class="card reveal">
-          <h3>If the building passes</h3>
-          <p>You get documentation formatted for submission, and help closing it out with the fire official. No system,
-            no equipment, no reason to sell you one. That happens more often than people expect &mdash; and it
-            is the cheapest possible outcome.</p>
+      <div class="split reveal" style="margin-bottom:16px">
+        <div class="split-item pass">
+          <h3>If it passes</h3>
+          <p>You get the documentation and help closing it out. No system, no equipment, nothing sold.</p>
         </div>
-        <div class="card reveal">
-          <h3>If the building fails</h3>
-          <p>The same data becomes the design input: which grid squares failed, by how much, and what the donor
-            signal gives us to work with. You get a scoped, priced system that fixes the failing areas &mdash;
-            not a generic package.</p>
+        <div class="split-item fail">
+          <h3>If it fails</h3>
+          <p>The same data becomes the design: which squares failed, by how much, and what the donor
+            signal gives us to work with.</p>
         </div>
       </div>
 
-      <h3 class="reveal" style="margin-bottom:14px">Call us if any of this sounds familiar</h3>
-      <div class="grid grid-2">
-        <div class="symptom reveal">
-          <div>
-            <strong>Final inspection is coming and nobody tested radio coverage</strong>
-            <p>The test is commonly a condition of your certificate of occupancy. The walkthrough is an
-              expensive place to find that out.</p>
-          </div>
-        </div>
-        <div class="symptom reveal">
-          <div>
-            <strong>The building failed its radio test</strong>
-            <p>We take the failing report, verify it, design to the gap, and get the system permitted,
-              installed and accepted.</p>
-          </div>
-        </div>
-        <div class="symptom reveal">
-          <div>
-            <strong>Your submittal came back rejected</strong>
-            <p>Usually unstamped drawings, coverage math that does not hold, unlisted equipment, or no
-              monitoring plan. All fixable &mdash; faster if caught now.</p>
-          </div>
-        </div>
-        <div class="symptom reveal">
-          <div>
-            <strong>An existing BDA is faulting or oscillating</strong>
-            <p>Trouble on the fire panel, batteries past their service life, a donor antenna knocked out of
-              alignment by roof work. We test, document and repair.</p>
-          </div>
-        </div>
-        <div class="symptom reveal">
-          <div>
-            <strong>Annual testing is overdue</strong>
-            <p>IFC 510.6.1 requires yearly inspection, and the obligation is the owner&rsquo;s. We run the
-              annuals and keep the records current.</p>
-          </div>
-        </div>
-        <div class="symptom reveal">
-          <div>
-            <strong>You are still in design and want to budget properly</strong>
-            <p>Bring us in early. A pre-construction reading of the donor signal beats a surprise line item at
-              the end of the job.</p>
-          </div>
-        </div>
-      </div>
-
+      <ul class="checks reveal">
+        <li><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg>
+          <span>Final inspection coming and nobody has tested radio coverage.</span></li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg>
+          <span>The building failed its radio test, or the submittal came back rejected.</span></li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg>
+          <span>An existing BDA is faulting, oscillating or dead on the panel.</span></li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg>
+          <span>Annual testing is overdue, or you are budgeting a build.</span></li>
+      </ul>
     </div>
   </section>
 
   <!-- ================= SERVICES ================= -->
   <section class="section" id="services">
     <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">ERRC Systems</span>
-        <h2>Everything an ERRC system needs, under one roof</h2>
-        <p class="lede">Most buildings end up juggling an RF tester, an engineer, an electrical contractor and
-          a permit expediter. We are all four &mdash; which is why our projects do not stall between hand-offs.</p>
+      <div class="section-head center reveal">
+        <span class="eyebrow">Services</span>
+        <h2>Everything the system needs, under one roof</h2>
       </div>
 
       <div class="grid grid-3">
         <div class="card reveal">
-          <h3>Radio frequency testing</h3>
-          <p>Grid testing and donor site surveys on your jurisdiction&rsquo;s public safety frequencies,
-            documented for permit submission.</p>
-          <ul>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Pre- and post-construction testing</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Floor-by-floor grid maps and RSSI readings</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Reports in your jurisdiction&rsquo;s format</li>
-          </ul>
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-wave"/></svg></div>
+          <h3>RF testing</h3>
+          <p>Grid tests and donor surveys, documented for permit submission.</p>
         </div>
-
         <div class="card reveal">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-draft"/></svg></div>
           <h3>Design &amp; stamped drawings</h3>
-          <p>RF engineering, equipment selection and layout, with drawings stamped by our in-house architect.</p>
-          <ul>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Donor, BDA and antenna placement</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Link budgets and coverage modeling</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Riser diagrams, cut sheets, submittal package</li>
-          </ul>
+          <p>Engineering, equipment selection and layout, stamped by our own architect.</p>
         </div>
-
         <div class="card reveal">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-tools"/></svg></div>
           <h3>Installation</h3>
-          <p>Our own technicians run the cable infrastructure, mount antennas and commission the amplifier to
-            the engineered specification.</p>
-          <ul>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Coax and fiber distribution, plenum-rated where required</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Rated enclosures, secondary power, fire panel monitoring</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Sequenced around occupied buildings and other trades</li>
-          </ul>
+          <p>Cable, antennas, amplifier, backup power and fire panel monitoring.</p>
         </div>
-
         <div class="card reveal">
-          <h3>Permitting &amp; approval</h3>
-          <p>We prepare the applications, submit to the jurisdiction, answer review comments and run the
-            final acceptance test.</p>
-          <ul>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Permit packages built to local requirements</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Final acceptance testing on site</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Closeout documentation for your CO file</li>
-          </ul>
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-doc"/></svg></div>
+          <h3>Permitting</h3>
+          <p>Applications, review comments and final acceptance testing.</p>
         </div>
-
         <div class="card reveal">
-          <h3>Annual inspection &amp; service</h3>
-          <p>Recurring testing, battery replacement and repairs that keep the system compliant year after year.</p>
-          <ul>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Annual coverage re-verification per IFC 510.6.1</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Battery, amplifier and antenna maintenance</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Records kept ready for the fire official</li>
-          </ul>
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-cal"/></svg></div>
+          <h3>Annual inspection</h3>
+          <p>Re-verification, batteries and records kept current.</p>
         </div>
-
         <div class="card reveal">
-          <h3>Rescue &amp; remediation</h3>
-          <p>Stalled projects, failed acceptance tests, and systems somebody else walked away from.</p>
-          <ul>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Independent assessment of what was installed</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Oscillation, isolation and donor signal troubleshooting</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Fixed scope and price to reach approval</li>
-          </ul>
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-wrench"/></svg></div>
+          <h3>Rescue &amp; repair</h3>
+          <p>Failed tests, rejected submittals, oscillation, abandoned systems.</p>
         </div>
       </div>
     </div>
@@ -820,42 +677,25 @@ td{color:var(--muted)}
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">How a project runs</span>
-        <h2>Four steps from &ldquo;do we need one?&rdquo; to a signed-off system</h2>
-        <p class="lede">Same team the whole way. One point of contact, and nobody hands your project across a gap.</p>
+        <h2 style="color:#fff">Four steps, one team</h2>
       </div>
 
       <div class="steps">
-        <div class="step reveal">
-          <b>01</b>
-          <h3>Test &amp; assess</h3>
-          <p>We review plans, take a live donor-signal reading at the site and run the grid test to your
-            jurisdiction&rsquo;s guidelines. You get a documented pass or fail.</p>
-        </div>
-        <div class="step reveal">
-          <b>02</b>
-          <h3>Design &amp; stamp</h3>
-          <p>Engineers select listed equipment and lay the system out to the coverage your jurisdiction
-            requires; our in-house architect stamps the drawings.</p>
-        </div>
-        <div class="step reveal">
-          <b>03</b>
-          <h3>Permit &amp; install</h3>
-          <p>We file the permit package, then our technicians install cabling, antennas, the amplifier,
-            backup power and monitoring.</p>
-        </div>
-        <div class="step reveal">
-          <b>04</b>
-          <h3>Certify &amp; maintain</h3>
-          <p>Commissioning, final acceptance testing, closeout documents &mdash; then annual testing
-            so it stays compliant.</p>
-        </div>
+        <div class="step reveal"><b>01</b><h3>Test</h3>
+          <p>Donor reading and full grid test. A documented pass or fail.</p></div>
+        <div class="step reveal"><b>02</b><h3>Design</h3>
+          <p>Listed equipment, coverage modelling, stamped drawings.</p></div>
+        <div class="step reveal"><b>03</b><h3>Install</h3>
+          <p>Permit filed, then cable, antennas, amplifier and monitoring.</p></div>
+        <div class="step reveal"><b>04</b><h3>Certify</h3>
+          <p>Commissioning, acceptance testing, closeout, then annuals.</p></div>
       </div>
 
       <div class="stats">
-        <div class="stat reveal"><b>14+ Years</b><span>Focused on emergency responder radio coverage</span></div>
-        <div class="stat reveal"><b>In House</b><span>Testing, engineering, stamping, install and permits</span></div>
-        <div class="stat reveal"><b>One Team</b><span>From first grid test to annual inspection</span></div>
-        <div class="stat reveal"><b>Tri-State</b><span>NJ, NY, PA and surrounding jurisdictions</span></div>
+        <div class="stat reveal"><b>14+ Years</b><span>On emergency responder radio coverage</span></div>
+        <div class="stat reveal"><b>In House</b><span>Testing, design, install, permits</span></div>
+        <div class="stat reveal"><b>One Team</b><span>First grid test to annual inspection</span></div>
+        <div class="stat reveal"><b>Tri-State</b><span>NJ, NY, PA and nearby</span></div>
       </div>
     </div>
   </section>
@@ -863,227 +703,52 @@ td{color:var(--muted)}
   <!-- ================= COMMISSIONING ================= -->
   <section class="section" id="commissioning">
     <div class="container">
-      <div class="grid grid-2" style="gap:34px;align-items:start">
+      <div class="section-head reveal">
+        <span class="eyebrow">Commissioning</span>
+        <h2>The part that decides whether you pass</h2>
+        <p class="lede">Hanging antennas is the easy half. Systems pass or fail on how they are tuned &mdash;
+          and this is the sequence behind every acceptance package we hand over.</p>
+      </div>
+
+      <div class="chips reveal">
+        <div class="chip"><b>01</b><span>Measure the off-air donor signal</span></div>
+        <div class="chip"><b>02</b><span>Build the link budget</span></div>
+        <div class="chip"><b>03</b><span>Measure isolation on site</span></div>
+        <div class="chip"><b>04</b><span>Set uplink and downlink gain</span></div>
+        <div class="chip"><b>05</b><span>Confirm no interference</span></div>
+        <div class="chip"><b>06</b><span>Prove the fire panel alarms</span></div>
+        <div class="chip"><b>07</b><span>Full building re-test</span></div>
+        <div class="chip"><b>08</b><span>Closeout documents</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COVERAGE ================= -->
+  <section class="section bg-card" id="coverage">
+    <div class="container">
+      <div class="grid grid-2" style="gap:32px;align-items:start">
         <div class="reveal">
-          <span class="eyebrow">Commissioning</span>
-          <h2 style="margin-top:16px">The part that decides whether you pass</h2>
-          <div class="rule"></div>
-          <p class="lede" style="margin-top:18px">
-            Hanging antennas is the easy half. A system passes or fails on how it is commissioned &mdash;
-            gain set against a real link budget, isolation measured rather than assumed, and proof that the
-            amplifier is not feeding noise back into the network it is supposed to support.
-          </p>
-          <p class="lede" style="margin-top:14px">
-            This is the sequence we run on every system, and the evidence behind it is what goes into the
-            acceptance test package.
-          </p>
-        </div>
-
-        <ol class="seq reveal">
-          <li><b>01</b><span><strong>Measure the off-air signal</strong>What the donor site actually delivers at your roof, band by band.</span></li>
-          <li><b>02</b><span><strong>Build the link budget</strong>Every gain and loss from donor antenna to the furthest interior antenna.</span></li>
-          <li><b>03</b><span><strong>Measure isolation</strong>Donor-to-server isolation, verified on site &mdash; the number that keeps a BDA from oscillating.</span></li>
-          <li><b>04</b><span><strong>Set uplink and downlink gain</strong>Tuned per band, within the amplifier&rsquo;s listed limits and the licensee&rsquo;s consent.</span></li>
-          <li><b>05</b><span><strong>Confirm no interference</strong>Verify the system is not degrading the donor network or any adjacent band.</span></li>
-          <li><b>06</b><span><strong>Connect and prove the alarms</strong>Antenna, amplifier, AC and battery faults annunciated where the fire alarm reports.</span></li>
-          <li><b>07</b><span><strong>Final grid test</strong>Full building re-test against the acceptance criteria, then final acceptance testing.</span></li>
-        </ol>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= FIRSTNET ================= -->
-  <section class="section bg-dark" id="firstnet">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Interference</span>
-        <h2>FirstNet Band 14 is the problem most testers miss</h2>
-        <p class="lede">
-          Public safety BDAs are commonly built to pass 700 MHz narrowband, 800 MHz public safety, 800 MHz
-          ESMR &mdash; and 700 MHz Band 14, which is FirstNet. As FirstNet LTE has rolled out nationwide, it is
-          increasingly common for an AT&amp;T site to put a signal into a building far stronger than the
-          narrowband public safety signal the system is there to amplify.
-        </p>
-      </div>
-
-      <div class="grid grid-3">
-        <div class="card reveal">
-          <h3>What goes wrong</h3>
-          <p>A strong Band 14 carrier drives the amplifier hard, costing headroom the narrowband signal needs
-            and pushing the system toward the noise and interference limits it has to stay inside.</p>
-        </div>
-        <div class="card reveal">
-          <h3>Why it hides</h3>
-          <p>A quick sweep can look healthy while the band that actually matters is starved. It surfaces on
-            acceptance day, or worse, in a building that has been signed off for years.</p>
-        </div>
-        <div class="card reveal">
-          <h3>How we handle it</h3>
-          <p>We identify it in the donor survey and filter ahead of the amplifier, per the manufacturer&rsquo;s
-            guidance &mdash; before the equipment is ordered, not after the test fails.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= COMPLIANCE ================= -->
-  <section class="section" id="compliance">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Code requirements</span>
-        <h2>What the codes ask of an ERRC system &mdash; in plain terms</h2>
-        <p class="lede">
-          Requirements come from the fire code your jurisdiction adopted, the NFPA standard behind it, and FCC
-          rules on signal boosters. Editions and thresholds vary and your local fire official has the final word &mdash; but the
-          shape of it is consistent, and this is what we design to.
-        </p>
-      </div>
-
-      <div class="table-wrap reveal">
-        <table>
-          <caption style="position:absolute;left:-9999px">Typical ERRC system code requirements</caption>
-          <thead>
-            <tr><th scope="col">Requirement</th><th scope="col">What it means for your building</th></tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Coverage</strong></td>
-              <td><strong>95% of general building areas</strong> and <strong>99% of critical areas</strong> &mdash;
-                fire command centers, exit stairs and passageways, elevator lobbies, standpipe connections, fire
-                pump rooms, and anywhere else the fire official designates.</td>
-            </tr>
-            <tr>
-              <td><strong>Signal strength</strong></td>
-              <td>A minimum inbound level of <strong>&minus;95 dBm</strong> across the required coverage area,
-                with a matching outbound level &mdash; a responder&rsquo;s portable has to reach dispatch from
-                inside the building, not just receive.</td>
-            </tr>
-            <tr>
-              <td><strong>Audio quality</strong></td>
-              <td><strong>DAQ 3.0</strong> or better, or the equivalent signal-to-interference-plus-noise ratio
-                for the technology in use. Bars on a radio are not the standard; intelligible speech is.</td>
-            </tr>
-            <tr>
-              <td><strong>Listed equipment</strong></td>
-              <td>Amplifiers and components <strong>listed to UL 2524</strong> under the 2021 IFC and installed as
-                listed. A cellular-grade or unlisted booster is one of the fastest ways to get a submittal
-                rejected.</td>
-            </tr>
-            <tr>
-              <td><strong>Amplifier behavior</strong></td>
-              <td><strong>Anti-oscillation detection and control circuitry</strong> and <strong>per-channel
-                AGC</strong>, with adequate donor antenna isolation &mdash; the protections that stop a system from
-                harming the network it is amplifying.</td>
-            </tr>
-            <tr>
-              <td><strong>Secondary power</strong></td>
-              <td><strong>12 hours</strong> of battery backup under the 2021 IFC &mdash; 24 hours in some editions
-                and jurisdictions &mdash; in a <strong>NEMA 3R or 4-type enclosure</strong>, monitored.</td>
-            </tr>
-            <tr>
-              <td><strong>Monitoring</strong></td>
-              <td>Antenna, amplifier, AC power and battery faults annunciated at the fire alarm system, so a
-                failed system cannot sit unnoticed until the day it is needed.</td>
-            </tr>
-            <tr>
-              <td><strong>FCC authorization</strong></td>
-              <td>Signal boosters operate under FCC rules requiring the licensee&rsquo;s consent for the
-                frequencies amplified, plus FCC-certified equipment &mdash; coordination we handle.</td>
-            </tr>
-            <tr>
-              <td><strong>Annual testing</strong></td>
-              <td><strong>IFC 510.6.1</strong> requires annual inspection and re-verification, with records kept
-                for the fire official. The obligation sits with the <strong>building owner</strong>.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p class="reveal" style="margin-top:18px;font-size:.78rem;line-height:1.75;color:var(--brown-400);max-width:88ch">
-        Codes referenced: IFC Section 510 · NFPA 1225 Chapter 18, which carries the ERCES provisions previously
-        in NFPA 1221 (still cited directly by many jurisdictions) · NFPA 72 for monitoring and supervision ·
-        FCC Part 90.219. Adopted editions and local amendments differ &mdash; we confirm the exact requirements
-        with your jurisdiction before design, so what gets built is what gets approved.
-      </p>
-    </div>
-  </section>
-
-  <!-- ================= OWNER RESPONSIBILITY ================= -->
-  <section class="section bg-card" id="responsibility">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Who carries the risk</span>
-        <h2>The obligation lands on the building owner</h2>
-      </div>
-
-      <div class="grid grid-3">
-        <div class="card reveal">
-          <h3>Occupancy</h3>
-          <p>Radio coverage is commonly a condition of final inspection. A failed or missing test can hold a
-            finished building empty while the CO waits &mdash; one of the few compliance items with that much
-            leverage over a schedule.</p>
-        </div>
-        <div class="card reveal">
-          <h3>Ongoing compliance</h3>
-          <p>Once the system is accepted, keeping it operational and inspected is the owner&rsquo;s duty, not
-            the installer&rsquo;s. Lapsed annuals show up as violations and, in some jurisdictions, fines.</p>
-        </div>
-        <div class="card reveal">
-          <h3>The real stake</h3>
-          <p>Beyond the paperwork: a responder who cannot reach dispatch from a stairwell or a basement is the
-            failure the code exists to prevent. That is the standard we test against.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= BUILDINGS / AREAS ================= -->
-  <section class="section" id="coverage">
-    <div class="container">
-      <div class="grid grid-2" style="gap:36px;align-items:start">
-        <div class="reveal">
-          <span class="eyebrow">Buildings we work in</span>
-          <h2 style="margin-top:16px">If radio dies inside it, we have done it</h2>
-          <div class="rule"></div>
-          <p class="lede" style="margin-top:18px">
-            Thick slabs, below-grade levels, metal decking, Low-E glass and long horizontal distances all
-            attenuate public safety signal. These are the building types where a BDA is most often required.
-          </p>
-          <ul class="pill-list" style="margin-top:20px">
-            <li class="pill">Warehouses</li>
-            <li class="pill">High-rise residential</li>
-            <li class="pill">Hospitals</li>
-            <li class="pill">Schools</li>
-            <li class="pill">Parking structures</li>
-            <li class="pill">Data centers</li>
-            <li class="pill">Hotels</li>
-            <li class="pill">Office &amp; mixed use</li>
-            <li class="pill">Manufacturing</li>
-            <li class="pill">Senior living</li>
-            <li class="pill">Retail centers</li>
-            <li class="pill">Below-grade</li>
+          <span class="eyebrow">Buildings</span>
+          <h2 style="margin-top:14px">Where radio dies</h2>
+          <p style="margin-top:12px;font-size:.95rem">Slabs, below-grade levels, metal decking and Low-E
+            glass all kill public safety signal.</p>
+          <ul class="pill-list" style="margin-top:16px">
+            <li class="pill">Warehouses</li><li class="pill">High-rise</li><li class="pill">Hospitals</li>
+            <li class="pill">Schools</li><li class="pill">Parking</li><li class="pill">Data centers</li>
+            <li class="pill">Hotels</li><li class="pill">Office</li><li class="pill">Manufacturing</li>
+            <li class="pill">Senior living</li><li class="pill">Below-grade</li>
           </ul>
         </div>
 
         <div class="reveal">
-          <span class="eyebrow">Where we work</span>
-          <h2 style="margin-top:16px">Based in Toms River. Working across the region.</h2>
-          <div class="rule"></div>
-          <p class="lede" style="margin-top:18px">
-            We work throughout New Jersey and into neighboring states, and we deal with each
-            jurisdiction&rsquo;s fire officials directly &mdash; because the difference between an approved
-            system and a rejected one is usually local.
-          </p>
-          <ul class="pill-list" style="margin-top:20px">
-            <li class="pill">Ocean County</li>
-            <li class="pill">Monmouth</li>
-            <li class="pill">Middlesex</li>
-            <li class="pill">Bergen</li>
-            <li class="pill">Essex</li>
-            <li class="pill">Union</li>
-            <li class="pill">Mercer</li>
-            <li class="pill">Burlington</li>
-            <li class="pill">New York</li>
+          <span class="eyebrow">Service area</span>
+          <h2 style="margin-top:14px">Toms River, and out from there</h2>
+          <p style="margin-top:12px;font-size:.95rem">We deal with each jurisdiction&rsquo;s fire officials
+            directly, because approval is always local.</p>
+          <ul class="pill-list" style="margin-top:16px">
+            <li class="pill">Ocean</li><li class="pill">Monmouth</li><li class="pill">Middlesex</li>
+            <li class="pill">Bergen</li><li class="pill">Essex</li><li class="pill">Union</li>
+            <li class="pill">Mercer</li><li class="pill">Burlington</li><li class="pill">New York</li>
             <li class="pill">Pennsylvania</li>
           </ul>
         </div>
@@ -1094,52 +759,41 @@ td{color:var(--muted)}
   <!-- ================= WHY US ================= -->
   <section class="section" id="why">
     <div class="container">
-      <div class="section-head reveal" style="text-align:center;margin-inline:auto">
+      <div class="section-head center reveal">
         <span class="eyebrow">Why building owners call us</span>
         <h2>Specialists, not a cabling company with a BDA sideline</h2>
       </div>
 
       <div class="grid grid-3">
         <div class="card reveal">
-          <span class="card-num">01</span>
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-badge"/></svg></div>
           <h3>This is all we do</h3>
-          <p>Fourteen years on emergency responder radio coverage. Not structured cabling, not carrier
-            DAS, not security. The failure modes on these systems are specific, and we have seen them.</p>
+          <p>Fourteen years on emergency responder radio coverage. The failure modes here are specific.</p>
         </div>
-
         <div class="card reveal">
-          <span class="card-num">02</span>
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-tools"/></svg></div>
           <h3>Everything in house</h3>
-          <p>RF testing, engineering, stamped drawings, installation and permitting are all ours. Nothing
-            waits on a subcontractor&rsquo;s calendar, and nobody hands your project across a gap.</p>
+          <p>Testing, engineering, drawings, install and permits are ours. Nothing waits on a sub.</p>
         </div>
-
         <div class="card reveal">
-          <span class="card-num">03</span>
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-hand"/></svg></div>
           <h3>We tell you when you pass</h3>
-          <p>If the grid test says the building already meets code, you get the report and the paperwork
-            and we are done. Selling a system that is not required is how a contractor loses the next job.</p>
+          <p>If the test says you already meet code, you get the report and we are done.</p>
         </div>
-
         <div class="card reveal">
-          <span class="card-num">04</span>
-          <h3>Stamped by our own architect</h3>
-          <p>Plan review does not stall while an outside engineer fits you in. The design leaves here
-            stamped, with the coverage math and cut sheets attached.</p>
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-draft"/></svg></div>
+          <h3>Stamped in house</h3>
+          <p>Plan review doesn&rsquo;t stall waiting on an outside engineer to fit you in.</p>
         </div>
-
         <div class="card reveal">
-          <span class="card-num">05</span>
-          <h3>We take on the hard ones</h3>
-          <p>Failed acceptance tests, rejected submittals, oscillation, donor signal problems, systems
-            another contractor abandoned. We test what is there and give you a fixed scope to approval.</p>
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-wrench"/></svg></div>
+          <h3>We take the hard ones</h3>
+          <p>Failed tests and abandoned systems. We scope it and price it to approval.</p>
         </div>
-
         <div class="card reveal">
-          <span class="card-num">06</span>
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-shield"/></svg></div>
           <h3>We stay after sign-off</h3>
-          <p>Annual inspection, battery replacement, re-verification, and records kept current for the
-            fire official &mdash; so compliance does not quietly lapse three years after handover.</p>
+          <p>Annual inspection and records, so compliance doesn&rsquo;t lapse years later.</p>
         </div>
       </div>
     </div>
@@ -1148,43 +802,31 @@ td{color:var(--muted)}
   <!-- ================= REVIEWS =================
        READY TO GO LIVE — it just needs real quotes.
 
-       This section is deliberately commented out rather than filled with
-       invented testimonials. Publishing made-up customer reviews on a live
-       commercial site is deceptive to the people reading them, and in the US
-       the FTC's rule on consumer reviews and testimonials makes fabricated
-       ones unlawful, with the advertiser carrying the liability. Not worth it
-       for a page whose whole job is to be trusted by a building owner.
+       Deliberately not filled with invented testimonials: publishing made-up
+       reviews is deceptive to the building owners reading them, and under the
+       FTC's rule on consumer reviews the advertiser carries the liability.
 
        TO ENABLE: paste three real reviews below — the customer's own words,
-       their name (or "Property manager, Toms River" if they prefer), and the
-       month — then delete this comment wrapper's opening and closing markers.
-       The Google Business Profile review text can be used verbatim.
-
-       Deliberately no Review or AggregateRating JSON-LD: Google does not grant
-       rich results for a business's own self-hosted reviews, and marking them
-       up invites a manual action.
+       their name, and the month — then delete this comment wrapper. Google
+       Business Profile review text can be used verbatim. Styles are already
+       in the stylesheet (.review, .stars). No Review/AggregateRating JSON-LD:
+       Google does not grant rich results for self-hosted reviews.
 
   <section class="section" id="reviews">
     <div class="container">
-      <div class="section-head reveal" style="text-align:center;margin-inline:auto">
+      <div class="section-head center reveal">
         <span class="eyebrow">What clients say</span>
         <h2>Rated five stars for getting it approved</h2>
       </div>
-
       <div class="grid grid-3">
         <div class="review reveal">
           <div class="stars" role="img" aria-label="Five out of five stars">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#FA5019" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#FA5019" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#FA5019" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#FA5019" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#FA5019" aria-hidden="true"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>
+            (five star svgs)
           </div>
-          <blockquote>REAL REVIEW TEXT HERE</blockquote>
-          <cite>Name<span>Role, company &middot; Month Year</span></cite>
+          <blockquote>REAL REVIEW TEXT</blockquote>
+          <cite>Name, role &middot; Month Year</cite>
         </div>
-
-        (two more .review blocks, same shape)
+        (two more)
       </div>
     </div>
   </section>
@@ -1193,134 +835,71 @@ td{color:var(--muted)}
   <!-- ================= FAQ ================= -->
   <section class="section bg-card" id="faq">
     <div class="container">
-      <div class="section-head reveal" style="text-align:center;margin-inline:auto">
-        <span class="eyebrow">Questions we get every week</span>
+      <div class="section-head center reveal">
+        <span class="eyebrow">Questions we get weekly</span>
         <h2>BDA and ERRC, answered</h2>
       </div>
 
       <div class="faq" id="faqList">
         <div class="faq-item">
           <button class="faq-q" type="button" aria-expanded="false">
-            What is a public safety BDA system?
-            <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            How do I know if my building needs one?
+            <svg class="chev" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </button>
-          <div class="faq-a"><p>A bi-directional amplifier is the core of an Emergency Responder Radio
-            Communication System. A donor antenna on the roof receives the public safety signal from the outside
-            network, the BDA amplifies it, and coax or fiber runs distribute it to antennas throughout the
-            building &mdash; carrying responder transmissions back out the same way. Together those parts are
-            what codes and fire officials call a public safety DAS.</p></div>
+          <div class="faq-a"><p>A grid test answers it. We measure signal strength and audio quality at every
+            point on the local public safety frequencies. Pass, and you submit the report and install nothing.
+            Fail, and those measurements become the design basis.</p></div>
         </div>
 
         <div class="faq-item">
           <button class="faq-q" type="button" aria-expanded="false">
-            What signal level does the code actually require?
-            <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            What signal level does code require?
+            <svg class="chev" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </button>
-          <div class="faq-a"><p>Typically a minimum inbound signal of &minus;95 dBm delivering DAQ 3.0 audio
-            quality or better, across 95% of general building areas and 99% of critical areas &mdash; fire command
-            centers, exit stairs, elevator lobbies, standpipe connections, fire pump rooms. Your local fire official sets the
-            adopted edition and can designate additional critical areas.</p></div>
+          <div class="faq-a"><p>Typically &minus;95 dBm inbound at DAQ 3.0 or better, across 95% of general
+            areas and 99% of critical areas &mdash; fire command centers, exit stairs, elevator lobbies and
+            fire pump rooms.</p></div>
         </div>
 
         <div class="faq-item">
           <button class="faq-q" type="button" aria-expanded="false">
-            How do I know whether my building needs one?
-            <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            What does a system cost?
+            <svg class="chev" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </button>
-          <div class="faq-a"><p>An RF grid test answers it. The building is divided into a grid and signal
-            strength and audio quality are measured at each point on the local public safety frequencies. Any
-            point below the minimum is a fail for that point. Pass the grid and you submit the report and install
-            nothing; fail it and the same measurements become the design basis.</p></div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" type="button" aria-expanded="false">
-            What does a BDA system cost?
-            <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-          </button>
-          <div class="faq-a"><p>It depends on square footage, how many floors and stairwells need antennas, the
-            construction type, how strong the donor signal is, and what your local fire official requires. Permit fees and plan
-            review times vary by jurisdiction as well. Anyone quoting a firm number before testing is guessing
-            &mdash; we give you a real number once the grid test says what the building needs, and if it passes,
-            the answer is nothing.</p></div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" type="button" aria-expanded="false">
-            Which codes apply?
-            <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-          </button>
-          <div class="faq-a"><p>Most jurisdictions adopt IFC Section 510 alongside NFPA 1225, whose Chapter 18
-            carries the ERCES provisions that previously lived in NFPA 1221 &mdash; and NFPA 1221 has not been
-            withdrawn, so many jurisdictions still cite it directly. Monitoring and supervision follow NFPA 72, and signal
-            boosters operate under FCC Part 90.219. We confirm the adopted edition with your jurisdiction before designing
-            anything.</p></div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" type="button" aria-expanded="false">
-            How much battery backup is required?
-            <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-          </button>
-          <div class="faq-a"><p>Under the 2021 IFC, 12 hours of secondary power in a NEMA 3R or higher rated
-            enclosure, monitored for faults. Some editions and jurisdictions require 24 hours. Batteries get
-            replaced on service life rather than on failure &mdash; one of the things annual inspection is there
-            to catch.</p></div>
+          <div class="faq-a"><p>It depends on square footage, floors, construction type and donor signal
+            strength. Anyone quoting firm before testing is guessing. We price it once the grid test says what
+            the building needs &mdash; and if it passes, nothing.</p></div>
         </div>
 
         <div class="faq-item">
           <button class="faq-q" type="button" aria-expanded="false">
             Will this hold up my certificate of occupancy?
-            <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            <svg class="chev" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </button>
           <div class="faq-a"><p>In most jurisdictions, yes. Radio coverage is commonly a condition of final
-            inspection, so a failed or missing test can stall a CO and expose the owner to fines. It is one of the
-            few compliance items that can hold a finished building empty &mdash; which is exactly why it is worth
-            testing early.</p></div>
+            inspection, so a failed or missing test can stall a CO &mdash; one of the few items that can hold a
+            finished building empty.</p></div>
         </div>
 
         <div class="faq-item">
           <button class="faq-q" type="button" aria-expanded="false">
-            Does the system need annual testing?
-            <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            Is this a cell phone signal booster?
+            <svg class="chev" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </button>
-          <div class="faq-a"><p>Yes. IFC 510.6.1 requires annual inspection to confirm the system still performs
-            &mdash; coverage re-verification plus checks of the amplifier, batteries, donor antenna and supervisory
-            signals, with records kept for the fire official. The obligation sits with the building owner, not with
-            whoever installed it. We run the annuals and hold the documentation.</p></div>
+          <div class="faq-a"><p>No. This is the two-way radio network fire and police carry into your building,
+            on public safety frequencies, under fire code. Not cellular, not Wi-Fi, not carrier DAS &mdash; and
+            cellular-grade equipment will not pass plan review.</p></div>
         </div>
 
         <div class="faq-item">
           <button class="faq-q" type="button" aria-expanded="false">
-            Can FirstNet interfere with a BDA?
-            <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            Does it need annual testing?
+            <svg class="chev" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </button>
-          <div class="faq-a"><p>It can. Many BDAs pass 700 MHz Band 14 &mdash; FirstNet &mdash; along with the
-            narrowband public safety bands, and where a nearby FirstNet site is much stronger than the narrowband
-            signal, it can eat the headroom the system needs. The fix is filtering ahead of the amplifier, which is
-            why the donor survey matters as much as the interior design.</p></div>
+          <div class="faq-a"><p>Yes &mdash; IFC 510.6.1. Coverage re-verification plus checks of the amplifier,
+            batteries, donor antenna and supervisory signals, with records kept for the fire official. The duty
+            sits with the building owner.</p></div>
         </div>
-
-        <div class="faq-item">
-          <button class="faq-q" type="button" aria-expanded="false">
-            Can you take over a system another contractor installed?
-            <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D93F12" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-          </button>
-          <div class="faq-a"><p>Regularly. Failed acceptance tests, rejected submittals, oscillation and donor
-            isolation problems, systems that no longer pass annual testing. We test what is there, document what
-            does not comply, and give you a fixed scope to reach approval.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= FINAL CTA ================= -->
-  <section class="section-tight">
-    <div class="container">
-      <div class="cta-final reveal">
-        <h2>Find out where your building stands &mdash; before the fire official does</h2>
-        <p>Send us the building and we will tell you what the jurisdiction requires, whether an ERRC system is
-          likely needed, and what testing costs. If your building passes, we will say so.</p>
       </div>
     </div>
   </section>
@@ -1330,16 +909,16 @@ td{color:var(--muted)}
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="brand" style="margin-bottom:14px">
+        <div class="brand" style="margin-bottom:12px">
           <svg width="24" height="24" viewBox="0 0 200 200" aria-hidden="true">
-          <path d="M68 40 L158 40 L158 54 L144 68 L68 68 L68 144 L54 158 L40 158 L40 68 Z" fill="#FA5019"/>
-          <path d="M100 78 L152 78 L152 90 L140 102 L100 102 L100 140 L88 152 L76 152 L76 102 Z" fill="#FA5019"/>
-          <path d="M130 118 L152 118 L152 140 L140 152 L118 152 L118 130 Z" fill="#FA5019"/>
-        </svg>
+            <path d="M68 40 L158 40 L158 54 L144 68 L68 68 L68 144 L54 158 L40 158 L40 68 Z" fill="#FA5019"/>
+            <path d="M100 78 L152 78 L152 90 L140 102 L100 102 L100 140 L88 152 L76 152 L76 102 Z" fill="#FA5019"/>
+            <path d="M130 118 L152 118 L152 140 L140 152 L118 152 L118 130 Z" fill="#FA5019"/>
+          </svg>
           <span>FIRSTCOMMS</span>
         </div>
-        <p>Public safety BDA and ERRC testing, design, installation, permitting and annual inspection.
-          Emergency responder radio coverage handled by one team, start to finish.</p>
+        <p>RF testing, design, code-compliant installation, permitting and annual inspection for
+          emergency responder radio coverage.</p>
       </div>
 
       <div>
@@ -1354,10 +933,10 @@ td{color:var(--muted)}
       <div>
         <h4>On this page</h4>
         <ul>
+          <li><a href="#code">Code requirements</a></li>
           <li><a href="#rf-testing">RF testing</a></li>
-          <li><a href="#services">ERRC systems</a></li>
-          <li><a href="#commissioning">Commissioning</a></li>
-          <li><a href="#compliance">Code requirements</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#why">Why us</a></li>
           <li><a href="#faq">FAQ</a></li>
           <li><a href="privacy.html">Privacy policy</a></li>
         </ul>
@@ -1372,26 +951,22 @@ td{color:var(--muted)}
 </footer>
 
 <div class="callbar">
-  <a class="btn btn-primary btn-sm phone-link" href="tel:+17323145162">Call 732-314-5162</a>
+  <a class="btn btn-sm phone-link" href="tel:+17323145162">Call 732-314-5162</a>
 </div>
 
 <script>
 (function () {
   'use strict';
 
-  /* ------------------------------------------------------------------
-     Message match for paid search.
-     The ad group sets ?kw=<key>; we swap the H1 to the matching headline
-     so the page says back what the searcher typed. Strictly a lookup in
-     this table — arbitrary query text is never written to the DOM.
-     ------------------------------------------------------------------ */
+  /* Message match for paid search: ?kw=<key> swaps the H1 from a fixed table,
+     so arbitrary query text never reaches the DOM. */
   var HEADLINES = {
-    'bda-install': 'Public safety BDA installation, <span class="hl">tested, permitted and signed off</span>.',
-    'errcs': 'ERRC design and installation that <span class="hl">passes final acceptance testing</span>.',
-    'testing': 'Emergency responder <span class="hl">radio coverage testing</span>, documented for your fire official.',
+    'bda-install': 'Public safety BDA installation, <span class="hl">tested and signed off</span>.',
+    'errcs': 'ERRC systems, <span class="hl">designed and installed to code</span>.',
+    'testing': '<span class="hl">RF grid testing</span> for emergency responder radio coverage.',
     'failed-test': 'Failed your radio coverage test? <span class="hl">We fix it and get it approved.</span>',
-    'annual': 'Annual BDA inspection and testing, <span class="hl">documented and kept current</span>.',
-    'das': 'Public safety DAS &mdash; <span class="hl">designed, installed and certified</span>.'
+    'annual': 'Annual BDA inspection, <span class="hl">documented and kept current</span>.',
+    'das': 'Public safety DAS, <span class="hl">tested and installed to code</span>.'
   };
 
   var params = new URLSearchParams(window.location.search);
@@ -1401,12 +976,9 @@ td{color:var(--muted)}
     if (h1) h1.innerHTML = HEADLINES[kw];
   }
 
-  /* ------------------------------------------------------------------
-     Scroll reveal
-     ------------------------------------------------------------------ */
+  /* Scroll reveal */
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var targets = document.querySelectorAll('.reveal');
-
   if (!('IntersectionObserver' in window) || reduce) {
     Array.prototype.forEach.call(targets, function (el) { el.classList.add('visible'); });
   } else {
@@ -1416,13 +988,11 @@ td{color:var(--muted)}
         entry.target.classList.add('visible');
         io.unobserve(entry.target);
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
     Array.prototype.forEach.call(targets, function (el) { io.observe(el); });
   }
 
-  /* ------------------------------------------------------------------
-     Scrollspy for the header nav
-     ------------------------------------------------------------------ */
+  /* Scrollspy */
   var sections = document.querySelectorAll('main section[id]');
   var navLinks = document.querySelectorAll('.header-nav a[href^="#"]');
   if (sections.length && navLinks.length && 'IntersectionObserver' in window) {
@@ -1437,9 +1007,7 @@ td{color:var(--muted)}
     Array.prototype.forEach.call(sections, function (s) { spy.observe(s); });
   }
 
-  /* ------------------------------------------------------------------
-     FAQ accordion (single open at a time)
-     ------------------------------------------------------------------ */
+  /* FAQ accordion, one open at a time */
   var faqList = document.getElementById('faqList');
   if (faqList) {
     faqList.addEventListener('click', function (e) {
@@ -1447,12 +1015,10 @@ td{color:var(--muted)}
       if (!btn) return;
       var item = btn.closest('.faq-item');
       var isOpen = item.classList.contains('open');
-
       faqList.querySelectorAll('.faq-item.open').forEach(function (open) {
         open.classList.remove('open');
         open.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
       });
-
       if (!isOpen) {
         item.classList.add('open');
         btn.setAttribute('aria-expanded', 'true');
@@ -1460,22 +1026,15 @@ td{color:var(--muted)}
     });
   }
 
-  /* ------------------------------------------------------------------
-     Analytics helper
-     ------------------------------------------------------------------ */
   function track(name, label) {
     if (typeof window.gtag === 'function') {
       window.gtag('event', name, { event_category: 'Lead', event_label: label });
     }
   }
-
   document.querySelectorAll('.phone-link').forEach(function (link) {
     link.addEventListener('click', function () { track('click_to_call', 'Phone Click'); });
   });
 
-  /* ------------------------------------------------------------------
-     Lead form: gclid persistence, config guard, submit state
-     ------------------------------------------------------------------ */
   var form = document.getElementById('bdaForm');
   if (!form) return;
 
@@ -1488,16 +1047,14 @@ td{color:var(--muted)}
     form.insertBefore(notice, form.firstElementChild);
   }
 
-  /* Google Ads click ID. Stored on arrival rather than read at submit time:
-     visitors land from an ad, read, and submit later from a URL that no longer
-     carries the gclid. 90 days matches the default conversion window. */
+  /* Google Ads click ID, stored on arrival: visitors land from an ad, read, and
+     submit later from a URL that no longer carries it. 90 days = the default window. */
   (function captureClickId() {
     var field = document.getElementById('gclid');
     if (!field) return;
     var KEY = 'fc_gclid';
     var MAX_AGE = 90 * 24 * 60 * 60 * 1000;
     var fromUrl = params.get('gclid') || params.get('wbraid') || params.get('gbraid');
-
     if (fromUrl) {
       try { localStorage.setItem(KEY, JSON.stringify({ v: fromUrl, t: Date.now() })); } catch (e) {}
       field.value = fromUrl;
@@ -1510,7 +1067,6 @@ td{color:var(--muted)}
     } catch (e) {}
   })();
 
-  // Which ad group / keyword produced the lead, so sales sees it in the email.
   var source = document.getElementById('pageSource');
   if (source) {
     source.value = [
@@ -1520,8 +1076,6 @@ td{color:var(--muted)}
     ].filter(Boolean).join(' | ').slice(0, 200) || 'direct';
   }
 
-  // Keep the post-submit redirect on whatever host is serving the page, so a
-  // preview URL doesn't bounce to production. No-JS falls back to the hardcoded value.
   var redirect = form.querySelector('input[name="redirect"]');
   if (redirect) redirect.value = new URL('thank-you.html', window.location.href).href;
 
@@ -1533,10 +1087,7 @@ td{color:var(--muted)}
     }
     track('form_submit', 'BDA Landing Page');
     var btn = form.querySelector('button[type="submit"]');
-    if (btn) {
-      btn.disabled = true;
-      btn.textContent = 'Sending…';
-    }
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
   });
 
   var year = document.getElementById('year');
