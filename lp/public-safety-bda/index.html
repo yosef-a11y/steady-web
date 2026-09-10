@@ -193,12 +193,12 @@ strong{font-weight:700;color:var(--brown-700)}
 .bg-dark .card{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.16)}
 .bg-dark .card p{color:var(--brown-200)}
 
-/* ---------- Split rows (pass / fail, symptoms) ---------- */
+/* ---------- Split rows (compliant / to-be-fixed, symptoms) ---------- */
 .split{display:grid;gap:16px}
 @media(min-width:700px){.split{grid-template-columns:1fr 1fr}}
 .split-item{padding:20px;border:1px solid var(--cream-300);background:var(--cream-50)}
 .split-item.pass{border-left:4px solid #0E8F5A}
-.split-item.fail{border-left:4px solid var(--orange)}
+.split-item.fix{border-left:4px solid var(--orange)}
 .split-item h3{margin-bottom:8px}
 .split-item p{font-size:.93rem;line-height:1.6;color:var(--brown-400)}
 
@@ -348,7 +348,7 @@ strong{font-weight:700;color:var(--brown-700)}
         {
           "@type": "Question",
           "name": "How do I know whether my building needs a BDA?",
-          "acceptedAnswer": { "@type": "Answer", "text": "A radio coverage grid test answers it. We divide the building into a grid and measure signal strength and audio quality at each point on the local public safety frequencies. Pass, and you submit the report and install nothing. Fail, and those same measurements become the design basis." }
+          "acceptedAnswer": { "@type": "Answer", "text": "A radio coverage grid test answers it. We divide the building into a grid and measure signal strength and audio quality at each point on the local public safety frequencies. If it meets code, you submit the report and install nothing. If it does not, those same measurements become the design basis and we bring the building up to code." }
         },
         {
           "@type": "Question",
@@ -363,7 +363,7 @@ strong{font-weight:700;color:var(--brown-700)}
         {
           "@type": "Question",
           "name": "Will this hold up my certificate of occupancy?",
-          "acceptedAnswer": { "@type": "Answer", "text": "In most jurisdictions, yes. Radio coverage is commonly a condition of final inspection, so a failed or missing test can stall a CO. It is one of the few compliance items that can hold a finished building empty, which is why it is worth testing early." }
+          "acceptedAnswer": { "@type": "Answer", "text": "In most jurisdictions, yes. Radio coverage is commonly a condition of final inspection, so a missing or non-compliant test can stall a CO. It is one of the few compliance items that can hold a finished building empty, which is why it is worth testing early." }
         },
         {
           "@type": "Question",
@@ -548,7 +548,7 @@ strong{font-weight:700;color:var(--brown-700)}
                 <option value="">Select&hellip;</option>
                 <option>Planning / pre-construction</option>
                 <option>Need a grid test</option>
-                <option>Failed a radio coverage test</option>
+                <option>Didn&rsquo;t pass a radio test</option>
                 <option>Need design &amp; permit drawings</option>
                 <option>Existing system needs repair</option>
                 <option>Annual inspection due</option>
@@ -611,7 +611,7 @@ strong{font-weight:700;color:var(--brown-700)}
         <div class="spec"><b>12 hours</b><strong>Battery backup</strong>
           <span>Secondary power in a NEMA-rated, monitored enclosure.</span></div>
         <div class="spec"><b>UL 2524</b><strong>Listed equipment</strong>
-          <span>Unlisted equipment fails plan review.</span></div>
+          <span>Unlisted equipment won&rsquo;t clear plan review.</span></div>
         <div class="spec"><b>Annual</b><strong>Re-testing</strong>
           <span>IFC 510.6.1. The duty sits with the building owner.</span></div>
       </div>
@@ -621,14 +621,14 @@ strong{font-weight:700;color:var(--brown-700)}
         <svg viewBox="0 0 900 170" role="img" aria-labelledby="mTitle mDesc">
           <title id="mTitle">Signal strength scale showing the code minimum</title>
           <desc id="mDesc">A scale from minus 120 to minus 70 dBm. Anything weaker than minus 95 dBm
-            fails; minus 95 dBm and stronger passes.</desc>
+            is below code; minus 95 dBm and stronger meets it.</desc>
 
           <rect x="60" y="52" width="390" height="34" fill="#CDB9AC"/>
           <rect x="450" y="52" width="390" height="34" fill="#FA5019"/>
 
           <g font-family="ui-monospace, monospace" font-size="14" font-weight="700" letter-spacing="1.5">
-            <text x="255" y="75" text-anchor="middle" fill="#5A2415">FAILS</text>
-            <text x="645" y="75" text-anchor="middle" fill="#FFFFFF">PASSES</text>
+            <text x="255" y="75" text-anchor="middle" fill="#5A2415">BELOW CODE</text>
+            <text x="645" y="75" text-anchor="middle" fill="#FFFFFF">MEETS CODE</text>
           </g>
 
           <g stroke="#8A5540" stroke-width="2">
@@ -665,18 +665,19 @@ strong{font-weight:700;color:var(--brown-700)}
         <span class="eyebrow">Start here</span>
         <h2>It starts with an RF grid test</h2>
         <p class="lede">We split the building into a grid and measure every point on the public safety
-          frequencies. Any point under the minimum fails. You get a report written for your fire official.</p>
+          frequencies, then hand you a report written for your fire official &mdash; and, if the building
+          needs work, the system that gets it to code.</p>
       </div>
 
       <div class="split reveal" style="margin-bottom:16px">
         <div class="split-item pass">
-          <h3>If it passes</h3>
+          <h3>Already compliant? You&rsquo;re done</h3>
           <p>You get the documentation and help closing it out. No system, no equipment, nothing sold.</p>
         </div>
-        <div class="split-item fail">
-          <h3>If it fails</h3>
-          <p>The same data becomes the design: which squares failed, by how much, and what the donor
-            signal gives us to work with.</p>
+        <div class="split-item fix">
+          <h3>Not yet? We make sure you pass</h3>
+          <p>The test data becomes the design &mdash; which areas are short, by how much, and what the donor
+            signal gives us to work with. We stay on it until the building is signed off.</p>
         </div>
       </div>
 
@@ -684,7 +685,7 @@ strong{font-weight:700;color:var(--brown-700)}
         <li><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg>
           <span>Final inspection coming and nobody has tested radio coverage.</span></li>
         <li><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg>
-          <span>The building failed its radio test, or the submittal came back rejected.</span></li>
+          <span>The building didn&rsquo;t pass its radio test, or the submittal came back rejected.</span></li>
         <li><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg>
           <span>An existing BDA is faulting, oscillating or dead on the panel.</span></li>
         <li><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg>
@@ -697,8 +698,8 @@ strong{font-weight:700;color:var(--brown-700)}
   <!-- ================= STATEMENT ================= -->
   <section class="statement">
     <div class="container">
-      <p class="reveal">A failed radio test can hold a finished building <em>empty</em>.</p>
-      <span class="reveal">Which is why we test before your final inspection is on the calendar &mdash; not after.</span>
+      <p class="reveal">No radio coverage, <em>no certificate of occupancy</em>.</p>
+      <span class="reveal">So we test before your final inspection is on the calendar, and fix whatever the test finds.</span>
     </div>
   </section>
 
@@ -739,7 +740,7 @@ strong{font-weight:700;color:var(--brown-700)}
         <div class="card reveal">
           <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-wrench"/></svg></div>
           <h3>Rescue &amp; repair</h3>
-          <p>Failed tests, rejected submittals, oscillation, abandoned systems.</p>
+          <p>Tests that didn&rsquo;t pass, rejected submittals, oscillation, abandoned systems.</p>
         </div>
       </div>
     </div>
@@ -755,7 +756,7 @@ strong{font-weight:700;color:var(--brown-700)}
 
       <div class="steps">
         <div class="step reveal"><b>01</b><h3>Test</h3>
-          <p>Donor reading and full grid test. A documented pass or fail.</p></div>
+          <p>Donor reading and full grid test. A documented result you can submit.</p></div>
         <div class="step reveal"><b>02</b><h3>Design</h3>
           <p>Listed equipment, coverage modelling, stamped drawings.</p></div>
         <div class="step reveal"><b>03</b><h3>Install</h3>
@@ -779,8 +780,8 @@ strong{font-weight:700;color:var(--brown-700)}
       <div class="section-head reveal">
         <span class="eyebrow">Commissioning</span>
         <h2>The part that decides whether you pass</h2>
-        <p class="lede">Hanging antennas is the easy half. Systems pass or fail on how they are tuned &mdash;
-          and this is the sequence behind every acceptance package we hand over.</p>
+        <p class="lede">Hanging antennas is the easy half. Whether a system passes comes down to how it is
+          tuned &mdash; and this is the sequence behind every acceptance package we hand over.</p>
       </div>
 
       <div class="chips reveal">
@@ -841,7 +842,7 @@ strong{font-weight:700;color:var(--brown-700)}
         <div class="card reveal">
           <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-badge"/></svg></div>
           <h3>This is all we do</h3>
-          <p>Fourteen years on emergency responder radio coverage. The failure modes here are specific.</p>
+          <p>Fourteen years on emergency responder radio coverage. The problems here are specific, and we have seen them.</p>
         </div>
         <div class="card reveal">
           <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-tools"/></svg></div>
@@ -861,7 +862,7 @@ strong{font-weight:700;color:var(--brown-700)}
         <div class="card reveal">
           <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-wrench"/></svg></div>
           <h3>We take the hard ones</h3>
-          <p>Failed tests and abandoned systems. We scope it and price it to approval.</p>
+          <p>Tests that didn&rsquo;t pass, and systems others walked away from. We scope it and price it to approval.</p>
         </div>
         <div class="card reveal">
           <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-shield"/></svg></div>
@@ -951,8 +952,9 @@ strong{font-weight:700;color:var(--brown-700)}
             <svg class="chev" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </button>
           <div class="faq-a"><p>A grid test answers it. We measure signal strength and audio quality at every
-            point on the local public safety frequencies. Pass, and you submit the report and install nothing.
-            Fail, and those measurements become the design basis.</p></div>
+            point on the local public safety frequencies. Meets code, and you submit the report and install
+            nothing. If it doesn&rsquo;t, those measurements become the design basis and we bring it up to
+            code.</p></div>
         </div>
 
         <div class="faq-item">
@@ -981,7 +983,7 @@ strong{font-weight:700;color:var(--brown-700)}
             <svg class="chev" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </button>
           <div class="faq-a"><p>In most jurisdictions, yes. Radio coverage is commonly a condition of final
-            inspection, so a failed or missing test can stall a CO &mdash; one of the few items that can hold a
+            inspection, so a missing or non-compliant test can stall a CO &mdash; one of the few items that can hold a
             finished building empty.</p></div>
         </div>
 
@@ -1068,7 +1070,7 @@ strong{font-weight:700;color:var(--brown-700)}
     'bda-install': 'Public safety BDA installation, <span class="hl">tested and signed off</span>.',
     'errcs': 'ERRC systems, <span class="hl">designed and installed to code</span>.',
     'testing': '<span class="hl">RF grid testing</span> for emergency responder radio coverage.',
-    'failed-test': 'Failed your radio coverage test? <span class="hl">We fix it and get it approved.</span>',
+    'failed-test': 'Didn&rsquo;t pass your radio coverage test? <span class="hl">We fix it and get it approved.</span>',
     'annual': 'Annual BDA inspection, <span class="hl">documented and kept current</span>.',
     'das': 'Public safety DAS, <span class="hl">tested and installed to code</span>.'
   };
