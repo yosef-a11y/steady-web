@@ -4,35 +4,41 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Request received | FirstComms</title>
-<meta name="description" content="Thanks — your coverage assessment request reached us. We'll be in touch within one business day.">
+<meta name="description" content="Thanks — your enquiry reached us. We'll be in touch within one business day.">
 <meta name="robots" content="noindex, follow">
-<meta name="theme-color" content="#0B1526">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230B1526'/%3E%3Cpath d='M16 7v18' stroke='%23E63946' stroke-width='3' stroke-linecap='round'/%3E%3Cpath d='M9.5 11a9 9 0 000 10M22.5 11a9 9 0 010 10' stroke='%235B9BD5' stroke-width='2.4' fill='none' stroke-linecap='round'/%3E%3C/svg%3E" type="image/svg+xml">
+<meta name="theme-color" content="#240D07">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23240D07'/%3E%3Cpath d='M16 5 L26 5 L20 35 L10 35 Z' fill='%23F4491B'/%3E%3Cpath d='M21 5 L37 5 L35.5 12.5 L19.5 12.5 Z' fill='%23F4491B'/%3E%3Cpath d='M18 18 L32 18 L30.5 25.5 L16.5 25.5 Z' fill='%23F4491B'/%3E%3C/svg%3E" type="image/svg+xml">
 
 <style>
+  :root{
+    --cream-100:#F7F1ED; --cream-200:#EBE1DA; --cream-400:#CDB9AC;
+    --brown-900:#240D07; --brown-700:#5A2415; --brown-600:#74341E; --brown-200:#C8B3A6;
+    --orange:#F4491B; --orange-btn:#D93F12;
+    --font:ui-monospace,"SF Mono","JetBrains Mono","Roboto Mono","DejaVu Sans Mono",Menlo,Consolas,monospace;
+  }
   *,*::before,*::after{box-sizing:border-box}*{margin:0}
-  body{min-height:100vh;display:grid;place-items:center;padding:32px 20px;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-    line-height:1.65;color:#fff;
-    background:radial-gradient(900px 480px at 20% 0%,rgba(46,134,224,.28),transparent 60%),
-      linear-gradient(170deg,#0B1526,#060C16)}
-  .wrap{max-width:620px;text-align:center}
-  .check{width:62px;height:62px;border-radius:50%;background:#0E8F5A;display:grid;place-items:center;margin:0 auto 22px}
-  h1{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;letter-spacing:-.025em;line-height:1.15}
-  p{margin-top:16px;color:#C6D3E4}
-  ol{margin:26px auto 0;padding:0;max-width:440px;text-align:left;display:grid;gap:10px;
-    counter-reset:s;list-style:none;color:#C6D3E4;font-size:.96rem}
-  ol li{display:flex;gap:12px}
-  ol li::before{counter-increment:s;content:counter(s);flex:none;width:26px;height:26px;border-radius:50%;
-    background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;font-weight:800;
-    font-size:.82rem;display:grid;place-items:center;margin-top:2px}
+  body{min-height:100vh;display:grid;place-items:center;padding:36px 20px;
+    font-family:var(--font);line-height:1.75;color:var(--cream-200);background:var(--brown-900)}
+  .wrap{max-width:640px;text-align:center}
+  .mark{margin:0 auto 24px}
+  h1{font-size:clamp(1.4rem,3.6vw,2.1rem);font-weight:700;text-transform:uppercase;letter-spacing:.05em;
+    line-height:1.25;color:var(--cream-100)}
+  .bar{width:56px;height:2px;background:var(--orange);margin:20px auto 0}
+  p{margin-top:20px;color:var(--brown-200);font-size:.92rem}
+  ol{margin:28px auto 0;padding:0;max-width:460px;text-align:left;display:grid;gap:0;list-style:none;
+    border:1px solid rgba(255,255,255,.16)}
+  ol li{display:flex;gap:14px;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.16);
+    color:var(--brown-200);font-size:.85rem;line-height:1.7}
+  ol li:last-child{border-bottom:0}
+  ol li b{flex:none;color:var(--orange);font-size:.75rem;letter-spacing:.1em;padding-top:2px}
   .actions{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
-  .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 24px;border-radius:10px;
-    font-weight:800;text-decoration:none;border:2px solid transparent}
-  .btn-primary{background:#D62839;color:#fff}
-  .btn-ghost{border-color:rgba(255,255,255,.45);color:#fff}
+  .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 24px;font-size:.76rem;
+    font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:0;
+    clip-path:polygon(11px 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%,0 11px)}
+  .btn-primary{background:var(--orange-btn);color:#fff}
+  .btn-light{background:var(--cream-100);color:var(--brown-900)}
+  .fine{margin-top:28px;font-size:.76rem;color:var(--brown-200);line-height:1.7}
   a{color:inherit}
-  .fine{margin-top:26px;font-size:.85rem;color:#8FA3BC}
 </style>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BZ01Y3KFS"></script>
@@ -49,26 +55,28 @@
 
 <body>
 <main class="wrap">
-  <div class="check" aria-hidden="true">
-    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-  </div>
+  <svg class="mark" width="44" height="44" viewBox="0 0 40 40" aria-hidden="true">
+    <path d="M16 5 L26 5 L20 35 L10 35 Z" fill="#F4491B"/>
+    <path d="M21 5 L37 5 L35.5 12.5 L19.5 12.5 Z" fill="#F4491B"/>
+    <path d="M18 18 L32 18 L30.5 25.5 L16.5 25.5 Z" fill="#F4491B"/>
+  </svg>
 
-  <h1>Got it &mdash; your request is in.</h1>
-  <p>A member of our team will review the building details and get back to you within one business day.</p>
+  <h1>Got it &mdash; your request is in</h1>
+  <div class="bar"></div>
+  <p>An RF engineer will review the building details and get back to you within one business day.</p>
 
   <ol>
-    <li>We check what the AHJ in that jurisdiction requires.</li>
-    <li>We tell you whether a coverage test or a full system is the right next step.</li>
-    <li>You get a clear price for the testing, with no obligation to go further.</li>
+    <li><b>01</b><span>We check what the AHJ in that jurisdiction requires.</span></li>
+    <li><b>02</b><span>We tell you whether a grid test or a full system is the right next step.</span></li>
+    <li><b>03</b><span>You get a clear price for the testing, with no obligation to go further.</span></li>
   </ol>
 
   <div class="actions">
-    <!-- TODO: replace the placeholder number. -->
-    <a class="btn btn-primary" href="tel:+17320000000">Call (732) 000-0000</a>
-    <a class="btn btn-ghost" href="index.html">Back to the page</a>
+    <a class="btn btn-primary" href="tel:+17323145162">Call 732-314-5162</a>
+    <a class="btn btn-light" href="index.html">Back To The Page</a>
   </div>
 
-  <p class="fine">In a rush &mdash; failed inspection, CO on the line? Call us and say so. We move those first.</p>
+  <p class="fine">In a rush &mdash; failed inspection, CO on the line? Call and say so. We move those first.</p>
 </main>
 </body>
 </html>

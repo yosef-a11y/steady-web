@@ -18,16 +18,42 @@ python3 -m http.server 8000   # from the repo root
 
 ---
 
+## Branding
+
+Palette, typography and geometry were sampled from a screenshot of firstcomms.net (the site itself is
+unreachable from this build environment — blocked by egress policy):
+
+| Token | Value | Where it came from |
+| --- | --- | --- |
+| `--cream-200` | `#EBE1DA` | Page ground |
+| `--brown-900` | `#240D07` | Header, ticker, footer, dark sections |
+| `--brown-700` / `--brown-600` | `#5A2415` / `#74341E` | Headings / body copy |
+| `--orange` | `#F4491B` | Brand orange — rules, marks, decorative fills |
+| `--orange-btn` | `#D93F12` | Buttons only, see below |
+
+**Why two oranges.** White text on the brand orange `#F4491B` measures 3.61:1, under the 4.5:1 AA
+threshold — a real accessibility failure and something Google's landing page assessment can pick up.
+Buttons therefore use `#D93F12`, which hits exactly 4.50:1 with white and is visually indistinguishable
+at button size. The true brand orange is used everywhere it sits on cream or dark, where contrast is
+not an issue.
+
+Type is a monospace stack (`ui-monospace` first), matching the site's mono treatment — uppercase and
+letter-spaced for headings, nav, buttons and labels. No webfont is loaded, so there is no font request
+and no layout shift; if you want the exact face from the live site, name it and it can be added to the
+front of the stack.
+
+The logo mark is an inline SVG redraw of the angular FirstComms glyph. **Swap in the real asset when you
+have it** — it appears in `index.html` (header + footer), `thank-you.html`, `privacy.html`, and as the
+data-URI favicon in all three.
+
+The one thing the reference site has that this page does not is the **hero photograph**. Drop a real
+photo into the hero's right column (or as a background behind the copy) when you have one you own —
+no stock placeholder was invented.
+
 ## Before this page runs traffic
 
 These are blockers, not polish.
 
-- [ ] **Phone number.** Ships as the placeholder `(732) 000-0000` / `+17320000000` in all three files.
-      Search and replace it. The page logs a console error while the placeholder is still in place.
-- [ ] **Brand match.** Colors, logo and typography were built from scratch — the live firstcomms.net
-      site could not be reached from the build environment to sample it. Confirm the palette against the
-      real site; every color is a CSS custom property in the `:root` block at the top of `index.html`,
-      so matching it is a one-block edit. Swap the inline SVG logo mark for the real logo if there is one.
 - [ ] **Form destination.** The form posts to Web3Forms using the Steady Growth access key. If leads
       should land in the client's inbox instead, get a key at web3forms.com and replace `access_key`.
 - [ ] **Analytics property.** `G-7BZ01Y3KFS` is Steady Growth's GA4 property. Replace it in all three
@@ -40,6 +66,24 @@ These are blockers, not polish.
       design, installation and permitting, and the Toms River address — all sourced from public
       descriptions of FirstComms. Have the client confirm each one. There are deliberately **no
       testimonials, no project counts and no certification logos** on the page; add only real ones.
+- [ ] **Technical review.** The code figures below are industry-standard and sourced, but an RF engineer
+      at FirstComms should sign off before this is public — it is their name on the claims.
+
+## Where the technical content came from
+
+The code and engineering content was compiled from published industry sources: IFC Section 510 model
+language and AHJ standards (−95 dBm, DAQ 3.0, 95%/99% coverage split, critical-area definitions),
+NFPA 1225 Chapter 18 (which carries the ERCES provisions previously in NFPA 1221 Chapter 9 — NFPA 1221
+has not been withdrawn and many AHJs still cite it), 2021 IFC equipment requirements (UL 2524 listing,
+12-hour standby power, NEMA 3R/4 enclosures, anti-oscillation circuitry and per-channel AGC), IFC
+510.6.1 annual inspection, FCC Part 90.219 booster rules, and published commissioning sequences and
+FirstNet Band 14 interference guidance from ERRCS specialist firms.
+
+Two deliberate omissions: **jurisdiction-specific permit fees and plan-review timelines** (the figures
+in circulation are Florida-specific and would be wrong for a New Jersey page), and **any hard price**.
+Both are answered honestly on the page instead — "it depends on the building, and the grid test tells
+us." Every code figure on the page is hedged to the AHJ having final authority, which is both true and
+the right posture for a page that a fire official might read.
 
 ---
 
