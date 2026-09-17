@@ -2,54 +2,67 @@
 User-agent: *
 Allow: /
 Disallow: /thank-you.html
+Disallow: /clients/
 
 # AI assistants and answer engines: explicitly welcome
 User-agent: GPTBot
 Allow: /
 Disallow: /thank-you.html
+Disallow: /clients/
 
 User-agent: OAI-SearchBot
 Allow: /
 Disallow: /thank-you.html
+Disallow: /clients/
 
 User-agent: ChatGPT-User
 Allow: /
 Disallow: /thank-you.html
+Disallow: /clients/
 
 User-agent: ClaudeBot
 Allow: /
 Disallow: /thank-you.html
+Disallow: /clients/
 
 User-agent: Claude-User
 Allow: /
 Disallow: /thank-you.html
+Disallow: /clients/
 
 User-agent: anthropic-ai
 Allow: /
 Disallow: /thank-you.html
+Disallow: /clients/
 
 User-agent: PerplexityBot
 Allow: /
 Disallow: /thank-you.html
+Disallow: /clients/
 
 User-agent: Perplexity-User
 Allow: /
 Disallow: /thank-you.html
+Disallow: /clients/
 
 User-agent: Google-Extended
 Allow: /
 Disallow: /thank-you.html
+Disallow: /clients/
 
 User-agent: Applebot-Extended
 Allow: /
 Disallow: /thank-you.html
+Disallow: /clients/
 
 User-agent: Bingbot
 Allow: /
 Disallow: /thank-you.html
+Disallow: /clients/
 
 User-agent: CCBot
 Allow: /
 Disallow: /thank-you.html
+Disallow: /clients/
 
 Sitemap: https://steadygrowthmarketing.com/sitemap.xml

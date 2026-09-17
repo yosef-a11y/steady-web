@@ -18,6 +18,7 @@ Static marketing site. No build step, no dependencies, no framework.
 | `.github/workflows/deploy.yml` | Publishes the site on every push |
 | `.nojekyll` | Stops GitHub Pages running the files through Jekyll |
 | `favicon.svg` | Browser tab icon |
+| `clients/` | Standalone pages built for clients, previewable here but deployed elsewhere. Excluded from `robots.txt` and the sitemap so they never compete with the live page. Each has its own `DEPLOY-NOTES.md`. |
 | `images/logo-mark.svg` | Standalone logo mark |
 | `robots.txt`, `sitemap.xml` | SEO |
 
