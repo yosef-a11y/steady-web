@@ -23,10 +23,17 @@ outside — **check each one and correct the page if it's wrong.** Everything el
 is either measurable (code limits, physics) or a claim about how you work that you control.
 
 ### 1. Swap in the real logo
-`logo.svg` is my redraw of the badge from the image you sent — close, but not the original
-artwork. Drop your real file in as `logo.svg` (or save it as `logo.png` and change the three
-`src="logo.svg"` references). Keep the `width`/`height` attributes matching the real file's
-aspect ratio so the page doesn't shift as it loads.
+`logo.svg` is **my redraw** of the badge from the image you sent. It's built to the right
+proportions and stays legible down to about 120px wide, but it is not your artwork — the
+typeface and the swirl are approximations, because I can't reach njairquality.com from here
+to pull the real file.
+
+Fixing it is one step: drop your real file in as `logo.svg`, overwriting mine. If it's a PNG,
+save it as `logo.png` and change the three `src="logo.svg"` references instead.
+
+Then set `width`/`height` on those three `<img>` tags to your file's real aspect ratio
+(currently 190&times;70 in the header, 176&times;65 in the footer). Those attributes stop the
+page jumping around as it loads, and layout shift is scored by Google.
 
 ### 2. Service area — "all 21 New Jersey counties"
 The page claims statewide coverage, in the hero trust strip, the service-area section, the
@@ -113,6 +120,30 @@ on a phone screen. Add them under the process section:
 
 Keep them under ~150KB each and always set `width`/`height` — an unsized image shifts the
 layout as it loads, and layout shift is scored.
+
+---
+
+## The "nearly thirty names" section
+
+Right under the hero there's a section listing 29 search phrases across two cards — *the test
+on your house* and *the test on your ductwork*. It is not decoration and it is not keyword
+stuffing: **it is your ad keyword list, made visible.**
+
+Your account bids on about thirty phrases for what are really only two tests. Someone who
+typed *door blower test* or *duct blasting* or *hvac air leak test* needs to see their own
+words within one scroll, or the page feels like it's about something adjacent to what they
+wanted. That recognition is most of what "familiar" means on a landing page, and it's a
+direct input to ad relevance.
+
+Two consequences worth knowing:
+
+- **If you add keywords to the ad account, add them to those chip lists.** Any phrase you pay
+  for should appear on the page you send it to.
+- **If you drop a keyword, drop the chip.** A list of terms you don't serve is just clutter.
+
+The H1 is `Blower door testing in New Jersey` for the same reason — the searcher's phrase
+first, the promise (*Pass your test. Close your permit.*) immediately under it. Headline
+echoing the query is the single biggest lever on message match.
 
 ---
 
