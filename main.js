@@ -18,6 +18,10 @@
     navList.classList.remove('active');
     navToggle.classList.remove('active');
     navToggle.setAttribute('aria-expanded', 'false');
+    Array.prototype.forEach.call(document.querySelectorAll('.nav-has-menu.open'), function (m) {
+      m.classList.remove('open');
+      m.querySelector('.nav-trigger').setAttribute('aria-expanded', 'false');
+    });
   }
 
   if (navToggle && navList) {
@@ -39,6 +43,50 @@
       if (!navList.contains(e.target) && !navToggle.contains(e.target)) closeNav();
     });
   }
+
+  /* ---------------------------------------------------------------------
+     Nav dropdowns
+     Hover opens them on desktop via CSS; this handles click, touch and
+     keyboard, which hover alone never covers.
+     --------------------------------------------------------------------- */
+  var menus = document.querySelectorAll('.nav-has-menu');
+
+  function closeMenus(except) {
+    Array.prototype.forEach.call(menus, function (m) {
+      if (m === except) return;
+      m.classList.remove('open');
+      var t = m.querySelector('.nav-trigger');
+      if (t) t.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  Array.prototype.forEach.call(menus, function (item) {
+    var trigger = item.querySelector('.nav-trigger');
+    if (!trigger) return;
+
+    trigger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var willOpen = !item.classList.contains('open');
+      closeMenus(item);
+      item.classList.toggle('open', willOpen);
+      trigger.setAttribute('aria-expanded', String(willOpen));
+    });
+
+    // Tabbing out of the last link should close the panel behind you.
+    item.addEventListener('focusout', function (e) {
+      if (!item.contains(e.relatedTarget)) {
+        item.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.nav-has-menu')) closeMenus(null);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMenus(null);
+  });
 
   /* ---------------------------------------------------------------------
      Header state + scroll progress
