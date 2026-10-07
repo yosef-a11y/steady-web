@@ -3,18 +3,42 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://steadygrowthmarketing.com/</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://steadygrowthmarketing.com/images/og-image.png</image:loc>
-      <image:title>Steady Growth Marketing: Google Ads and Meta Ads agency</image:title>
+      <image:title>Steady Growth Marketing: Google Ads agency</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://steadygrowthmarketing.com/growth-marketing-consultant/</loc>
-    <lastmod>2026-09-08</lastmod>
+    <lastmod>2026-10-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://steadygrowthmarketing.com/ecommerce-ppc-agency/</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://steadygrowthmarketing.com/google-ads-for-aba-therapy/</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://steadygrowthmarketing.com/google-ads-agency-new-jersey/</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://steadygrowthmarketing.com/google-ads-management-cost/</loc>
+    <lastmod>2026-10-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

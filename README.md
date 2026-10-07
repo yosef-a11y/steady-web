@@ -10,7 +10,11 @@ Static marketing site. No build step, no dependencies, no framework.
 | File | Purpose |
 | --- | --- |
 | `index.html` | The homepage, targeting "Google Ads agency" |
-| `growth-marketing-consultant/index.html` | Landing page targeting "growth marketing consultant" |
+| `growth-marketing-consultant/index.html` | Targets "growth marketing consultant" |
+| `ecommerce-ppc-agency/index.html` | Targets "e-commerce PPC agency", "Google Shopping agency" |
+| `google-ads-for-aba-therapy/index.html` | Targets "Google Ads for ABA therapy" — the narrowest and most winnable |
+| `google-ads-agency-new-jersey/index.html` | Targets "Google Ads agency New Jersey" |
+| `google-ads-management-cost/index.html` | Targets "how much does Google Ads management cost" |
 | `styles.css` | Design system + all styling |
 | `main.js` | Nav, scroll reveal, counters, FAQ, form guard, analytics events |
 | `thank-you.html` | Post-form-submission page (fires the `generate_lead` GA event) |
@@ -114,6 +118,20 @@ Google Analytics (`G-7BZ01Y3KFS`) is loaded on every page. Custom events fired:
 | `click_to_email` | Any email address clicked |
 
 Mark `generate_lead` as a key event in GA4 (Admin → Events) so it shows up as a conversion.
+
+## How the pages are meant to work together
+
+The homepage targets the broadest, most contested phrase. The subpages target narrower phrases
+with far less competition, where a small site can realistically rank. Every page links to every
+other page, so link equity and crawl paths flow between them.
+
+Expect the narrow pages to produce traffic first. "Google Ads for ABA therapy" has a fraction of
+the search volume of "Google Ads agency" and a tiny fraction of the competition, so it is the one
+most likely to rank and the one most likely to convert, since anyone searching it is already
+qualified.
+
+Each page's contact form carries a hidden `page` field and a tailored `subject`, so form
+notifications say which page produced the enquiry.
 
 ## Adding a landing page
 
