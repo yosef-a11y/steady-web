@@ -13,6 +13,7 @@ Static marketing site. No build step, no dependencies, no framework.
 | `growth-marketing-consultant/index.html` | Targets "growth marketing consultant" |
 | `ecommerce-ppc-agency/index.html` | Targets "e-commerce PPC agency", "Google Shopping agency" |
 | `google-ads-for-aba-therapy/index.html` | Targets "Google Ads for ABA therapy" — the narrowest and most winnable |
+| `bcba-rbt-recruiting-ads/index.html` | Targets "BCBA jobs"/"RBT recruiting" advertising — the hiring side of the ABA angle |
 | `google-ads-agency-new-jersey/index.html` | Targets "Google Ads agency New Jersey" |
 | `google-ads-management-cost/index.html` | Targets "how much does Google Ads management cost" |
 | `styles.css` | Design system + all styling |
@@ -131,7 +132,7 @@ most likely to rank and the one most likely to convert, since anyone searching i
 qualified.
 
 Each page's contact form carries a hidden `page` field and a tailored `subject`, so form
-notifications say which page produced the enquiry.
+notifications say which page produced the inquiry.
 
 ## Adding a landing page
 
