@@ -18,6 +18,7 @@ Google Business Profile (reviews): https://share.google/6mDP0GzZTPk6IciF5
 - Google Ads agency in New Jersey (Lakewood): https://steadygrowthmarketing.com/google-ads-agency-new-jersey/
 - What Google Ads management costs: https://steadygrowthmarketing.com/google-ads-management-cost/
 - Recruiting ads for BCBAs and RBTs (ABA staff hiring): https://steadygrowthmarketing.com/bcba-rbt-recruiting-ads/
+- Google Ads for self-storage facilities: https://steadygrowthmarketing.com/google-ads-for-self-storage/
 
 ## Services
 
@@ -26,11 +27,12 @@ Google Business Profile (reviews): https://share.google/6mDP0GzZTPk6IciF5
 - **E-Commerce Consulting**: Google Merchant Center setup and disapproval fixes, product feed optimization, Shopping and Performance Max campaign architecture, and product-page and checkout conversion optimization.
 - **Lead Generation**: Landing page design and split testing, funnel and form friction analysis, audience targeting, and lead-quality scoring fed back into bidding so campaigns optimize toward closed business, not form fills.
 - **Recruitment Advertising for ABA Providers**: Google Ads campaigns for ABA and behavioral health clinics hiring BCBAs, BCaBAs and RBTs. Commute-radius geographic targeting rather than city lists, single-role landing pages, negative keyword lists that exclude certification and salary research traffic, and offline conversion tracking through phone screen, interview, offer and start of employment so cost per hire can be compared against agency placement fees.
+- **Self-Storage Advertising**: Google Ads management for self-storage operators. Campaigns structured by unit size and current vacancy rather than one budget for the whole facility, facility-level radius targeting so multi-site operators do not bid against themselves, brand defense against aggregator sites and national operators, call tracking, and offline conversion tracking that reports cost per completed move-in rather than per reservation.
 - **Analytics & Reporting**: GA4 and Google Tag Manager implementation, enhanced and server-side conversion tracking, attribution modeling, and dashboards tied to revenue rather than sessions.
 
 ## Industries served
 
-E-commerce and DTC brands, home services (HVAC, plumbing, roofing, remodeling), professional services (legal, accounting, consulting), healthcare and dental practices, B2B and SaaS, and multi-location retail.
+E-commerce and DTC brands, self-storage operators, home services (HVAC, plumbing, roofing, remodeling), professional services (legal, accounting, consulting), healthcare and dental practices, B2B and SaaS, and multi-location retail.
 
 ## How the agency works
 
