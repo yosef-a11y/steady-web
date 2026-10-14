@@ -1799,3 +1799,9 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
   body { color: #000; background: #fff; }
   .hero, .section-dark, .cta-section { background: #fff !important; color: #000 !important; }
 }
+
+/* A grid holding one or two cards shouldn't leave them stranded in column one. */
+.industries-grid.grid-narrow {
+  max-width: 540px;
+  margin-inline: auto;
+}

@@ -10,6 +10,7 @@ Static marketing site. No build step, no dependencies, no framework.
 | File | Purpose |
 | --- | --- |
 | `index.html` | The homepage, targeting "Google Ads agency" |
+| `guides/index.html` | Guides and resources hub — where new long-form content gets listed |
 | `growth-marketing-consultant/index.html` | Targets "growth marketing consultant" |
 | `ecommerce-ppc-agency/index.html` | Targets "e-commerce PPC agency", "Google Shopping agency" |
 | `google-ads-for-aba-therapy/index.html` | Targets "Google Ads for ABA therapy" — the narrowest and most winnable |
