@@ -2347,3 +2347,88 @@ h3, h4, h5 {
 /* Same problem anywhere a label sits on navy. */
 .section-dark .section-header h2,
 .section-dark .section-header .lede { color: inherit; }
+
+/* ---- Client band: masthead rather than a centred list -------------------
+   A row of centred names reads as filler. Setting the label against the
+   names, divided by hairlines, makes it look like a masthead credit line.
+   Each name sits in a .client-name span so a logo can replace it later
+   without the layout moving — see images/logos/README.md. */
+.clients-band { padding: 0; }
+.clients-inner {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  flex-wrap: wrap;
+}
+.clients-band .clients-lede {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 1.6rem 2rem 1.6rem 0;
+  text-align: left;
+  line-height: 1.45;
+  border-right: 1px solid var(--rule);
+}
+.clients-band .clients-list {
+  flex: 1 1 420px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 0;
+  margin: 0;
+}
+.clients-list li {
+  display: flex;
+  align-items: center;
+  padding: 1.6rem 1.9rem;
+  border-right: 1px solid var(--rule);
+  font-size: 1.24rem;
+}
+.clients-list li:last-child { border-right: 0; }
+
+/* Drop a logo in beside the wordmark and add .has-logo to the li; the name
+   stays in the DOM for screen readers and for when an image fails. */
+.client-logo { height: 26px; width: auto; opacity: .72; }
+.has-logo .client-name {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (max-width: 860px) {
+  .clients-band .clients-lede {
+    flex: 1 1 100%;
+    border-right: 0;
+    border-bottom: 1px solid var(--rule);
+    padding: 1.2rem 0;
+    justify-content: center;
+    text-align: center;
+  }
+  .clients-band .clients-lede br { display: none; }
+  .clients-band .clients-list { justify-content: center; }
+  .clients-list li { padding: 1rem 1.1rem; font-size: 1.05rem; border-right: 0; }
+}
+
+/* The names left a gap at the right end of the row. Equal cells divide the
+   full width, so the dividers land on a regular rhythm and the band reads as
+   a deliberate ledger rather than a line that ran out. */
+@media (min-width: 861px) {
+  .clients-list li {
+    flex: 1 1 0;
+    justify-content: center;
+    padding: 1.6rem 1rem;
+    text-align: center;
+  }
+  .clients-list li:last-child { border-right: 0; }
+}
+
+/* The label used <br> to sit on three lines, and hiding those on mobile ran
+   the words together ("OURFIVE-STAR REVIEWSON GOOGLE"). A width constraint
+   wraps it on desktop and lets it flow on mobile, with no markup trickery. */
+@media (min-width: 861px) {
+  .clients-band .clients-lede { max-width: 15ch; }
+}
