@@ -2032,3 +2032,266 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
    tighter leading suits the reduced sizes. */
 .section-header h2 { line-height: 1.14; }
 .section-header { margin-bottom: clamp(2.2rem, 4vw, 3.2rem); }
+
+/* ==========================================================================
+   VISUAL REFRESH
+   The previous look was the default of its genre: Inter over Plus Jakarta,
+   gradient text, 20px rounded cards floating on soft shadows, centred pill
+   badges, blue-grey wash. Competent, and identical to a thousand other
+   pages. This replaces the visual language without touching a word of copy.
+
+   Direction: editorial, closer to a financial weekly than a SaaS template.
+   Serif headlines at normal weight, warm paper instead of blue-grey, hairline
+   rules instead of shadows, square corners instead of pills, and section
+   headers set left against a rule rather than centred under a badge.
+   ========================================================================== */
+:root {
+  /* Instrument Serif has one weight and a true italic, so headlines lead on
+     size and shape rather than on being bold. Plex has more grain than Inter
+     and doesn't read as a default. */
+  --font-display: 'Instrument Serif', Charter, 'Bitstream Charter', Georgia, 'Times New Roman', serif;
+  --font-body: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  /* Paper, not blue-grey. Warm neutrals read as printed rather than rendered. */
+  --paper: #FCFAF6;
+  --paper-alt: #F3EFE6;
+  --rule: #E2DBCD;
+  --rule-strong: #C9C0AE;
+  --ink: #15192C;
+
+  --bg: var(--paper);
+  --bg-soft: var(--paper-alt);
+  --text: var(--ink);
+  --text-muted: #5E5A50;
+  --border: var(--rule);
+
+  /* Edges, not pills. */
+  --radius-sm: 2px;
+  --radius: 2px;
+  --radius-lg: 3px;
+  --radius-xl: 4px;
+
+  /* Paper doesn't float. Separation comes from rules. */
+  --shadow-xs: none;
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --shadow-xl: none;
+  --shadow-brand: none;
+
+  /* Flat fills where gradients were. Gradient text is the single clearest
+     tell of a generated page. */
+  --grad-brand: var(--navy-900);
+  --grad-bright: var(--blue-600);
+}
+
+body { background: var(--paper); color: var(--ink); }
+
+/* ---- Typography -------------------------------------------------------- */
+h1, h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -.011em;
+  line-height: 1.06;
+}
+/* Small headings stay sans — a serif at card-title size reads weak. */
+h3, h4, h5 {
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: -.004em;
+  line-height: 1.3;
+}
+
+.hero h1 { font-size: clamp(2.7rem, 5.6vw, 4.5rem); letter-spacing: -.015em; }
+.section-header h2,
+.about-text h2 { font-size: clamp(2rem, 3.9vw, 3rem); }
+.page-hero h1 { font-size: clamp(2.4rem, 4.6vw, 3.6rem); }
+.thanks h1 { font-size: clamp(2.3rem, 4.4vw, 3.2rem); }
+.prose h2 { font-size: clamp(1.75rem, 3.2vw, 2.4rem); }
+
+/* The highlighted line becomes an italic rather than a gradient. */
+.hero h1 .highlight {
+  font-style: italic;
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: currentColor;
+  color: var(--blue-300);
+}
+
+/* ---- Section headers: left, under a rule ------------------------------- */
+.section-header {
+  text-align: left;
+  max-width: 780px;
+  margin-left: 0;
+  margin-right: auto;
+}
+.section-label {
+  background: none;
+  border: 0;
+  border-top: 2px solid var(--ink);
+  border-radius: 0;
+  padding: .55rem 0 0;
+  margin-bottom: .9rem;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: .71rem;
+  font-weight: 600;
+  letter-spacing: .17em;
+}
+.section-label::before { display: none; }
+.section-header .lede { max-width: 62ch; }
+
+/* ---- Cards: hairline, square, grounded --------------------------------- */
+.service-card,
+.industry-card,
+.testimonial-card,
+.faq-item,
+.contact-form,
+.guide-card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-lg);
+  box-shadow: none;
+}
+.service-card:hover,
+.industry-card:hover,
+.testimonial-card:hover {
+  border-color: var(--rule-strong);
+  transform: none;
+  box-shadow: none;
+}
+.service-card::after, .industry-card::before { display: none; }
+
+/* Icon tiles were rounded blue squares on every card. A plain rule reads
+   quieter and stops them all looking stamped from one template. */
+.service-icon, .industry-icon {
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-sm);
+  color: var(--blue-600);
+}
+
+/* ---- Buttons: squared, flat -------------------------------------------- */
+.btn {
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: .005em;
+  box-shadow: none;
+}
+.btn:hover { box-shadow: none; transform: none; }
+.btn-primary { --btn-bg: var(--navy-900); background: var(--navy-900); }
+.btn-primary:hover { background: var(--blue-700); }
+
+/* ---- Hero -------------------------------------------------------------- */
+.hero { background: var(--navy-900); }
+.hero-badge {
+  background: none;
+  border: 0;
+  border-top: 2px solid rgba(255, 255, 255, .35);
+  border-radius: 0;
+  padding: .55rem 0 0;
+  color: rgba(255, 255, 255, .72);
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+}
+.hero-badge .pip { display: none; }
+.hero-proof { border-radius: var(--radius-lg); background: rgba(255, 255, 255, .05); }
+
+/* ---- Bands ------------------------------------------------------------- */
+.clients-band { background: var(--paper-alt); border-block: 1px solid var(--rule); }
+.clients-lede { color: var(--text-muted); letter-spacing: .17em; font-size: .71rem; }
+.clients-list li { font-family: var(--font-display); font-weight: 400; font-size: 1.3rem; opacity: 1; color: var(--ink); }
+
+.section-alt { background: var(--paper-alt); }
+.strip { border-block: 1px solid rgba(255, 255, 255, .08); }
+
+/* ---- Reviews ----------------------------------------------------------- */
+.testimonial-text { font-family: var(--font-display); font-size: 1.22rem; line-height: 1.45; color: var(--ink); }
+.testimonial-card .author-avatar {
+  border-radius: 50%;
+  background: var(--paper-alt);
+  border: 1px solid var(--rule);
+  color: var(--text-muted);
+  font-family: var(--font-body);
+}
+
+/* ---- Forms ------------------------------------------------------------- */
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  border-radius: var(--radius);
+  border-color: var(--rule);
+  background: var(--paper);
+  font-family: var(--font-body);
+}
+
+/* ---- Sticky CTA + footer ----------------------------------------------- */
+.sticky-cta { background: var(--navy-900); border-top: 1px solid rgba(255, 255, 255, .14); }
+@supports (backdrop-filter: blur(10px)) {
+  .sticky-cta { background: rgba(10, 22, 56, .95); }
+}
+
+@media (max-width: 760px) {
+  .section-header { max-width: none; }
+  .clients-list li { font-size: 1.12rem; }
+  .testimonial-text { font-size: 1.12rem; }
+}
+
+/* ---- Refresh: corrections after looking at it -------------------------- */
+
+/* The scrolled header was white, which read as a foreign band sitting on the
+   paper. Tint it to the paper instead. */
+.header.scrolled {
+  background: rgba(252, 250, 246, .88);
+  box-shadow: none;
+  border-bottom-color: var(--rule);
+}
+
+/* The reviews summary was still a large pill — the one piece of the old
+   shape language left in the section. Square it and let the rule carry it. */
+.reviews-summary {
+  border-radius: 0;
+  border: 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  background: none;
+  box-shadow: none;
+  max-width: none;
+  justify-content: flex-start;
+  padding: 1rem 0;
+}
+.reviews-summary-text { font-family: var(--font-body); font-size: .95rem; color: var(--text-muted); }
+
+/* Names are metadata, not display type — keep them sans so the serif stays
+   reserved for the quote itself. */
+.author-name { font-family: var(--font-body); font-weight: 600; }
+.hero-proof-name, .hero-proof-co { font-family: var(--font-body); }
+
+/* Match the hero proof avatar to the quieter ones in the review wall. */
+.hero-proof-avatar {
+  background: rgba(255, 255, 255, .1);
+  border: 1px solid rgba(255, 255, 255, .22);
+  font-family: var(--font-body);
+}
+
+/* The nav phone button and logo text were set in the old display face. */
+.nav-phone, .logo-text b { font-family: var(--font-body); }
+.logo-text b { font-weight: 700; letter-spacing: -.01em; }
+
+/* FAQ questions are interface, not headline. */
+.faq-q { font-family: var(--font-body); font-weight: 600; }
+
+/* The primary button was set to navy, which is also the hero background —
+   on the hero it all but disappeared. Brand blue holds against both the navy
+   sections and the paper ones. */
+.btn-primary {
+  --btn-bg: var(--blue-600);
+  background: var(--blue-600);
+  color: var(--white);
+  border-color: var(--blue-600);
+}
+.btn-primary:hover { background: var(--blue-700); border-color: var(--blue-700); }
