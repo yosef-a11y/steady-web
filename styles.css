@@ -175,7 +175,7 @@ p { text-wrap: pretty; }
 }
 
 .section-header h2 {
-  font-size: clamp(2rem, 4.2vw, 3.15rem);
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
   margin-bottom: 1rem;
 }
 
@@ -571,7 +571,7 @@ p { text-wrap: pretty; }
 .hero-badge .pip svg { width: 12px; height: 12px; }
 
 .hero h1 {
-  font-size: clamp(2.15rem, 3.7vw, 2.85rem);
+  font-size: clamp(2.3rem, 4.3vw, 3.4rem);
   line-height: 1.1;
   margin-bottom: 1.4rem;
 }
@@ -847,7 +847,7 @@ p { text-wrap: pretty; }
 .stat-number {
   display: block;
   font-family: var(--font-display);
-  font-size: clamp(2.1rem, 4vw, 3rem);
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
   font-weight: 800;
   letter-spacing: -.035em;
   background: var(--grad-brand);
@@ -1092,7 +1092,7 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
 
 .result-metric {
   font-family: var(--font-display);
-  font-size: clamp(2.15rem, 3.6vw, 2.85rem);
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
   font-weight: 800;
   letter-spacing: -.035em;
   background: linear-gradient(120deg, #FFFFFF 10%, var(--blue-300) 90%);
@@ -1153,18 +1153,29 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
   gap: clamp(1.1rem, 2vw, 1.6rem);
 }
 
-/* Masonry wall — reviews vary a lot in length, and columns absorb that
-   far better than a grid, which would leave ragged gaps under short ones. */
+/* An even grid. This was a column-count masonry wall, which made sense while
+   two reviews ran to several paragraphs; those are trimmed to excerpts now, so
+   every quote sits in a similar range and a grid reads far tidier — equal rows,
+   a straight bottom edge, and authors aligned across each row. */
 .reviews-grid {
-  column-count: 3;
-  column-gap: clamp(1.1rem, 2vw, 1.6rem);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: clamp(1.1rem, 2vw, 1.5rem);
 }
+/* Flex rather than grid purely so an incomplete final row centres itself.
+   Ten reviews in three columns otherwise strand the tenth alone on the left. */
 .reviews-grid .testimonial-card {
-  display: block;
-  break-inside: avoid;
-  -webkit-column-break-inside: avoid;
-  margin-bottom: clamp(1.1rem, 2vw, 1.6rem);
+  flex: 0 1 calc((100% - 2 * clamp(1.1rem, 2vw, 1.5rem)) / 3);
+  min-width: 260px;
 }
+@media (max-width: 1000px) {
+  .reviews-grid .testimonial-card { flex-basis: calc((100% - clamp(1.1rem, 2vw, 1.5rem)) / 2); }
+}
+@media (max-width: 640px) {
+  .reviews-grid .testimonial-card { flex-basis: 100%; }
+}
+.reviews-grid .testimonial-card { margin-bottom: 0; }
 .reviews-grid .testimonial-text + .testimonial-text { margin-top: .85rem; }
 .reviews-grid .testimonial-text:last-of-type { margin-bottom: 1.5rem; }
 
@@ -1206,7 +1217,8 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
 .testimonial-stars { display: flex; gap: 2px; margin-bottom: .9rem; }
 
 .testimonial-text {
-  font-size: 1rem;
+  font-size: 1.02rem;
+  line-height: 1.68;
   color: var(--slate-700);
   margin-bottom: 1.5rem;
   flex-grow: 1;
@@ -1244,7 +1256,7 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
   gap: clamp(2rem, 4vw, 4rem);
   align-items: center;
 }
-.about-text h2 { font-size: clamp(1.9rem, 3.6vw, 2.75rem); margin-bottom: 1.25rem; }
+.about-text h2 { font-size: clamp(1.8rem, 3.2vw, 2.45rem); margin-bottom: 1.25rem; }
 .about-text p { color: var(--text-muted); margin-bottom: 1rem; font-size: 1.02rem; }
 .about-text .about-lead { color: var(--navy-900); font-size: 1.08rem; font-weight: 500; }
 .about-text .btn { margin-top: .85rem; }
@@ -1669,7 +1681,7 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
   from { opacity: 0; transform: scale(.6); }
   to { opacity: 1; transform: scale(1); }
 }
-.thanks h1 { font-size: clamp(2.1rem, 4.6vw, 3.1rem); margin-bottom: 1rem; }
+.thanks h1 { font-size: clamp(2.1rem, 4vw, 2.9rem); margin-bottom: 1rem; }
 .thanks p { color: rgba(226, 236, 250, .82); font-size: 1.08rem; margin-bottom: 2rem; }
 .thanks-actions { display: flex; flex-wrap: wrap; gap: .85rem; justify-content: center; }
 
@@ -1979,3 +1991,55 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
 @media (prefers-reduced-motion: reduce) {
   .sticky-cta { transition: none; }
 }
+
+/* ==========================================================================
+   Modernization pass
+   The cards were flat: a single hairline border, no depth, on a near-white
+   page. Giving them a soft layered shadow and a lighter border separates them
+   from the background without adding weight. Nothing here animates on its own.
+   ========================================================================== */
+.service-card,
+.industry-card,
+.testimonial-card,
+.faq-item,
+.contact-form,
+.result-card {
+  border-color: rgba(15, 23, 42, .07);
+  box-shadow: 0 1px 2px rgba(10, 22, 56, .04), 0 6px 16px -6px rgba(10, 22, 56, .07);
+}
+
+.service-card:hover,
+.industry-card:hover,
+.testimonial-card:hover {
+  border-color: rgba(46, 134, 224, .3);
+}
+
+/* The avatar initials carried the same blue as the primary button, which made
+   ten of them compete with the CTA. Quieter, so the quote leads. */
+.testimonial-card .author-avatar {
+  background: var(--slate-100, #F1F5F9);
+  color: var(--slate-600, #475569);
+  border: 1px solid rgba(15, 23, 42, .06);
+}
+
+/* Client band: a few names plus a link to the rest, rather than the whole
+   roster. Ten names read as a list to skim past; five read as a signal. */
+.clients-band { padding: 2.2rem 0; }
+.clients-list { gap: .6rem 2rem; align-items: baseline; }
+.clients-list li { font-size: 1.02rem; opacity: .66; }
+.clients-more a {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: .92rem;
+  color: var(--blue-600, #1E6FD9);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  padding-bottom: 1px;
+}
+.clients-more a:hover { color: var(--navy-900, #0A1638); }
+.clients-list li.clients-more { opacity: 1; }
+
+/* Section headers were set very large relative to their measure. Slightly
+   tighter leading suits the reduced sizes. */
+.section-header h2 { line-height: 1.14; }
+.section-header { margin-bottom: clamp(2.2rem, 4vw, 3.2rem); }
