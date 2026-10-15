@@ -192,6 +192,44 @@
   }
 
   /* ---------------------------------------------------------------------
+     Sticky mobile CTA
+     Shown only in the stretch where neither call to action is reachable:
+     once the hero button has scrolled away, and until the contact form
+     arrives. Without IntersectionObserver it simply never shows, which
+     leaves the page exactly as it was.
+     --------------------------------------------------------------------- */
+  var stickyCta = document.getElementById('stickyCta');
+
+  if (stickyCta && 'IntersectionObserver' in window) {
+    var heroCta = document.querySelector('.hero-cta');
+    var contactSection = document.getElementById('contact');
+
+    // If there's no hero CTA on this page, treat it as already gone.
+    var heroInView = !!heroCta;
+    var contactInView = false;
+
+    var syncSticky = function () {
+      stickyCta.classList.toggle('is-visible', !heroInView && !contactInView);
+    };
+
+    var ctaObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.target === heroCta) heroInView = entry.isIntersecting;
+        else if (entry.target === contactSection) contactInView = entry.isIntersecting;
+      });
+      syncSticky();
+    }, { rootMargin: '0px 0px -12% 0px' });
+
+    if (heroCta) ctaObserver.observe(heroCta);
+    if (contactSection) ctaObserver.observe(contactSection);
+    syncSticky();
+
+    stickyCta.addEventListener('click', function (e) {
+      if (e.target.closest('a')) track('cta_click', 'Sticky Mobile CTA');
+    });
+  }
+
+  /* ---------------------------------------------------------------------
      Footer year
      --------------------------------------------------------------------- */
   var year = document.getElementById('year');

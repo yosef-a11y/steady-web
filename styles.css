@@ -1942,3 +1942,40 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
   .clients-list { gap: .6rem 1.5rem; }
   .clients-list li { font-size: .97rem; }
 }
+
+/* ==========================================================================
+   Sticky mobile CTA
+   The page runs to roughly 24 viewport heights on a phone, so the contact
+   form is a long way from most of it. This keeps one action permanently in
+   reach. Phone deliberately omitted: the header is fixed and already carries
+   it, and a second button here would compete with this one.
+   ========================================================================== */
+.sticky-cta {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 95;
+  display: none;
+  padding: .7rem 0 calc(.7rem + env(safe-area-inset-bottom, 0px));
+  background: rgba(10, 22, 56, .94);
+  border-top: 1px solid rgba(255, 255, 255, .13);
+  box-shadow: 0 -8px 28px rgba(5, 12, 32, .3);
+  /* Opacity only, no slide — the rest of the site has no motion either. */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .18s var(--ease, ease), visibility .18s var(--ease, ease);
+}
+@supports (backdrop-filter: blur(10px)) {
+  .sticky-cta { background: rgba(10, 22, 56, .86); backdrop-filter: blur(10px); }
+}
+.sticky-cta.is-visible { opacity: 1; visibility: visible; }
+.sticky-cta .btn { width: 100%; justify-content: center; }
+
+/* Only where the distance is actually a problem. On desktop the header CTA
+   and phone stay in view, so a bottom bar would just be clutter. */
+@media (max-width: 860px) {
+  .sticky-cta { display: block; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sticky-cta { transition: none; }
+}
