@@ -2432,3 +2432,35 @@ h3, h4, h5 {
 @media (min-width: 861px) {
   .clients-band .clients-lede { max-width: 15ch; }
 }
+
+/* "Reb Meir Baal Haness" is far longer than the other names. With equal-width
+   cells (flex-basis 0) it wrapped to two lines and squeezed the label column
+   down to six. Sizing cells from their content and then sharing out what is
+   left lets each name keep one line and gives the long one the room it needs.
+   The label is pinned so it can't be compressed. */
+@media (min-width: 861px) {
+  .clients-band .clients-lede {
+    flex: 0 0 auto;
+    width: 16ch;
+    max-width: none;
+  }
+  .clients-list li {
+    flex: 1 1 auto;
+    white-space: nowrap;
+    padding: 1.6rem 1.3rem;
+    font-size: 1.14rem;
+  }
+}
+@media (max-width: 860px) {
+  .clients-list li { white-space: nowrap; }
+}
+
+/* 16ch plus wide letterspacing broke the label onto five short lines. More
+   width and slightly tighter tracking settles it to two or three. */
+@media (min-width: 861px) {
+  .clients-band .clients-lede {
+    width: 21ch;
+    letter-spacing: .12em;
+    line-height: 1.6;
+  }
+}
