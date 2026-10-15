@@ -2295,3 +2295,55 @@ h3, h4, h5 {
   border-color: var(--blue-600);
 }
 .btn-primary:hover { background: var(--blue-700); border-color: var(--blue-700); }
+
+/* ---- Refresh: reconciling the dark blue with the paper ------------------
+   The navy was a cool, heavily saturated blue (#0A1638, hue 222) sitting
+   against a warm cream (hue ~40). Opposite temperatures, so the two read as
+   borrowed from different palettes rather than chosen together.
+
+   Fix pulls both toward the middle: the darks lose some blue saturation and
+   gain a little warmth, and the paper drops some of its yellow so it reads
+   as a considered greige rather than an off-white that has gone sallow.
+   Brand blue and the logo colours are untouched. */
+:root {
+  --navy-950: #0F1424;
+  --navy-900: #1A2133;
+  --navy-850: #202942;
+  --navy-800: #27324F;
+
+  --paper: #FAF8F3;
+  --paper-alt: #F0ECE2;
+  --rule: #DFD8C9;
+  --rule-strong: #C6BDA9;
+  --ink: #1A2133;
+}
+
+/* The hero's layered glows were tuned to the old, bluer navy and now read
+   as a cold patch on a warmer ground. Warm and soften them to match. */
+.hero::before {
+  background:
+    radial-gradient(60% 55% at 78% 18%, rgba(70, 110, 180, .20) 0%, transparent 62%),
+    radial-gradient(52% 48% at 12% 82%, rgba(46, 134, 224, .12) 0%, transparent 60%);
+}
+
+/* Dark sections sat on pure navy; a touch of the same warmth keeps them in
+   the same family as the paper either side of them. */
+.section-dark { background: var(--navy-900); }
+.footer { background: var(--navy-950); }
+
+/* On dark sections the label kept its old tinted-pill treatment, and the new
+   rule above it was drawn in ink — now the same value as the dark background,
+   so it vanished. Mirror the hero eyebrow instead. */
+.section-dark .section-label,
+.hero .section-label {
+  background: none;
+  border: 0;
+  border-top: 2px solid rgba(255, 255, 255, .34);
+  border-radius: 0;
+  color: rgba(255, 255, 255, .74);
+  padding: .55rem 0 0;
+}
+
+/* Same problem anywhere a label sits on navy. */
+.section-dark .section-header h2,
+.section-dark .section-header .lede { color: inherit; }
