@@ -4,7 +4,7 @@ description: ERRC (Eliminate, Reduce, Raise, Create) competitor analysis for a c
 ---
 # ERRC: Competitive Gap Grid
 
-Read .claude/skills/_shared/landing-page-psychology.md before starting.
+Read ~/.claude/skills/_shared/landing-page-psychology.md before starting.
 
 ## 1. Inputs
 - The client's page/offer and 2–5 competitor pages (URLs or pasted copy). Ask if missing.

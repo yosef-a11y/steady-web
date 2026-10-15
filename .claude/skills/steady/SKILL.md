@@ -4,7 +4,7 @@ description: Steady Growth Marketing landing page builder and auditor. Use to wr
 ---
 # Steady: Landing Page Builder
 
-Read .claude/skills/_shared/landing-page-psychology.md before starting.
+Read ~/.claude/skills/_shared/landing-page-psychology.md before starting.
 
 ## 1. Intake (ask for anything missing, don't guess)
 - Client, offer, price, target customer, main CTA
