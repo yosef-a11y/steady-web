@@ -2027,17 +2027,6 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
 .clients-band { padding: 2.2rem 0; }
 .clients-list { gap: .6rem 2rem; align-items: baseline; }
 .clients-list li { font-size: 1.02rem; opacity: .66; }
-.clients-more a {
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: .92rem;
-  color: var(--blue-600, #1E6FD9);
-  text-decoration: none;
-  border-bottom: 1px solid currentColor;
-  padding-bottom: 1px;
-}
-.clients-more a:hover { color: var(--navy-900, #0A1638); }
-.clients-list li.clients-more { opacity: 1; }
 
 /* Section headers were set very large relative to their measure. Slightly
    tighter leading suits the reduced sizes. */
