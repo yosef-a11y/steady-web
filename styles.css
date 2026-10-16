@@ -2464,3 +2464,16 @@ h3, h4, h5 {
     line-height: 1.6;
   }
 }
+
+/* ---- Contact: form first once the grid stacks --------------------------
+   The CTA jumps to #contact, but below 1024px the two columns stack with the
+   supporting column first, so you landed on a heading, a lede, an email link
+   and a phone link — three competing actions and the form a full screen
+   below (measured at 980px down on a 844px viewport). The form leads now;
+   the reassurance and the contact details follow it. */
+@media (max-width: 1024px) {
+  .contact-form { order: -1; }
+  .contact-info { order: 1; }
+  /* Tighten the gap so the first field clears the fold. */
+  .contact-grid { gap: 2.25rem; }
+}
