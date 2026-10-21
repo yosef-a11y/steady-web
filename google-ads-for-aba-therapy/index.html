@@ -85,11 +85,18 @@
       "provider": {
         "@id": "https://steadygrowthmarketing.com/#org"
       },
-      "areaServed": {
-        "@type": "Country",
-        "name": "United States"
-      },
-      "description": "Paid search and paid social management for ABA therapy and behavioral health providers, covering family intake campaigns, BCBA and RBT recruitment campaigns, compliant conversion tracking, and reporting on clients who reach start of care."
+      "description": "Paid search and paid social management for ABA therapy and behavioral health providers, covering family intake campaigns, BCBA and RBT recruitment campaigns, compliant conversion tracking, and reporting on clients who reach start of care.",
+      "knowsAbout": [
+        "Verification of benefits and prior authorization in ABA intake",
+        "Offline conversion import for start of care",
+        "Google personalized advertising policy for health conditions",
+        "BCBA and RBT recruitment advertising",
+        "Service area targeting by clinician coverage"
+      ],
+      "areaServed": [
+        { "@type": "Country", "name": "United States" },
+        { "@type": "State", "name": "New Jersey" }
+      ]
     },
     {
       "@type": "FAQPage",
@@ -125,6 +132,38 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Search campaigns usually generate inquiries within the first few weeks, since they capture demand that already exists. Judging profitability takes longer, because an inquiry this month may not become a client for another month or two, depending on how fast benefits verification and prior authorization move."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which keywords actually bring families, not students?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Narrow, intent-heavy ones: the condition plus a town, an insurer's name plus the service, \u201cin home\u201d or \u201ccenter based\u201d, \u201caccepting new clients\u201d, \u201cevaluation\u201d. Broad terms like \u201cABA therapy\u201d collect coursework researchers, certification shoppers and job seekers, all of whom click and none of whom enroll."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do we track an inquiry through to start of care?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Store the Google click ID on the form so the lead reaches intake with the click attached, then mark the stages intake already records \u2014 benefits verified, assessment scheduled, authorization approved, start of care \u2014 and send them back to Google Ads as offline conversions with values. No new software is needed; the data already exists in the practice management system."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should ABA campaigns target by town or by radius?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "By where clinicians can actually reach. Service-area coverage rarely matches municipal boundaries, and paying for clicks from a town with no available staff produces inquiries you have to turn away, which costs twice: once for the click and again for the intake time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can the same account run intake and recruiting?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Same account, never the same campaign. A parent looking for services and a clinician looking for a job need opposite landing pages and separate conversion actions. Combined, Google spends wherever conversions are cheapest \u2014 usually hiring \u2014 and family inquiries quietly dry up."
           }
         }
       ]
@@ -212,6 +251,7 @@
 <section class="section">
   <div class="container prose">
     <p class="section-label">Why this is different</p>
+    <p class="prose-lede">Google Ads for an ABA provider is not ordinary lead generation: families are not comparing prices, they are checking whether you take their insurance and when you can start, and the inquiry only becomes revenue after verification of benefits, prior authorization and an assessment. The number that matters is what it costs to reach start of care, not cost per form fill.</p>
     <h2>ABA marketing isn't ordinary lead generation</h2>
 
     <p>Most agencies run an ABA account the way they'd run one for a plumber: maximize form fills, report cost per lead, call it a success. Three things make ABA different, and missing them costs money.</p>
@@ -221,7 +261,7 @@
     <p>Ads that answer those up front produce better inquiries. They also screen out families you can't serve before your intake coordinator spends time running a verification of benefits.</p>
 
     <h2>Lifetime value is high, so you can afford more per client</h2>
-    <p>One client may receive services for months or years, billed in authorized units. Owners who've seen a $60 cost per lead in another industry routinely underbid a channel that could profitably pay several times that.</p>
+    <p>One client may receive services for months or years, billed in authorized units. Owners who come from an industry where a lead is worth a single transaction routinely underbid a channel that could profitably pay far more, because they're pricing the inquiry rather than the tenancy behind it.</p>
     <p>The number that matters isn't cost per form fill. It's what it costs to get one family all the way to their first session, and the gap between the two is wide. Inquiries fall out at verification of benefits, at prior authorization, and between the assessment and the start of care.</p>
 
     <h2>Track the whole intake funnel, not just the form</h2>
@@ -246,6 +286,33 @@
       <li><strong>Watch the ad copy.</strong> Language implying you know someone's condition can get disapproved.</li>
     </ul>
     <p>None of this prevents you from advertising. It shapes how the account is set up, and it's easier to get right the first time.</p>
+
+    <h2>The search terms are not the ones you'd guess</h2>
+    <p>"ABA therapy" looks like the obvious keyword and is one of the worst buys in the account. It collects
+    students researching coursework, people pricing certification, and job seekers, all of whom click.</p>
+    <p>The queries that produce families are narrower and more specific: the condition plus a town, an
+    insurer's name plus the service, "in home" or "center based", "waitlist", "accepting new clients",
+    "evaluation". Diagnosis-adjacent searches convert differently from service searches, and the two deserve
+    separate treatment.</p>
+    <p>Checking the search terms report against what intake actually received, rather than against what
+    Google reports as a conversion, is the fastest way to find the gap. It is usually larger than expected.</p>
+
+    <h2>What tracking to start of care looks like in practice</h2>
+    <p>Most providers already have the data; it just lives in the practice management system rather than the
+    ad account. Connecting them doesn't require new software:</p>
+    <ul>
+      <li><strong>Stamp the inquiry.</strong> The form stores the Google click ID, so the lead arrives in
+      intake with the click already attached.</li>
+      <li><strong>Mark the stages intake already tracks.</strong> Benefits verified, assessment scheduled,
+      authorization approved, start of care. These are steps coordinators record anyway.</li>
+      <li><strong>Send them back as offline conversions</strong>, with a value on the later stages, so bidding
+      optimizes toward families who start rather than families who submit.</li>
+    </ul>
+    <p>That loop is what separates an account that reports a cheap cost per lead from one that fills caseloads.
+    It also tells you which referral sources and which towns are worth more, which is useful well beyond the
+    ad account. If you're weighing what this costs to run, <a href="/google-ads-management-cost/">what Google
+    Ads management costs</a> covers the pricing models; if you're in New Jersey, so are we &mdash;
+    <a href="/google-ads-agency-new-jersey/">we're based in Lakewood</a>.</p>
 
     <h2>Where ABA accounts usually waste money</h2>
     <ul>
@@ -281,6 +348,22 @@
       <div class="faq-item animate-in">
         <button class="faq-q" aria-expanded="false">How quickly do ABA campaigns produce inquiries?<span class="faq-icon" aria-hidden="true"></span></button>
         <div class="faq-a"><div><p>Search campaigns usually generate inquiries within the first few weeks, since they capture demand that already exists. Judging profitability takes longer, because an inquiry this month may not become a client for another month or two, depending on how fast benefits verification and prior authorization move.</p></div></div>
+      </div>
+      <div class="faq-item animate-in">
+        <button class="faq-q" aria-expanded="false">Which keywords actually bring families, not students?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div><p>Narrow, intent-heavy ones: the condition plus a town, an insurer's name plus the service, “in home” or “center based”, “accepting new clients”, “evaluation”. Broad terms like “ABA therapy” collect coursework researchers, certification shoppers and job seekers, all of whom click and none of whom enroll.</p></div></div>
+      </div>
+      <div class="faq-item animate-in">
+        <button class="faq-q" aria-expanded="false">How do we track an inquiry through to start of care?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div><p>Store the Google click ID on the form so the lead reaches intake with the click attached, then mark the stages intake already records — benefits verified, assessment scheduled, authorization approved, start of care — and send them back to Google Ads as offline conversions with values. No new software is needed; the data already exists in the practice management system.</p></div></div>
+      </div>
+      <div class="faq-item animate-in">
+        <button class="faq-q" aria-expanded="false">Should ABA campaigns target by town or by radius?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div><p>By where clinicians can actually reach. Service-area coverage rarely matches municipal boundaries, and paying for clicks from a town with no available staff produces inquiries you have to turn away, which costs twice: once for the click and again for the intake time.</p></div></div>
+      </div>
+      <div class="faq-item animate-in">
+        <button class="faq-q" aria-expanded="false">Can the same account run intake and recruiting?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div><p>Same account, never the same campaign. A parent looking for services and a clinician looking for a job need opposite landing pages and separate conversion actions. Combined, Google spends wherever conversions are cheapest — usually hiring — and family inquiries quietly dry up.</p></div></div>
       </div>
     </div>
   </div>
@@ -499,6 +582,7 @@
         <ul>
           <li><a href="/#services">Google Ads Management</a></li>
           <li><a href="/ecommerce-ppc-agency/">E-Commerce PPC</a></li>
+          <li><a href="/google-merchant-center-disapproved-products/">Merchant Center Fixes</a></li>
           <li><a href="/google-ads-for-aba-therapy/">ABA Therapy Marketing</a></li>
           <li><a href="/bcba-rbt-recruiting-ads/">BCBA &amp; RBT Recruiting</a></li>
           <li><a href="/google-ads-for-self-storage/">Self-Storage</a></li>
