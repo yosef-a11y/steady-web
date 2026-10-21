@@ -61,6 +61,15 @@ budget belongs elsewhere. Make that the organizing idea, not a footnote.
 - **Med spa & aesthetics** — Yosef didn't like it
 - **Trucking & driver recruiting** — Yosef didn't like it
 
+## Parked — proposed, not taken up
+
+Offered and left undecided. Don't raise these again unless Yosef asks for more
+candidates; he has said the list is long enough for now.
+
+Kitchen & bath remodelers · medical billing and RCM · mental health practices ·
+childcare and daycare · pest control · insurance agencies · staffing agencies ·
+security and access control · pool builders · DME suppliers.
+
 ---
 
 ## Rules for these pages
