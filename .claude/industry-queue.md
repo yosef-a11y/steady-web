@@ -40,6 +40,15 @@ budget belongs elsewhere. Make that the organizing idea, not a footnote.
 
 ---
 
+## Built
+
+- **Nonprofits & institutions** — `/google-ads-for-nonprofits/` (22 Oct 2026). Built around the
+  Google Ad Grant: why the allowance is a ceiling rather than a target, the constraints a paid
+  account doesn't have, why conversion tracking is the gate on everything, what the grant is
+  genuinely good at versus what it's sold as, and how to handle a suspension. Thresholds
+  described as mechanisms and the reader pointed at Google's own documentation, since the
+  program's numbers move.
+
 ## Needs Yosef's read before writing
 
 - **Addiction treatment & recovery** — he said "we won't handle LegitScript, so ignore it
