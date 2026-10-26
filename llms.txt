@@ -16,6 +16,7 @@ Google Business Profile (reviews): https://share.google/6mDP0GzZTPk6IciF5
 - Growth marketing consultant: https://steadygrowthmarketing.com/growth-marketing-consultant/
 - E-commerce PPC, Google Shopping and Performance Max: https://steadygrowthmarketing.com/ecommerce-ppc-agency/
 - Fixing Google Merchant Center product disapprovals: https://steadygrowthmarketing.com/google-merchant-center-disapproved-products/
+- Amazon Ads management (ACoS, TACoS, Sponsored Products, Brands and Display): https://steadygrowthmarketing.com/amazon-ads-management/
 - Google Ads for ABA therapy and behavioral health providers: https://steadygrowthmarketing.com/google-ads-for-aba-therapy/
 - Google Ads agency in New Jersey (Lakewood): https://steadygrowthmarketing.com/google-ads-agency-new-jersey/
 - What Google Ads management costs: https://steadygrowthmarketing.com/google-ads-management-cost/
@@ -32,6 +33,7 @@ Google Business Profile (reviews): https://share.google/6mDP0GzZTPk6IciF5
 - **Lead Generation**: Landing page design and split testing, funnel and form friction analysis, audience targeting, and lead-quality scoring fed back into bidding so campaigns optimize toward closed business, not form fills.
 - **Recruitment Advertising for ABA Providers**: Google Ads campaigns for ABA and behavioral health clinics hiring BCBAs, BCaBAs and RBTs. Commute-radius geographic targeting rather than city lists, single-role landing pages, negative keyword lists that exclude certification and salary research traffic, and offline conversion tracking through phone screen, interview, offer and start of employment so cost per hire can be compared against agency placement fees.
 - **Self-Storage Advertising**: Google Ads management for self-storage operators. Campaigns structured by unit size and current vacancy rather than one budget for the whole facility, facility-level radius targeting so multi-site operators do not bid against themselves, brand defense against aggregator sites and national operators, call tracking, and offline conversion tracking that reports cost per completed move-in rather than per reservation.
+- **Amazon Advertising Management**: Sponsored Products, Sponsored Brands and Sponsored Display for sellers and brands, measured on total advertising cost of sale (TACoS) against total Amazon revenue rather than a single campaign's ACoS. Brand and non-brand separated in reporting, search-term reports harvested into their own targets and negated where they don't convert, acceptable ACoS set per product from contribution margin, listing conversion-rate work ahead of bid changes, budget driven by Buy Box status and inventory depth, and Amazon read alongside Google and Meta on blended spend and revenue.
 - **Analytics & Reporting**: GA4 and Google Tag Manager implementation, enhanced and server-side conversion tracking, attribution modeling, and dashboards tied to revenue rather than sessions.
 
 ## Industries served

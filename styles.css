@@ -787,6 +787,18 @@ p { text-wrap: pretty; }
   font-family: var(--font-display); font-size: .85rem; font-weight: 800;
   color: var(--blue-600); background: var(--blue-50); border: 1px solid var(--blue-100);
 }
+/* Real client quote set inside long-form prose, next to the claim it evidences. */
+.prose-quote {
+  margin: 1.8rem 0 2rem; padding: 1.15rem 0 1.15rem 1.4rem;
+  border-left: 3px solid var(--blue-600);
+}
+.prose-quote p {
+  font-family: var(--font-display); font-size: 1.25rem; line-height: 1.45;
+  color: var(--navy-900); margin-bottom: .6rem;
+}
+.prose-quote footer { font-size: .9rem; font-weight: 600; color: var(--text-muted); }
+.prose-quote footer span { font-weight: 400; }
+
 .reviews-grid--two { column-count: 2; max-width: 900px; margin-inline: auto; }
 @media (max-width: 640px) { .reviews-grid--two { column-count: 1; } }
 
