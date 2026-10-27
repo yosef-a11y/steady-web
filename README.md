@@ -19,6 +19,9 @@ Static marketing site. No build step, no dependencies, no framework.
 | `google-ads-for-self-storage/index.html` | Targets "Google Ads for self storage" — unit mix, vacancy and move-ins |
 | `google-ads-agency-new-jersey/index.html` | Targets "Google Ads agency New Jersey" |
 | `google-ads-management-cost/index.html` | Targets "how much does Google Ads management cost" |
+| `meta-ads-agency/index.html` | Targets "Meta Ads agency", "Facebook ads agency" — lead quality, Conversions API, when to skip Meta |
+| `local-services-ads-agency/index.html` | Targets "Google Local Services Ads agency" — Google Guaranteed, disputes, LSA ranking |
+| `lead-generation-agency/index.html` | Targets "lead generation agency/services New Jersey" — qualified leads, offline conversion import |
 | `styles.css` | Design system + all styling |
 | `main.js` | Nav, scroll reveal, counters, FAQ, form guard, analytics events |
 | `thank-you.html` | Post-form-submission page (fires the `generate_lead` GA event) |
