@@ -99,7 +99,9 @@ var BASH_CONFIG = {
 
     /* Phone numbers everywhere come from CONFIG */
     document.querySelectorAll('[data-phone]').forEach(function (a) {
-      a.textContent = a.getAttribute('data-phone') === 'label' ? a.textContent : C.phoneDisplay;
+      var num = a.querySelector('.num');
+      if (num) num.textContent = C.phoneDisplay;
+      else if (!a.children.length) a.textContent = C.phoneDisplay;
       a.setAttribute('href', 'tel:' + C.phoneTel);
     });
 
