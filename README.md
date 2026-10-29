@@ -19,6 +19,7 @@ Static marketing site. No build step, no dependencies, no framework.
 | `google-ads-for-self-storage/index.html` | Targets "Google Ads for self storage" — unit mix, vacancy and move-ins |
 | `google-ads-agency-new-jersey/index.html` | Targets "Google Ads agency New Jersey" |
 | `google-ads-management-cost/index.html` | Targets "how much does Google Ads management cost" |
+| `clients/bash/` | Client Google Ads landing pages for Bash (soft serve + tables & chairs). `noindex`, not in the sitemap. See its README |
 | `styles.css` | Design system + all styling |
 | `main.js` | Nav, scroll reveal, counters, FAQ, form guard, analytics events |
 | `thank-you.html` | Post-form-submission page (fires the `generate_lead` GA event) |

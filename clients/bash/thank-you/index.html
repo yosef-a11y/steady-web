@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request Received | Bash</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FFF8F1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=DM+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../bash.css?v=1">
+<script src="../bash.js?v=1"></script>
+<script>
+  /* The conversion. Fires once per submission (a refresh won't double count). */
+  (function () {
+    var type = new URLSearchParams(location.search).get('type') === 'tables' ? 'tables' : 'softserve';
+    var done = null, ec = null;
+    try { done = sessionStorage.getItem('bash_conv_done'); ec = JSON.parse(sessionStorage.getItem('bash_ec') || 'null'); } catch (e) {}
+    if (done) return;
+
+    // Enhanced Conversions: Google hashes these before sending.
+    if (ec && (ec.email || ec.phone_number)) {
+      var ud = {};
+      if (ec.email) ud.email = ec.email;
+      if (ec.phone_number) ud.phone_number = ec.phone_number;
+      gtag('set', 'user_data', ud);
+    }
+    var txn = 'bash-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8);
+    gtag('event', 'generate_lead', { event_category: 'Lead', page_type: type });
+    window.bashTrack.adsConversion(type === 'tables' ? 'tablesLead' : 'softServeLead', { transaction_id: txn });
+    try { sessionStorage.setItem('bash_conv_done', '1'); sessionStorage.removeItem('bash_ec'); } catch (e) {}
+  })();
+</script>
+</head>
+<body>
+<main class="thanks">
+  <div class="thanks-inner">
+    <div class="thanks-check" aria-hidden="true">
+      <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#1E6B52" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h1>Got it. We're on it.</h1>
+    <p class="lead" style="margin:0 auto 1em">We'll check your date and get back to you with a quote shortly.</p>
+    <p>Event coming up soon? Call <a data-phone href="tel:+19549972251">(954) 997-2251</a> and we'll sort it out now.</p>
+    <p style="margin-top:28px"><a class="btn btn-ghost" href="../soft-serve/">Back to Bash Soft Serve</a></p>
+  </div>
+</main>
+</body>
+</html>
