@@ -174,7 +174,7 @@ the Ads tag already counts the lead, and importing would double it.
 
 ## Needed from Bash before launch
 1. **Minimum prices** for a station, a machine rental, and a table/chair delivery order (call notes: use them to weed out small jobs)
-2. **Photos** (most important: the notes say presentation is the priority). Branded station, logo cups close-up, toppings bar, corporate event, birthday/simcha, attendant serving. 8–12 good phone photos are enough. Each `PHOTO` box on the pages marks where one goes
+2. **Photos:** five soft serve photos received 10/29 and placed (`images/`). They're 640×480, so ask Bash for the originals: the hero looks soft on large screens. Still wanted: logo cups close-up, a corporate/office setup, and table & chair setups for the tables page
 3. **Reviews** with name, event type and city. Google reviews are ideal. Include the kids-tables bar mitzvah review from the current site
 4. **Logo:** received 10/29. Save it as `clients/bash/images/bash-logo.png` (600×300 is fine) and it appears in the header, footer and thank-you page. Until the file is there, the pages show a text fallback. Colors are matched to it: tent red for calls to action, Bash purple and Party gold for accents
 5. **Machine rental details:** what's included, delivery fee, deposit, how long it can stay
