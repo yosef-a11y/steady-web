@@ -155,6 +155,24 @@ Use the **Manual (code)** option for each website action, copy its label into `B
 Since soft serve leads are worth far more than a table order, set campaign-level goals so the Tables
 campaign bids only on the Tables form + calls, and the Soft Serve campaign on the Soft Serve form + calls.
 
+### 2b. Phone calls (Bash's main line, no new number needed)
+Google forwarding numbers do this. Only visitors who came from an ad see a Google number; it
+rings straight through to (954) 997-2251, Bash sees the caller's real number, and Google logs the
+call. Everyone else sees the main number as normal.
+
+1. Google Ads → Admin → Account settings → **Call reporting: On**
+2. Add a **call asset** with (954) 997-2251 to both campaigns, with "Calls from ads" as its conversion
+   action. This counts taps on the ad itself (mostly mobile)
+3. Create **Calls from website**: Goals → Conversions → New → Phone calls → "Calls to a phone number on
+   your website". Count calls of **60 seconds or more**, then copy its label into
+   `BASH_CONFIG.labels.websiteCall`
+4. Done. `bash.js` swaps the forwarding number into the visible text **and** every tap-to-call link
+   (Google's default swap only changes the text, so taps on the buttons would go uncounted)
+
+Limits: a caller who memorized the main number from an ad and dials it later can't be attributed.
+For call recordings or tracking calls from every source, a call-tracking service (e.g. CallRail)
+does this with its own numbers, for a monthly fee.
+
 ### 3. Enhanced conversions for leads
 Google Ads → Goals → Settings → Enhanced conversions for leads → On, method **Google tag**. The
 thank-you page already sends the hashed email and phone from the form.

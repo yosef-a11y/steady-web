@@ -63,7 +63,25 @@ var BASH_CONFIG = {
       // Swaps the number on the page for a Google forwarding number for ad visitors,
       // so calls from the site count as conversions.
       if (isSet(C.labels.websiteCall)) {
-        gtag('config', C.adsId + '/' + C.labels.websiteCall, { phone_conversion_number: C.phoneDisplay });
+        gtag('config', C.adsId + '/' + C.labels.websiteCall, {
+          phone_conversion_number: C.phoneDisplay,
+          // Google calls this only for visitors who came from an ad. Put its forwarding
+          // number in the visible text AND every tap-to-call link, or taps would still
+          // dial the main line and go uncounted.
+          phone_conversion_callback: function (formatted, mobile) {
+            var apply = function () {
+              var digits = String(mobile || formatted).replace(/[^\d+]/g, '');
+              if (digits.charAt(0) !== '+') digits = (digits.length === 10 ? '+1' : '+') + digits;
+              document.querySelectorAll('.num').forEach(function (el) { el.textContent = formatted; });
+              document.querySelectorAll('[data-phone]').forEach(function (el) {
+                if (!el.querySelector('.num') && !el.children.length) el.textContent = formatted;
+              });
+              document.querySelectorAll('a[href^="tel:"]').forEach(function (a) { a.setAttribute('href', 'tel:' + digits); });
+            };
+            if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', apply);
+            else apply();
+          }
+        });
       }
     }
   }
