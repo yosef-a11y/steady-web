@@ -169,7 +169,7 @@ p { margin: 0 0 1em; }
 .review { margin: 0; }
 .review p { margin: 0; }
 .review-feature { font-size: 1.15rem; line-height: 1.55; }
-.stars { color: var(--gold); font-size: 1.3rem; letter-spacing: 3px; margin-bottom: 10px; }
+.stars { color: #FFC400; font-size: 1.3rem; letter-spacing: 3px; margin-bottom: 10px; }
 .review cite { display: block; font-style: normal; font-weight: 700; margin-top: 12px; font-size: .92rem; }
 
 /* Price table (tables & chairs) */

@@ -180,7 +180,7 @@ the Ads tag already counts the lead, and importing would double it.
 ## Needed from Bash before launch
 1. **Minimum prices** for a station, a machine rental, and a table/chair delivery order (call notes: use them to weed out small jobs)
 2. **Photos:** five soft serve photos received 10/29 and placed (`images/`). They're 640×480, so ask Bash for the originals: the hero looks soft on large screens. Still wanted: logo cups close-up, a corporate/office setup, and table & chair setups for the tables page
-3. **Reviews:** five received 10/29 and live (Avi Yitz, Chanie Posner, Lior Ofir, Leah Lifshitz; Shainia Hertz on the tables page). Chanie's and Lior's are marked 5 stars; add stars to the other two only once their ratings are confirmed. Still wanted: a corporate client review for the soft serve page
+3. **Reviews:** five received 10/29 and live (Avi Yitz, Chanie Posner, Lior Ofir, Leah Lifshitz; Shainia Hertz on the tables page). All 5 stars. Still wanted: a corporate client review for the soft serve page
 4. **Logo:** the pages use a vector rebuild of Bash's logo (`images/bash-logo.svg`, inlined in each page, fonts Pirata One + Cinzel). If Bash sends the original file, replace the inline `<svg class="logo">` blocks with an `<img>` of it. Colors are matched to it: tent red for calls to action, Bash purple and Party gold for accents
 5. **Machine rental details:** what's included, delivery fee, deposit, how long it can stay
 6. **Confirm** the table/chair prices, the ZIP list, and whether the customer supplies a table for a station
