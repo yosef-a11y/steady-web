@@ -97,6 +97,17 @@ var BASH_CONFIG = {
 
   document.addEventListener('DOMContentLoaded', function () {
 
+    /* Ad-group keyword at the top of the page: add ?kw=machine (etc.) to the ad's final URL.
+       Only these preset phrases can appear, never raw text from the URL. */
+    var KW = {
+      'soft-serve-machine': 'Soft serve ice cream machine rental',
+      'machine': 'Ice cream machine rental',
+      'cart': 'Ice cream cart rental',
+      'soft-serve': 'Soft serve ice cream machine'
+    };
+    var kw = KW[params.get('kw')];
+    if (kw) document.querySelectorAll('[data-kw]').forEach(function (el) { el.textContent = kw; });
+
     /* Phone numbers everywhere come from CONFIG */
     document.querySelectorAll('[data-phone]').forEach(function (a) {
       var num = a.querySelector('.num');
