@@ -49,13 +49,13 @@ p { margin: 0 0 1em; }
 
 /* ---------- Header ---------- */
 .topbar { position: sticky; top: 0; z-index: 50; background: rgba(255, 248, 241, .94); backdrop-filter: saturate(1.4) blur(8px); border-bottom: 1px solid var(--line); }
-.topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 66px; }
+.topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 84px; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font-family: var(--display); font-weight: 700; font-size: 1.35rem; }
 .brand svg { width: 34px; height: 34px; }
-.brand .logo { height: 60px; width: auto; }
+.brand .logo { height: 74px; width: 148px; display: block; }
 .brand-fallback { display: inline-flex; align-items: center; gap: 10px; }
 .brand-fallback[hidden] { display: none; }
-.logo-foot { height: 80px; width: auto; margin: 0 auto 14px; }
+.logo-foot { height: 90px; width: 180px; display: block; margin: 0 auto 14px; }
 .topbar-actions { display: flex; align-items: center; gap: 10px; }
 .phone-top { font-weight: 700; text-decoration: none; color: var(--ink); white-space: nowrap; }
 .phone-top span { color: var(--ink-soft); font-weight: 500; font-size: .85rem; display: block; line-height: 1; }
@@ -263,7 +263,7 @@ fieldset { border: 0; padding: 0; margin: 0 0 16px; }
   .brand { font-size: 1.05rem; white-space: nowrap; gap: 7px; }
   .topbar .wrap { gap: 10px; }
   .brand svg { width: 28px; height: 28px; }
-  .brand .logo { height: 46px; }
+  .brand .logo { height: 50px; width: 100px; }
   .topbar .btn-call { padding: 10px 13px; font-size: .88rem; gap: 6px; }
 }
 @media (max-width: 380px) {
