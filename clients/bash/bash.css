@@ -264,6 +264,7 @@ fieldset { border: 0; padding: 0; margin: 0 0 16px; }
   .topbar .wrap { gap: 10px; }
   .brand svg { width: 28px; height: 28px; }
   .brand .logo { height: 50px; width: 100px; }
+  .topbar .wrap { min-height: 64px; }
   .topbar .btn-call { padding: 10px 13px; font-size: .88rem; gap: 6px; }
 }
 @media (max-width: 380px) {
