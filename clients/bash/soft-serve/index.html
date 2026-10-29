@@ -104,15 +104,15 @@
           <span class="badge">Hands-off</span>
           <div class="icon-dot" aria-hidden="true">🍦</div>
           <h3>Full-service station</h3>
-          <p>We bring the machine and the setup, pour for your guests, and pack it all up after.</p>
+          <p>We bring the machines, cups, cones and toppings, pour for every guest, and pack it all up after. All you supply is a table and a tablecloth.</p>
           <ul class="checks">
             <li>Attendant on site, up to 5 hours at no extra charge</li>
             <li>Vanilla or chocolate soft serve, cups and cones</li>
             <li>2 to 4 toppings included, more if you want them</li>
-            <li>Upgrades: sugar cones, extra toppings, branded cart, logo cups &amp; napkins</li>
+            <li>Upgrades: sugar cones, extra toppings, branded cart, logo cups &amp; napkins, cotton candy or snow cones</li>
           </ul>
           <a class="btn btn-primary btn-block" href="#quote" data-choose="station">Price a station</a>
-          <p class="best-for"><strong>Best for:</strong> corporate events, client days, weddings, bar &amp; bat mitzvahs, anything where presentation matters.</p>
+          <p class="best-for"><strong>Best for:</strong> corporate events, client days, weddings, bar &amp; bat mitzvahs, upsherins, anything where presentation matters.</p>
         </div>
         <div class="card">
           <div class="icon-dot" aria-hidden="true">⚙️</div>
@@ -121,7 +121,7 @@
           <ul class="checks">
             <li>Commercial soft serve machine, delivered and set up</li>
             <li>Soft serve mix, cups and cones</li>
-            <li>Quick walkthrough so anyone can pour</li>
+            <li>Ready to pour about 30 minutes after setup</li>
             <li>Add toppings, logo cups or extra machines</li>
           </ul>
           <a class="btn btn-ghost btn-block" href="#quote" data-choose="machine">Price a machine</a>
@@ -165,7 +165,7 @@
           <img class="pic" src="../images/station-cones-toppings.jpg" alt="Two Bash soft serve machines with cones, cups, a toppings tray and a cotton candy machine set up on a table" width="640" height="480" loading="lazy">
           <div>
             <h3>The part of the party the kids talk about after</h3>
-            <p>Birthdays, bar and bat mitzvahs, weddings, sweet 16s, school fun days, shul events. Kosher and cholov yisroel, so every guest can have some.</p>
+            <p>Birthdays, upsherins, bar and bat mitzvahs, weddings, sweet 16s, school fun days, shul events. Kosher and cholov yisroel, so every guest can have some.</p>
             <ul class="checks">
               <li>ORB-certified kosher and cholov yisroel</li>
               <li>Dairy and non-dairy options for a meat meal</li>
@@ -263,7 +263,7 @@
       <div class="steps" style="margin-top:36px">
         <div class="step"><h3>Tell us about the event</h3><p>Date, guest count, where it is, and station or machine. Takes a minute.</p></div>
         <div class="step"><h3>Get your quote</h3><p>We send a price with your options and branding, then hold your date.</p></div>
-        <div class="step"><h3>We set up and serve</h3><p>We arrive early, set up, serve your guests and pack up when it's over.</p></div>
+        <div class="step"><h3>We set up and serve</h3><p>We set up, the machines are ready to pour about 30 minutes later, and our attendant serves until it's over. Then we pack up.</p></div>
       </div>
     </div>
   </section>
@@ -278,7 +278,8 @@
         <ul>
           <li><strong>Serving:</strong> Palm Beach, Broward &amp; Miami-Dade</li>
           <li><strong>Kosher:</strong> ORB certified, cholov yisroel available</li>
-          <li><strong>Included:</strong> attendant up to 5 hours, cups, cones, 2–4 toppings</li>
+          <li><strong>Included:</strong> attendant up to 5 hours, machines, cups, cones, 2–4 toppings and extension cords</li>
+          <li><strong>You supply:</strong> a table and a tablecloth. That's it.</li>
           <li data-min-wrap><strong>Stations from:</strong> <span data-min="softServeStationFrom"></span></li>
         </ul>
         <a class="btn btn-primary btn-call btn-lg" data-phone href="tel:+19549972251"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z" fill="currentColor"/></svg> Call <span class="num">(954) 997-2251</span></a>
@@ -321,6 +322,7 @@
               <option>Corporate event</option>
               <option>Birthday party</option>
               <option>Bar / Bat Mitzvah</option>
+              <option>Upsherin</option>
               <option>Wedding</option>
               <option>School or community event</option>
               <option>Other</option>
@@ -360,6 +362,8 @@
             <label><input type="checkbox" name="extras[]" value="Extra toppings"> Extra toppings</label>
             <label><input type="checkbox" name="extras[]" value="Non-dairy"> Non-dairy</label>
             <label><input type="checkbox" name="extras[]" value="Cholov yisroel"> Cholov yisroel</label>
+            <label><input type="checkbox" name="extras[]" value="Cotton candy"> Cotton candy</label>
+            <label><input type="checkbox" name="extras[]" value="Snow cones"> Snow cones</label>
           </div>
         </fieldset>
         <div class="field"><label for="ss-notes">Anything else? <span class="opt">(optional)</span></label><textarea id="ss-notes" name="message" placeholder="Venue, indoor or outdoor, timing, theme..."></textarea></div>
@@ -381,7 +385,10 @@
         <details><summary>How many machines do I need?</summary><p>Each machine pours 60 to 75 servings an hour and serves one flavor. For most events, one machine per 70 or so guests keeps the line short. Want two flavors? That's two machines.</p></details>
         <details><summary>How long does the attendant stay?</summary><p>Up to 5 hours at no extra charge with a full-service station.</p></details>
         <details><summary>Can it go outside?</summary><p>In the cooler months, yes. In summer, South Florida humidity is too much for the machines, so summer setups are indoors.</p></details>
-        <details><summary>What do you need from us?</summary><p>An indoor spot near a standard outlet on its own circuit breaker. We bring extension cords. For a basic setup, we'll ask for a table and tablecloth.</p></details>
+        <details><summary>What do you need from us?</summary><p>A table and a tablecloth. Each machine plugs into a standard outlet on its own circuit breaker, and we bring 50-foot extension cords, so the station doesn't have to sit against the wall. We bring everything else.</p></details>
+        <details><summary>How long does setup take?</summary><p>Once we're set up, the machines need about 30 minutes to freeze before the first cone. Tell us when you want dessert to start and plan around that.</p></details>
+        <details><summary>Is it loud?</summary><p>The compressor makes a steady background hum. If there will be speeches, set the station a little away from the podium.</p></details>
+        <details><summary>Do you have other dessert stations?</summary><p>Yes. Cotton candy and snow cone machines, plus a white portable bar. Add any of them to the same quote.</p></details>
         <details><summary>Can we use our own logo or flavor?</summary><p>Yes. We can print your logo on cups and napkins, brand the cart, and make a custom flavor. Mention it in the form and we'll include it in the quote.</p></details>
       </div>
     </div>

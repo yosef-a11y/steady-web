@@ -42,8 +42,10 @@ starred items with Bash.**
 - Attendant up to 5 hours at no extra charge
 - Kosher, ORB certified, cholov yisroel. Dairy and non-dairy
 - Custom flavors, logo cups, logo napkins, branded cart
-- Machines need their own circuit; Bash brings extension cords. Indoors only in summer (humidity)
-- ★ Customer provides a table and tablecloth (from the listing; does this apply to the cart setup?)
+- Machines need their own circuit; Bash brings 50-ft extension cords. Indoors only in summer (humidity)
+- About 30 minutes after setup before the first serving. Compressor makes a background hum
+- Also offered: cotton candy, snow cone, white portable bar; upsherin packages ($250 / $770 / $2,000 on the site)
+- Customer provides a table and tablecloth; Bash brings everything else
 - Area: Palm Beach, Broward, Miami-Dade
 - Site lists the machine at $0.00 with "call to reserve". No public pricing today
 
