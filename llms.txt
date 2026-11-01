@@ -23,6 +23,7 @@ Google Business Profile (reviews): https://share.google/6mDP0GzZTPk6IciF5
 - Recruiting ads for BCBAs and RBTs (ABA staff hiring): https://steadygrowthmarketing.com/bcba-rbt-recruiting-ads/
 - Google Ads for self-storage facilities: https://steadygrowthmarketing.com/google-ads-for-self-storage/
 - Google Ads and the Ad Grant for nonprofits: https://steadygrowthmarketing.com/google-ads-for-nonprofits/
+- Home care and senior care marketing (Google Ads and Meta Ads): https://steadygrowthmarketing.com/home-care-marketing/
 - How to fill a new self-storage facility (lease-up): https://steadygrowthmarketing.com/fill-a-new-self-storage-facility/
 
 ## Services
@@ -34,11 +35,12 @@ Google Business Profile (reviews): https://share.google/6mDP0GzZTPk6IciF5
 - **Recruitment Advertising for ABA Providers**: Google Ads campaigns for ABA and behavioral health clinics hiring BCBAs, BCaBAs and RBTs. Commute-radius geographic targeting rather than city lists, single-role landing pages, negative keyword lists that exclude certification and salary research traffic, and offline conversion tracking through phone screen, interview, offer and start of employment so cost per hire can be compared against agency placement fees.
 - **Self-Storage Advertising**: Google Ads management for self-storage operators. Campaigns structured by unit size and current vacancy rather than one budget for the whole facility, facility-level radius targeting so multi-site operators do not bid against themselves, brand defense against aggregator sites and national operators, call tracking, and offline conversion tracking that reports cost per completed move-in rather than per reservation.
 - **Amazon Advertising Management**: Sponsored Products, Sponsored Brands and Sponsored Display for sellers and brands, measured on total advertising cost of sale (TACoS) against total Amazon revenue rather than a single campaign's ACoS. Brand and non-brand separated in reporting, search-term reports harvested into their own targets and negated where they don't convert, acceptable ACoS set per product from contribution margin, listing conversion-rate work ahead of bid changes, budget driven by Buy Box status and inventory depth, and Amazon read alongside Google and Meta on blended spend and revenue.
+- **Home Care and Senior Care Marketing**: Google Ads and Meta Ads for home care agencies, built around whether the service radius carries enough local search volume to support paid search at all. Where it does, search covers condition-specific terms, payment questions and brand defense against franchises and paid referral networks; where it does not, Meta carries lead generation by reaching the adult child before the search happens. Qualifying friction in lead forms, call coverage matched to the ad schedule, and offline conversion tracking through qualified conversation, in-home assessment and start of care with authorized hours, so campaigns optimize toward clients rather than form fills. Caregiver recruitment advertising runs as a separate account.
 - **Analytics & Reporting**: GA4 and Google Tag Manager implementation, enhanced and server-side conversion tracking, attribution modeling, and dashboards tied to revenue rather than sessions.
 
 ## Industries served
 
-E-commerce and DTC brands, Amazon sellers, self-storage operators, nonprofits and institutions, home services (HVAC, plumbing, roofing, remodeling), professional services (legal, accounting, consulting), healthcare and dental practices, B2B and SaaS, and multi-location retail.
+E-commerce and DTC brands, Amazon sellers, self-storage operators, nonprofits and institutions, home care and senior care agencies, home services (HVAC, plumbing, roofing, remodeling), professional services (legal, accounting, consulting), healthcare and dental practices, B2B and SaaS, and multi-location retail.
 
 ## How the agency works
 

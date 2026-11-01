@@ -16,6 +16,7 @@ Static marketing site. No build step, no dependencies, no framework.
 | `google-ads-for-aba-therapy/index.html` | Targets "Google Ads for ABA therapy" — the narrowest and most winnable |
 | `bcba-rbt-recruiting-ads/index.html` | Targets "BCBA jobs"/"RBT recruiting" advertising — the hiring side of the ABA angle |
 | `amazon-ads-management/index.html` | Targets "Amazon Ads management" — ACoS vs TACoS, the three ad types, the rank flywheel |
+| `home-care-marketing/index.html` | Targets "home care marketing" — territory search volume, Meta for the adult child, start of care |
 | `google-ads-for-self-storage/index.html` | Targets "Google Ads for self storage" — unit mix, vacancy and move-ins |
 | `google-ads-agency-new-jersey/index.html` | Targets "Google Ads agency New Jersey" |
 | `google-ads-management-cost/index.html` | Targets "how much does Google Ads management cost" |

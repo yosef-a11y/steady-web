@@ -10,16 +10,6 @@ Status values: `approved` · `approved, with caveats` · `needs Yosef's read` ·
 
 ## Approved — his notes shape the page
 
-### Home care & senior care
-**Status:** approved, with caveats
-**Yosef:** "Good fit, but it depends on local search for Google to work. We can do great
-work getting leads with Meta Ads."
-
-The page must not sell Google Ads as the answer everywhere. Lead with the honest version:
-Google works where there's enough local search volume for the service and the area, and
-where there isn't, Meta is the stronger lead channel. This is the first page on the site
-where Meta carries equal weight — don't bury it.
-
 ### Legal & personal injury
 **Status:** approved, with caveats
 **Yosef:** "Very expensive. Competitive. If willing to invest, can work well."
@@ -41,6 +31,16 @@ budget belongs elsewhere. Make that the organizing idea, not a footnote.
 ---
 
 ## Built
+
+- **Home care & senior care** — `/home-care-marketing/` (27 Oct 2026). Yosef's caveat is the
+  organizing idea: whether Google works is a question about the territory, not the agency, so the
+  page opens by telling the reader to measure query volume inside the actual service radius before
+  funding search. Meta carries equal weight throughout rather than appearing as a footnote —
+  it reaches the adult child before the search happens, which is most of the demand. Also covers
+  who actually inquires (adult child, often out of state), the categories families confuse,
+  payment questions including that Medicare doesn't cover custodial care the way they assume,
+  speed to lead, tracking to start of care with authorized hours, and caregiver recruiting as a
+  separate account. No figures invented; no clients implied.
 
 - **Nonprofits & institutions** — `/google-ads-for-nonprofits/` (22 Oct 2026). Built around the
   Google Ad Grant: why the allowance is a ceiling rather than a target, the constraints a paid
