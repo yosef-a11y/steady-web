@@ -229,7 +229,7 @@ var BASH_CONFIG = {
       if (!isSet(C.web3formsKey)) {
         var warn = document.createElement('p');
         warn.className = 'form-min';
-        warn.textContent = 'Form not connected yet: add the Web3Forms key in bash.js. Call ' + C.phoneDisplay + ' in the meantime.';
+        warn.textContent = 'Online booking is coming soon. For now, please call ' + C.phoneDisplay + ' and we\u2019ll take care of you.';  // shown until web3formsKey is set
         form.prepend(warn);
       }
 
