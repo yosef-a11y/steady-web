@@ -13,19 +13,14 @@ Kickoff call: 10/29/26
 All three pages are `noindex`. They are ad landing pages, not SEO pages, and they're kept out of
 Steady's sitemap.
 
-## Where these need to live before ads run
+## Hosting
 
-Google Ads requires the ad's final URL to be on the advertiser's own domain. Pages on
-steadygrowthmarketing.com are for preview and approval only. For launch, copy the `clients/bash/`
-folder to Bash's domain, keeping the four folders side by side, e.g.:
+Live at **https://go.bashsoftserve.com** via GitHub Pages (this repo, `main` branch, root).
+`CNAME` holds the custom domain. DNS for bashsoftserve.com is on Netlify, with one record added:
+`CNAME go -> yosef-a11y.github.io`. The main bashsoftserve.com site is untouched.
 
-- `bashsoftserve.com/events/soft-serve/`
-- `bashsoftserve.com/events/tables-chairs/`
-- `bashsoftserve.com/events/thank-you/`
-
-The pages are plain HTML with no build step, so any host that serves static files works. If
-bashsoftserve.com is on a builder (Wix, Squarespace, GoDaddy), a subdomain such as
-`go.bashsoftserve.com` pointed at GitHub Pages or Netlify is the easiest route.
+- `/soft-serve/` and `/tables-chairs/` are the ad landing pages; `/` redirects to `/soft-serve/`
+- Every push to `main` republishes in about a minute
 
 ---
 
@@ -67,7 +62,7 @@ Target CPA: **under $125**.
 - **Location:** Palm Beach, Broward, Miami-Dade counties. "Presence: people in or regularly in" only
 - **Final URL:** `/soft-serve/`
 - **Bidding:** Maximize Conversions to start. Move to Target CPA ~$110 after 30 conversions
-- **Ad groups** (each one's final URL sets the line above the headline to match the search):
+- **Ad groups** (each one's final URL sets the main headline to match the search):
   | Ad group | Keywords | Final URL |
   | --- | --- | --- |
   | Soft serve machine rental | soft serve ice cream machine rental, soft serve machine rental | `/soft-serve/?kw=soft-serve-machine` |
@@ -75,7 +70,7 @@ Target CPA: **under $125**.
   | Ice cream cart rental | ice cream cart rental, ice cream cart for party | `/soft-serve/?kw=cart` |
   | Soft serve ice cream machine | soft serve ice cream machine (watch search terms: many are buyers) | `/soft-serve/?kw=soft-serve` |
   | Corporate | corporate ice cream catering, ice cream for office party | `/soft-serve/` |
-  Only these preset `kw` values change the page. Anything else shows the default line.
+  Only these preset `kw` values change the page. Anything else shows the default headline.
 - **Ad copy angles:** "Served Inside Your Event", "Your Logo on Every Cup", "Kosher, ORB Certified",
   "Attendant Included". Sitelinks to #options, #events, #quote
 - **Assets:** call asset (with call reporting on), location asset, image assets once photos arrive
