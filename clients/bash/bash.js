@@ -183,8 +183,7 @@ var BASH_CONFIG = {
         document.getElementById('guests-val').textContent = g >= 600 ? '600+' : g;
         document.getElementById('machines').textContent = machines + (machines === 1 ? ' machine' : ' machines');
         document.getElementById('planner-note').textContent =
-          'Serves all ' + (g >= 600 ? '600+' : g) + ' guests in about ' + Math.max(15, mins) +
-          ' minutes, with no long line. Each machine pours one flavor, so two machines also means two flavors.';
+          'Serves all ' + (g >= 600 ? '600+' : g) + ' guests in about ' + Math.max(15, mins) + ' minutes. One flavor per machine.';
         var hidden = document.querySelector('input[name="planner_estimate"]');
         if (hidden) hidden.value = g + ' guests / ' + machines + ' machines';
       };
