@@ -85,11 +85,31 @@
       "provider": {
         "@id": "https://steadygrowthmarketing.com/#org"
       },
-      "areaServed": {
-        "@type": "Country",
-        "name": "United States"
-      },
-      "description": "Paid media management for e-commerce stores, covering Google Shopping, Performance Max, Search and Meta Ads, product feed optimization, Merchant Center compliance, and bidding tied to contribution margin."
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "United States"
+        },
+        {
+          "@type": "State",
+          "name": "New Jersey"
+        }
+      ],
+      "description": "Paid media management for e-commerce stores, covering Google Shopping, Performance Max, Search and Meta Ads, product feed optimization, Merchant Center compliance, and bidding tied to contribution margin.",
+      "knowsAbout": [
+        "Per-product ROAS targets set from contribution margin",
+        "Average order value and new customer acquisition cost",
+        "Blended ROAS across Google, Meta and marketplaces",
+        "Product feed titles, attributes, GTINs and custom labels",
+        "Supplemental feeds and Merchant Center health",
+        "Performance Max segmentation and asset quality",
+        "Standard Shopping where control matters more than reach",
+        "Separating brand from non-brand reporting",
+        "Attribution windows, view-through conversions and cross-platform double counting",
+        "Server-side tagging, conversions APIs, enhanced conversions and consent mode",
+        "Refund and return data fed back into bidding",
+        "Product detail page and checkout conversion rate"
+      ]
     },
     {
       "@type": "FAQPage",
@@ -125,6 +145,38 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Yes, along with other platforms. The platform affects how the feed is produced and how tracking is implemented, but the underlying work is the same everywhere: feed quality, margin-aware structure and accurate measurement."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Google, Meta and Shopify all report different revenue. Which one is right?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "All of them, on their own terms, which is why reconciling them is the wrong goal. Each platform only sees its own touchpoints and claims full credit inside its own attribution window, so a single order gets counted more than once across channels, and analytics is measuring sessions while the store is counting orders. Pick a hierarchy instead: the store's own revenue net of refunds is what the business runs on, blended spend against that revenue decides whether to spend more in aggregate, and platform ROAS is only for comparing decisions inside that same platform."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do we know our conversion tracking is accurate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pull reported revenue for a clean two-week window and compare it to the store's own net revenue for exactly those dates. If they're far apart, the usual causes are tax or shipping included inconsistently, a tag double-firing on the confirmation page, browser-side and server-side events for the same order without a shared identifier to deduplicate them, consent not wired in properly, or refunds never being sent back. None of the bidding work is worth doing until that comparison is close."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it worth fixing the product page before changing the campaigns?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually, because traffic is the expensive part and the page is the cheap part. Shipping cost revealed only at checkout, a returns policy buried in the footer, slow mobile product pages and variant selectors that hide what's out of stock all cost more than most bid adjustments gain. The same logic governs a marketplace listing, where the detail page is the entire conversion."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should Performance Max run the whole catalog?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only if you're happy with one lever. A single campaign holding everything means budget can't move toward the products that deserve it, and thin assets let Google fill the gaps on placements you wouldn't have chosen. Segmenting by margin band, by best sellers versus the long tail, or by new versus returning customers is what makes the automation useful rather than opaque. Standard Shopping still earns its place on a small, high-value catalog where control matters more than reach."
           }
         }
       ]
@@ -215,6 +267,8 @@
 <section class="section">
   <div class="container prose">
     <p class="section-label">The core problem</p>
+    <p class="prose-lede">Return on ad spend is the number every e-commerce platform puts on the screen and it cannot tell you whether the store made money, because it knows nothing about margin. Targets belong per product, set from real contribution margin after shipping and returns. Underneath that sit two things most accounts never settle: whether the conversion data is trustworthy at all, and which number the business is actually run on when Google, Meta, the analytics property and the store’s own order report all disagree.</p>
+
     <h2>Return on ad spend doesn't mean much without margin</h2>
 
     <p>Most e-commerce accounts optimize toward ROAS because it's the number Google puts on the screen. On its own, it doesn't tell you whether you're making money.</p>
@@ -253,6 +307,74 @@
     <p>If someone buys from you four times a year, the first order is worth far more than its own margin suggests. A store with real repeat purchase behavior can afford to lose money on acquisition and still come out ahead, but only if it knows its repeat rate well enough to say so.</p>
     <p>Google can use that. Feeding customer lists back in and setting a new-customer value lets the bidding pay more for a first-time buyer than for someone who would have come back on their own. Without it, the account spends freely on repeat customers because they convert cheaply, which looks efficient and grows nothing.</p>
     <p>This is also where blended numbers earn their keep. If total revenue divided by total ad spend is improving while in-platform ROAS looks flat, the account is probably buying more new customers than it's being credited for.</p>
+
+    <h2>When the platforms disagree with the store</h2>
+    <p>Every store reaches the point where Google claims a number, Meta claims a number, the analytics
+    property says something else, and none of them match the orders in the back end. This isn't a bug to
+    be fixed. It's what the measurement is.</p>
+    <p>The reasons are mostly structural:</p>
+    <ul>
+      <li><strong>Each platform only sees its own touchpoints</strong> and takes full credit inside its
+      own window, so one order gets claimed twice.</li>
+      <li><strong>The windows aren't the same.</strong> A default seven-day click, one-day view setup
+      and a data-driven model over a different lookback will never agree, and neither is wrong on its
+      own terms.</li>
+      <li><strong>View-through conversions</strong> count an impression nobody clicked. Useful to know
+      about, dangerous to add to click-based revenue.</li>
+      <li><strong>Analytics is measuring sessions</strong> while the store is counting orders, and
+      cancellations, refunds and failed payments only exist in one of those systems.</li>
+    </ul>
+    <p>The way out is to stop reconciling and pick a hierarchy. The store's own revenue, net of refunds,
+    is the number the business runs on. Blended spend against that revenue — total advertising across
+    every channel over total revenue — is the figure that decides whether to spend more or less in
+    aggregate. Platform-reported ROAS stays useful for one thing only: comparing decisions inside that
+    platform, where the same bias applies to both sides of the comparison.</p>
+    <p>Set that up once and the weekly argument about whose number is right stops happening.</p>
+
+    <h2>Conversion tracking that survives contact with reality</h2>
+    <p>Fixing the hierarchy only helps if the underlying data is sound, and in most accounts we look at
+    it isn't. This is the first thing on the fix list above, and it's the least interesting work in
+    e-commerce advertising, which is why it keeps getting skipped.</p>
+    <p>What actually goes wrong:</p>
+    <ul>
+      <li><strong>Revenue passed inconsistently.</strong> Tax and shipping included in one place and not
+      another, so every target is calibrated against a number that drifts.</li>
+      <li><strong>Double counting.</strong> A tag firing on the confirmation page and again on reload,
+      or a browser event and a server event for the same order with no shared identifier to deduplicate
+      them.</li>
+      <li><strong>Browser-side loss.</strong> Tracking prevention, ad blockers and consent choices
+      remove a share of conversions, and the share is not random — it skews by device and by market.
+      Server-side tagging and the platforms' conversions APIs exist to recover those, and enhanced
+      conversions to match them back to a click.</li>
+      <li><strong>Consent not wired in.</strong> Where consent mode is required, an incomplete
+      implementation doesn't just break reporting, it changes what the bidding is allowed to learn
+      from.</li>
+      <li><strong>Refunds never sent back.</strong> A category with heavy returns looks profitable in
+      the ad account and isn't.</li>
+    </ul>
+    <p>The test is simple and worth running before anything else changes: pull reported revenue for a
+    clean two-week window and compare it to the store's own net revenue for the same dates. If they're
+    far apart, no bid strategy is worth discussing yet.</p>
+
+    <h2>The product page is where the money leaks</h2>
+    <p>Traffic is the expensive part and the page is the cheap part, so a conversion-rate fix is almost
+    always better value than a bid change. The leaks are consistent across stores:</p>
+    <ul>
+      <li><strong>Shipping cost revealed at checkout.</strong> The single most common reason a cart is
+      abandoned, and the easiest to pre-empt by stating it on the product page.</li>
+      <li><strong>Returns policy invisible.</strong> For anything with fit or size risk, the policy is
+      part of the offer and belongs above the fold, not in the footer.</li>
+      <li><strong>Slow mobile product pages.</strong> Most of the paid traffic is mobile and most of the
+      testing is done on desktop.</li>
+      <li><strong>Variant selection that hides availability</strong>, so a shopper picks a size and
+      discovers it's gone.</li>
+      <li><strong>No reason to believe the price.</strong> Thin product detail, no reviews, nothing
+      explaining why this costs what it costs.</li>
+    </ul>
+    <p>This is the same principle that governs a marketplace listing, where the detail page is the whole
+    of the conversion and no bid rescues one that doesn't convert — the logic is set out on the
+    <a href="/amazon-ads-management/">Amazon Ads management</a> page, and it applies on a brand's own
+    store for the same reason.</p>
 
     <h2>Stock levels and seasonality should move the budget</h2>
     <p>Two things change week to week in a store and almost never change in the ad account.</p>
@@ -295,6 +417,22 @@
       <div class="faq-item animate-in">
         <button class="faq-q" aria-expanded="false">Do you work with Shopify and WooCommerce?<span class="faq-icon" aria-hidden="true"></span></button>
         <div class="faq-a"><div><p>Yes, along with other platforms. The platform affects how the feed is produced and how tracking is implemented, but the underlying work is the same everywhere: feed quality, margin-aware structure and accurate measurement.</p></div></div>
+      </div>
+      <div class="faq-item animate-in">
+        <button class="faq-q" aria-expanded="false">Google, Meta and Shopify all report different revenue. Which one is right?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div><p>All of them, on their own terms, which is why reconciling them is the wrong goal. Each platform only sees its own touchpoints and claims full credit inside its own attribution window, so a single order gets counted more than once across channels, and analytics is measuring sessions while the store is counting orders. Pick a hierarchy instead: the store's own revenue net of refunds is what the business runs on, blended spend against that revenue decides whether to spend more in aggregate, and platform ROAS is only for comparing decisions inside that same platform.</p></div></div>
+      </div>
+      <div class="faq-item animate-in">
+        <button class="faq-q" aria-expanded="false">How do we know our conversion tracking is accurate?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div><p>Pull reported revenue for a clean two-week window and compare it to the store's own net revenue for exactly those dates. If they're far apart, the usual causes are tax or shipping included inconsistently, a tag double-firing on the confirmation page, browser-side and server-side events for the same order without a shared identifier to deduplicate them, consent not wired in properly, or refunds never being sent back. None of the bidding work is worth doing until that comparison is close.</p></div></div>
+      </div>
+      <div class="faq-item animate-in">
+        <button class="faq-q" aria-expanded="false">Is it worth fixing the product page before changing the campaigns?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div><p>Usually, because traffic is the expensive part and the page is the cheap part. Shipping cost revealed only at checkout, a returns policy buried in the footer, slow mobile product pages and variant selectors that hide what's out of stock all cost more than most bid adjustments gain. The same logic governs a marketplace listing, where the detail page is the entire conversion.</p></div></div>
+      </div>
+      <div class="faq-item animate-in">
+        <button class="faq-q" aria-expanded="false">Should Performance Max run the whole catalog?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div><p>Only if you're happy with one lever. A single campaign holding everything means budget can't move toward the products that deserve it, and thin assets let Google fill the gaps on placements you wouldn't have chosen. Segmenting by margin band, by best sellers versus the long tail, or by new versus returning customers is what makes the automation useful rather than opaque. Standard Shopping still earns its place on a small, high-value catalog where control matters more than reach.</p></div></div>
       </div>
     </div>
   </div>
