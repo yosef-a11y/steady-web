@@ -10,6 +10,29 @@ Status values: `approved` · `approved, with caveats` · `needs Yosef's read` ·
 
 ## Approved — his notes shape the page
 
+### Addiction treatment & recovery
+**Status:** approved, with caveats
+**Yosef:** "We won't handle LegitScript, so ignore it entirely." · "Extremely expensive and
+competitive, but if someone is willing to invest it can be very lucrative, especially if they
+do detox." · Asked again whether that meant skip the category or build it: **"Addiction
+treatment — don't mention LegitScript."**
+
+So the category is approved and the page simply does not name that vendor. **Do not write the
+word LegitScript anywhere on the site.**
+
+One judgment call the writer has to make, flagged here rather than decided silently: Google
+does require addiction treatment advertisers to be certified before their ads can run, and a
+page that never acknowledges any approval requirement would mislead an operator who doesn't
+know. The resolution is a single qualifying line — getting approved to advertise is the
+operator's job and has to be done before we start — stated generically, with no vendor named
+and no section devoted to it. If Yosef wants even that removed, he'll say so.
+
+Everything else is the page. Lead with the cost, the way the legal page does: this is one of
+the most expensive categories in paid search and a thin budget buys nothing. Detox gets called
+out as the part of the business that can carry the economics. The substance is admissions
+rather than advertising — speed to answer, insurance verification, census, and tracking to
+an actual admission rather than a form fill.
+
 ### Multifamily
 **Status:** approved, with caveats
 **Yosef:** "Doesn't really work unless there are a lot of searches for some identifier or
@@ -56,11 +79,6 @@ budget belongs elsewhere. Make that the organizing idea, not a footnote.
 
 ## Needs Yosef's read before writing
 
-- **Addiction treatment & recovery** — he said "we won't handle LegitScript, so ignore it
-  entirely", then described the economics favourably ("extremely expensive and competitive,
-  but if someone is willing to invest it can be very lucrative, especially if they do
-  detox"). Ambiguous: skip the industry, or build it but require the client to arrive
-  already certified? Confirm before writing anything.
 - **Home services** (HVAC, plumbing, roofing) — homepage card exists with no page behind it
 - **Moving companies** — proposed as a self-storage adjacency
 - **Professional Services** — homepage card exists with no page behind it
