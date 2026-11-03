@@ -10,13 +10,6 @@ Status values: `approved` · `approved, with caveats` · `needs Yosef's read` ·
 
 ## Approved — his notes shape the page
 
-### Legal & personal injury
-**Status:** approved, with caveats
-**Yosef:** "Very expensive. Competitive. If willing to invest, can work well."
-
-Say the budget reality plainly, early, above the fold if it fits. The page should filter
-out firms who can't fund it rather than collect inquiries it can't serve.
-
 ### Multifamily
 **Status:** approved, with caveats
 **Yosef:** "Doesn't really work unless there are a lot of searches for some identifier or
@@ -31,6 +24,18 @@ budget belongs elsewhere. Make that the organizing idea, not a footnote.
 ---
 
 ## Built
+
+- **Legal & personal injury** — `/google-ads-for-law-firms/` (3 Nov 2026). Yosef's caveat is the
+  headline, literally: the H1 is "the most expensive category in paid search" and the hero says
+  that funded at half the going rate it produces almost none of the cases, not half of them. The
+  page is built to filter — it tells a firm which practice areas are realistically fundable (estate
+  planning, immigration, employment, family; not PI in a major metro on a small budget), sets the
+  budget backwards from case value and lead-to-signed rate, and closes with a concrete "if the
+  budget isn't there yet" section rather than leaving the warning hanging. Also covers Local
+  Services Ads and their verification requirement, intake and after-hours coverage as the largest
+  controllable variable, who else is in the auction (lead sellers monetize the same click more than
+  once), and keeping ad copy reviewable against state bar rules without us interpreting them. No
+  CPCs or figures invented; no legal clients implied.
 
 - **Home care & senior care** — `/home-care-marketing/` (27 Oct 2026). Yosef's caveat is the
   organizing idea: whether Google works is a question about the territory, not the agency, so the
