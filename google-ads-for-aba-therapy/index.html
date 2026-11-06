@@ -91,11 +91,24 @@
         "Offline conversion import for start of care",
         "Google personalized advertising policy for health conditions",
         "BCBA and RBT recruitment advertising",
-        "Service area targeting by clinician coverage"
+        "Service area targeting by clinician coverage",
+        "Credentialed footprint as the real targeting boundary",
+        "Payer name keywords and in-network messaging",
+        "Medicaid and commercial payers as separate campaigns",
+        "Single-case agreements and out-of-network inquiries",
+        "Capacity-constrained providers and waitlist advertising",
+        "Budget allocation between client acquisition and clinician recruiting",
+        "Pre-diagnosis and evaluation-stage search traffic"
       ],
       "areaServed": [
-        { "@type": "Country", "name": "United States" },
-        { "@type": "State", "name": "New Jersey" }
+        {
+          "@type": "Country",
+          "name": "United States"
+        },
+        {
+          "@type": "State",
+          "name": "New Jersey"
+        }
       ]
     },
     {
@@ -139,7 +152,7 @@
           "name": "Which keywords actually bring families, not students?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Narrow, intent-heavy ones: the condition plus a town, an insurer's name plus the service, \u201cin home\u201d or \u201ccenter based\u201d, \u201caccepting new clients\u201d, \u201cevaluation\u201d. Broad terms like \u201cABA therapy\u201d collect coursework researchers, certification shoppers and job seekers, all of whom click and none of whom enroll."
+            "text": "Narrow, intent-heavy ones: the condition plus a town, an insurer's name plus the service, “in home” or “center based”, “accepting new clients”, “evaluation”. Broad terms like “ABA therapy” collect coursework researchers, certification shoppers and job seekers, all of whom click and none of whom enroll."
           }
         },
         {
@@ -147,7 +160,7 @@
           "name": "How do we track an inquiry through to start of care?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Store the Google click ID on the form so the lead reaches intake with the click attached, then mark the stages intake already records \u2014 benefits verified, assessment scheduled, authorization approved, start of care \u2014 and send them back to Google Ads as offline conversions with values. No new software is needed; the data already exists in the practice management system."
+            "text": "Store the Google click ID on the form so the lead reaches intake with the click attached, then mark the stages intake already records — benefits verified, assessment scheduled, authorization approved, start of care — and send them back to Google Ads as offline conversions with values. No new software is needed; the data already exists in the practice management system."
           }
         },
         {
@@ -163,7 +176,39 @@
           "name": "Can the same account run intake and recruiting?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Same account, never the same campaign. A parent looking for services and a clinician looking for a job need opposite landing pages and separate conversion actions. Combined, Google spends wherever conversions are cheapest \u2014 usually hiring \u2014 and family inquiries quietly dry up."
+            "text": "Same account, never the same campaign. A parent looking for services and a clinician looking for a job need opposite landing pages and separate conversion actions. Combined, Google spends wherever conversions are cheapest — usually hiring — and family inquiries quietly dry up."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should we advertise in areas where we aren't credentialed with the main payers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Generally no. The area you can serve is the overlap of clinician coverage and payer network, not the marketing map, and an inquiry from a family whose plan you don't take costs a click plus the coordinator time to run a verification of benefits before it dies. The exception is if you'd pursue a single-case agreement, in which case an out-of-network inquiry has a path. Decide that before the ads run rather than case by case."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should we keep advertising if we have a waitlist?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Only at a rate you can absorb, and only if the wait is stated honestly in the ad or on the page. Families will wait; what they won't forgive is finding out after the assessment. If every caseload is full and the next opening is months out, the budget usually belongs on BCBA and RBT recruiting instead, because clinicians are the binding constraint and hiring one creates the capacity that converts demand you already have."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do we do with people searching before they have a diagnosis?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Give them their own campaign, page and conversion rather than pushing them at an intake form built for a family who already has a plan and a diagnosis. That traffic converts at a lower rate and takes much longer to reach start of care, so mixed into the service campaigns it either gets bid like a ready family or negated away. Where the organization does evaluations that's the clearest path; where it doesn't, the referral relationships are often worth more than the spend."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is it worth bidding on insurance plan names?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually, and most providers don't. A family searching a plan name alongside the service has told you the one thing your coordinator would otherwise spend a benefits check finding out, and the competition on those terms is thinner than on the category term. It only works if the landing page actually names the payers you're in-network with, and if the list gets updated when a contract changes."
           }
         }
       ]
@@ -265,6 +310,31 @@
     <p>Services are usually funded through commercial insurance, Medicaid or Early Intervention. The parent filling out your form isn't comparing your rate to a competitor's. They want to know three things: are you in-network with my plan, do you have openings, and how soon can we start.</p>
     <p>Ads that answer those up front produce better inquiries. They also screen out families you can't serve before your intake coordinator spends time running a verification of benefits.</p>
 
+    <h2>Credentialing decides which leads are even usable</h2>
+    <p>This is the constraint that quietly wastes the most budget, and it isn't an advertising problem at
+    all until you put it into the targeting.</p>
+    <p>The area you can actually serve isn't your service area. It's the overlap of three things: where you
+    have clinician coverage, which payers you're in-network with, and which of those payers a given family
+    carries. A family three towns over with a plan you're not credentialed with is a dead inquiry no matter
+    how good the ad was, and your coordinator finds that out only after running a verification of
+    benefits.</p>
+    <p>What that means for the account:</p>
+    <ul>
+      <li><strong>Target the credentialed footprint</strong>, not the marketing one. If a county has no
+      in-network path, it shouldn't be in the geo settings.</li>
+      <li><strong>Name the payers you take.</strong> Plan names are high-intent searches and most providers
+      never bid on them, while listing them on the landing page screens out the families you'd have to turn
+      away.</li>
+      <li><strong>Ask for the plan early in the form</strong>, not at the bottom. It costs a little
+      completion rate and saves far more coordinator time.</li>
+      <li><strong>Treat Medicaid and commercial as separate campaigns.</strong> Volume, authorized hours
+      and time to authorization differ enough that averaging them hides whichever is struggling.</li>
+      <li><strong>Know whether you'd pursue a single-case agreement</strong> before the ads run. If the
+      answer is sometimes, an out-of-network inquiry is worth capturing; if it's never, it's waste.</li>
+    </ul>
+    <p>Credentialing also moves. A new payer contract, a new office, a clinician leaving a region &mdash;
+    each one should change the geo and the copy, and in most accounts none of them ever does.</p>
+
     <h2>Lifetime value is high, so you can afford more per client</h2>
     <p>One client may receive services for months or years, billed in authorized units. Owners who come from an industry where a lead is worth a single transaction routinely underbid a channel that could profitably pay far more, because they're pricing the inquiry rather than the tenancy behind it.</p>
     <p>The number that matters isn't cost per form fill. It's what it costs to get one family all the way to their first session, and the gap between the two is wide. Inquiries fall out at verification of benefits, at prior authorization, and between the assessment and the start of care.</p>
@@ -282,6 +352,43 @@
     <h2>Hiring campaigns matter as much as client campaigns</h2>
     <p>Ask most ABA owners what limits growth and the answer is clinical capacity, not demand. Even so, the ad budget usually goes entirely to client acquisition while BCBA and RBT recruiting is left to job boards and referral bonuses.</p>
     <p><a href="/bcba-rbt-recruiting-ads/">Recruiting campaigns for BCBAs and RBTs</a> need their own keywords, landing pages and conversion events. They often cost less per hire than agency placement fees, which is easy enough to check against what you pay now. If your waitlist is long because every caseload is full, more client inquiries only make it longer.</p>
+
+    <h2>Don't advertise into a waitlist you haven't acknowledged</h2>
+    <p>Most ABA providers are capacity-constrained rather than demand-constrained, which makes spending on
+    client acquisition an odd default.</p>
+    <p>If every caseload is full and the next opening is months away, more inquiries produce a longer
+    waitlist, more coordinator hours spent on families who will go elsewhere, and reviews from people who
+    felt strung along. The budget in that situation belongs on hiring, because a BCBA hired is capacity
+    created and capacity is what converts the demand you already have.</p>
+    <p>That doesn't mean going dark. A waitlist is worth advertising for when it's run honestly:</p>
+    <ul>
+      <li><strong>Say the wait in the ad or on the page.</strong> Families will wait &mdash; what they
+      won't forgive is finding out after the assessment.</li>
+      <li><strong>Spend at the rate you can absorb</strong>, rather than filling a queue you can't
+      serve.</li>
+      <li><strong>Keep the list warm.</strong> A family who waits six months and starts is worth the same
+      as one who starts immediately, and the ones who drift away mostly drifted because nobody called.</li>
+      <li><strong>Watch which sizes of opening you have.</strong> Capacity for an in-home case in one town
+      and a center-based slot in another are different products, and a single campaign can't aim at
+      both.</li>
+    </ul>
+    <p>The practical rule is that the budget should follow whichever constraint is actually binding. When
+    it's clinicians, that's the recruiting account, and the two should never share a budget.</p>
+
+    <h2>Not everyone searching has a diagnosis yet</h2>
+    <p>A meaningful share of the people reaching an ABA provider's site are earlier in the process than the
+    account assumes. They're looking for an evaluation, or for what to do about something they've noticed,
+    and they don't yet have anything to verify benefits against.</p>
+    <p>Treating that traffic as though it were ready to start care misreads it twice over: it converts at a
+    lower rate, so it drags the campaign's numbers down, and the handful who do convert take far longer to
+    reach start of care, so the attribution window often misses them entirely.</p>
+    <p>Handled separately it's useful. It wants its own campaign, its own page, and its own conversion
+    &mdash; a referral, a call back, a place on a list &mdash; rather than being pushed at an intake form
+    built for a family who already has a plan and a diagnosis. Where the organization also does
+    evaluations, that's the clearest route from this traffic to a client; where it doesn't, the referral
+    relationships it builds with the practices that do tend to be worth more than the ad spend.</p>
+    <p>What it should not do is sit in the same ad group as the service searches, where it will either be
+    bid like a ready family or negated away entirely.</p>
 
     <h2>What Google's health rules mean in practice</h2>
     <p>Google restricts personalized advertising based on health conditions. That has a few practical effects on how an ABA account gets built:</p>
@@ -369,6 +476,22 @@
       <div class="faq-item animate-in">
         <button class="faq-q" aria-expanded="false">Can the same account run intake and recruiting?<span class="faq-icon" aria-hidden="true"></span></button>
         <div class="faq-a"><div><p>Same account, never the same campaign. A parent looking for services and a clinician looking for a job need opposite landing pages and separate conversion actions. Combined, Google spends wherever conversions are cheapest — usually hiring — and family inquiries quietly dry up.</p></div></div>
+      </div>
+      <div class="faq-item animate-in">
+        <button class="faq-q" aria-expanded="false">Should we advertise in areas where we aren't credentialed with the main payers?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div><p>Generally no. The area you can serve is the overlap of clinician coverage and payer network, not the marketing map, and an inquiry from a family whose plan you don't take costs a click plus the coordinator time to run a verification of benefits before it dies. The exception is if you'd pursue a single-case agreement, in which case an out-of-network inquiry has a path. Decide that before the ads run rather than case by case.</p></div></div>
+      </div>
+      <div class="faq-item animate-in">
+        <button class="faq-q" aria-expanded="false">Should we keep advertising if we have a waitlist?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div><p>Only at a rate you can absorb, and only if the wait is stated honestly in the ad or on the page. Families will wait; what they won't forgive is finding out after the assessment. If every caseload is full and the next opening is months out, the budget usually belongs on BCBA and RBT recruiting instead, because clinicians are the binding constraint and hiring one creates the capacity that converts demand you already have.</p></div></div>
+      </div>
+      <div class="faq-item animate-in">
+        <button class="faq-q" aria-expanded="false">What do we do with people searching before they have a diagnosis?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div><p>Give them their own campaign, page and conversion rather than pushing them at an intake form built for a family who already has a plan and a diagnosis. That traffic converts at a lower rate and takes much longer to reach start of care, so mixed into the service campaigns it either gets bid like a ready family or negated away. Where the organization does evaluations that's the clearest path; where it doesn't, the referral relationships are often worth more than the spend.</p></div></div>
+      </div>
+      <div class="faq-item animate-in">
+        <button class="faq-q" aria-expanded="false">Is it worth bidding on insurance plan names?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div><p>Usually, and most providers don't. A family searching a plan name alongside the service has told you the one thing your coordinator would otherwise spend a benefits check finding out, and the competition on those terms is thinner than on the category term. It only works if the landing page actually names the payers you're in-network with, and if the list gets updated when a contract changes.</p></div></div>
       </div>
     </div>
   </div>
