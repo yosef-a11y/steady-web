@@ -48,18 +48,39 @@
       "url": "https://steadygrowthmarketing.com/google-merchant-center-disapproved-products/",
       "name": "Merchant Center Products Disapproved? How to Fix Them | Steady Growth Marketing",
       "description": "Why Google Merchant Center disapproves products, how to tell an item problem from an account problem, and the order to fix them in.",
-      "isPartOf": { "@id": "https://steadygrowthmarketing.com/#website" },
-      "about": { "@id": "https://steadygrowthmarketing.com/#org" },
+      "isPartOf": {
+        "@id": "https://steadygrowthmarketing.com/#website"
+      },
+      "about": {
+        "@id": "https://steadygrowthmarketing.com/#org"
+      },
       "inLanguage": "en-US",
-      "breadcrumb": { "@id": "https://steadygrowthmarketing.com/google-merchant-center-disapproved-products/#breadcrumb" }
+      "breadcrumb": {
+        "@id": "https://steadygrowthmarketing.com/google-merchant-center-disapproved-products/#breadcrumb"
+      }
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://steadygrowthmarketing.com/google-merchant-center-disapproved-products/#breadcrumb",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://steadygrowthmarketing.com/" },
-        { "@type": "ListItem", "position": 2, "name": "E-Commerce PPC", "item": "https://steadygrowthmarketing.com/ecommerce-ppc-agency/" },
-        { "@type": "ListItem", "position": 3, "name": "Merchant Center Disapprovals", "item": "https://steadygrowthmarketing.com/google-merchant-center-disapproved-products/" }
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://steadygrowthmarketing.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "E-Commerce PPC",
+          "item": "https://steadygrowthmarketing.com/ecommerce-ppc-agency/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Merchant Center Disapprovals",
+          "item": "https://steadygrowthmarketing.com/google-merchant-center-disapproved-products/"
+        }
       ]
     },
     {
@@ -67,15 +88,26 @@
       "@id": "https://steadygrowthmarketing.com/google-merchant-center-disapproved-products/#service",
       "name": "Google Merchant Center Troubleshooting and Feed Repair",
       "serviceType": "Merchant Center Disapproval and Suspension Resolution",
-      "provider": { "@id": "https://steadygrowthmarketing.com/#org" },
-      "areaServed": { "@type": "Country", "name": "United States" },
+      "provider": {
+        "@id": "https://steadygrowthmarketing.com/#org"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "United States"
+      },
       "knowsAbout": [
         "Merchant Center item disapprovals",
         "Price and availability mismatch between feed and landing page",
         "Product image policy requirements",
         "GTIN, brand and condition attributes",
         "Account suspension and misrepresentation policy",
-        "Supplemental feeds"
+        "Supplemental feeds",
+        "Per-destination approval status across Shopping ads, free listings and local",
+        "Account-level shipping service and rate configuration",
+        "Return policy settings and their program and country variation",
+        "Pending and under-review states versus disapproval",
+        "New account review periods",
+        "Automatic item updates from landing page structured data"
       ],
       "description": "Diagnosis and repair of Google Merchant Center disapprovals and account suspensions for e-commerce stores, covering price and availability mismatches between feed and landing page, image policy failures, missing identifiers and required attributes, landing page accessibility, misrepresentation and other account-level policy issues, supplemental feeds for fixes that can't be made at source, and ongoing Diagnostics monitoring to stop disapprovals recurring."
     },
@@ -113,6 +145,38 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Only after fixing the cause. An appeal on an unchanged item usually comes back the same way, and repeated appeals without changes make the next one harder. Fix first, confirm the landing page and feed now agree, then request review."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do my product counts never match between Merchant Center and Google Ads?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually because they're describing different destinations. A product has an approval status per destination rather than one overall, so the same item can be running in free listings while it's disapproved for Shopping ads, or eligible for ads and excluded from local inventory. Diagnostics reports per destination, the ad account reports what it can actually serve, and the catalog count is a third figure. Check which destination each number describes before chasing the discrepancy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "My feed looks fine but products still aren't showing. What else is there?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Account settings, which feed audits miss because they aren't in the feed. Shipping has to be configured so Google can show a cost for the products and regions you're advertising — a service that doesn't cover a targeted region, or a gap in a rate table, removes products while every feed row looks healthy. Return policy settings are the same shape, with requirements that vary by program and country. Both surface as account-level warnings that feel like item problems."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between pending and disapproved?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pending means not yet judged; disapproved means judged and rejected. New products go through review before they're eligible, and a new or substantially changed account goes through a longer one, during which items can sit pending or show approved without serving. There's nothing to fix in that window, and changing things resets the clock on the review you were waiting for. Resubmitting or appealing against a pending item only delays it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should we turn on automatic item updates?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Generally yes, as a safety net. It lets Google correct price and availability from the landing page's structured data instead of disapproving the item, which keeps products running through the mismatches that would otherwise pull them out. The caveat is that it hides the drift: a feed that's been quietly wrong for months looks fine, and when the page markup changes or the correction stops matching, a lot of the catalog goes down at once. Frequent corrections are a signal that the feed schedule or the price source needs attention."
           }
         }
       ]
@@ -218,6 +282,22 @@
     rather than a product — stops everything, and no amount of feed tidying fixes it. If both are present, the
     account issue is the only one worth working on until it's cleared.</p>
 
+    <h2>Disapproved where, exactly?</h2>
+    <p>The other thing that looks like one problem and isn't. A product doesn't have a single approval
+    status &mdash; it has one per destination.</p>
+    <p>The same item can be running in free listings while it's disapproved for Shopping ads, or eligible
+    for ads and excluded from local inventory. Each destination applies its own requirements, so a missing
+    attribute that only one of them cares about takes the product out of that one and leaves the rest
+    alone.</p>
+    <p>This is why the numbers never seem to agree. Diagnostics reports per destination, the ad account
+    reports what it can serve, and the catalog count in the dashboard is a different figure again. None of
+    them is wrong. Before chasing a discrepancy, check which destination each number is describing &mdash;
+    a good share of "my products disappeared" turns out to be a product that was only ever eligible for one
+    of them.</p>
+    <p>It also changes what's worth fixing first. An item excluded from free listings costs you nothing but
+    free traffic; an item excluded from Shopping ads while the campaign is still spending on the rest of
+    the catalog is the expensive case.</p>
+
     <h2>Price and availability mismatches</h2>
     <p>This is the most common disapproval and the most frustrating, because the price usually looks correct
     when you check it.</p>
@@ -256,6 +336,42 @@
     by missing or unconvincing basics: no visible contact details, no returns or refund policy, a checkout that
     looks unsafe, pricing that isn't clear until late in the flow, or claims the site can't support. Fixing it
     means fixing the store, not the feed.</p>
+
+    <h2>Shipping and returns are settings, not product data</h2>
+    <p>A whole category of problems isn't in the feed at all, which is why feed audits miss them.</p>
+    <p>Shipping has to be configured in the account, and it has to produce a cost Google can show for the
+    products and the regions you're advertising. A service that doesn't cover a region you're targeting, or
+    a rate table with a gap in it, takes products out of the auction while every row in the feed looks
+    perfectly healthy. Shipping can also be sent per product in the feed, and when the two disagree, the
+    override isn't always the one you assumed.</p>
+    <p>Returns are the same shape. Google expects a return policy to be set in the account, and the
+    requirements vary by program and by country, so this is one to confirm against Google's current
+    documentation rather than assume carries over from a market you already sell in.</p>
+    <p>Both of these produce account-level warnings that feel like item problems, which is how they end up
+    being ignored for months while someone keeps re-uploading the feed.</p>
+
+    <h2>Pending, under review, and the waiting that is normal</h2>
+    <p>Not every item that isn't serving is broken.</p>
+    <p>New products go through review before they're eligible, and a new or substantially changed account
+    goes through a longer one. During that window items can sit as pending, or show as approved and still
+    not serve, and there is nothing in the feed to fix. The common mistake is to treat the wait as a
+    problem and start changing things, which resets the clock on the review you were already waiting
+    for.</p>
+    <p>The distinction worth holding onto: <strong>pending means not yet judged</strong>, and
+    <strong>disapproved means judged and rejected</strong>. The first needs patience, the second needs
+    work. Resubmitting, re-fetching or appealing against a pending item does nothing except delay it, and
+    repeated appeals on an item that genuinely is disapproved make the next one harder.</p>
+
+    <h2>Automatic item updates fix things quietly, until they don't</h2>
+    <p>Google can correct price and availability in your feed from the structured data on the landing page,
+    rather than disapproving the item. Turned on, it keeps products running through exactly the mismatches
+    that would otherwise pull them out of the auction.</p>
+    <p>It's worth having, with one caveat: it hides the underlying drift. A feed that has quietly been
+    wrong for months looks fine because something else has been correcting it, and the day the landing page
+    markup changes or the correction stops matching, a large part of the catalog goes down at once.</p>
+    <p>So treat it as a safety net, not as the fix. If the corrections are happening regularly, that's a
+    signal the feed schedule or the price source needs attention &mdash; and it depends on the landing page
+    carrying accurate structured data, which is worth confirming before relying on it.</p>
 
     <h2>Work it in the right order</h2>
     <ol class="steps">
@@ -303,6 +419,22 @@
       <div class="faq-item animate-in">
         <button class="faq-q" aria-expanded="false">Should we just appeal a disapproval?<span class="faq-icon" aria-hidden="true"></span></button>
         <div class="faq-a"><div><p>Only after fixing the cause. An appeal on an unchanged item usually comes back the same way, and repeated appeals without changes make the next one harder. Fix first, confirm the landing page and feed now agree, then request review.</p></div></div>
+      </div>
+      <div class="faq-item animate-in">
+        <button class="faq-q" aria-expanded="false">Why do my product counts never match between Merchant Center and Google Ads?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div><p>Usually because they're describing different destinations. A product has an approval status per destination rather than one overall, so the same item can be running in free listings while it's disapproved for Shopping ads, or eligible for ads and excluded from local inventory. Diagnostics reports per destination, the ad account reports what it can actually serve, and the catalog count is a third figure. Check which destination each number describes before chasing the discrepancy.</p></div></div>
+      </div>
+      <div class="faq-item animate-in">
+        <button class="faq-q" aria-expanded="false">My feed looks fine but products still aren't showing. What else is there?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div><p>Account settings, which feed audits miss because they aren't in the feed. Shipping has to be configured so Google can show a cost for the products and regions you're advertising — a service that doesn't cover a targeted region, or a gap in a rate table, removes products while every feed row looks healthy. Return policy settings are the same shape, with requirements that vary by program and country. Both surface as account-level warnings that feel like item problems.</p></div></div>
+      </div>
+      <div class="faq-item animate-in">
+        <button class="faq-q" aria-expanded="false">What's the difference between pending and disapproved?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div><p>Pending means not yet judged; disapproved means judged and rejected. New products go through review before they're eligible, and a new or substantially changed account goes through a longer one, during which items can sit pending or show approved without serving. There's nothing to fix in that window, and changing things resets the clock on the review you were waiting for. Resubmitting or appealing against a pending item only delays it.</p></div></div>
+      </div>
+      <div class="faq-item animate-in">
+        <button class="faq-q" aria-expanded="false">Should we turn on automatic item updates?<span class="faq-icon" aria-hidden="true"></span></button>
+        <div class="faq-a"><div><p>Generally yes, as a safety net. It lets Google correct price and availability from the landing page's structured data instead of disapproving the item, which keeps products running through the mismatches that would otherwise pull them out. The caveat is that it hides the drift: a feed that's been quietly wrong for months looks fine, and when the page markup changes or the correction stops matching, a lot of the catalog goes down at once. Frequent corrections are a signal that the feed schedule or the price source needs attention.</p></div></div>
       </div>
     </div>
   </div>
