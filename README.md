@@ -22,7 +22,7 @@ Static marketing site. No build step, no dependencies, no framework.
 | `google-ads-for-self-storage/index.html` | Targets "Google Ads for self storage" — unit mix, vacancy and move-ins |
 | `google-ads-agency-new-jersey/index.html` | Targets "Google Ads agency New Jersey" |
 | `google-ads-management-cost/index.html` | Targets "how much does Google Ads management cost" |
-| `clients/bash/` | Redirects only. The Bash landing pages moved to `yosef-a11y/bash-landing` (live at go.bashsoftserve.com) |
+| `clients/` | **Not part of this site.** Another client's files, sharing this repo's hosting only — see the rule below |
 | `styles.css` | Design system + all styling |
 | `main.js` | Nav, scroll reveal, counters, FAQ, form guard, analytics events |
 | `thank-you.html` | Post-form-submission page (fires the `generate_lead` GA event) |
@@ -37,6 +37,24 @@ The logo is inlined as SVG inside the HTML so it stays crisp at any size and cos
 requests. To swap in a raster version instead, drop it at `images/steady-logo.png` and replace the
 `<svg class="logo-mark">` blocks in `index.html` with
 `<img src="images/steady-logo.png" class="logo-mark" alt="Steady Growth Marketing">`.
+
+## `clients/` is a different project — leave it alone
+
+Steady Growth Marketing's own site is everything **except** `clients/`. That folder holds a
+separate client's files that happen to be hosted out of this repo. Right now it's two noindex
+redirects pointing at `go.bashsoftserve.com`; the real pages live in `yosef-a11y/bash-landing`.
+
+**The two projects stay completely separate.** Work on this site never touches `clients/`:
+
+- No edits to anything under `clients/`, including site-wide sweeps. Asset version bumps, nav
+  and footer updates, and copy passes all stop at the boundary.
+- Nothing in `clients/` goes in `sitemap.xml`, `llms.txt`, the Guides hub, the nav or the footer.
+- No page on this site links into `clients/`, and nothing in `clients/` should link back.
+- Verification skips it. `verify.mjs` excludes the folder by name, won't follow a link into it,
+  and fails the run if a Steady page ever starts pointing at one of those URLs.
+
+If the redirects ever need changing, that's a job for whoever owns the other project — it isn't
+part of this site's work.
 
 ## Local preview
 
