@@ -186,6 +186,34 @@ Common edits:
 - **FAQ** — questions live in `#faq`. If you add or change one, mirror it in the `FAQPage` JSON-LD
   block in `<head>` so the structured data stays accurate.
 
+## What Search Console actually says (pulled 10 Nov 2026)
+
+Decisions and findings from the first real traffic data, so nobody re-derives them.
+
+**We do not sell SEO.** Yosef, 10 Nov 2026. The Google Business Profile pulls a large local
+SEO cluster — "seo ocean county" alone was 1,259 impressions at position 4.9, plus Lakewood,
+Manahawkin and Monmouth County variants. **Do not build pages for any of it.** It looks like
+free money in the query report and it is not a service this business offers.
+
+**The impression count is mostly not the website.** ~16,700 of the impressions come from the
+Business Profile listing against queries like "google ads" and "meta ads" at position 1.0 with
+no clicks — people looking for ads.google.com who got the map pack. Ignore it as a KPI. Real
+organic traffic to the site is the ~41 clicks across the pages below.
+
+**The problem is snippets, not rankings.** Several pages rank and collect nothing. The worst
+is `/growth-marketing-consultant/`: position 4.7 on "growth marketing consultant" across 1,944
+impressions, converting 0.2%. Titles and descriptions were rewritten in Phase 1 for that
+reason. Keep titles at 60 rendered characters or fewer — count the decoded length, since
+`&amp;` is one character on screen and five in the file.
+
+**The biggest winnable gap is pricing.** `/google-ads-management-cost/` sits at position 66
+against ~400 impressions of pricing queries and is the thinnest page on the site. It cannot
+win those queries without a published fee or range, and we do not invent numbers. Open
+question for Yosef.
+
+**Keep `sitemap.xml` lastmod honest.** It had drifted up to a month stale on 15 of 16 URLs
+because content work never touched it. Derive it from the file's real git commit date.
+
 ## SEO and AI discoverability
 
 What's in place, and what each piece is for:
