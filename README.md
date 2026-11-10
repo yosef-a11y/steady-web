@@ -195,6 +195,14 @@ SEO cluster — "seo ocean county" alone was 1,259 impressions at position 4.9, 
 Manahawkin and Monmouth County variants. **Do not build pages for any of it.** It looks like
 free money in the query report and it is not a service this business offers.
 
+**The Business Profile link is settled — don't raise it again.** Yosef updated it on 10 Nov
+2026 to `https://steadygrowthmarketing.com/?utm_source=google&utm_medium=organic&utm_campaign=gbp`.
+Correcting the brief and an earlier note here: it was **already on the apex domain**, so there
+was never a redirect hop to remove. The only change was the UTMs. From 10 Nov 2026, GBP traffic
+lands in GA4 as `google / organic` with campaign `gbp` instead of its own `business+profile`
+bucket — so expect a discontinuity in channel reporting at that date rather than a traffic
+change.
+
 **The impression count is mostly not the website.** ~16,700 of the impressions come from the
 Business Profile listing against queries like "google ads" and "meta ads" at position 1.0 with
 no clicks — people looking for ads.google.com who got the map pack. Ignore it as a KPI. Real
