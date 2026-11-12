@@ -205,6 +205,22 @@ lands in GA4 as `google / organic` with campaign `gbp` instead of its own `busin
 bucket — so expect a discontinuity in channel reporting at that date rather than a traffic
 change.
 
+**The review count on the homepage is a real number and has to stay one.** The reviews
+section states "23 five-star reviews", counted against the Google Business Profile on
+12 Nov 2026. Two rules: only ever change it to a figure someone has actually counted, and
+if in doubt leave it low. An undercount is harmless and self-correcting as reviews accrue;
+claiming more than the profile shows is the kind of thing that got the old fabricated stats
+removed. Verification asserts the hero's "& N more" matches the wall, but nothing can check
+the 23 from inside this repo — that one is on a human.
+
+**Three reviews on the site aren't in the Business Profile export.** Steven Loeb (Quality
+Bath), Jack Richter (Bodno) and Kennard Hugo (Rosewood Recovery) don't appear in the 12 Nov
+2026 GBP pull. Most likely they came from email or another platform, or the export was
+partial. Left in place: they're real client reviews either way, and the cards carry company
+names rather than claiming Google as the source. Only the four newest cards say "Google
+review", and all four are in the export. If it turns out those three aren't on Google, the
+section strapline is the line to revisit.
+
 **The impression count is mostly not the website.** ~16,700 of the impressions come from the
 Business Profile listing against queries like "google ads" and "meta ads" at position 1.0 with
 no clicks — people looking for ads.google.com who got the map pack. Ignore it as a KPI. Real
