@@ -18,6 +18,7 @@ Static marketing site. No build step, no dependencies, no framework.
 | `amazon-ads-management/index.html` | Targets "Amazon Ads management" — ACoS vs TACoS, the three ad types, the rank flywheel |
 | `rv-boat-vehicle-storage-marketing/index.html` | Targets "RV storage marketing" — inverse seasonality, length bands, a thinner auction |
 | `google-ads-for-law-firms/index.html` | Targets "Google Ads for law firms" — the cost reality, practice-area fundability, signed cases |
+| `google-ad-grant-suspended/index.html` | Targets "Google Ad Grant suspended" — causes, why not to appeal first, reinstatement order |
 | `home-care-marketing/index.html` | Targets "home care marketing" — territory search volume, Meta for the adult child, start of care |
 | `google-ads-for-self-storage/index.html` | Targets "Google Ads for self storage" — unit mix, vacancy and move-ins |
 | `google-ads-agency-new-jersey/index.html` | Targets "Google Ads agency New Jersey" |
