@@ -77,9 +77,16 @@
      nowhere near the handful of faces that mark a page as templated.
      Source Serif carries the long-form prose, where a serif is simply
      easier to read for several hundred words at a time. */
-  --font-display: 'Libre Franklin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-body: 'Libre Franklin', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-prose: 'Source Serif 4', Charter, 'Bitstream Charter', Georgia, 'Times New Roman', serif;
+  /* One superfamily, three voices. IBM Plex was drawn for an engineering
+     company and it reads that way: technical rather than promotional, and
+     nowhere near the handful of faces that mark a page as generated.
+     Mono does the labelling — section numbers, kickers, table heads, data.
+     That is what a technical document does with its furniture, and it is
+     the clearest signal that the page is a record rather than a pitch. */
+  --font-display: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-prose: 'IBM Plex Serif', Charter, Georgia, 'Times New Roman', serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* Edges, not pills. Paper doesn't float, so separation comes from rules and
      the shadow tokens stay at none. */
@@ -362,7 +369,7 @@ p { text-wrap: pretty; }
   flex-shrink: 0;
 }
 /* The mark is a square block now, not a wide arrow. */
-.logo-mark { width: 36px; height: 36px; flex: none; transition: transform .4s var(--ease); }
+.logo-mark { width: 38px; height: auto; flex: none; transition: transform .4s var(--ease); }
 .logo:hover .logo-mark { transform: translateY(-2px); }
 
 .logo-text {
@@ -473,9 +480,8 @@ p { text-wrap: pretty; }
 @media (min-width: 901px) {
   .header:not(.scrolled) .logo-text { color: var(--white); }
   .header:not(.scrolled) .logo-text span { color: var(--paper); }
-  /* On the dark hero the block turns green: a forest block on a forest
-     ground has no silhouette. The step stays bone on either ground. */
-  .header:not(.scrolled) .logo-mark .mark-block { fill: var(--blue-600); }
+  /* Over the dark hero the mark's dark stroke reverses to white. */
+  .header:not(.scrolled) .logo-mark .mark-dark { stroke: var(--white); }
 
   .header:not(.scrolled) .nav-list > li > a:not(.btn) { color: rgba(250, 248, 243, .82); }
   .header:not(.scrolled) .nav-list > li > a:not(.btn):hover {
@@ -502,9 +508,8 @@ p { text-wrap: pretty; }
 @media (max-width: 900px) {
   .header:not(.scrolled) .logo-text { color: var(--white); }
   .header:not(.scrolled) .logo-text span { color: var(--paper); }
-  /* On the dark hero the block turns green: a forest block on a forest
-     ground has no silhouette. The step stays bone on either ground. */
-  .header:not(.scrolled) .logo-mark .mark-block { fill: var(--blue-600); }
+  /* Over the dark hero the mark's dark stroke reverses to white. */
+  .header:not(.scrolled) .logo-mark .mark-dark { stroke: var(--white); }
   .header:not(.scrolled) .nav-toggle { border-color: rgba(255, 255, 255, .3); }
   .header:not(.scrolled) .nav-toggle span { background: var(--white); }
 }
@@ -1730,7 +1735,7 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
 
   .logo-text b { font-size: .85rem; }
   .logo-text span { font-size: .56rem; letter-spacing: .22em; }
-  .logo-mark { width: 33px; }
+  .logo-mark { width: 34px; }
 
   .hero-actions .btn, .cta-actions .btn, .hero-cta > .btn { width: 100%; }
 
@@ -2661,3 +2666,134 @@ h1, h2, h3, h4, .prose h2, .prose h3, .section-title {
   background: var(--rule-strong);
 }
 .service-features li { gap: .75rem; color: var(--text-muted); }
+
+/* ==========================================================================
+   Document layer
+   --------------------------------------------------------------------------
+   The previous pass fixed the components and left the skeleton alone, and the
+   skeleton is the bigger tell: eleven full-width bands alternating light and
+   dark, each one a header over a grid, every section the same weight and the
+   same density. That rhythm is what a page generator produces, because it is
+   the only rhythm that needs no judgement about what matters.
+   What replaces it is a document: one ground, sections divided by rules and
+   numbered in a left rail, set tighter and denser, with the dark grounds
+   spent on two moments instead of five.
+   ========================================================================== */
+
+/* ---- One ground, divided by rules ------------------------------------- */
+/* Alternating band backgrounds were doing the work that a rule and a number
+   do better, and they made every section look equally important. */
+.section-alt { background: var(--paper); }
+.section + .section,
+.section-alt + .section,
+.section + .section-alt { border-top: 1px solid var(--rule); }
+.section-dark + .section,
+.section + .section-dark,
+.section-dark + .section-alt { border-top: 0; }
+
+/* ---- Sections are numbered, and the number lives in the rail ---------- */
+body { counter-reset: sect; }
+.section-label {
+  display: block;          /* was inline-flex, which collapsed the number onto it */
+  position: relative;
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  font-weight: 500;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+/* The old rule drew a 6px blue pip here. Every one of its properties has to
+   be unset, or the pip renders behind the number. */
+.section-label::before {
+  counter-increment: sect;
+  content: counter(sect, decimal-leading-zero);
+  display: block;
+  width: auto;
+  height: auto;
+  margin: 0 0 .5rem;
+  background: none;
+  border-radius: 0;
+  box-shadow: none;
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--rule-strong);
+}
+.section-dark .section-label::before { color: rgba(250, 248, 243, .45); }
+
+/* ---- Tighter, denser, more per screen --------------------------------- */
+.section { padding: clamp(44px, 4.6vw, 68px) 0; }
+.section-header {
+  border-top: 0;
+  padding-top: 0;
+  margin-bottom: clamp(1.4rem, 2.2vw, 2rem);
+}
+@media (min-width: 900px) {
+  .section-header { grid-template-columns: 148px minmax(0, 1fr); column-gap: 48px; }
+}
+.section-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.28rem, 1.9vw, 1.58rem);
+  line-height: 1.24;
+  letter-spacing: -.016em;
+  font-weight: 600;
+  max-width: 30ch;
+  margin-bottom: .7rem;
+}
+.section-header .lede,
+.prose p, .prose li, .hero-sub, .lede, .about-text p, .faq-a p {
+  font-family: var(--font-prose);
+  font-size: 1.015rem;
+  line-height: 1.6;
+}
+.prose h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.18rem, 1.7vw, 1.42rem);
+  font-weight: 600;
+  letter-spacing: -.012em;
+}
+.prose h3 { font-family: var(--font-display); font-size: .99rem; font-weight: 600; }
+.service-card h3, .industry-card h3 { font-size: .96rem; font-weight: 600; }
+.service-card p, .industry-card p { font-size: .93rem; line-height: 1.58; }
+.service-features li { font-size: .88rem; }
+
+/* ---- Mono is the furniture -------------------------------------------- */
+.hero-badge,
+.prose table.compare th,
+.step-number,
+.eyebrow,
+.footer h4,
+.contact-item .lbl,
+.form-group label {
+  font-family: var(--font-mono);
+  letter-spacing: .02em;
+}
+.prose table.compare th { font-size: .66rem; text-transform: uppercase; font-weight: 600; }
+.step-number { font-size: 1.45rem; font-weight: 600; letter-spacing: 0; }
+.footer h4 { font-size: .68rem; letter-spacing: .1em; }
+
+/* ---- Hero: a masthead, not a billboard -------------------------------- */
+.hero { padding-block: clamp(84px, 9vw, 132px) clamp(52px, 6vw, 84px); }
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.95rem, 3.4vw, 2.85rem);
+  line-height: 1.1;
+  letter-spacing: -.024em;
+  font-weight: 600;
+  max-width: 19ch;
+}
+.hero h1 .highlight {
+  font-family: var(--font-prose);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--grad-text);
+}
+.hero-sub { font-size: clamp(1rem, 1.3vw, 1.1rem); max-width: 48ch; }
+.hero-badge { font-size: .67rem; letter-spacing: .14em; }
+
+/* At 23px the process numerals are below the large-text threshold, so they
+   need 4.5:1 rather than 3:1, and rule-strong only reaches 3.42. */
+.step-number { color: var(--text-muted); }
+.process-step:hover .step-number { color: var(--blue-700); }

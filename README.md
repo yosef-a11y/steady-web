@@ -284,39 +284,44 @@ this same repo.
 
 ## Brand (13 Nov 2026)
 
-**The colours are the original navy, blue and warm paper.** They were never the
-problem and they are back. Two values are nudged for contrast, both noted in
-`BRAND.md`, both invisible as a palette change: `--rule-strong` (was 1.76:1 on paper)
-and `--star` (was 1.87:1).
+**Colours are the originals** — navy, blue, warm paper — with two values nudged for
+contrast and noted in `BRAND.md` (`--rule-strong` was 1.76:1, `--star` was 1.87:1).
+**The logo is the original arrow**, restored from git.
 
-What actually changed is **type and layout**:
+What changed is **type and layout**.
 
-- **Libre Franklin** for headings and interface, **Source Serif 4** for reading text.
-  Sans heads over serif body is the newspaper arrangement and the inverse of the
-  serif-display/sans-body pairing that marks a page as generated.
-- **Editorial section headers**: a rule across the column, the kicker hanging in the
-  left margin beside the heading, the standfirst in the serif at the measure.
-- **Grids share one hairline** (`gap:1px` over a `--rule` ground) instead of being a
-  tray of bordered cards.
-- **Icon tiles are gone.** A rounded square with an icon in it on every card is the
-  clearest template tell after a gradient.
-- **Process steps are hanging numerals**, not circles joined by a dashed line.
-- **Dark bands are flat** with a faint rule grid. The soft radial washes of brand blue
-  are gone, along with the coloured glows under the buttons.
-- **The mark is three equal steps in a square**, not an arrow.
+**Type — one superfamily, three voices.** IBM Plex Sans for headings and interface,
+IBM Plex Serif for reading text, IBM Plex Mono for the furniture: section numbers,
+kickers, table heads, form labels, data. Plex was drawn for an engineering company and
+reads that way. Mono on the labels is what a technical document does, and it is the
+clearest signal that the page is a record rather than a pitch.
+
+**Layout — a document, not a stack of bands.** The old skeleton was eleven full-width
+sections alternating light and dark, each a header over a grid, every section the same
+weight and density. That rhythm is what a page generator produces, because it is the
+only one that needs no judgement about what matters. Now:
+
+- **One ground.** `.section-alt` no longer paints a band; sections are divided by a
+  single rule. Dark grounds are spent on two moments instead of five.
+- **Sections are numbered**, in mono, in a 148px left rail alongside the kicker.
+- **Denser.** Section padding 68px (was 128px), body 1.015rem at 1.6, headings
+  ~1.3–1.6rem at 600. More information per screen.
+- **The hero is a masthead**, not a billboard: headline capped at 19ch and about half
+  its former size, standfirst at 48ch.
+- Grids share one hairline; no icon tiles, no hover lifts, no shadows, no coloured
+  glows, no radial washes, square corners, list markers are dashes.
 
 Rules for anything new built here:
 
 - **Colours live in `styles.css`, in the single `:root` block.** Nothing else should
-  carry a hex code. The only other place a token is set is the 640px media query.
-- Layout changes go in the **Editorial layout layer** at the end of `styles.css`. Add
-  to it rather than editing the earlier component rules, which it deliberately
-  overrides.
+  carry a hex code.
+- Layout changes go in the **Document layer** at the end of `styles.css`. It overrides
+  the Editorial layout layer above it, which overrides the component defaults above
+  that. Add to the bottom; don't edit upward.
 - Body links take `--blue-700`, not `--blue-600`: blue-600 only reaches 4.11:1 on the
   alternating band. blue-600 stays the button ground.
-- No gradients, no shadows, no coloured glows, no hover lifts, no icon tiles.
-- Nothing tinted goes on a dark ground; on navy, text and accents are paper.
-- Check contrast in a browser against the real composited background, not against the
-  token's nominal ground. The measured table is in `BRAND.md`.
+- Mono is for labelling, never for reading text.
+- Check contrast in a browser against the real composited background. The measured
+  table is in `BRAND.md`.
 
 `BRAND.md` is the full document.
