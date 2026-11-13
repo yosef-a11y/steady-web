@@ -8,52 +8,50 @@
 :root {
   /* ----------------------------------------------------------------------
      Steady Growth Marketing — brand tokens. One block, on purpose.
-     The palette is the original navy, blue and warm paper. Two values are
-     nudged from the originals and both are noted below; nothing else moved.
-     If you are changing a colour, change it here and nowhere else.
+     This file previously carried three stacked token blocks that redefined 29
+     values between them, so the live value could not be read off the source.
+     If you are changing a colour, change it here and nowhere else. The only
+     other place tokens are set is the 640px media query, which lowers the
+     header height for phones.
+     Full rationale and usage rules: BRAND.md
      ---------------------------------------------------------------------- */
 
-  /* Ink — the navy ramp. Hue ~225, saturation 32-35% so it reads as one family. */
+  /* Ink — the navy ramp. Hue ~225, saturation held at 32-35% so the ramp reads
+     as one family. Dark enough to carry white text at every rung. */
   --navy-950: #0F1424;   /* hero and footer grounds */
   --navy-900: #1A2133;   /* body text, logo wordmark */
   --navy-850: #202942;
-  --navy-800: #27324F;   /* the mark's block on light grounds */
+  --navy-800: #27324F;   /* logo dark stroke */
   --navy-700: #323F67;
 
-  /* Signal — brand blue. The only saturated colour on the site. */
-  --blue-800: #15509F;
-  --blue-700: #1A5FBF;   /* LINKS. 5.76:1 on paper, 5.19:1 on paper-alt */
-  --blue-600: #1E6FD9;   /* buttons and accent rules. 4.85:1 under white */
-  --blue-500: #2E86E0;
-  --blue-400: #5B9BD5;
-  --blue-300: #8FC2F2;   /* small text on navy */
+  /* Signal — brand blue. The only saturated colour on the site; it means
+     "this is actionable". Never decorative. */
+  --blue-700: #1A5FBF;   /* pressed / hover */
+  --blue-600: #1E6FD9;   /* buttons, links, accent rules */
+  --blue-500: #2E86E0;   /* logo arrow */
+  --blue-400: #5B9BD5;   /* logo light stroke */
+  --blue-300: #8FC2F2;   /* headline highlight on dark grounds */
   --blue-100: #DBEAFE;
   --blue-50:  #EFF6FF;
 
-  /* Paper — warm neutrals, not blue-grey. */
+  /* Paper — warm neutrals. The site should read as printed, not rendered;
+     blue-grey greys are what make a page look generated. */
   --white: #FFFFFF;
   --paper: #FAF8F3;      /* page ground */
   --paper-alt: #F0ECE2;  /* alternating sections, client band */
   --rule: #DFD8C9;       /* hairlines */
-  /* Nudged from #C6BDA9, which sat at 1.76:1 on paper — a table-head rule
-     you could not see. Same hue family, dark enough to clear 3:1 on both. */
-  --rule-strong: #968464;
+  --rule-strong: #C6BDA9;
   --ink: #1A2133;
 
-  /* Warm greys for UI chrome. These replaced a cold slate ramp; a blue-grey
-     next to warm paper reads as a mistake rather than a variation. */
-  --stone-50:  #F7F6F3;
-  --stone-100: #EFECE7;
-  --stone-200: #E0DBD2;
-  --stone-300: #C7C0B2;
-  --stone-400: #A19887;
-  --stone-500: #7B7465;
-  --stone-600: #5F594F;
-  --stone-700: #423F38;
-
-  /* Review stars stay gold, because a star that is not gold reads as
-     unfilled. Darkened from a bright amber that sat at 1.87:1 on paper. */
-  --star: #A87715;
+  /* Greys retained for UI chrome that isn't paper-coloured. */
+  --slate-50: #F8FAFC;
+  --slate-100: #F1F5F9;
+  --slate-200: #E2E8F0;
+  --slate-300: #CBD5E1;
+  --slate-400: #94A3B8;
+  --slate-500: #64748B;
+  --slate-600: #475569;
+  --slate-700: #334155;
 
   /* Semantic */
   --bg: var(--paper);
@@ -64,36 +62,21 @@
   --border: var(--rule);
   --grad-brand: var(--navy-900);
   --grad-bright: var(--blue-600);
-  /* Flat, despite the name. The highlighted headline line is paper: no accent
-     colour goes on a dark ground, because every tint light enough to read
-     there is a pastel. */
-  --grad-text: var(--paper);
+  /* Flat, despite the name. Gradient text is the clearest tell of a generated
+     page; these stay as tokens only so older rules referencing them resolve. */
+  --grad-text: var(--blue-300);
 
-  /* Type — the newspaper arrangement, which is the inverse of the one every
-     generated page uses. Sans headlines and serif reading text, not a serif
-     display over a geometric sans.
-     Libre Franklin is a Franklin Gothic: the American newspaper headline
-     face, so it carries editorial authority rather than novelty, and it is
-     nowhere near the handful of faces that mark a page as templated.
-     Source Serif carries the long-form prose, where a serif is simply
-     easier to read for several hundred words at a time. */
-  /* One superfamily, three voices. IBM Plex was drawn for an engineering
-     company and it reads that way: technical rather than promotional, and
-     nowhere near the handful of faces that mark a page as generated.
-     Mono does the labelling — section numbers, kickers, table heads, data.
-     That is what a technical document does with its furniture, and it is
-     the clearest signal that the page is a record rather than a pitch. */
-  --font-display: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  /* Type — a serif with one weight and a true italic, so headlines lead on
+     size and shape rather than on being bold. Plex has grain; Inter does not. */
+  --font-display: 'Instrument Serif', Charter, 'Bitstream Charter', Georgia, 'Times New Roman', serif;
   --font-body: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-  --font-prose: 'IBM Plex Serif', Charter, Georgia, 'Times New Roman', serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* Edges, not pills. Paper doesn't float, so separation comes from rules and
-     the shadow tokens stay at none. */
-  --radius-sm: 0px;
-  --radius: 0px;
-  --radius-lg: 0px;
-  --radius-xl: 0px;
+     the shadow tokens stay at none. They exist so components can ask for them. */
+  --radius-sm: 2px;
+  --radius: 2px;
+  --radius-lg: 3px;
+  --radius-xl: 4px;
   --shadow-sm: none;
   --shadow-md: none;
   --shadow-lg: none;
@@ -101,7 +84,6 @@
 
   /* Layout and motion */
   --container: 1200px;
-  --measure: 68ch;    /* the reading column: long prose never exceeds this */
   --header-h: 76px;   /* phones drop to 68px in the 640px media query */
   --ease: cubic-bezier(.22, 1, .36, 1);
   --ease-out: cubic-bezier(.16, 1, .3, 1);
@@ -199,7 +181,7 @@ p { text-wrap: pretty; }
   overflow: hidden;
 }
 .section-dark h2, .section-dark h3 { color: var(--white); }
-.section-dark p { color: rgba(250, 248, 243, .78); }
+.section-dark p { color: rgba(226, 236, 250, .78); }
 
 .section-header {
   max-width: 720px;
@@ -208,7 +190,7 @@ p { text-wrap: pretty; }
 }
 
 .section-header h2 {
-  font-size: clamp(1.55rem, 2.7vw, 2.1rem);
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
   margin-bottom: 1rem;
 }
 
@@ -216,7 +198,7 @@ p { text-wrap: pretty; }
   font-size: clamp(1.03rem, 1.5vw, 1.19rem);
   color: var(--text-muted);
 }
-.section-dark .section-header .lede { color: rgba(250, 248, 243, .72); }
+.section-dark .section-header .lede { color: rgba(226, 236, 250, .72); }
 
 /* Eyebrow label */
 .section-label {
@@ -240,12 +222,12 @@ p { text-wrap: pretty; }
   width: 6px; height: 6px;
   border-radius: 50%;
   background: var(--blue-500);
-  box-shadow: 0 0 0 3px rgba(30, 111, 217, .18);
+  box-shadow: 0 0 0 3px rgba(46, 134, 224, .18);
 }
 .section-dark .section-label {
-  color: var(--paper);
-  background: rgba(30, 111, 217, .14);
-  border-color: rgba(250, 248, 243, .28);
+  color: var(--blue-300);
+  background: rgba(46, 134, 224, .14);
+  border-color: rgba(91, 155, 213, .28);
 }
 
 /* --------------------------------------------------------------------------
@@ -285,12 +267,13 @@ p { text-wrap: pretty; }
 }
 .btn-primary:hover {
   background-position: 100% 50%;
+  box-shadow: 0 18px 40px rgba(30, 111, 217, .38);
 }
 
 .btn-outline {
   background: transparent;
   color: var(--navy-900);
-  border-color: var(--stone-300);
+  border-color: var(--slate-300);
 }
 .btn-outline:hover {
   border-color: var(--navy-900);
@@ -312,7 +295,9 @@ p { text-wrap: pretty; }
 .btn-white {
   background: var(--white);
   color: var(--navy-900);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, .22);
 }
+.btn-white:hover { box-shadow: 0 18px 44px rgba(0, 0, 0, .3); }
 
 .btn-lg { padding: 1.075rem 2rem; font-size: 1.02rem; }
 .btn-full { width: 100%; }
@@ -337,7 +322,7 @@ p { text-wrap: pretty; }
   backdrop-filter: saturate(180%) blur(18px);
   -webkit-backdrop-filter: saturate(180%) blur(18px);
   border-bottom-color: var(--border);
-  box-shadow: 0 4px 24px rgba(15, 20, 36, .06);
+  box-shadow: 0 4px 24px rgba(10, 22, 56, .06);
 }
 
 .header-inner {
@@ -368,33 +353,28 @@ p { text-wrap: pretty; }
   gap: .7rem;
   flex-shrink: 0;
 }
-/* The mark is a square block now, not a wide arrow. */
-.logo-mark { width: 38px; height: auto; flex: none; transition: transform .4s var(--ease); }
-.logo:hover .logo-mark { transform: translateY(-2px); }
+.logo-mark { width: 38px; height: auto; transition: transform .4s var(--ease); }
+.logo:hover .logo-mark { transform: translateY(-3px); }
 
 .logo-text {
   display: flex;
   flex-direction: column;
   font-family: var(--font-display);
-  color: var(--ink);
+  text-transform: uppercase;
+  color: var(--navy-700);
 }
-/* Title case, not caps: the serif carries the authority, and caps at this size
-   fight the letterspaced subline under them. */
 .logo-text b {
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: -.012em;
-  line-height: 1.05;
+  font-size: .95rem;
+  font-weight: 800;
+  letter-spacing: .03em;
+  line-height: 1.08;
 }
 .logo-text span {
-  font-family: var(--font-body);
-  font-size: .59rem;
+  font-size: .63rem;
   font-weight: 600;
-  letter-spacing: .26em;
-  text-transform: uppercase;
-  color: var(--blue-600);
+  letter-spacing: .28em;
+  color: var(--blue-500);
   line-height: 1.3;
-  margin-top: .18rem;
 }
 
 /* Nav */
@@ -412,14 +392,16 @@ p { text-wrap: pretty; }
   font-family: var(--font-display);
   font-size: .93rem;
   font-weight: 600;
-  color: var(--stone-700);
+  color: var(--slate-700);
   padding: .55rem .85rem;
   border-radius: 999px;
   transition: color .2s ease, background-color .2s ease;
 }
-.nav-list > li > a:not(.btn):hover { color: var(--navy-900); background: var(--stone-100); }
+.nav-list > li > a:not(.btn):hover { color: var(--navy-900); background: var(--slate-100); }
 .nav-list > li > a:not(.btn).active { color: var(--blue-600); }
 .nav-list > li > a[aria-current="page"] { color: var(--blue-600); }
+
+
 
 /* --- Dropdown menus ------------------------------------------------------ */
 .nav-has-menu { position: relative; }
@@ -431,7 +413,7 @@ p { text-wrap: pretty; }
   font-family: var(--font-display);
   font-size: .93rem;
   font-weight: 600;
-  color: var(--stone-700);
+  color: var(--slate-700);
   background: transparent;
   border: 0;
   cursor: pointer;
@@ -439,7 +421,7 @@ p { text-wrap: pretty; }
   border-radius: 999px;
   transition: color .2s ease, background-color .2s ease;
 }
-.nav-trigger:hover { color: var(--navy-900); background: var(--stone-100); }
+.nav-trigger:hover { color: var(--navy-900); background: var(--slate-100); }
 .nav-caret { transition: transform .25s var(--ease); }
 .nav-has-menu.open .nav-caret { transform: rotate(180deg); }
 
@@ -470,7 +452,7 @@ p { text-wrap: pretty; }
   font-family: var(--font-display);
   font-size: .9rem;
   font-weight: 600;
-  color: var(--stone-700);
+  color: var(--slate-700);
   white-space: nowrap;
   transition: color .18s ease, background-color .18s ease;
 }
@@ -479,24 +461,23 @@ p { text-wrap: pretty; }
 /* --- Header sitting over the dark hero (before it picks up its glass background) --- */
 @media (min-width: 901px) {
   .header:not(.scrolled) .logo-text { color: var(--white); }
-  .header:not(.scrolled) .logo-text span { color: var(--paper); }
-  /* Over the dark hero the mark's dark stroke reverses to white. */
+  .header:not(.scrolled) .logo-text span { color: var(--blue-300); }
   .header:not(.scrolled) .logo-mark .mark-dark { stroke: var(--white); }
 
-  .header:not(.scrolled) .nav-list > li > a:not(.btn) { color: rgba(250, 248, 243, .82); }
+  .header:not(.scrolled) .nav-list > li > a:not(.btn) { color: rgba(226, 236, 250, .82); }
   .header:not(.scrolled) .nav-list > li > a:not(.btn):hover {
     color: var(--white);
     background: rgba(255, 255, 255, .12);
   }
-  .header:not(.scrolled) .nav-list > li > a:not(.btn).active { color: var(--paper); }
-  .header:not(.scrolled) .nav-list > li > a[aria-current="page"] { color: var(--paper); }
+  .header:not(.scrolled) .nav-list > li > a:not(.btn).active { color: var(--blue-300); }
+  .header:not(.scrolled) .nav-list > li > a[aria-current="page"] { color: var(--blue-300); }
 
   /* Hover opens on desktop. The pseudo-element bridges the gap between the
      trigger and the panel so the menu does not close while crossing it. */
   .nav-has-menu:hover .nav-dropdown { opacity: 1; visibility: visible; transform: none; }
   .nav-has-menu::after { content: ''; position: absolute; inset: 100% 0 auto 0; height: 12px; }
 
-  .header:not(.scrolled) .nav-trigger { color: rgba(250, 248, 243, .82); }
+  .header:not(.scrolled) .nav-trigger { color: rgba(226, 236, 250, .82); }
   .header:not(.scrolled) .nav-trigger:hover,
   .header:not(.scrolled) .nav-has-menu.open .nav-trigger {
     color: var(--white);
@@ -507,8 +488,7 @@ p { text-wrap: pretty; }
 /* Mobile: the toggle also sits over the dark hero */
 @media (max-width: 900px) {
   .header:not(.scrolled) .logo-text { color: var(--white); }
-  .header:not(.scrolled) .logo-text span { color: var(--paper); }
-  /* Over the dark hero the mark's dark stroke reverses to white. */
+  .header:not(.scrolled) .logo-text span { color: var(--blue-300); }
   .header:not(.scrolled) .logo-mark .mark-dark { stroke: var(--white); }
   .header:not(.scrolled) .nav-toggle { border-color: rgba(255, 255, 255, .3); }
   .header:not(.scrolled) .nav-toggle span { background: var(--white); }
@@ -555,9 +535,9 @@ p { text-wrap: pretty; }
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(900px 520px at 78% 8%, rgba(30, 111, 217, .38), transparent 62%),
-    radial-gradient(760px 620px at 8% 92%, rgba(39, 50, 79, .85), transparent 68%),
-    radial-gradient(560px 420px at 52% 108%, rgba(250, 248, 243, .22), transparent 70%);
+    radial-gradient(900px 520px at 78% 8%, rgba(46, 134, 224, .38), transparent 62%),
+    radial-gradient(760px 620px at 8% 92%, rgba(22, 41, 107, .85), transparent 68%),
+    radial-gradient(560px 420px at 52% 108%, rgba(91, 155, 213, .22), transparent 70%);
   z-index: -2;
 }
 .hero::after {
@@ -606,22 +586,23 @@ p { text-wrap: pretty; }
 .hero-badge .pip svg { width: 12px; height: 12px; }
 
 .hero h1 {
-  font-size: clamp(2rem, 3.6vw, 2.85rem);
+  font-size: clamp(2.3rem, 4.3vw, 3.4rem);
   line-height: 1.1;
   margin-bottom: 1.4rem;
 }
 
-/* A flat colour, set as a colour. This was painted through background-clip:
-   text with color:transparent, which renders the words invisible anywhere the
-   clip fails, and it was only ever one solid value. */
 .hero h1 .highlight {
   position: relative;
-  color: var(--grad-text);
+  background: var(--grad-text);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .hero-sub {
   font-size: clamp(1.06rem, 1.6vw, 1.24rem);
-  color: rgba(250, 248, 243, .82);
+  color: rgba(226, 236, 250, .82);
   max-width: 34em;
   margin-bottom: 2.1rem;
 }
@@ -638,7 +619,7 @@ p { text-wrap: pretty; }
 
 .hero-microcopy {
   font-size: .85rem;
-  color: rgba(250, 248, 243, .58);
+  color: rgba(226, 236, 250, .58);
   margin-bottom: 2.1rem;
 }
 
@@ -653,7 +634,7 @@ p { text-wrap: pretty; }
   font-weight: 800;
   letter-spacing: -.01em;
   color: var(--navy-900);
-  border: 1px solid var(--stone-300);
+  border: 1px solid var(--slate-300);
   border-radius: 999px;
   padding: .62rem 1.15rem;
   white-space: nowrap;
@@ -676,7 +657,7 @@ p { text-wrap: pretty; }
   border-color: rgba(255, 255, 255, .34);
   background: rgba(255, 255, 255, .07);
 }
-.header:not(.scrolled) .nav-phone svg { color: var(--paper); }
+.header:not(.scrolled) .nav-phone svg { color: var(--blue-300); }
 .header:not(.scrolled) .nav-phone:hover {
   background: var(--white);
   border-color: var(--white);
@@ -697,33 +678,111 @@ p { text-wrap: pretty; }
   align-items: center;
   gap: .55rem;
   font-size: .87rem;
-  color: rgba(250, 248, 243, .8);
+  color: rgba(226, 236, 250, .8);
 }
-.hero-trust-item svg { color: var(--paper); flex-shrink: 0; }
+.hero-trust-item svg { color: var(--blue-400); flex-shrink: 0; }
 
 /* Hero dashboard visual */
 .hero-visual { position: relative; }
 
+.dash {
+  background: rgba(255, 255, 255, .055);
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, .38);
+}
+
+.dash-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.4rem;
+}
+.dash-title { font-size: .82rem; font-weight: 700; color: rgba(226, 236, 250, .92); font-family: var(--font-display); }
+.dash-sub { font-size: .72rem; color: rgba(226, 236, 250, .55); }
+.dash-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  font-size: .72rem;
+  font-weight: 700;
+  color: #6EE7B7;
+  background: rgba(16, 185, 129, .14);
+  border: 1px solid rgba(16, 185, 129, .3);
+  padding: .3rem .6rem;
+  border-radius: 999px;
+}
+
+.dash-chart { width: 100%; height: auto; margin-bottom: 1.35rem; }
 /* Chart renders complete — no draw-on or fade-in */
+
+.dash-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .7rem;
+}
+.dash-kpi {
+  background: rgba(255, 255, 255, .06);
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: var(--radius);
+  padding: .8rem .75rem;
+}
+.dash-kpi .k {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.28rem;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -.02em;
+}
+.dash-kpi .v { font-size: .7rem; color: rgba(226, 236, 250, .6); }
+
+.dash-float {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  background: rgba(255, 255, 255, .96);
+  color: var(--navy-900);
+  border-radius: var(--radius);
+  padding: .7rem .95rem;
+  box-shadow: var(--shadow-lg);
+}
+.dash-float-1 { top: -22px; left: -26px; }
+.dash-float-2 { bottom: -34px; right: -26px; }
+.dash-float .ic {
+  display: grid;
+  place-items: center;
+  width: 32px; height: 32px;
+  border-radius: 10px;
+  background: var(--blue-50);
+  color: var(--blue-600);
+  flex-shrink: 0;
+}
+.dash-float .t { font-size: .82rem; font-weight: 800; font-family: var(--font-display); line-height: 1.2; }
+.dash-float .s { font-size: .68rem; color: var(--slate-500); line-height: 1.2; }
 
 /* --------------------------------------------------------------------------
    6b. Subpages
    -------------------------------------------------------------------------- */
 .page-hero { padding-bottom: clamp(56px, 7vw, 84px); }
 .page-hero .hero-content { max-width: 800px; }
-.page-hero h1 { font-size: clamp(1.75rem, 2.9vw, 2.25rem); }
+.page-hero h1 { font-size: clamp(2rem, 3.4vw, 2.7rem); }
 
 .breadcrumb {
   display: flex; align-items: center; gap: .6rem;
-  font-size: .82rem; color: rgba(250, 248, 243, .6);
+  font-size: .82rem; color: rgba(226, 236, 250, .6);
   margin-bottom: 1.6rem;
 }
 .breadcrumb a:hover { color: var(--white); }
-.breadcrumb span:last-child { color: rgba(250, 248, 243, .85); }
+.breadcrumb span:last-child { color: rgba(226, 236, 250, .85); }
 
 .prose { max-width: 780px; margin-inline: auto; }
 .prose .section-label { margin-bottom: .9rem; }
-.prose h2 { font-size: clamp(1.38rem, 2.5vw, 1.78rem); margin: 2.6rem 0 .85rem; }
+.prose h2 { font-size: clamp(1.55rem, 3vw, 2.1rem); margin: 2.6rem 0 .85rem; }
 .prose h2:first-of-type { margin-top: 0; }
 .prose p, .prose li { color: var(--text-muted); font-size: 1.04rem; }
 .prose p { margin-bottom: 1rem; }
@@ -803,7 +862,7 @@ p { text-wrap: pretty; }
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: .85rem 1.5rem;
+  gap: .9rem 2.1rem;
   max-width: var(--container);
   margin-inline: auto;
   padding-inline: 24px;
@@ -814,15 +873,15 @@ p { text-wrap: pretty; }
   align-items: center;
   gap: .6rem;
   font-family: var(--font-display);
-  font-size: .84rem;
-  font-weight: 600;
-  letter-spacing: .005em;
-  color: rgba(250, 248, 243, .66);
+  font-size: .93rem;
+  font-weight: 700;
+  letter-spacing: .01em;
+  color: rgba(226, 236, 250, .6);
   white-space: nowrap;
   transition: color .25s ease;
 }
 .strip-item:hover { color: var(--white); }
-.strip-item svg { color: var(--paper); flex-shrink: 0; }
+.strip-item svg { color: var(--blue-400); flex-shrink: 0; }
 
 /* --------------------------------------------------------------------------
    8. Stats band
@@ -847,7 +906,7 @@ p { text-wrap: pretty; }
 .stat-number {
   display: block;
   font-family: var(--font-display);
-  font-size: clamp(1.55rem, 2.7vw, 2.1rem);
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
   font-weight: 800;
   letter-spacing: -.035em;
   background: var(--grad-brand);
@@ -860,7 +919,7 @@ p { text-wrap: pretty; }
 .stat-label {
   font-size: .87rem;
   font-weight: 600;
-  color: var(--stone-500);
+  color: var(--slate-500);
 }
 
 /* --------------------------------------------------------------------------
@@ -925,7 +984,7 @@ p { text-wrap: pretty; }
   align-items: flex-start;
   gap: .6rem;
   font-size: .91rem;
-  color: var(--stone-700);
+  color: var(--slate-700);
 }
 .service-features li::before {
   content: '';
@@ -1077,16 +1136,48 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
   gap: clamp(1.1rem, 2vw, 1.5rem);
 }
 
+.result-card {
+  background: rgba(255, 255, 255, .05);
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 1.5rem;
+  transition: transform .4s var(--ease), background .3s ease, border-color .3s ease;
+}
+.result-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, .09);
+  border-color: rgba(91, 155, 213, .4);
+}
 
+.result-metric {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -.035em;
+  background: linear-gradient(120deg, #FFFFFF 10%, var(--blue-300) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1;
+  margin-bottom: .55rem;
+}
 
+.result-spark { width: 100%; height: 34px; margin-bottom: .85rem; opacity: .85; }
 
+.result-desc { font-size: .92rem; color: rgba(226, 236, 250, .74); }
 
-
-
-
-
-
-
+.result-tag {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--blue-300);
+  border: 1px solid rgba(91, 155, 213, .3);
+  border-radius: 999px;
+  padding: .25rem .65rem;
+}
 
 /* --------------------------------------------------------------------------
    12. Testimonials
@@ -1110,7 +1201,7 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
 .reviews-summary-text {
   font-size: .96rem;
   font-weight: 600;
-  color: var(--stone-700);
+  color: var(--slate-700);
   text-align: center;
 }
 .reviews-summary .btn { flex-shrink: 0; }
@@ -1178,7 +1269,7 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
   font-family: var(--font-display);
   font-size: 3.4rem;
   line-height: .8;
-  color: var(--stone-300);
+  color: var(--blue-100);
   margin-bottom: .35rem;
 }
 
@@ -1187,7 +1278,7 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
 .testimonial-text {
   font-size: 1.02rem;
   line-height: 1.68;
-  color: var(--stone-700);
+  color: var(--slate-700);
   margin-bottom: 1.5rem;
   flex-grow: 1;
 }
@@ -1224,7 +1315,7 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
   gap: clamp(2rem, 4vw, 4rem);
   align-items: center;
 }
-.about-text h2 { font-size: clamp(1.55rem, 2.7vw, 2.06rem); margin-bottom: 1.25rem; }
+.about-text h2 { font-size: clamp(1.8rem, 3.2vw, 2.45rem); margin-bottom: 1.25rem; }
 .about-text p { color: var(--text-muted); margin-bottom: 1rem; font-size: 1.02rem; }
 .about-text .about-lead { color: var(--navy-900); font-size: 1.08rem; font-weight: 500; }
 .about-text .btn { margin-top: .85rem; }
@@ -1274,7 +1365,7 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
   overflow: hidden;
   transition: border-color .3s ease, box-shadow .3s ease;
 }
-.faq-item.open { border-color: var(--blue-600); box-shadow: var(--shadow-md); }
+.faq-item.open { border-color: var(--blue-300); box-shadow: var(--shadow-md); }
 
 .faq-q {
   width: 100%;
@@ -1346,12 +1437,12 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(680px 420px at 50% 0%, rgba(30, 111, 217, .42), transparent 65%),
-    radial-gradient(520px 380px at 12% 100%, rgba(39, 50, 79, .9), transparent 70%);
+    radial-gradient(680px 420px at 50% 0%, rgba(46, 134, 224, .42), transparent 65%),
+    radial-gradient(520px 380px at 12% 100%, rgba(22, 41, 107, .9), transparent 70%);
   z-index: -1;
 }
 .cta-section h2 {
-  font-size: clamp(1.72rem, 3.7vw, 2.64rem);
+  font-size: clamp(2rem, 4.4vw, 3.15rem);
   margin-bottom: 1rem;
   color: var(--white);
 }
@@ -1359,13 +1450,13 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
   max-width: 620px;
   margin: 0 auto 2.15rem;
   font-size: clamp(1.02rem, 1.5vw, 1.16rem);
-  color: rgba(250, 248, 243, .82);
+  color: rgba(226, 236, 250, .82);
 }
 .cta-actions { display: flex; flex-wrap: wrap; gap: .85rem; justify-content: center; }
 .cta-note {
   margin-top: 1.5rem;
   font-size: .85rem;
-  color: rgba(250, 248, 243, .6);
+  color: rgba(226, 236, 250, .6);
 }
 
 /* --------------------------------------------------------------------------
@@ -1412,7 +1503,7 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
   font-weight: 700;
   letter-spacing: .08em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--slate-400);
 }
 .contact-item .val {
   font-family: var(--font-display);
@@ -1435,7 +1526,7 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
   align-items: flex-start;
   gap: .6rem;
   font-size: .91rem;
-  color: var(--stone-700);
+  color: var(--slate-700);
 }
 .contact-assurance svg { color: var(--blue-600); flex-shrink: 0; margin-top: 3px; }
 
@@ -1461,7 +1552,7 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
   margin-bottom: .45rem;
 }
 .form-group label .req { color: var(--blue-600); }
-.form-group label .opt { font-weight: 500; color: var(--text-muted); }
+.form-group label .opt { font-weight: 500; color: var(--slate-400); }
 
 .form-group input,
 .form-group select,
@@ -1471,8 +1562,8 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
   font-size: .96rem;
   font-family: var(--font-body);
   color: var(--navy-900);
-  background: var(--stone-50);
-  border: 1px solid var(--stone-200);
+  background: var(--slate-50);
+  border: 1px solid var(--slate-200);
   border-radius: var(--radius-sm);
   transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
 }
@@ -1489,7 +1580,7 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
 }
 
 .form-group input::placeholder,
-.form-group textarea::placeholder { color: var(--text-muted); }
+.form-group textarea::placeholder { color: var(--slate-400); }
 
 .form-group input:focus,
 .form-group select:focus,
@@ -1497,13 +1588,13 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
   outline: none;
   background: var(--white);
   border-color: var(--blue-500);
-  box-shadow: 0 0 0 4px rgba(30, 111, 217, .14);
+  box-shadow: 0 0 0 4px rgba(46, 134, 224, .14);
 }
 
 .form-footnote {
   margin-top: .95rem;
   font-size: .82rem;
-  color: var(--text-muted);
+  color: var(--slate-500);
   text-align: center;
 }
 
@@ -1529,7 +1620,7 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
    -------------------------------------------------------------------------- */
 .footer {
   background: var(--navy-950);
-  color: rgba(250, 248, 243, .68);
+  color: rgba(226, 236, 250, .68);
   padding: clamp(56px, 6vw, 80px) 0 2rem;
 }
 
@@ -1543,7 +1634,7 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
 
 .footer-brand .logo { margin-bottom: 1.1rem; }
 .footer-brand .logo-text { color: var(--white); }
-.footer-brand .logo-text span { color: var(--paper); }
+.footer-brand .logo-text span { color: var(--blue-400); }
 .footer-brand p { font-size: .92rem; max-width: 32ch; margin-bottom: 1.3rem; }
 
 .footer-social { display: flex; gap: .55rem; }
@@ -1554,7 +1645,7 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
   border-radius: 10px;
   background: rgba(255, 255, 255, .07);
   border: 1px solid rgba(255, 255, 255, .1);
-  color: rgba(250, 248, 243, .8);
+  color: rgba(226, 236, 250, .8);
   transition: background .25s ease, color .25s ease, transform .25s var(--ease);
 }
 .footer-social a:hover {
@@ -1588,7 +1679,7 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
   transition: color .2s ease;
 }
 .footer-contact a:hover { color: var(--white); }
-.footer-contact svg { color: var(--paper); flex-shrink: 0; }
+.footer-contact svg { color: var(--blue-400); flex-shrink: 0; }
 
 .footer-bottom {
   display: flex;
@@ -1631,7 +1722,7 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(760px 520px at 50% 12%, rgba(30, 111, 217, .4), transparent 65%);
+  background: radial-gradient(760px 520px at 50% 12%, rgba(46, 134, 224, .4), transparent 65%);
   z-index: -1;
 }
 .thanks-inner { max-width: 620px; }
@@ -1642,14 +1733,15 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
   margin: 0 auto 1.85rem;
   border-radius: 50%;
   background: var(--grad-bright);
+  box-shadow: 0 18px 44px rgba(30, 111, 217, .45);
   animation: pop .6s var(--ease-out) both;
 }
 @keyframes pop {
   from { opacity: 0; transform: scale(.6); }
   to { opacity: 1; transform: scale(1); }
 }
-.thanks h1 { font-size: clamp(1.8rem, 3.4vw, 2.44rem); margin-bottom: 1rem; }
-.thanks p { color: rgba(250, 248, 243, .82); font-size: 1.08rem; margin-bottom: 2rem; }
+.thanks h1 { font-size: clamp(2.1rem, 4vw, 2.9rem); margin-bottom: 1rem; }
+.thanks p { color: rgba(226, 236, 250, .82); font-size: 1.08rem; margin-bottom: 2rem; }
 .thanks-actions { display: flex; flex-wrap: wrap; gap: .85rem; justify-content: center; }
 
 /* --------------------------------------------------------------------------
@@ -1735,7 +1827,7 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
 
   .logo-text b { font-size: .85rem; }
   .logo-text span { font-size: .56rem; letter-spacing: .22em; }
-  .logo-mark { width: 34px; }
+  .logo-mark { width: 33px; }
 
   .hero-actions .btn, .cta-actions .btn, .hero-cta > .btn { width: 100%; }
 
@@ -1749,6 +1841,11 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
   .hero-microcopy { font-size: .8rem; margin-bottom: 1rem; }
   .hero-trust { flex-direction: column; align-items: flex-start; gap: .5rem; padding-top: .95rem; }
   .hero-trust-item { font-size: .86rem; }
+
+  .dash-kpis { grid-template-columns: 1fr; }
+  .dash-float-1 { top: -16px; left: -8px; }
+  .dash-float-2 { bottom: -18px; right: -4px; }
+  .dash-float .s { display: none; }
 
   .services-grid { grid-template-columns: 1fr; }
   .industries-grid { grid-template-columns: 1fr; }
@@ -1825,7 +1922,7 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: var(--navy-800);
+  background: linear-gradient(135deg, #2E86E0, #5B9BD5);
   color: #fff;
   font-weight: 700;
   font-size: .82rem;
@@ -1855,7 +1952,7 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
   font-weight: 700;
   letter-spacing: .13em;
   text-transform: uppercase;
-  color: var(--text-muted, #655E53);
+  color: var(--text-muted, #64748B);
 }
 .clients-list {
   display: flex;
@@ -1900,7 +1997,7 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--blue-300);
+  background: #5B9BD5;
 }
 .before-bridge {
   color: rgba(255, 255, 255, .84);
@@ -1930,16 +2027,16 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
   z-index: 95;
   display: none;
   padding: .7rem 0 calc(.7rem + env(safe-area-inset-bottom, 0px));
-  background: rgba(15, 20, 36, .94);
+  background: rgba(10, 22, 56, .94);
   border-top: 1px solid rgba(255, 255, 255, .13);
-  box-shadow: 0 -8px 28px rgba(15, 20, 36, .3);
+  box-shadow: 0 -8px 28px rgba(5, 12, 32, .3);
   /* Opacity only, no slide — the rest of the site has no motion either. */
   opacity: 0;
   visibility: hidden;
   transition: opacity .18s var(--ease, ease), visibility .18s var(--ease, ease);
 }
 @supports (backdrop-filter: blur(10px)) {
-  .sticky-cta { background: rgba(15, 20, 36, .86); backdrop-filter: blur(10px); }
+  .sticky-cta { background: rgba(10, 22, 56, .86); backdrop-filter: blur(10px); }
 }
 .sticky-cta.is-visible { opacity: 1; visibility: visible; }
 .sticky-cta .btn { width: 100%; justify-content: center; }
@@ -1964,22 +2061,24 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
 .industry-card,
 .testimonial-card,
 .faq-item,
-.contact-form {
-  border-color: rgba(26, 33, 51, .07);
+.contact-form,
+.result-card {
+  border-color: rgba(15, 23, 42, .07);
+  box-shadow: 0 1px 2px rgba(10, 22, 56, .04), 0 6px 16px -6px rgba(10, 22, 56, .07);
 }
 
 .service-card:hover,
 .industry-card:hover,
 .testimonial-card:hover {
-  border-color: rgba(30, 111, 217, .3);
+  border-color: rgba(46, 134, 224, .3);
 }
 
 /* The avatar initials carried the same blue as the primary button, which made
    ten of them compete with the CTA. Quieter, so the quote leads. */
 .testimonial-card .author-avatar {
-  background: var(--stone-100, #EFECE7);
-  color: var(--stone-600, #5F594F);
-  border: 1px solid rgba(26, 33, 51, .06);
+  background: var(--slate-100, #F1F5F9);
+  color: var(--slate-600, #475569);
+  border: 1px solid rgba(15, 23, 42, .06);
 }
 
 /* Client band: a few names plus a link to the rest, rather than the whole
@@ -2006,6 +2105,7 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
    headers set left against a rule rather than centred under a badge.
    ========================================================================== */
 
+
 body { background: var(--paper); color: var(--ink); }
 
 /* ---- Typography -------------------------------------------------------- */
@@ -2023,22 +2123,21 @@ h3, h4, h5 {
   line-height: 1.3;
 }
 
-.hero h1 { font-size: clamp(2.25rem, 4.6vw, 3.65rem); letter-spacing: -.018em; }
+.hero h1 { font-size: clamp(2.7rem, 5.6vw, 4.5rem); letter-spacing: -.015em; }
 .section-header h2,
-.about-text h2 { font-size: clamp(1.72rem, 3.3vw, 2.5rem); }
-.page-hero h1 { font-size: clamp(2.05rem, 3.85vw, 2.95rem); }
-.thanks h1 { font-size: clamp(1.95rem, 3.7vw, 2.65rem); }
-.prose h2 { font-size: clamp(1.5rem, 2.7vw, 2rem); }
+.about-text h2 { font-size: clamp(2rem, 3.9vw, 3rem); }
+.page-hero h1 { font-size: clamp(2.4rem, 4.6vw, 3.6rem); }
+.thanks h1 { font-size: clamp(2.3rem, 4.4vw, 3.2rem); }
+.prose h2 { font-size: clamp(1.75rem, 3.2vw, 2.4rem); }
 
-/* The highlighted line becomes an italic rather than a gradient.
-   One source of truth for its colour: --grad-text. */
+/* The highlighted line becomes an italic rather than a gradient. */
 .hero h1 .highlight {
   font-style: italic;
   background: none;
   -webkit-background-clip: border-box;
   background-clip: border-box;
   -webkit-text-fill-color: currentColor;
-  color: var(--grad-text);
+  color: var(--blue-300);
 }
 
 /* ---- Section headers: left, under a rule ------------------------------- */
@@ -2154,7 +2253,7 @@ h3, h4, h5 {
 /* ---- Sticky CTA + footer ----------------------------------------------- */
 .sticky-cta { background: var(--navy-900); border-top: 1px solid rgba(255, 255, 255, .14); }
 @supports (backdrop-filter: blur(10px)) {
-  .sticky-cta { background: rgba(15, 20, 36, .95); }
+  .sticky-cta { background: rgba(10, 22, 56, .95); }
 }
 
 @media (max-width: 760px) {
@@ -2166,9 +2265,9 @@ h3, h4, h5 {
 /* ---- Refresh: corrections after looking at it -------------------------- */
 
 /* The scrolled header was white, which read as a foreign band sitting on the
-   page. Tint it to the stone ground instead. */
+   paper. Tint it to the paper instead. */
 .header.scrolled {
-  background: rgba(250, 248, 243, .88);
+  background: rgba(252, 250, 246, .88);
   box-shadow: none;
   border-bottom-color: var(--rule);
 }
@@ -2202,7 +2301,7 @@ h3, h4, h5 {
 
 /* The nav phone button and logo text were set in the old display face. */
 .nav-phone, .logo-text b { font-family: var(--font-body); }
-.logo-text b { font-weight: 700; letter-spacing: -.012em; }
+.logo-text b { font-weight: 700; letter-spacing: -.01em; }
 
 /* FAQ questions are interface, not headline. */
 .faq-q { font-family: var(--font-body); font-weight: 600; }
@@ -2219,7 +2318,7 @@ h3, h4, h5 {
 .btn-primary:hover { background: var(--blue-700); border-color: var(--blue-700); }
 
 /* ---- Refresh: reconciling the dark blue with the paper ------------------
-   The navy was a cool, heavily saturated blue (#1A1714, hue 222) sitting
+   The navy was a cool, heavily saturated blue (#0A1638, hue 222) sitting
    against a warm cream (hue ~40). Opposite temperatures, so the two read as
    borrowed from different palettes rather than chosen together.
 
@@ -2231,8 +2330,8 @@ h3, h4, h5 {
    as a cold patch on a warmer ground. Warm and soften them to match. */
 .hero::before {
   background:
-    radial-gradient(60% 55% at 78% 18%, rgba(30, 111, 217, .20) 0%, transparent 62%),
-    radial-gradient(52% 48% at 12% 82%, rgba(30, 111, 217, .12) 0%, transparent 60%);
+    radial-gradient(60% 55% at 78% 18%, rgba(70, 110, 180, .20) 0%, transparent 62%),
+    radial-gradient(52% 48% at 12% 82%, rgba(46, 134, 224, .12) 0%, transparent 60%);
 }
 
 /* Dark sections sat on pure navy; a touch of the same warmth keeps them in
@@ -2386,414 +2485,3 @@ h3, h4, h5 {
   /* Tighten the gap so the first field clears the fold. */
   .contact-grid { gap: 2.25rem; }
 }
-
-/* ==========================================================================
-   Editorial layout layer
-   --------------------------------------------------------------------------
-   What this undoes, and why. The stack it replaces — a centred eyebrow pill
-   over a big heading, then a grid of equal cards each with a rounded icon
-   tile, each with a border and a hover lift — is the default shape of a
-   generated page. It is not ugly; it is anonymous, and anonymous is the one
-   thing a firm selling judgement cannot afford to look.
-   What replaces it is an editorial grid: a rule across the column, the
-   kicker hanging in the left margin beside the heading, and content set in
-   a shared hairline grid rather than in floating cards.
-   ========================================================================== */
-
-/* ---- Section headers: rule, hanging kicker, measured heading ----------- */
-.section-header {
-  text-align: left;
-  border-top: 1px solid var(--ink);
-  padding-top: 1.15rem;
-  margin-bottom: clamp(2.1rem, 3.6vw, 3.2rem);
-  max-width: none;
-}
-@media (min-width: 900px) {
-  .section-header {
-    display: grid;
-    grid-template-columns: 190px minmax(0, 1fr);
-    column-gap: 56px;
-    align-items: start;
-  }
-  .section-header > * { grid-column: 2; }
-  .section-header .section-label { grid-column: 1; grid-row: 1 / span 20; }
-}
-.section-label {
-  border-top: 0;
-  background: none;
-  padding: 0;
-  margin: 0 0 .85rem;
-  color: var(--text-muted);
-  font-family: var(--font-body);
-  font-size: .685rem;
-  font-weight: 600;
-  letter-spacing: .19em;
-  text-transform: uppercase;
-}
-.section-dark .section-label { color: rgba(250, 248, 243, .62); background: none; border: 0; }
-.section-header h2 {
-  margin: 0 0 .9rem;
-  font-size: clamp(1.45rem, 2.5vw, 1.95rem);
-  line-height: 1.18;
-  letter-spacing: -.021em;
-  font-weight: 700;
-  max-width: 26ch;
-}
-.section-header .lede { margin: 0; max-width: var(--measure); }
-
-/* ---- Grids: one shared hairline, not a tray of cards ------------------- */
-.services-grid,
-.industries-grid {
-  gap: 1px;
-  background: var(--rule);
-  border: 1px solid var(--rule);
-}
-.service-card,
-.industry-card,
-.guide-card {
-  border: 0;
-  border-radius: 0;
-  background: var(--paper);
-  padding: clamp(1.45rem, 2.3vw, 2rem);
-}
-.service-card:hover,
-.industry-card:hover,
-.guide-card:hover {
-  border: 0;
-  background: var(--white);
-  transform: none;
-}
-/* The rounded icon tile on every card is the single clearest template tell
-   after a gradient. The heading can carry the card on its own. */
-.service-icon,
-.industry-icon { display: none; }
-
-.service-card h3,
-.industry-card h3 {
-  font-size: 1.02rem;
-  font-weight: 700;
-  letter-spacing: -.006em;
-  margin-bottom: .55rem;
-}
-
-/* ---- Reading text is a serif; interface text is not -------------------- */
-.prose p,
-.prose li,
-.prose blockquote,
-.hero-sub,
-.lede,
-.section-header .lede,
-.about-text p,
-.faq-a p {
-  font-family: var(--font-prose);
-  font-size: 1.075rem;
-  line-height: 1.68;
-}
-.prose { max-width: var(--measure); }
-.hero-sub { font-size: clamp(1.08rem, 1.6vw, 1.22rem); }
-
-/* Headings stay in the grotesque, tight and solid. */
-h1, h2, h3, h4, .prose h2, .prose h3, .section-title {
-  font-family: var(--font-display);
-  font-weight: 700;
-  letter-spacing: -.02em;
-}
-.prose h2 { font-size: clamp(1.32rem, 2.2vw, 1.68rem); line-height: 1.22; }
-.prose h3 { font-size: 1.06rem; letter-spacing: -.008em; }
-
-/* ---- Hero -------------------------------------------------------------- */
-.hero h1 {
-  font-size: clamp(2.2rem, 4.4vw, 3.5rem);
-  line-height: 1.04;
-  letter-spacing: -.028em;
-  font-weight: 800;
-  max-width: 17ch;
-}
-/* One serif italic phrase inside a grotesque headline. A magazine does this;
-   a template does not, because it needs two families to be deliberate about. */
-.hero h1 .highlight {
-  font-family: var(--font-prose);
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: -.012em;
-  color: var(--grad-text);
-}
-
-/* ---- Buttons: square, flat, no motion ---------------------------------- */
-.btn { border-radius: 0; letter-spacing: .005em; }
-.btn:hover { transform: none; }
-
-/* ---- Tables read as records, not as decoration ------------------------- */
-.prose table.compare th {
-  font-family: var(--font-body);
-  font-size: .7rem;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-.prose table.compare td { font-family: var(--font-prose); }
-
-/* ---- Vertical rhythm --------------------------------------------------- */
-/* 128px of air above every section header was sized for centred headings
-   with nothing to their left. The editorial header fills that column, so
-   the same air now reads as a gap rather than as breathing room. */
-.section { padding: clamp(56px, 6vw, 88px) 0; }
-.cta-section { padding: clamp(52px, 6vw, 80px) 0; }
-.section-header { margin-bottom: clamp(1.6rem, 2.6vw, 2.4rem); }
-
-/* The service list is the substance of the card; it should not float away
-   from the description it belongs to. */
-.service-features { margin-top: 1.1rem; }
-.service-features li { font-size: .95rem; }
-
-/* ---- Client band: a record, not a logo wall ---------------------------- */
-.clients-band { border-block: 1px solid var(--rule); }
-
-/* ---- Process: hanging numerals, not a timeline ------------------------- */
-/* Circled numbers joined by a dashed line, each one lifting and recolouring
-   on hover, is the stock "how it works" component. The numbers are already
-   sequential; the dashes add nothing but decoration. */
-.process-grid {
-  gap: 1px;
-  background: var(--rule);
-  border: 1px solid var(--rule);
-}
-.process-grid::before { display: none; }
-.process-step {
-  text-align: left;
-  background: var(--paper);
-  padding: clamp(1.4rem, 2.2vw, 1.9rem);
-}
-.step-number {
-  display: block;
-  width: auto; height: auto;
-  margin: 0 0 .85rem;
-  background: none;
-  border: 0;
-  border-radius: 0;
-  font-family: var(--font-display);
-  font-size: 2.5rem;
-  font-weight: 800;
-  line-height: .9;
-  letter-spacing: -.045em;
-  color: var(--rule-strong);
-  transition: color .3s ease;
-}
-.process-step:hover .step-number {
-  background: none;
-  border: 0;
-  transform: none;
-  box-shadow: none;
-  color: var(--blue-600);
-}
-.process-step h3 { font-size: 1rem; font-weight: 700; margin-bottom: .5rem; }
-.process-step p { font-size: .95rem; }
-
-/* ---- Links ------------------------------------------------------------- */
-/* blue-600 reaches 4.57:1 on paper but only 4.11:1 on the alternating band,
-   so body links take blue-700, which clears both (5.76 and 5.19). blue-600
-   stays the button ground, where white sits on it at 4.85:1. */
-.prose a,
-.card a,
-.service-card a,
-.industry-card a,
-.faq-a a { color: var(--blue-700); }
-.prose a:hover { color: var(--navy-900); }
-
-/* ---- Dark bands: flat, with the grid only ------------------------------ */
-/* Each dark band carried two or three big soft radial washes of brand blue.
-   That glow is the same tell as a coloured drop shadow: it is what a
-   template does to stop a flat colour looking empty. A flat ground with a
-   faint rule grid reads as graph paper, which is the right reference for a
-   firm that audits accounts. */
-.hero::before { background: none; }
-.cta-section::before,
-.cta-section::after { background: none; }
-.cta-section { background: var(--navy-950); }
-
-/* ---- FAQ: one list, shared rules, a plain mark ------------------------- */
-/* Separated cards each with their own border, and a plus sign inside a blue
-   circle, is the stock accordion. Questions in a document share one column
-   and are divided by a rule. */
-.faq-list {
-  max-width: var(--measure);
-  margin-inline: 0;
-  gap: 0;
-  border-top: 1px solid var(--rule);
-}
-.faq-item {
-  background: none;
-  border: 0;
-  border-bottom: 1px solid var(--rule);
-  border-radius: 0;
-}
-.faq-item.open { border-color: var(--rule); box-shadow: none; background: none; }
-.faq-item.open .faq-q { color: var(--navy-900); }
-.faq-icon {
-  width: 16px; height: 16px;
-  border-radius: 0;
-  background: none;
-}
-.faq-icon::before, .faq-icon::after { background: var(--navy-900); border-radius: 0; }
-.faq-icon::before { width: 14px; height: 1.5px; }
-.faq-icon::after  { width: 1.5px; height: 14px; }
-.faq-item.open .faq-icon { background: none; }
-.faq-item.open .faq-icon::before { background: var(--navy-900); }
-
-/* ---- Reviews share the same hairline grid ------------------------------ */
-.testimonials-grid {
-  gap: 1px;
-  background: var(--rule);
-  border: 1px solid var(--rule);
-}
-.testimonial-card {
-  border: 0;
-  border-radius: 0;
-  background: var(--paper);
-  padding: clamp(1.45rem, 2.3vw, 2rem);
-}
-.testimonial-card:hover { border: 0; background: var(--white); transform: none; }
-.testimonial-card p,
-.testimonial-card blockquote { font-family: var(--font-prose); }
-
-/* A tick inside a pale circle on every list row is the same decoration as an
-   icon tile, repeated. A plain rule-coloured dash sets the list without
-   dressing it. */
-.service-features li::before {
-  width: 10px; height: 1.5px;
-  margin-top: .72em;
-  border-radius: 0;
-  background: var(--rule-strong);
-}
-.service-features li { gap: .75rem; color: var(--text-muted); }
-
-/* ==========================================================================
-   Document layer
-   --------------------------------------------------------------------------
-   The previous pass fixed the components and left the skeleton alone, and the
-   skeleton is the bigger tell: eleven full-width bands alternating light and
-   dark, each one a header over a grid, every section the same weight and the
-   same density. That rhythm is what a page generator produces, because it is
-   the only rhythm that needs no judgement about what matters.
-   What replaces it is a document: one ground, sections divided by rules and
-   numbered in a left rail, set tighter and denser, with the dark grounds
-   spent on two moments instead of five.
-   ========================================================================== */
-
-/* ---- One ground, divided by rules ------------------------------------- */
-/* Alternating band backgrounds were doing the work that a rule and a number
-   do better, and they made every section look equally important. */
-.section-alt { background: var(--paper); }
-.section + .section,
-.section-alt + .section,
-.section + .section-alt { border-top: 1px solid var(--rule); }
-.section-dark + .section,
-.section + .section-dark,
-.section-dark + .section-alt { border-top: 0; }
-
-/* ---- Sections are numbered, and the number lives in the rail ---------- */
-body { counter-reset: sect; }
-.section-label {
-  display: block;          /* was inline-flex, which collapsed the number onto it */
-  position: relative;
-  font-family: var(--font-mono);
-  font-size: .68rem;
-  font-weight: 500;
-  letter-spacing: .04em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-/* The old rule drew a 6px blue pip here. Every one of its properties has to
-   be unset, or the pip renders behind the number. */
-.section-label::before {
-  counter-increment: sect;
-  content: counter(sect, decimal-leading-zero);
-  display: block;
-  width: auto;
-  height: auto;
-  margin: 0 0 .5rem;
-  background: none;
-  border-radius: 0;
-  box-shadow: none;
-  font-family: var(--font-mono);
-  font-size: .78rem;
-  font-weight: 600;
-  letter-spacing: 0;
-  color: var(--rule-strong);
-}
-.section-dark .section-label::before { color: rgba(250, 248, 243, .45); }
-
-/* ---- Tighter, denser, more per screen --------------------------------- */
-.section { padding: clamp(44px, 4.6vw, 68px) 0; }
-.section-header {
-  border-top: 0;
-  padding-top: 0;
-  margin-bottom: clamp(1.4rem, 2.2vw, 2rem);
-}
-@media (min-width: 900px) {
-  .section-header { grid-template-columns: 148px minmax(0, 1fr); column-gap: 48px; }
-}
-.section-header h2 {
-  font-family: var(--font-display);
-  font-size: clamp(1.28rem, 1.9vw, 1.58rem);
-  line-height: 1.24;
-  letter-spacing: -.016em;
-  font-weight: 600;
-  max-width: 30ch;
-  margin-bottom: .7rem;
-}
-.section-header .lede,
-.prose p, .prose li, .hero-sub, .lede, .about-text p, .faq-a p {
-  font-family: var(--font-prose);
-  font-size: 1.015rem;
-  line-height: 1.6;
-}
-.prose h2 {
-  font-family: var(--font-display);
-  font-size: clamp(1.18rem, 1.7vw, 1.42rem);
-  font-weight: 600;
-  letter-spacing: -.012em;
-}
-.prose h3 { font-family: var(--font-display); font-size: .99rem; font-weight: 600; }
-.service-card h3, .industry-card h3 { font-size: .96rem; font-weight: 600; }
-.service-card p, .industry-card p { font-size: .93rem; line-height: 1.58; }
-.service-features li { font-size: .88rem; }
-
-/* ---- Mono is the furniture -------------------------------------------- */
-.hero-badge,
-.prose table.compare th,
-.step-number,
-.eyebrow,
-.footer h4,
-.contact-item .lbl,
-.form-group label {
-  font-family: var(--font-mono);
-  letter-spacing: .02em;
-}
-.prose table.compare th { font-size: .66rem; text-transform: uppercase; font-weight: 600; }
-.step-number { font-size: 1.45rem; font-weight: 600; letter-spacing: 0; }
-.footer h4 { font-size: .68rem; letter-spacing: .1em; }
-
-/* ---- Hero: a masthead, not a billboard -------------------------------- */
-.hero { padding-block: clamp(84px, 9vw, 132px) clamp(52px, 6vw, 84px); }
-.hero h1 {
-  font-family: var(--font-display);
-  font-size: clamp(1.95rem, 3.4vw, 2.85rem);
-  line-height: 1.1;
-  letter-spacing: -.024em;
-  font-weight: 600;
-  max-width: 19ch;
-}
-.hero h1 .highlight {
-  font-family: var(--font-prose);
-  font-style: italic;
-  font-weight: 400;
-  color: var(--grad-text);
-}
-.hero-sub { font-size: clamp(1rem, 1.3vw, 1.1rem); max-width: 48ch; }
-.hero-badge { font-size: .67rem; letter-spacing: .14em; }
-
-/* At 23px the process numerals are below the large-text threshold, so they
-   need 4.5:1 rather than 3:1, and rule-strong only reaches 3.42. */
-.step-number { color: var(--text-muted); }
-.process-step:hover .step-number { color: var(--blue-700); }
