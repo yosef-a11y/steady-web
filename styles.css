@@ -2161,9 +2161,9 @@ h3, h4, h5 {
 /* ---- Refresh: corrections after looking at it -------------------------- */
 
 /* The scrolled header was white, which read as a foreign band sitting on the
-   paper. Tint it to the paper instead. */
+   page. Tint it to the stone ground instead. */
 .header.scrolled {
-  background: rgba(252, 250, 246, .88);
+  background: rgba(239, 241, 238, .88);
   box-shadow: none;
   border-bottom-color: var(--rule);
 }
