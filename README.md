@@ -282,25 +282,35 @@ this same repo.
 - [ ] Add the site in Google Search Console and submit `sitemap.xml`
 - [ ] Send yourself a test through the live contact form
 
-## Brand (rebuilt 13 Nov 2026)
+## Brand (rebuilt from scratch 13 Nov 2026)
 
-The palette is **graphite, bone and claret** — a warm near-black, a pigmented bone ground, and
-one deep red as the signal. It replaced the navy-and-blue identity outright, because navy is the
-default setting of the paid-search category and an identity that matches every competitor's can't
-do the job an identity has.
+The identity is **forest green, stone and a stepped mark**. It is a new identity, not a
+repaint: the logo, the palette and the display face all changed together.
 
-Rules for anything new that gets built here:
+- **The mark** is three equal steps rising inside a solid square. It replaced an arrow.
+  Equal rise and equal run, one path, no round caps. It reads at 16px.
+- **Forest green** is the dark ground and the brand's dominant impression. Not navy:
+  navy is the default of the category. `green-600` is the signal and means actionable.
+- **Nothing tinted goes on a dark ground.** On forest, text and accents are bone. Any
+  colour light enough to read as text on black is a pastel, whichever hue it started as.
+- **Source Serif 4** replaced Instrument Serif for display. It sets wider, so the
+  display scale came down about 16%.
 
-- **Colours live in `styles.css`, in the single `:root` block.** Nothing else should carry a hex
-  code. The only other place a token is set is the 640px media query that lowers the header height.
-- The old token names are gone: `--navy-*` → `--graphite-*`, `--blue-*` → `--claret-*`,
-  `--slate-*` → `--stone-*`. If you see one of the old names, it came from somewhere stale.
-- `claret-600` means **actionable**. Buttons, links, accent rules. Not headlines, not decoration.
-- No gradients, no shadows. Separation comes from rules and from space.
-- The logo's three parts take different values on light and dark grounds — see the table in
-  `BRAND.md`. Reusing the light values on dark puts the arrow at 2.14:1.
-- Check contrast in a browser against the real composited background, not against the token's
-  nominal ground. The full measured table is in `BRAND.md`.
+Rules for anything new built here:
 
-`BRAND.md` is the full document. The same content is published as a design system artifact for
-anything outside the codebase (decks, documents, a designer).
+- **Colours live in `styles.css`, in the single `:root` block.** Nothing else should
+  carry a hex code. The only other place a token is set is the 640px media query.
+- Token names: `--forest-*` (dark ramp), `--green-*` (signal), `--stone-*` plus
+  `--paper`/`--paper-alt`/`--rule`/`--ink`/`--text-muted` (neutrals). Earlier names
+  (`--navy-*`, `--blue-*`, `--slate-*`, `--graphite-*`, `--claret-*`) are all retired;
+  if you see one it came from somewhere stale and will resolve to nothing.
+- No gradients, no shadows, **no coloured glows under buttons**. Separation comes from
+  rules and from space.
+- `green-600` satisfies three competing constraints at once (link on both grounds,
+  button under white text, button shape against the forest hero). Don't nudge it —
+  adjust `paper-alt` instead. The reasoning is in `BRAND.md`.
+- Check contrast in a browser against the real composited background, not against the
+  token's nominal ground. The measured table is in `BRAND.md`.
+
+`BRAND.md` is the full document. The same content is published as a design system
+artifact for anything outside the codebase (decks, documents, a designer).

@@ -1,9 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Steady Growth Marketing">
   <title>Steady Growth Marketing</title>
-  <rect width="512" height="512" fill="#1A1714"/>
-  <g transform="translate(96 132) scale(3.08)">
-    <path d="M12 62 L44 24" stroke="#BD4253" stroke-width="13" stroke-linecap="round" fill="none"/>
-    <path d="M60 24 L92 62" stroke="#FFFFFF" stroke-width="13" stroke-linecap="round" fill="none"/>
-    <path d="M52 14 L70 40 H60 V64 H44 V40 H34 Z" fill="#E199A2"/>
-  </g>
+  <rect width="512" height="512" fill="#0C1D15"/>
+  <path d="M92.16 419.84 H201.39 V310.61 H310.61 V201.39 H419.84 V92.16" fill="none" stroke="#EFF1EE" stroke-width="66.56" stroke-linecap="butt" stroke-linejoin="miter"/>
 </svg>
