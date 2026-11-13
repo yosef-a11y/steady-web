@@ -282,35 +282,41 @@ this same repo.
 - [ ] Add the site in Google Search Console and submit `sitemap.xml`
 - [ ] Send yourself a test through the live contact form
 
-## Brand (rebuilt from scratch 13 Nov 2026)
+## Brand (13 Nov 2026)
 
-The identity is **forest green, stone and a stepped mark**. It is a new identity, not a
-repaint: the logo, the palette and the display face all changed together.
+**The colours are the original navy, blue and warm paper.** They were never the
+problem and they are back. Two values are nudged for contrast, both noted in
+`BRAND.md`, both invisible as a palette change: `--rule-strong` (was 1.76:1 on paper)
+and `--star` (was 1.87:1).
 
-- **The mark** is three equal steps rising inside a solid square. It replaced an arrow.
-  Equal rise and equal run, one path, no round caps. It reads at 16px.
-- **Forest green** is the dark ground and the brand's dominant impression. Not navy:
-  navy is the default of the category. `green-600` is the signal and means actionable.
-- **Nothing tinted goes on a dark ground.** On forest, text and accents are bone. Any
-  colour light enough to read as text on black is a pastel, whichever hue it started as.
-- **Source Serif 4** replaced Instrument Serif for display. It sets wider, so the
-  display scale came down about 16%.
+What actually changed is **type and layout**:
+
+- **Libre Franklin** for headings and interface, **Source Serif 4** for reading text.
+  Sans heads over serif body is the newspaper arrangement and the inverse of the
+  serif-display/sans-body pairing that marks a page as generated.
+- **Editorial section headers**: a rule across the column, the kicker hanging in the
+  left margin beside the heading, the standfirst in the serif at the measure.
+- **Grids share one hairline** (`gap:1px` over a `--rule` ground) instead of being a
+  tray of bordered cards.
+- **Icon tiles are gone.** A rounded square with an icon in it on every card is the
+  clearest template tell after a gradient.
+- **Process steps are hanging numerals**, not circles joined by a dashed line.
+- **Dark bands are flat** with a faint rule grid. The soft radial washes of brand blue
+  are gone, along with the coloured glows under the buttons.
+- **The mark is three equal steps in a square**, not an arrow.
 
 Rules for anything new built here:
 
 - **Colours live in `styles.css`, in the single `:root` block.** Nothing else should
   carry a hex code. The only other place a token is set is the 640px media query.
-- Token names: `--forest-*` (dark ramp), `--green-*` (signal), `--stone-*` plus
-  `--paper`/`--paper-alt`/`--rule`/`--ink`/`--text-muted` (neutrals). Earlier names
-  (`--navy-*`, `--blue-*`, `--slate-*`, `--graphite-*`, `--claret-*`) are all retired;
-  if you see one it came from somewhere stale and will resolve to nothing.
-- No gradients, no shadows, **no coloured glows under buttons**. Separation comes from
-  rules and from space.
-- `green-600` satisfies three competing constraints at once (link on both grounds,
-  button under white text, button shape against the forest hero). Don't nudge it —
-  adjust `paper-alt` instead. The reasoning is in `BRAND.md`.
+- Layout changes go in the **Editorial layout layer** at the end of `styles.css`. Add
+  to it rather than editing the earlier component rules, which it deliberately
+  overrides.
+- Body links take `--blue-700`, not `--blue-600`: blue-600 only reaches 4.11:1 on the
+  alternating band. blue-600 stays the button ground.
+- No gradients, no shadows, no coloured glows, no hover lifts, no icon tiles.
+- Nothing tinted goes on a dark ground; on navy, text and accents are paper.
 - Check contrast in a browser against the real composited background, not against the
   token's nominal ground. The measured table is in `BRAND.md`.
 
-`BRAND.md` is the full document. The same content is published as a design system
-artifact for anything outside the codebase (decks, documents, a designer).
+`BRAND.md` is the full document.
