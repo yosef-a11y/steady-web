@@ -2634,3 +2634,30 @@ h1, h2, h3, h4, .prose h2, .prose h3, .section-title {
 .faq-icon::after  { width: 1.5px; height: 14px; }
 .faq-item.open .faq-icon { background: none; }
 .faq-item.open .faq-icon::before { background: var(--navy-900); }
+
+/* ---- Reviews share the same hairline grid ------------------------------ */
+.testimonials-grid {
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+.testimonial-card {
+  border: 0;
+  border-radius: 0;
+  background: var(--paper);
+  padding: clamp(1.45rem, 2.3vw, 2rem);
+}
+.testimonial-card:hover { border: 0; background: var(--white); transform: none; }
+.testimonial-card p,
+.testimonial-card blockquote { font-family: var(--font-prose); }
+
+/* A tick inside a pale circle on every list row is the same decoration as an
+   icon tile, repeated. A plain rule-coloured dash sets the list without
+   dressing it. */
+.service-features li::before {
+  width: 10px; height: 1.5px;
+  margin-top: .72em;
+  border-radius: 0;
+  background: var(--rule-strong);
+}
+.service-features li { gap: .75rem; color: var(--text-muted); }
