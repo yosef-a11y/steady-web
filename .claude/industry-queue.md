@@ -25,6 +25,27 @@ budget belongs elsewhere. Make that the organizing idea, not a footnote.
 
 ## Built
 
+### Multi-location self-storage (operator profile, not a new industry)
+**Built:** 18 Nov 2026 — https://steadygrowthmarketing.com/multi-location-self-storage-marketing/
+
+Not an industry page and did not need Yosef's read: storage was already approved, this is a
+fourth page serving a different operator profile within it. A coverage check across the three
+existing storage pages found multi-site operators mentioned in exactly one sentence, while
+aggregators, unit mix, lease-up and budget sizing were all substantially covered — so this was
+the only angle left that wasn't a near-duplicate.
+
+The organizing idea is that the problem changes at the second facility: it stops being "get
+more move-ins" and becomes an allocation problem. Sections cover facilities outbidding each
+other in overlapping radii (worst on brand terms, where no outside advertiser disciplines the
+price), allocating budget on vacancy by site and unit size rather than evenly or by revenue,
+one account versus several and why campaign grouping has to leave automated bidding enough
+conversion volume, reporting that breaks the rollup down per site and per size, and the way
+in-place rate increases and acquisition spend are two halves of one decision. Closes with
+sites that should be spending nothing this month.
+
+**Still implies no storage client roster.** Written as method throughout, same as the other
+three storage pages.
+
 ### Addiction treatment & recovery
 **Built:** 17 Nov 2026 — https://steadygrowthmarketing.com/addiction-treatment-marketing/
 
