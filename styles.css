@@ -784,6 +784,9 @@ p { text-wrap: pretty; }
 .prose .section-label { margin-bottom: .9rem; }
 .prose h2 { font-size: clamp(1.55rem, 3vw, 2.1rem); margin: 2.6rem 0 .85rem; }
 .prose h2:first-of-type { margin-top: 0; }
+/* Sub-headings inside a long prose section. Sans, like every other small
+   heading, and sized clearly below .prose h2 so the hierarchy reads. */
+.prose h3 { font-size: 1.2rem; color: var(--navy-900); margin: 1.9rem 0 .6rem; }
 .prose p, .prose li { color: var(--text-muted); font-size: 1.04rem; }
 .prose p { margin-bottom: 1rem; }
 .prose strong { color: var(--navy-900); font-weight: 700; }
