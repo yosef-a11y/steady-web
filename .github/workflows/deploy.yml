@@ -7,6 +7,11 @@ on:
       - main
       - claude/steadygrowth-website-overhaul-p7ukda
   workflow_dispatch:
+    inputs:
+      submit_all:
+        description: 'Submit every sitemap URL to IndexNow, not just changed pages'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -27,6 +32,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2   # need the previous commit to see which pages changed
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
@@ -39,3 +46,56 @@ jobs:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
+
+      # Tell the IndexNow engines (Bing, Yandex, Seznam, Naver) that pages
+      # changed. Bing's index is what ChatGPT search reads, so a page it
+      # hasn't re-crawled is a page the answer engines can't cite. The key is
+      # public by design — it's served at /<key>.txt so the engines can verify
+      # the submission came from the site itself.
+      - name: Ping IndexNow
+        if: success()
+        env:
+          INDEXNOW_KEY: 28639488c1064589b32b14b6e9e3e55a
+          SUBMIT_ALL: ${{ inputs.submit_all }}
+        run: |
+          set -euo pipefail
+          host=steadygrowthmarketing.com
+
+          # The sitemap is the list of canonical, indexable URLs. Anything not
+          # in it (404.html, the Disallow'd thank-you page) is never submitted.
+          grep -oP '(?<=<loc>)[^<]+' sitemap.xml | sort -u > /tmp/sitemap-urls
+
+          if [ "${SUBMIT_ALL:-false}" = "true" ]; then
+            mapfile -t urls < /tmp/sitemap-urls
+          else
+            # Pages whose HTML changed in this push, mapped to clean URLs and
+            # then intersected with the sitemap.
+            git diff --name-only --diff-filter=ACMR HEAD^ HEAD -- '*.html' 2>/dev/null \
+              | sed -e 's#^index\.html$##' -e 's#/index\.html$#/#' \
+              | sed -e "s#^#https://$host/#" | sort -u > /tmp/changed-urls || true
+            mapfile -t urls < <(comm -12 /tmp/sitemap-urls /tmp/changed-urls)
+          fi
+
+          if [ "${#urls[@]}" -eq 0 ]; then
+            echo "No HTML changed in this push; nothing to submit."
+            exit 0
+          fi
+
+          printf 'Submitting %d URL(s):\n' "${#urls[@]}"
+          printf '  %s\n' "${urls[@]}"
+
+          payload=$(jq -n --arg host "$host" --arg key "$INDEXNOW_KEY" \
+            --arg loc "https://$host/$INDEXNOW_KEY.txt" \
+            --args '{host:$host, key:$key, keyLocation:$loc, urlList:$ARGS.positional}' \
+            "${urls[@]}")
+
+          code=$(curl -sS -o /tmp/indexnow.out -w '%{http_code}' \
+            -X POST https://api.indexnow.org/IndexNow \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            --data "$payload") || true
+
+          echo "IndexNow responded $code"
+          cat /tmp/indexnow.out || true
+          # 200 and 202 are both success. Never fail the deploy over this.
+          case "$code" in 200|202) echo "Submitted." ;;
+                          *) echo "::warning::IndexNow returned $code" ;; esac
