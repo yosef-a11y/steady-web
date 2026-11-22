@@ -883,8 +883,7 @@ p { text-wrap: pretty; }
   justify-content: flex-start;
   gap: .62rem;
   flex: 0 1 auto;
-  padding: .2rem 1.6rem;
-  border-left: 1px solid var(--rule);
+  padding: .2rem 1.9rem;
   font-size: .85rem;
   font-weight: 500;
   letter-spacing: .005em;
@@ -893,7 +892,6 @@ p { text-wrap: pretty; }
   color: var(--text-muted);
   transition: color .25s ease;
 }
-.strip-item:first-child { border-left: 0; }
 .strip-item:hover { color: var(--ink); }
 
 .strip-logo {
@@ -911,7 +909,7 @@ p { text-wrap: pretty; }
     grid-template-columns: repeat(3, 1fr);
     gap: 1.25rem .5rem;
   }
-  .strip-item { border-left: 0; padding: 0 .35rem; font-size: .78rem; }
+  .strip-item { padding: 0 .35rem; font-size: .78rem; }
   .strip-logo { height: 22px; }
 }
 @media (max-width: 420px) {
@@ -1975,11 +1973,6 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
 .hero-proof-more a:hover { color: #fff; }
 
 /* --- Client band: real names, in place of invented counts --- */
-.clients-band {
-  padding: 2.6rem 0;
-  background: var(--surface-alt, #F7F9FC);
-  border-block: 1px solid var(--border, #E5EAF2);
-}
 .clients-lede {
   margin: 0 0 1.1rem;
   text-align: center;
@@ -2118,7 +2111,6 @@ a.industry-card:hover .related-cta svg { transform: translateX(3px); }
 
 /* Client band: a few names plus a link to the rest, rather than the whole
    roster. Ten names read as a list to skim past; five read as a signal. */
-.clients-band { padding: 2.2rem 0; }
 .clients-list { gap: .6rem 2rem; align-items: baseline; }
 .clients-list li { font-size: 1.02rem; opacity: .66; }
 
@@ -2258,7 +2250,6 @@ h3, h4, h5 {
 .hero-proof { border-radius: var(--radius-lg); background: rgba(255, 255, 255, .05); }
 
 /* ---- Bands ------------------------------------------------------------- */
-.clients-band { background: var(--paper-alt); border-block: 1px solid var(--rule); }
 .clients-lede { color: var(--text-muted); letter-spacing: .17em; font-size: .71rem; }
 .clients-list li { font-family: var(--font-display); font-weight: 400; font-size: 1.3rem; opacity: 1; color: var(--ink); }
 
@@ -2396,40 +2387,37 @@ h3, h4, h5 {
    names, divided by hairlines, makes it look like a masthead credit line.
    Each name sits in a .client-name span so a logo can replace it later
    without the layout moving — see images/logos/README.md. */
-.clients-band { padding: 0; }
+/* Reworked 22 Nov 2026. This used to sit directly under the platforms band,
+   so the page opened with two rows of hairline-divided cells in a row and
+   read as boxes stacked on boxes. It now introduces the reviews section —
+   which is where these names come from — and the cell borders are gone. The
+   names carry themselves at this size; space separates them. */
 .clients-inner {
   display: flex;
-  align-items: stretch;
-  gap: 0;
-  flex-wrap: wrap;
-}
-.clients-band .clients-lede {
-  flex: 0 0 auto;
-  display: flex;
+  flex-direction: column;
   align-items: center;
-  margin: 0;
-  padding: 1.6rem 2rem 1.6rem 0;
-  text-align: left;
-  line-height: 1.45;
-  border-right: 1px solid var(--rule);
+  gap: .9rem;
+  margin-bottom: 2.1rem;
 }
-.clients-band .clients-list {
-  flex: 1 1 420px;
+.clients-inner .clients-lede {
+  margin: 0;
+  text-align: center;
+  line-height: 1.45;
+}
+.clients-inner .clients-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: stretch;
-  gap: 0;
+  justify-content: center;
+  align-items: baseline;
+  gap: .55rem 2.6rem;
   margin: 0;
 }
 .clients-list li {
-  display: flex;
-  align-items: center;
-  padding: 1.6rem 1.9rem;
-  border-right: 1px solid var(--rule);
+  display: block;
+  padding: 0;
+  border: 0;
   font-size: 1.24rem;
 }
-.clients-list li:last-child { border-right: 0; }
 
 /* Drop a logo in beside the wordmark and add .has-logo to the li; the name
    stays in the DOM for screen readers and for when an image fails. */
@@ -2442,71 +2430,10 @@ h3, h4, h5 {
   white-space: nowrap;
 }
 
-@media (max-width: 860px) {
-  .clients-band .clients-lede {
-    flex: 1 1 100%;
-    border-right: 0;
-    border-bottom: 1px solid var(--rule);
-    padding: 1.2rem 0;
-    justify-content: center;
-    text-align: center;
-  }
-  .clients-band .clients-lede br { display: none; }
-  .clients-band .clients-list { justify-content: center; }
-  .clients-list li { padding: 1rem 1.1rem; font-size: 1.05rem; border-right: 0; }
-}
 
-/* The names left a gap at the right end of the row. Equal cells divide the
-   full width, so the dividers land on a regular rhythm and the band reads as
-   a deliberate ledger rather than a line that ran out. */
-@media (min-width: 861px) {
-  .clients-list li {
-    flex: 1 1 0;
-    justify-content: center;
-    padding: 1.6rem 1rem;
-    text-align: center;
-  }
-  .clients-list li:last-child { border-right: 0; }
-}
 
-/* The label used <br> to sit on three lines, and hiding those on mobile ran
-   the words together ("OURFIVE-STAR REVIEWSON GOOGLE"). A width constraint
-   wraps it on desktop and lets it flow on mobile, with no markup trickery. */
-@media (min-width: 861px) {
-  .clients-band .clients-lede { max-width: 15ch; }
-}
 
-/* "Reb Meir Baal Haness" is far longer than the other names. With equal-width
-   cells (flex-basis 0) it wrapped to two lines and squeezed the label column
-   down to six. Sizing cells from their content and then sharing out what is
-   left lets each name keep one line and gives the long one the room it needs.
-   The label is pinned so it can't be compressed. */
-@media (min-width: 861px) {
-  .clients-band .clients-lede {
-    flex: 0 0 auto;
-    width: 16ch;
-    max-width: none;
-  }
-  .clients-list li {
-    flex: 1 1 auto;
-    white-space: nowrap;
-    padding: 1.6rem 1.3rem;
-    font-size: 1.14rem;
-  }
-}
-@media (max-width: 860px) {
-  .clients-list li { white-space: nowrap; }
-}
 
-/* 16ch plus wide letterspacing broke the label onto five short lines. More
-   width and slightly tighter tracking settles it to two or three. */
-@media (min-width: 861px) {
-  .clients-band .clients-lede {
-    width: 21ch;
-    letter-spacing: .12em;
-    line-height: 1.6;
-  }
-}
 
 /* ---- Contact: form first once the grid stacks --------------------------
    The CTA jumps to #contact, but below 1024px the two columns stack with the
