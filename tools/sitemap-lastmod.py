@@ -24,6 +24,7 @@ MECHANICAL = (
     re.compile(r'styles\.css\?v='),                                   # cache-buster bump
     re.compile(r'<li><a href="/[a-z0-9\-]+/">[^<]*</a></li>\s*$'),     # nav / footer entry
     re.compile(r'dataLayer|gtag\(|^\s*</?script>\s*$'),               # the GA4 snippet
+    re.compile(r'fonts\.(googleapis|gstatic)\.com'),                  # webfont swap
 )
 
 def git(*args):

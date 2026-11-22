@@ -29,6 +29,14 @@ added:
 - **One saturated colour.** Blue means *this is actionable*. If blue appears somewhere
   that isn't a link, a button or a deliberate accent rule, it is wrong.
 
+**One exception, added 22 Nov 2026:** the platforms band under the homepage hero
+carries the real Google Ads, Meta, Amazon, Google Analytics, Tag Manager and Shopify
+marks in their own brand colours. Those are other companies' logos and recolouring
+them to fit our palette would be both wrong and against their brand terms. The marks
+come from Simple Icons (CC0), except Amazon, which is Font Awesome Free (CC BY 4.0) —
+Simple Icons does not carry Amazon. Keep this contained to that one band; it is not a
+licence to add colour elsewhere.
+
 ---
 
 ## Colour
@@ -128,8 +136,15 @@ one in the header and one in the footer of every page.
 
 | Role | Face | Notes |
 | --- | --- | --- |
-| Display | **Instrument Serif** | One weight and a true italic. Headlines lead on size and shape, never on bold |
+| Display | **Playfair Display** | High stroke contrast and a true italic. Set at 700, never 800 — above that it goes synthetic and the counters close up |
 | Body | **IBM Plex Sans** | Has grain. Inter and the usual geometric sans do not, which is why pages using them look generated |
+
+Playfair replaced Instrument Serif on 22 Nov 2026. Instrument Serif is one of the
+handful of faces every AI-era template reaches for, which was the complaint. Playfair
+is older, has a real bold, and carries the high contrast the brand's own print
+material uses. It also sets **wider** at the same size, so the display scale came down
+a notch across the board when it went in — if you change the display face again,
+expect to re-tune those clamps or headlines will start wrapping badly.
 
 Both load from Google Fonts. Fallbacks are Charter and Georgia for the serif, system-ui
 for the sans, so a blocked font request degrades to something with similar proportions
