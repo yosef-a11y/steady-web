@@ -35,6 +35,15 @@ jobs:
         with:
           fetch-depth: 2   # need the previous commit to see which pages changed
 
+      # Every landing page was built by slicing the header and footer out of an
+      # existing one, so a page built from a stale slice shipped missing the
+      # links added since — and the next page built from that one inherited the
+      # gap. Four pages had drifted before this check existed. It blocks the
+      # deploy rather than warning, because a warning is what the last four
+      # would have produced. Fix with: python3 tools/sync-nav.py
+      - name: Check nav and footer are in sync
+        run: python3 tools/sync-nav.py --check
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 

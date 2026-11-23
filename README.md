@@ -170,9 +170,33 @@ One page ranks for one search intent. To target a new phrase, add a folder with 
    contact form are the homepage's, with links made root-relative (`/#services`).
 2. Give it its own `<title>`, meta description, `canonical`, H1, and at least 700 words that
    genuinely answer that searcher, plus a FAQ with matching `FAQPage` JSON-LD.
-3. Add it to `sitemap.xml` and to the Pages list in `llms.txt`, and link it from the footer in
-   every page so crawlers find it.
+3. Add it to `sitemap.xml` and to the Pages list in `llms.txt`, and add it to the nav and footer
+   on `index.html` only — then run `python3 tools/sync-nav.py` to copy them everywhere. Do not
+   hand-edit the nav on 20-odd pages.
 4. Use `/styles.css`, `/main.js`, and `/favicon.svg` with leading slashes on subpages.
+5. Run `python3 tools/sitemap-lastmod.py` after committing, so the new page and anything you
+   changed carry honest dates.
+
+## Scripts in `tools/`
+
+Both are plain Python, no dependencies, and safe to re-run.
+
+- **`sync-nav.py`** — rewrites the header nav and footer link columns on every page from
+  `index.html`, turning its `href="#x"` anchors into `href="/#x"`. `--check` reports drift and
+  exits non-zero without changing anything; the deploy workflow runs it that way and a drifted
+  nav **blocks the deploy**.
+
+  This exists because pages were built by slicing the header and footer out of an existing page.
+  A slice is a snapshot, so a page built from a stale one shipped without the links added since,
+  and the next page built from *that* one inherited the gap and added its own. By 23 Nov 2026
+  four pages were each missing one to three nav entries. Nothing caught it: the verification
+  script checks that links resolve, not that they are all present.
+
+- **`sitemap-lastmod.py`** — sets each `<lastmod>` from the last commit that changed that page's
+  *content*, ignoring site-wide mechanical edits (the `styles.css?v=` bump, nav and footer
+  entries, the GA4 snippet, a webfont swap). Without that filter a one-line CSS change marks all
+  22 pages as freshly written, which teaches crawlers to ignore the dates. `--check` reports
+  without writing.
 
 ## Editing content
 
