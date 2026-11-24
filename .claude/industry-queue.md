@@ -10,20 +10,36 @@ Status values: `approved` · `approved, with caveats` · `needs Yosef's read` ·
 
 ## Approved — his notes shape the page
 
-### Multifamily
-**Status:** approved, with caveats
-**Yosef:** "Doesn't really work unless there are a lot of searches for some identifier or
-landmark nearby. For example people search for an apartment near Rodeo Drive or some other
-attraction."
-
-The whole page hangs on this qualifier and it's a genuinely useful one. Multifamily paid
-search works when the property has a searchable anchor — a landmark, a campus, a district,
-an employer — that people actually type. Without one, search volume is too thin and the
-budget belongs elsewhere. Make that the organizing idea, not a footnote.
+*Empty. Nothing can be built next week until Yosef answers the question under
+"Waiting on his read" below.*
 
 ---
 
 ## Built
+
+### Multifamily
+**Built:** 24 Nov 2026 — https://steadygrowthmarketing.com/multifamily-apartment-marketing/
+**Yosef:** "Doesn't really work unless there are a lot of searches for some identifier or
+landmark nearby. For example people search for an apartment near Rodeo Drive or some other
+attraction."
+
+His qualifier is the page, not a footnote. The H1 is "Renters search for a place before they
+search for a building," and the first real section is the anchor test: what counts as an
+anchor (university, hospital or medical campus, large employer, military installation, named
+district, transit station, landmark), how to check for one before any budget is committed,
+and the common failure of taking the anchor from your own brochure when a developer-invented
+district name appears in marketing and nowhere in search data. His Rodeo Drive example is in
+there as the landmark case.
+
+A full section says what to do when there is no anchor — listing sites, paid social and the
+Business Profile — and says plainly that bidding broad apartment terms against the ILSs is a
+losing auction. Also covers defending the community's own name against listing sites bidding
+on it, tracking past the tour request through attended, application and approval to signed
+lease, keeping ad copy in step with concessions under revenue management, weighting budget to
+the floor plans actually vacant, and how lease-up differs from stabilized. Closes with a
+four-row table of situations where we'd tell them not to run it.
+
+**No multifamily clients implied** — method throughout, no figures.
 
 ### Multi-location self-storage (operator profile, not a new industry)
 **Built:** 18 Nov 2026 — https://steadygrowthmarketing.com/multi-location-self-storage-marketing/
@@ -94,9 +110,23 @@ to the admissions-process claim rather than in a wall at the bottom.
   described as mechanisms and the reader pointed at Google's own documentation, since the
   program's numbers move.
 
+## Waiting on his read
+
+**Asked 24 Nov 2026 — home services (HVAC, plumbing, roofing).** Raised once before and still
+unanswered, so asked again with a sharper question rather than a different industry.
+
+The question is not whether to build the page but what it leads with. For emergency trades the
+Local Services Ads unit sits above everything else on the page and charges per lead rather than
+per click, which makes it the first decision rather than a section near the bottom. So: does he
+want to take on LSA setup and the Google verification that comes with it (background checks,
+licence and insurance documents, the review threshold), or should the page treat LSA as
+something the client arranges and we run Search around? That changes the page's whole shape,
+and it changes what we'd be promising. Record his answer verbatim when it comes.
+
 ## Needs Yosef's read before writing
 
-- **Home services** (HVAC, plumbing, roofing) — homepage card exists with no page behind it
+- **Home services** (HVAC, plumbing, roofing) — homepage card exists with no page behind it; see
+  the question above
 - **Moving companies** — proposed as a self-storage adjacency
 - **Professional Services** — homepage card exists with no page behind it
 - **B2B & SaaS** — homepage card exists with no page behind it
